@@ -9,7 +9,7 @@ interface Props {
 const { 
   title, 
   description = "AXA IT oferă soluții IT complete, adaptate afacerii tale — mentenanță, rețelistică, cloud, securitate și suport permanent.",
-  image = "/img/og-default.jpg",
+  image = "/og-image-1200x630.png",
   type = "website"
 } = Astro.props;
 
@@ -27,6 +27,18 @@ const ogImage = image.startsWith('http') ? image : `https://axait.ro${image}`;
   
   <link rel="canonical" href={canonicalURL} />
   
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+  <!-- Theme color -->
+  <meta name="theme-color" content="#1A2332">
+  <meta name="msapplication-TileColor" content="#1A2332">
+  
   <!-- Open Graph -->
   <meta property="og:type" content={type} />
   <meta property="og:url" content={canonicalURL} />
@@ -43,12 +55,38 @@ const ogImage = image.startsWith('http') ? image : `https://axait.ro${image}`;
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
   
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <!-- Geist Sans Font -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <style>
+    @font-face {
+      font-family: 'Geist';
+      src: url('https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/Geist-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Geist';
+      src: url('https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/Geist-Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Geist';
+      src: url('https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/Geist-SemiBold.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Geist';
+      src: url('https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/Geist-Light.woff2') format('woff2');
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+  </style>
   
   <!-- Organization Schema -->
   <script type="application/ld+json">
@@ -57,7 +95,7 @@ const ogImage = image.startsWith('http') ? image : `https://axait.ro${image}`;
     "@type": "Organization",
     "name": "AXA IT",
     "url": "https://axait.ro",
-    "logo": "https://axait.ro/img/logo-axait.png",
+    "logo": "https://axait.ro/img/logo/logo-horizontal-light.svg",
     "description": "Soluții IT complete, adaptate afacerii tale — mentenanță, rețelistică, cloud, securitate și suport permanent.",
     "address": {
       "@type": "PostalAddress",
@@ -82,7 +120,7 @@ const ogImage = image.startsWith('http') ? image : `https://axait.ro${image}`;
   
   <slot name="schema" />
 </head>
-<body class="antialiased">
+<body class="antialiased bg-brand-light text-brand-dark">
   <slot />
 </body>
 </html>
@@ -95,14 +133,14 @@ const ogImage = image.startsWith('http') ? image : `https://axait.ro${image}`;
   }
   
   html, body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     overflow-x: hidden;
     width: 100%;
     max-width: 100vw;
   }
 
   ::selection {
-    background: #2563EB;
+    background: #2563A8;
     color: #fff;
   }
 
@@ -111,21 +149,12 @@ const ogImage = image.startsWith('http') ? image : `https://axait.ro${image}`;
   }
   
   ::-webkit-scrollbar-track {
-    background: #f1f5f9;
+    background: #F4F6F9;
   }
   
   ::-webkit-scrollbar-thumb {
-    background: #94a3b8;
+    background: #6B8299;
     border-radius: 4px;
-  }
-
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-  
-  details[open] summary {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
   }
 
   .glass-card {
@@ -140,7 +169,7 @@ const ogImage = image.startsWith('http') ? image : `https://axait.ro${image}`;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
   }
 
   @keyframes float {
@@ -151,6 +180,18 @@ const ogImage = image.startsWith('http') ? image : `https://axait.ro${image}`;
   @keyframes pulse-slow {
     0%, 100% { opacity: 0.5; transform: scale(1); }
     50% { opacity: 0.8; transform: scale(1.05); }
+  }
+
+  @keyframes pulse-node {
+    0%, 100% { r: 7; opacity: 0.8; }
+    50% { r: 9; opacity: 1; }
+  }
+
+  @keyframes travel {
+    0% { offset-distance: 0%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { offset-distance: 100%; opacity: 0; }
   }
 
   @keyframes grow-bar {
@@ -171,6 +212,11 @@ const ogImage = image.startsWith('http') ? image : `https://axait.ro${image}`;
   @keyframes marquee-reverse {
     0% { transform: translateX(-50%); }
     100% { transform: translateX(0); }
+  }
+
+  @keyframes fade-in {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
   }
 
   .animate-float {
@@ -203,6 +249,11 @@ const ogImage = image.startsWith('http') ? image : `https://axait.ro${image}`;
   .brand-marquee:hover .animate-marquee,
   .brand-marquee:hover .animate-marquee-reverse {
     animation-play-state: paused;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out forwards;
+    opacity: 0;
   }
 
   .animation-delay-100 { animation-delay: 100ms; }

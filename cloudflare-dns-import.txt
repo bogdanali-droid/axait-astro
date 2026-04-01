@@ -13,7 +13,7 @@ $ORIGIN axait.ro.
 $TTL 300
 
 ; --- EMAIL (MX) ---
-@                   IN  MX  0   axait.ro.
+@                   IN  MX  0   mail.axait.ro.
 
 ; --- cPanel & Email Subdomains (TOATE trebuie DNS-only dupa import!) ---
 mail                IN  A   185.181.240.180
@@ -28,7 +28,7 @@ cpcontacts          IN  A   185.181.240.180
 webdisk             IN  A   185.181.240.180
 
 ; --- WWW redirect la root (proxied = OK) ---
-www                 IN  CNAME   axait.ro.
+www                 IN  CNAME   axait-astro.pages.dev.
 
 ; --- SPF ---
 @                   IN  TXT "v=spf1 ip4:185.181.240.180 +a +mx +ip4:185.181.240.186 ~all"
