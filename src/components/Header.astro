@@ -1,0 +1,218 @@
+---
+interface Props {
+  variant?: 'dark' | 'light';
+  currentPage?: string;
+}
+
+const { variant = 'light', currentPage = '' } = Astro.props;
+const isDark = variant === 'dark';
+
+const services = [
+  { href: '/servicii/mentenanta-suport-it', label: 'Mentenanță & Suport IT', desc: 'Intervenții rapide, monitorizare 24/7', icon: 'wrench', color: '#2563EB' },
+  { href: '/servicii/retelistică-wifi', label: 'Rețelistică & Wi-Fi', desc: 'Rețele cablate și wireless', icon: 'wifi', color: '#0891B2' },
+  { href: '/servicii/cloud-backup', label: 'Cloud & Backup', desc: 'Date sigure, accesibile oriunde', icon: 'cloud', color: '#7C3AED' },
+  { href: '/servicii/securitate-supraveghere', label: 'Securitate & Supraveghere', desc: 'Video, acces, automatizări', icon: 'shield', color: '#DC2626' },
+  { href: '/servicii/outsourcing-it', label: 'Outsourcing IT', desc: 'Departament IT complet', icon: 'building', color: '#059669' },
+  { href: '/servicii/protectie-cibernetica', label: 'Protecție Cibernetică', desc: 'Firewall, antivirus, GDPR', icon: 'lock', color: '#D97706' },
+  { href: '/servicii/virtualizare-servere', label: 'Virtualizare & Servere', desc: 'VMware, Hyper-V, Proxmox', icon: 'server', color: '#4F46E5' },
+  { href: '/servicii/consultanta-audit', label: 'Consultanță & Audit', desc: 'Analiză și optimizare IT', icon: 'clipboard', color: '#0D9488' },
+];
+---
+
+<header id="header" class:list={[
+  "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+  isDark ? "" : "bg-white/80 backdrop-blur-lg border-b border-gray-100"
+]}>
+  <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2">
+      <div class:list={[
+        "text-[22px] font-bold tracking-tight",
+        isDark ? "text-white" : "text-slate-900"
+      ]}>
+        <span class="text-blue-600">AXA</span> IT
+      </div>
+    </a>
+
+    <div class="hidden md:flex items-center gap-1">
+      <!-- Servicii Dropdown -->
+      <div class="relative group">
+        <button class:list={[
+          "header-link px-4 py-2 text-[14px] rounded-lg transition-all flex items-center gap-1",
+          isDark ? "text-white/70 hover:text-white" : "text-gray-600 hover:text-gray-900"
+        ]}>
+          Servicii
+          <svg class="w-4 h-4 group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+          <div class="bg-white rounded-xl shadow-xl border border-gray-100 py-2 min-w-[280px]">
+            {services.map(s => (
+              <a href={s.href} class:list={["flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 transition-colors", { "bg-blue-50": currentPage === s.href }]}>
+                <div class="w-8 h-8 rounded-lg flex items-center justify-center" style={`background: ${s.color}15`}>
+                  {s.icon === 'wrench' && <svg class="w-4 h-4" style={`color: ${s.color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085"/></svg>}
+                  {s.icon === 'wifi' && <svg class="w-4 h-4" style={`color: ${s.color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z"/></svg>}
+                  {s.icon === 'cloud' && <svg class="w-4 h-4" style={`color: ${s.color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"/></svg>}
+                  {s.icon === 'shield' && <svg class="w-4 h-4" style={`color: ${s.color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>}
+                  {s.icon === 'building' && <svg class="w-4 h-4" style={`color: ${s.color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"/></svg>}
+                  {s.icon === 'lock' && <svg class="w-4 h-4" style={`color: ${s.color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>}
+                  {s.icon === 'server' && <svg class="w-4 h-4" style={`color: ${s.color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 17.25v-.228a4.5 4.5 0 00-.12-1.03l-2.268-9.64a3.375 3.375 0 00-3.285-2.602H7.923a3.375 3.375 0 00-3.285 2.602l-2.268 9.64a4.5 4.5 0 00-.12 1.03v.228m19.5 0a3 3 0 01-3 3H5.25a3 3 0 01-3-3m19.5 0a3 3 0 00-3-3H5.25a3 3 0 00-3 3m16.5 0h.008v.008h-.008v-.008zm-3 0h.008v.008h-.008v-.008z"/></svg>}
+                  {s.icon === 'clipboard' && <svg class="w-4 h-4" style={`color: ${s.color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z"/></svg>}
+                </div>
+                <div>
+                  <p class="text-[14px] font-medium text-gray-900">{s.label}</p>
+                  <p class="text-[12px] text-gray-500">{s.desc}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+      
+      <a href="/despre" class:list={[
+        "header-link px-4 py-2 text-[14px] rounded-lg transition-all",
+        isDark ? "text-white/70 hover:text-white" : "text-gray-600 hover:text-gray-900"
+      ]}>Despre</a>
+      
+      <a href="/contact" class:list={[
+        "header-link px-4 py-2 text-[14px] rounded-lg transition-all",
+        isDark ? "text-white/70 hover:text-white" : "text-gray-600 hover:text-gray-900"
+      ]}>Contact</a>
+    </div>
+
+    <a href="/contact" class="hidden md:inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium text-[14px] px-5 py-2.5 rounded-full transition-all">
+      Solicită o consultație
+    </a>
+
+    <!-- Mobile menu button -->
+    <button id="mobile-menu-btn" aria-label="Deschide meniul" class:list={[
+      "md:hidden flex items-center justify-center w-10 h-10 rounded-lg transition-colors flex-shrink-0",
+      isDark ? "bg-white/10 hover:bg-white/20" : "bg-gray-100 hover:bg-gray-200"
+    ]}>
+      <svg id="menu-icon-open" class:list={["w-6 h-6", isDark ? "text-white" : "text-gray-900"]} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+      </svg>
+      <svg id="menu-icon-close" class:list={["w-6 h-6 hidden", isDark ? "text-white" : "text-gray-900"]} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </nav>
+</header>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden fixed inset-x-0 top-[64px] bottom-0 bg-white z-[9999] overflow-y-auto">
+  <div class="flex flex-col h-full overflow-y-auto">
+    <nav class="flex flex-col p-6 space-y-2">
+      <div class="border-b border-gray-100 pb-4 mb-2">
+        <p class="text-blue-600 text-[12px] font-semibold uppercase tracking-wider mb-3">Servicii</p>
+        {services.map(s => (
+          <a href={s.href} class="flex items-center gap-3 py-3 text-gray-700 hover:text-gray-900 transition-colors mobile-menu-link">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style={`background: ${s.color}15`}>
+              {s.icon === 'wrench' && <svg class="w-5 h-5" style={`color: ${s.color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085"/></svg>}
+              {s.icon === 'wifi' && <svg class="w-5 h-5" style={`color: ${s.color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z"/></svg>}
+              {s.icon === 'cloud' && <svg class="w-5 h-5" style={`color: ${s.color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"/></svg>}
+              {s.icon === 'shield' && <svg class="w-5 h-5" style={`color: ${s.color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>}
+              {s.icon === 'building' && <svg class="w-5 h-5" style={`color: ${s.color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"/></svg>}
+              {s.icon === 'lock' && <svg class="w-5 h-5" style={`color: ${s.color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>}
+              {s.icon === 'server' && <svg class="w-5 h-5" style={`color: ${s.color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 17.25v-.228a4.5 4.5 0 00-.12-1.03l-2.268-9.64a3.375 3.375 0 00-3.285-2.602H7.923a3.375 3.375 0 00-3.285 2.602l-2.268 9.64a4.5 4.5 0 00-.12 1.03v.228m19.5 0a3 3 0 01-3 3H5.25a3 3 0 01-3-3m19.5 0a3 3 0 00-3-3H5.25a3 3 0 00-3 3m16.5 0h.008v.008h-.008v-.008zm-3 0h.008v.008h-.008v-.008z"/></svg>}
+              {s.icon === 'clipboard' && <svg class="w-5 h-5" style={`color: ${s.color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z"/></svg>}
+            </div>
+            <div>
+              <p class="font-medium text-gray-900">{s.label}</p>
+              <p class="text-[13px] text-gray-500">{s.desc}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+      <a href="/despre" class="py-3 text-[18px] text-gray-700 hover:text-gray-900 font-medium transition-colors mobile-menu-link">Despre noi</a>
+      <a href="/contact" class="py-3 text-[18px] text-gray-700 hover:text-gray-900 font-medium transition-colors mobile-menu-link">Contact</a>
+    </nav>
+    <div class="mt-auto p-6 border-t border-gray-100">
+      <a href="/contact" class="mobile-menu-link flex items-center justify-center gap-2 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-[16px] px-6 py-4 rounded-xl transition-all">
+        Solicită o consultație
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+      </a>
+      <p class="text-center text-gray-400 text-[13px] mt-3">+40 727 897 849</p>
+    </div>
+  </div>
+</div>
+
+{isDark && (
+  <script is:inline>
+    const header = document.getElementById('header');
+    if (header && !header.classList.contains('bg-white/80')) {
+      window.addEventListener('scroll', () => {
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        if (window.scrollY > 80) {
+          header.classList.add('bg-white', 'shadow-sm', 'border-b', 'border-gray-100');
+          header.querySelectorAll('.header-link').forEach(el => {
+            el.classList.add('text-gray-600', 'hover:text-gray-900');
+            el.classList.remove('text-white/70', 'hover:text-white');
+          });
+          const brand = header.querySelector('.brand-text');
+          if (mobileBtn) { mobileBtn.classList.remove('bg-white/10','hover:bg-white/20'); mobileBtn.classList.add('bg-gray-100','hover:bg-gray-200'); }
+        } else {
+          header.classList.remove('bg-white', 'shadow-sm', 'border-b', 'border-gray-100');
+          header.querySelectorAll('.header-link').forEach(el => {
+            el.classList.remove('text-gray-600', 'hover:text-gray-900');
+            el.classList.add('text-white/70', 'hover:text-white');
+          });
+          if (mobileBtn) { mobileBtn.classList.add('bg-white/10','hover:bg-white/20'); mobileBtn.classList.remove('bg-gray-100','hover:bg-gray-200'); }
+        }
+      });
+    }
+  </script>
+)}
+
+<script is:inline>
+  window.__mobileMenuOpen = false;
+  
+  (function() {
+    const header = document.getElementById('header');
+    if (!header) return;
+    let lastScrollY = 0;
+    let ticking = false;
+    
+    function updateHeader() {
+      const currentScrollY = window.scrollY;
+      if (window.__mobileMenuOpen) { header.style.transform = 'translateY(0)'; ticking = false; return; }
+      if (currentScrollY < 100) { header.style.transform = 'translateY(0)'; ticking = false; lastScrollY = currentScrollY; return; }
+      const diff = currentScrollY - lastScrollY;
+      if (Math.abs(diff) < 10) { ticking = false; return; }
+      header.style.transform = diff > 0 ? 'translateY(-100%)' : 'translateY(0)';
+      lastScrollY = currentScrollY;
+      ticking = false;
+    }
+    
+    window.addEventListener('scroll', function() {
+      if (!ticking) { requestAnimationFrame(updateHeader); ticking = true; }
+    }, { passive: true });
+  })();
+  
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIconOpen = document.getElementById('menu-icon-open');
+  const menuIconClose = document.getElementById('menu-icon-close');
+  let isMenuOpen = false;
+  
+  function toggleMobileMenu() {
+    isMenuOpen = !isMenuOpen;
+    window.__mobileMenuOpen = isMenuOpen;
+    if (isMenuOpen) {
+      if (mobileMenu) mobileMenu.classList.remove('hidden');
+      if (menuIconOpen) menuIconOpen.classList.add('hidden');
+      if (menuIconClose) menuIconClose.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('header').style.transform = 'translateY(0)';
+    } else {
+      if (mobileMenu) mobileMenu.classList.add('hidden');
+      if (menuIconOpen) menuIconOpen.classList.remove('hidden');
+      if (menuIconClose) menuIconClose.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+  document.querySelectorAll('.mobile-menu-link').forEach(link => {
+    link.addEventListener('click', () => { if (isMenuOpen) toggleMobileMenu(); });
+  });
+  window.addEventListener('resize', () => { if (window.innerWidth >= 768 && isMenuOpen) toggleMobileMenu(); });
+</script>

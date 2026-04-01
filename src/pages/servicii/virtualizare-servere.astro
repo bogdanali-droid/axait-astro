@@ -1,0 +1,84 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ServiceSections from '../../components/ServiceSections.astro';
+
+const description =
+  'Virtualizare VMware, Hyper-V și Proxmox: consolidare servere, scalabilitate, administrare eficientă și economie de resurse.';
+---
+
+<Layout title="Virtualizare & Server Management" description={description}>
+  <Header variant="light" currentPage="/servicii/virtualizare-servere" />
+  <main>
+    <ServiceSections
+      accent="indigo"
+      eyebrow="Servicii AXA IT"
+      title="Virtualizare & Server Management"
+      heroDescription="Proiectăm și administrăm medii virtualizate pentru a reduce numărul de bare metal-uri, a crește disponibilitatea și a simplifica backup-ul. Experiență cu VMware vSphere, Microsoft Hyper-V și Proxmox VE — de la cluster-e mici la infrastructuri cu shared storage și HA."
+      heroIconPath="M21.75 17.25v-.228a4.5 4.5 0 00-.12-1.03l-2.268-9.64a3.375 3.375 0 00-3.285-2.602H7.923a3.375 3.375 0 00-3.285 2.602l-2.268 9.64a4.5 4.5 0 00-.12 1.03v.228m19.5 0a3 3 0 01-3 3H5.25a3 3 0 01-3-3m19.5 0a3 3 0 00-3-3H5.25a3 3 0 00-3 3m16.5 0h.008v.008h-.008v-.008zm-3 0h.008v.008h-.008v-.008z"
+      features={[
+        {
+          title: 'VMware',
+          description:
+            'vSphere, vCenter, migrări live, resource pools și politici de backup integrate cu infrastructura ta existentă.',
+          iconPath:
+            'M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3V6.75a3 3 0 013-3h13.5a3 3 0 013 3v4.5a3 3 0 01-3 3m-16.5 0a3 3 0 003 3h13.5a3 3 0 003-3m-19.5 0v-4.5a3 3 0 013-3h13.5a3 3 0 013 3v4.5',
+        },
+        {
+          title: 'Hyper-V',
+          description:
+            'Cluster Windows Server, rețele virtuale, replicație și integrare AD — potrivit pentru medii Microsoft-first.',
+          iconPath:
+            'M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0015 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25',
+        },
+        {
+          title: 'Proxmox',
+          description:
+            'KVM/LXC, Ceph sau ZFS, cluster quorum — soluții open-source enterprise-friendly cu costuri de licență reduse.',
+          iconPath:
+            'M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25z',
+        },
+        {
+          title: 'Stabilitate',
+          description:
+            'Planificare capacitate, redundanță N+1 și proceduri de failover testate — serviciile critice rămân online.',
+          iconPath:
+            'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
+        },
+        {
+          title: 'Scalabilitate',
+          description:
+            'Adaugi RAM/CPU sau noduri noi fără redesign complet — arhitectură pregătită pentru creșterea afacerii tale.',
+          iconPath:
+            'M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5',
+        },
+        {
+          title: 'Economie & administrare eficientă',
+          description:
+            'Mai puțin hardware fizic, consum redus și administrare centralizată — TCO mai bun pe termen mediu.',
+          iconPath:
+            'M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+        },
+      ]}
+      steps={[
+        {
+          title: 'Analiză infrastructură',
+          description:
+            'Inventar workload-uri, cerințe de performanță și constrângeri de licențiere. Alegem platforma potrivită.',
+        },
+        {
+          title: 'Implementare & migrare',
+          description:
+            'Instalăm hypervisor-ii, storage-ul și rețeaua. Mutăm VM-urile cu ferestre de mentenanță planificate.',
+        },
+        {
+          title: 'Operare & monitorizare',
+          description:
+            'Patch-uri, snapshot policy, backup la nivel de VM și rapoarte de utilizare resurse — evităm suprasolicitarea.',
+        },
+      ]}
+    />
+  </main>
+  <Footer />
+</Layout>

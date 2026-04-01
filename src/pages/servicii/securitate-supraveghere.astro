@@ -1,0 +1,84 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ServiceSections from '../../components/ServiceSections.astro';
+
+const description =
+  'Supraveghere video, control acces, pontaj și automatizări clădiri — integrare cu partenerul Consal Security, soluții certificate ARTS.';
+---
+
+<Layout title="Securitate & Supraveghere" description={description}>
+  <Header variant="light" currentPage="/servicii/securitate-supraveghere" />
+  <main>
+    <ServiceSections
+      accent="red"
+      eyebrow="Servicii AXA IT"
+      title="Securitate & Supraveghere"
+      heroDescription="Integrăm sisteme de supraveghere video, control acces și pontaj într-o infrastructură coerentă — de la hale industriale la sedii administrative. Colaborăm cu Consal Security pentru echipamente și expertiză ARTS, astfel încât soluția să respecte normele aplicabile și să fie ușor de operat."
+      heroIconPath="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
+      features={[
+        {
+          title: 'Supraveghere video',
+          description:
+            'Camere IP interior/exterior, NVR redundant, vizualizare remote și păstrare evidențe conform politicii tale.',
+          iconPath:
+            'M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125z',
+        },
+        {
+          title: 'Control acces',
+          description:
+            'Cititoare, cartele, interfoane IP și integrare cu uși/barieri — jurnale de evenimente pentru audit.',
+          iconPath:
+            'M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z',
+        },
+        {
+          title: 'Pontaj',
+          description:
+            'Înregistrare prezență la terminale sau aplicații, exporturi pentru HR și sincronizare cu regulamentul intern.',
+          iconPath:
+            'M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z',
+        },
+        {
+          title: 'Automatizări clădiri',
+          description:
+            'Scenarii pentru iluminat, climatizare sau alarme — declanșate de evenimente de securitate sau program.',
+          iconPath:
+            'M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.241-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 010-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.28zM15 12a3 3 0 11-6 0 3 3 0 016 0z',
+        },
+        {
+          title: 'Partener Consal Security',
+          description:
+            'Beneficiezi de expertiză consolidată în echipamente, montaj și service — un singur punct de contact coordonat.',
+          iconPath:
+            'M18 18.72a9.09 9.09 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.645-5.963-1.684A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z',
+        },
+        {
+          title: 'Certificare ARTS',
+          description:
+            'Proiecte aliniate cerințelor pentru sisteme de alarmare și supraveghere — documentație pregătită pentru verificări.',
+          iconPath:
+            'M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.385a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z',
+        },
+      ]}
+      steps={[
+        {
+          title: 'Analiză perimetrală',
+          description:
+            'Evaluăm puncte critice, fluxuri de personal și cerințe legale. Alegem tehnologia potrivită bugetului.',
+        },
+        {
+          title: 'Instalare & integrare',
+          description:
+            'Montaj, cablare, configurare NVR/controllere și legături cu rețeaua existentă — testat end-to-end.',
+        },
+        {
+          title: 'Operare & mentenanță',
+          description:
+            'Update-uri, înlocuiri și extinderi. Suport pentru incidente și rapoarte de funcționare.',
+        },
+      ]}
+    />
+  </main>
+  <Footer />
+</Layout>

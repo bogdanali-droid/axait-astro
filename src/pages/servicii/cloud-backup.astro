@@ -1,0 +1,77 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ServiceSections from '../../components/ServiceSections.astro';
+
+const description =
+  'Backup automatizat, planuri de disaster recovery, migrări cloud și conformitate GDPR — datele tale accesibile și protejate.';
+---
+
+<Layout title="Cloud & Backup" description={description}>
+  <Header variant="light" currentPage="/servicii/cloud-backup" />
+  <main>
+    <ServiceSections
+      accent="violet"
+      eyebrow="Servicii AXA IT"
+      title="Cloud & Backup"
+      heroDescription="Construim strategii 3-2-1 pentru date critice: backup local și off-site, criptare, retenție și teste de restore periodice. Te ajutăm să migrezi către Microsoft 365, Azure sau furnizori europeni, cu focus pe GDPR și continuitate afacerii."
+      heroIconPath="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"
+      features={[
+        {
+          title: 'Backup automatizat',
+          description:
+            'Job-uri programate pentru fișiere, baze de date și mașini virtuale — cu verificări de integritate și alertare la eșec.',
+          iconPath:
+            'M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99',
+        },
+        {
+          title: 'Disaster recovery',
+          description:
+            'RTO/RPO definite, runbook-uri și exerciții de restaurare — știi cât durează și ce pași urmează după un incident major.',
+          iconPath:
+            'M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z',
+        },
+        {
+          title: 'GDPR compliant',
+          description:
+            'Locații de stocare în UE, politici de retenție, drept la ștergere și documentație pentru operatorul de date.',
+          iconPath:
+            'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
+        },
+        {
+          title: 'Accesibil de oriunde',
+          description:
+            'VPN, share-uri securizate sau sincronizare controlată — echipele remote lucrează fără a compromite securitatea.',
+          iconPath:
+            'M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418',
+        },
+        {
+          title: 'Cloud migration',
+          description:
+            'Evaluare workload-uri, plan de mutare, cutover și post-migrare — minim downtime și costuri predictibile.',
+          iconPath:
+            'M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3',
+        },
+      ]}
+      steps={[
+        {
+          title: 'Analiză date & riscuri',
+          description:
+            'Inventar aplicații și volume, clasificare date sensibile și definirea obiectivelor de recuperare.',
+        },
+        {
+          title: 'Implementare & teste',
+          description:
+            'Configurăm backup-ul, replicarea și accesul. Rulăm restore-uri de probă și ajustăm retenția.',
+        },
+        {
+          title: 'Monitorizare continuă',
+          description:
+            'Alerting, rapoarte lunare și revizii ale politicilor — backup-ul rămâne valid când infrastructura se schimbă.',
+        },
+      ]}
+    />
+  </main>
+  <Footer />
+</Layout>

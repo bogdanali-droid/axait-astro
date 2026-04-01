@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://axait.ro/sitemap-index.xml
