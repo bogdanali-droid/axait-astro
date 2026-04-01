@@ -1,0 +1,57 @@
+; axait.ro DNS Zone File - Import in Cloudflare
+; ==================================================
+; INSTRUCTIUNI DUPA IMPORT:
+; 1. Importa acest fisier in Cloudflare > DNS > Import
+; 2. Dupa import, seteaza urmatoarele pe "DNS only" (cloud gri):
+;    - mail, webmail, cpanel, whm, ftp, autodiscover, autoconfig,
+;      cpcalendars, cpcontacts, webdisk
+; 3. Record-ul pentru axait.ro (root) va fi gestionat de Cloudflare Pages
+;    (nu-l modifica manual)
+; ==================================================
+
+$ORIGIN axait.ro.
+$TTL 300
+
+; --- EMAIL (MX) ---
+@                   IN  MX  0   axait.ro.
+
+; --- cPanel & Email Subdomains (TOATE trebuie DNS-only dupa import!) ---
+mail                IN  A   185.181.240.180
+webmail             IN  A   185.181.240.180
+cpanel              IN  A   185.181.240.180
+whm                 IN  A   185.181.240.180
+ftp                 IN  A   185.181.240.180
+autodiscover        IN  A   185.181.240.180
+autoconfig          IN  A   185.181.240.180
+cpcalendars         IN  A   185.181.240.180
+cpcontacts          IN  A   185.181.240.180
+webdisk             IN  A   185.181.240.180
+
+; --- WWW redirect la root (proxied = OK) ---
+www                 IN  CNAME   axait.ro.
+
+; --- SPF ---
+@                   IN  TXT "v=spf1 ip4:185.181.240.180 +a +mx +ip4:185.181.240.186 ~all"
+
+; --- DKIM ---
+default._domainkey  IN  TXT "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtoKFF/QNgf/lDZu25csJaYr4NQGgX0ZVi3moRcLMupeYYlxGJ7MgoT1jtIhH+f8bBj1lHNopWmvfSCj1zpUh7b1/6FQyq/MAXna0IX5cFlX+JC+yhc2MKZi39EckzTniNf6RKJeuqEvmLsYi17pLlThMzqFVQXrRkgOTKbtWnV5w5JpPiSnOZ1KBVzNpw4Qg+ng3KRLMYGT2KTkPFC6P0LZoHnFyOuXf7Ag+JlA6WLc6NgeObEJID8eIFJ9s+/LrZHLJaOnMblypBQbjvEhB9YJSsfWuK0533Vche69ePPsWDsv1XgOgUsPMQ7CCINa9S+NIK18sTsqZ4ARYaebgJQIDAQAB;"
+
+; --- CalDAV / CardDAV (cPanel calendar & contacts) ---
+_caldav._tcp        IN  SRV 0 0 2079 gts6.roserve.net.
+_caldav._tcp        IN  TXT "path=/"
+_caldavs._tcp       IN  SRV 0 0 2080 gts6.roserve.net.
+_caldavs._tcp       IN  TXT "path=/"
+_carddav._tcp       IN  SRV 0 0 2079 gts6.roserve.net.
+_carddav._tcp       IN  TXT "path=/"
+_carddavs._tcp      IN  SRV 0 0 2080 gts6.roserve.net.
+_carddavs._tcp      IN  TXT "path=/"
+
+; --- Autodiscover (email client auto-config) ---
+_autodiscover._tcp  IN  SRV 0 0 443 cpanelemaildiscovery.cpanel.net.
+
+; --- ACME challenges (Let's Encrypt - cPanel) ---
+; Acestea se regenereaza automat de cPanel, nu e nevoie sa le importi
+; Le las commented out:
+; _acme-challenge         IN  TXT "9-jJiZ0FC4LN-Hot2KSF5afjpqB1JLZuvsS9U9gaYOI"
+; _acme-challenge.webmail IN  TXT "lkteNtAUuxIomxzExXDa-Pv_g_AF9ZLftlbVMwFyhCQ"
+; etc.
