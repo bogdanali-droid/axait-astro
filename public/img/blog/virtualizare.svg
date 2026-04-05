@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+  <defs>
+    <linearGradient id="bg6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1A2332"/>
+      <stop offset="100%" style="stop-color:#0369a1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="600" fill="url(#bg6)"/>
+  <!-- Server stack -->
+  <g transform="translate(420, 100)">
+    <rect x="0" y="0" width="360" height="60" rx="8" fill="#2563A8" opacity="0.25" stroke="#5BA3DE" stroke-width="1.5"/>
+    <rect x="0" y="80" width="360" height="60" rx="8" fill="#2563A8" opacity="0.2" stroke="#5BA3DE" stroke-width="1.5"/>
+    <rect x="0" y="160" width="360" height="60" rx="8" fill="#2563A8" opacity="0.15" stroke="#5BA3DE" stroke-width="1.5"/>
+    <rect x="0" y="240" width="360" height="60" rx="8" fill="#2563A8" opacity="0.1" stroke="#5BA3DE" stroke-width="1.5"/>
+    <!-- Status dots -->
+    <circle cx="30" cy="30" r="5" fill="#10b981" opacity="0.8"/>
+    <circle cx="30" cy="110" r="5" fill="#10b981" opacity="0.7"/>
+    <circle cx="30" cy="190" r="5" fill="#f59e0b" opacity="0.7"/>
+    <circle cx="30" cy="270" r="5" fill="#10b981" opacity="0.6"/>
+    <!-- Labels -->
+    <text x="60" y="35" fill="white" font-family="monospace" font-size="14" opacity="0.6">VM-01 Production</text>
+    <text x="60" y="115" fill="white" font-family="monospace" font-size="14" opacity="0.5">VM-02 Staging</text>
+    <text x="60" y="195" fill="white" font-family="monospace" font-size="14" opacity="0.4">VM-03 Development</text>
+    <text x="60" y="275" fill="white" font-family="monospace" font-size="14" opacity="0.35">VM-04 Backup</text>
+  </g>
+  <text x="600" y="480" text-anchor="middle" fill="white" font-family="system-ui" font-size="28" font-weight="500" opacity="0.9">Virtualizare Servere</text>
+  <text x="600" y="520" text-anchor="middle" fill="white" font-family="system-ui" font-size="16" opacity="0.4">AXA IT Blog</text>
+</svg>

@@ -1,0 +1,82 @@
+---
+import BlogPost from '../../layouts/BlogPost.astro';
+---
+
+<BlogPost title="Cum să proiectezi o rețea Wi-Fi enterprise stabilă și rapidă" description="De la site survey la configurare — pașii esențiali pentru un Wi-Fi profesional fără zone moarte." date="2026-03-03" author="Echipa AXA IT" category="Rețelistică" image="/img/blog/wifi.svg" readTime="8">
+
+<h2>Wi-Fi-ul de acasă vs. Wi-Fi-ul de birou</h2>
+
+<p>Cel mai frecvent greșeală pe care o vedem: companii care instalează routere de uz casnic în birouri cu 30-50 de angajați. Rezultatul? Conexiuni instabile, viteze slabe și frustrare generalizată.</p>
+
+<p>O rețea Wi-Fi enterprise este fundamental diferită: folosește <strong>access point-uri profesionale, un controller centralizat și o proiectare bazată pe măsurători reale</strong>.</p>
+
+<h2>Pasul 1: Site Survey (studiu de acoperire)</h2>
+
+<p>Înainte de a instala orice echipament, un inginer de rețea trebuie să realizeze un site survey. Aceasta presupune:</p>
+
+<ul>
+  <li><strong>Analiza spațiului fizic</strong> — planimetria clădirii, materiale de construcție (betonul și sticla atenuează semnalul diferit)</li>
+  <li><strong>Identificarea interferențelor</strong> — alte rețele Wi-Fi, echipamente industriale, cuptoare cu microunde</li>
+  <li><strong>Estimarea numărului de dispozitive</strong> — fiecare angajat are laptop + telefon, plus imprimante, proiectoare, IoT</li>
+  <li><strong>Definirea zonelor critice</strong> — sălile de conferință, zona de recepție, depozitul</li>
+</ul>
+
+<h2>Pasul 2: Alegerea echipamentelor</h2>
+
+<p>Pentru o rețea enterprise recomandăm:</p>
+
+<h3>Access Point-uri profesionale</h3>
+<p><strong>Ubiquiti UniFi</strong> sau <strong>TP-Link Omada</strong> — ambele oferă raport calitate-preț excelent. Suportă Wi-Fi 6/6E, PoE (alimentare prin cablu de rețea) și management centralizat.</p>
+
+<h3>Switch-uri PoE</h3>
+<p>Switch-uri care alimentează access point-urile prin cablul de rețea, eliminând necesitatea prizelor suplimentare.</p>
+
+<h3>Controller</h3>
+<p>Software sau hardware care gestionează toate AP-urile din rețea ca o singură unitate. Permite roaming seamless — te muți din sala de ședințe în birou fără deconectare.</p>
+
+<h2>Pasul 3: Proiectarea rețelei</h2>
+
+<p>Reguli esențiale de design:</p>
+
+<ul>
+  <li><strong>Un AP la fiecare 150-250 mp</strong> — în funcție de densitatea utilizatorilor</li>
+  <li><strong>Canale non-suprapuse</strong> — pe banda de 2.4 GHz: canalele 1, 6, 11. Pe 5 GHz: mai multe opțiuni</li>
+  <li><strong>VLAN-uri separate</strong> — rețea internă, rețea pentru oaspeți, rețea IoT</li>
+  <li><strong>Band steering</strong> — forțarea dispozitivelor capabile pe banda de 5 GHz, mai puțin aglomerată</li>
+  <li><strong>Puterea de transmisie calibrată</strong> — mai mult nu înseamnă mai bine; AP-urile cu putere prea mare creează interferențe</li>
+</ul>
+
+<h2>Pasul 4: Securitatea rețelei Wi-Fi</h2>
+
+<ul>
+  <li><strong>WPA3-Enterprise</strong> — cel mai recent standard de securitate</li>
+  <li><strong>Rețea de oaspeți izolată</strong> — vizitatorii nu trebuie să aibă acces la rețeaua internă</li>
+  <li><strong>Portal captiv</strong> — pagină de autentificare pentru rețeaua de oaspeți</li>
+  <li><strong>MAC filtering</strong> — control suplimentar al dispozitivelor permise</li>
+  <li><strong>Monitorizare continuă</strong> — alerte la dispozitive necunoscute sau comportament anormal</li>
+</ul>
+
+<h2>Pasul 5: Testare și optimizare</h2>
+
+<p>După instalare, se realizează un post-installation survey pentru a verifica:</p>
+<ul>
+  <li>Acoperirea în toate zonele clădirii</li>
+  <li>Viteza reală (nu doar cea teoretică)</li>
+  <li>Roaming-ul între AP-uri</li>
+  <li>Performanța sub sarcină (când toți angajații sunt conectați)</li>
+</ul>
+
+<h2>Cât costă o rețea Wi-Fi enterprise?</h2>
+
+<p>Orientativ, pentru un birou de 500 mp cu 30-50 de angajați:</p>
+<ul>
+  <li>4-6 access point-uri profesionale: 4.000 – 8.000 lei</li>
+  <li>Switch PoE: 2.000 – 4.000 lei</li>
+  <li>Cablare structurată: 3.000 – 6.000 lei</li>
+  <li>Configurare și instalare: 2.000 – 4.000 lei</li>
+</ul>
+<p><strong>Total: 11.000 – 22.000 lei</strong> — o investiție care durează 5-7 ani.</p>
+
+<p>AXA IT proiectează, instalează și întreține rețele Wi-Fi enterprise în București și în țară. <strong>Solicită o evaluare gratuită a rețelei tale actuale.</strong></p>
+
+</BlogPost>

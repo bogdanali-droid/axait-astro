@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+  <defs>
+    <linearGradient id="bg8" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1A2332"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="600" fill="url(#bg8)"/>
+  <circle cx="300" cy="500" r="200" fill="#ef4444" opacity="0.05"/>
+  <!-- Email envelope -->
+  <g transform="translate(450, 130)">
+    <rect x="0" y="40" width="300" height="200" rx="12" fill="#1A2332" stroke="#ef4444" stroke-width="2" opacity="0.8"/>
+    <path d="M0 52 L150 160 L300 52" fill="none" stroke="#ef4444" stroke-width="2" opacity="0.6"/>
+    <!-- Warning triangle -->
+    <g transform="translate(110, 100)">
+      <path d="M40 0 L80 70 L0 70 Z" fill="none" stroke="#fbbf24" stroke-width="3" opacity="0.8"/>
+      <text x="40" y="55" text-anchor="middle" fill="#fbbf24" font-family="system-ui" font-size="36" font-weight="800" opacity="0.9">!</text>
+    </g>
+  </g>
+  <!-- Fishing hook -->
+  <g transform="translate(800, 150)">
+    <path d="M50 0 L50 120 Q50 170 80 170 Q110 170 110 140" fill="none" stroke="white" stroke-width="3" opacity="0.3"/>
+    <circle cx="110" cy="130" r="8" fill="none" stroke="white" stroke-width="2" opacity="0.4"/>
+  </g>
+  <text x="600" y="480" text-anchor="middle" fill="white" font-family="system-ui" font-size="28" font-weight="500" opacity="0.9">Phishing - Protectie Angajati</text>
+  <text x="600" y="520" text-anchor="middle" fill="white" font-family="system-ui" font-size="16" opacity="0.4">AXA IT Blog</text>
+</svg>
