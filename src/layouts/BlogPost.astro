@@ -1,0 +1,70 @@
+---
+import Layout from './Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  date: string;
+  author: string;
+  category: string;
+  image: string;
+  readTime: string;
+}
+
+const { title, description, date, author, category, image, readTime } = Astro.props;
+const formattedDate = new Date(date).toLocaleDateString('ro-RO', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Layout title={title} description={description} type="article">
+  <Header />
+
+  <main class="pt-20">
+    <article>
+      <div class="bg-brand-dark py-16 md:py-24">
+        <div class="max-w-4xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="bg-brand-blue/20 text-brand-accent text-[12px] font-semibold px-3 py-1 rounded-full uppercase tracking-wider">{category}</span>
+            <span class="text-white/40 text-[13px]">{readTime} min citire</span>
+          </div>
+          <h1 class="text-[28px] md:text-[42px] font-medium text-white leading-tight">{title}</h1>
+          <p class="mt-4 text-white/50 text-[17px] font-light leading-relaxed max-w-2xl">{description}</p>
+          <div class="mt-8 flex items-center gap-4">
+            <div class="w-10 h-10 bg-brand-blue rounded-full flex items-center justify-center">
+              <span class="text-white font-semibold text-[14px]">{author.split(' ').map(n => n[0]).join('')}</span>
+            </div>
+            <div>
+              <p class="text-white font-medium text-[14px]">{author}</p>
+              <p class="text-white/40 text-[13px]">{formattedDate}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-4xl mx-auto px-6 -mt-2">
+        <img src={image} alt={title} class="w-full h-[300px] md:h-[420px] object-cover rounded-2xl shadow-xl" />
+      </div>
+
+      <div class="max-w-3xl mx-auto px-6 py-16">
+        <div class="prose prose-lg max-w-none prose-headings:text-brand-dark prose-headings:font-medium prose-p:text-brand-steel prose-p:leading-relaxed prose-p:font-light prose-a:text-brand-blue prose-strong:text-brand-dark prose-li:text-brand-steel prose-li:font-light">
+          <slot />
+        </div>
+      </div>
+
+      <div class="max-w-3xl mx-auto px-6 pb-16">
+        <div class="border-t border-brand-border/40 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <a href="/blog" class="inline-flex items-center gap-2 text-brand-blue hover:text-brand-blue/80 font-medium text-[14px] transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+            Toate articolele
+          </a>
+          <a href="/contact" class="inline-flex items-center gap-2 bg-brand-blue hover:bg-brand-blue/90 text-white font-medium text-[14px] px-5 py-2.5 rounded-full transition-all">
+            Solicita o consultatie
+          </a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <Footer />
+</Layout>

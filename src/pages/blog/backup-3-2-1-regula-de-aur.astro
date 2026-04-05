@@ -1,0 +1,76 @@
+---
+import BlogPost from '../../layouts/BlogPost.astro';
+---
+
+<BlogPost title="Regula 3-2-1: Strategia de backup care îți salvează afacerea" description="Cum să implementezi corect o strategie de backup care te protejează de ransomware, erori umane și dezastre." date="2026-03-10" author="Echipa AXA IT" category="Backup" image="/img/blog/backup.svg" readTime="5">
+
+<h2>Ce este regula 3-2-1?</h2>
+
+<p>Regula 3-2-1 este standardul de aur în strategia de backup, recunoscut de experți în securitate din întreaga lume. Este simplu de înțeles și eficient de implementat:</p>
+
+<ul>
+  <li><strong>3</strong> — Păstrează cel puțin 3 copii ale datelor</li>
+  <li><strong>2</strong> — Stochează-le pe cel puțin 2 tipuri diferite de medii</li>
+  <li><strong>1</strong> — Cel puțin 1 copie trebuie să fie off-site (în altă locație)</li>
+</ul>
+
+<h2>De ce ai nevoie de 3 copii?</h2>
+
+<p>Probabilitatea ca un singur dispozitiv să cedeze este de aproximativ 1%. Probabilitatea ca două dispozitive independente să cedeze simultan: 0.01%. Cu trei copii, probabilitatea pierderii totale scade la <strong>0.0001%</strong>.</p>
+
+<h2>De ce 2 tipuri de medii?</h2>
+
+<p>Dacă toate copiile sunt pe același tip de hardware (de exemplu, două hard disk-uri identice), un defect de fabricație sau un atac specific le poate afecta pe toate. Diversifică:</p>
+
+<ul>
+  <li>SSD/HDD local + NAS (Network Attached Storage)</li>
+  <li>Server fizic + Cloud storage</li>
+  <li>NAS + Bandă magnetică (pentru arhive pe termen lung)</li>
+</ul>
+
+<h2>De ce 1 copie off-site?</h2>
+
+<p>Incendiu, inundație, furt, ransomware care criptează toată rețeaua — toate aceste scenarii pot distruge simultan toate copiile locale. O copie off-site (în cloud sau într-un alt sediu) te protejează de dezastre fizice.</p>
+
+<h2>Regula extinsă: 3-2-1-1-0</h2>
+
+<p>Versiunea modernă adaugă două elemente:</p>
+
+<ul>
+  <li><strong>1 copie offline sau imutabilă</strong> — protecție împotriva ransomware-ului care poate cripta și backup-urile conectate la rețea</li>
+  <li><strong>0 erori</strong> la verificarea restaurării — testează regulat că backup-urile chiar funcționează</li>
+</ul>
+
+<h2>Implementare practică pentru o firmă de 20-50 angajați</h2>
+
+<h3>Nivelul 1: Backup local automat</h3>
+<p>NAS cu RAID configurat să facă backup zilnic automat al serverului de fișiere și bazelor de date. Retenție: 30 de zile.</p>
+
+<h3>Nivelul 2: Backup cloud</h3>
+<p>Sincronizare automată către un serviciu cloud securizat (criptat end-to-end). Retenție: 90 de zile. Acesta servește și ca copie off-site.</p>
+
+<h3>Nivelul 3: Backup imutabil</h3>
+<p>Snapshot-uri săptămânale într-un storage imutabil (nu pot fi modificate sau șterse nici de administrator). Protecție totală împotriva ransomware.</p>
+
+<h2>Cele mai frecvente greșeli</h2>
+
+<ul>
+  <li><strong>„Am backup, dar nu l-am testat niciodată"</strong> — un backup netestat nu este un backup</li>
+  <li><strong>„Backup-ul e pe același server"</strong> — dacă serverul moare, moare și backup-ul</li>
+  <li><strong>„Doar fac copy-paste pe un stick USB"</strong> — nu e automatizat, nu e monitorizat, nu e fiabil</li>
+  <li><strong>„Backup-ul merge, dar durează 3 zile restaurarea"</strong> — RTO-ul (Recovery Time Objective) contează la fel de mult</li>
+</ul>
+
+<h2>Testează-ți backup-ul acum</h2>
+
+<p>Pune-ți aceste întrebări:</p>
+<ul>
+  <li>Când a rulat ultimul backup cu succes?</li>
+  <li>Cât durează restaurarea completă?</li>
+  <li>Ce date pierd dacă serverul moare acum? (RPO)</li>
+  <li>Am o copie în afara sediului?</li>
+</ul>
+
+<p>Dacă nu poți răspunde cu încredere la toate, <strong>contactează AXA IT pentru o evaluare a strategiei de backup</strong>.</p>
+
+</BlogPost>

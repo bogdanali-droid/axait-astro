@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+  <defs>
+    <linearGradient id="bg5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1A2332"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="600" fill="url(#bg5)"/>
+  <!-- WiFi signal arcs -->
+  <g transform="translate(600, 350)" fill="none" stroke="white" stroke-linecap="round">
+    <path d="M-160 -120 Q0 -280 160 -120" stroke-width="4" opacity="0.15"/>
+    <path d="M-120 -80 Q0 -200 120 -80" stroke-width="4" opacity="0.25"/>
+    <path d="M-80 -40 Q0 -120 80 -40" stroke-width="5" opacity="0.4"/>
+    <path d="M-40 0 Q0 -60 40 0" stroke-width="5" opacity="0.6"/>
+    <circle cx="0" cy="20" r="8" fill="white" opacity="0.9"/>
+  </g>
+  <!-- Network nodes -->
+  <circle cx="300" cy="400" r="20" fill="#7c3aed" opacity="0.2" stroke="#a78bfa" stroke-width="1"/>
+  <circle cx="900" cy="400" r="20" fill="#7c3aed" opacity="0.2" stroke="#a78bfa" stroke-width="1"/>
+  <line x1="320" y1="400" x2="580" y2="370" stroke="#a78bfa" stroke-width="1" opacity="0.2"/>
+  <line x1="620" y1="370" x2="880" y2="400" stroke="#a78bfa" stroke-width="1" opacity="0.2"/>
+  <text x="600" y="500" text-anchor="middle" fill="white" font-family="system-ui" font-size="28" font-weight="500" opacity="0.9">Retea Wi-Fi Enterprise</text>
+  <text x="600" y="540" text-anchor="middle" fill="white" font-family="system-ui" font-size="16" opacity="0.4">AXA IT Blog</text>
+</svg>
