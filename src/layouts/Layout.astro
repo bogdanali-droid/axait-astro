@@ -88,33 +88,78 @@ const ogImage = image.startsWith('http') ? image : `https://axait.ro${image}`;
     }
   </style>
   
-  <!-- Organization Schema -->
+  <!-- LocalBusiness + WebSite Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "AXA IT",
-    "url": "https://axait.ro",
-    "logo": "https://axait.ro/img/logo/logo-horizontal-light.svg",
-    "description": "Soluții IT complete, adaptate afacerii tale — mentenanță, rețelistică, cloud, securitate și suport permanent.",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Dealul Tugulea 64",
-      "addressLocality": "București",
-      "addressCountry": "RO"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+40-727-897-849",
-      "contactType": "customer service",
-      "availableLanguage": "Romanian"
-    },
-    "sameAs": [
-      "https://www.facebook.com/axait.ro",
-      "https://www.instagram.com/axait.ro"
-    ],
-    "areaServed": "RO",
-    "serviceType": ["Mentenanță IT", "Rețelistică", "Cloud & Backup", "Securitate IT", "Outsourcing IT", "Virtualizare", "Consultanță IT"]
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://axait.ro/#business",
+        "name": "AXA IT",
+        "url": "https://axait.ro",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://axait.ro/img/logo/logo-horizontal-light.svg"
+        },
+        "image": "https://axait.ro/og-image-1200x630.png",
+        "description": "Soluții IT complete pentru firme din București — mentenanță, rețelistică, cloud, securitate și outsourcing IT. 10+ ani experiență, 150+ clienți activi.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Dealul Tugulea 64",
+          "addressLocality": "București",
+          "addressCountry": "RO"
+        },
+        "telephone": "+40-727-897-849",
+        "email": "office@axa-it.ro",
+        "priceRange": "€€",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "opens": "08:00",
+            "closes": "18:00"
+          }
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+40-727-897-849",
+          "contactType": "customer service",
+          "availableLanguage": "Romanian"
+        },
+        "areaServed": [
+          {"@type": "City", "name": "București"},
+          {"@type": "Country", "name": "România"}
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Servicii IT",
+          "itemListElement": [
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Mentenanță IT"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Outsourcing IT"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Cloud & Backup"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Protecție Cibernetică"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Rețelistică & Wi-Fi"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Securitate & Supraveghere"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Virtualizare Servere"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Consultanță & Audit IT"}}
+          ]
+        },
+        "sameAs": [
+          "https://www.facebook.com/axait.ro",
+          "https://www.instagram.com/axait.ro"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://axait.ro/#website",
+        "url": "https://axait.ro",
+        "name": "AXA IT",
+        "description": "Soluții IT complete pentru firme din București",
+        "publisher": {"@id": "https://axait.ro/#business"},
+        "inLanguage": "ro-RO"
+      }
+    ]
   }
   </script>
   
