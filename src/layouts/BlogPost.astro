@@ -15,9 +15,43 @@ interface Props {
 
 const { title, description, date, author, category, image, readTime } = Astro.props;
 const formattedDate = new Date(date).toLocaleDateString('ro-RO', { year: 'numeric', month: 'long', day: 'numeric' });
+const canonicalURL = new URL(Astro.url.pathname, 'https://axait.ro');
+const ogImage = image.startsWith('http') ? image : `https://axait.ro${image}`;
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": title,
+  "description": description,
+  "image": ogImage,
+  "datePublished": date,
+  "dateModified": date,
+  "author": {
+    "@type": "Organization",
+    "name": author,
+    "url": "https://axait.ro"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AXA IT",
+    "url": "https://axait.ro",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://axait.ro/img/logo/logo-horizontal-light.svg"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": canonicalURL
+  }
+};
 ---
 
-<Layout title={title} description={description} type="article">
+<Layout title={title} description={description} type="article" image={image}>
+  <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  </Fragment>
+
   <Header />
 
   <main class="pt-20">
