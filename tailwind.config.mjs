@@ -5,16 +5,20 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Geist', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        display: ['Space Grotesk', 'sans-serif'],
       },
       colors: {
         brand: {
-          dark: '#1A2332',
+          accent: '#FF5A1F',
+          ink: '#0A0A0A',
+          paper: '#FAFAFA',
+          dark: '#0A0A0A',
+          light: '#FAFAFA',
+          muted: 'rgba(10, 10, 10, 0.55)',
+          border: '#D0D8E0',
           blue: '#2563A8',
-          accent: '#3B8FD4',
           node: '#5BA3DE',
           steel: '#6B8299',
-          light: '#F4F6F9',
-          border: '#D0D8E0',
         }
       },
     },
