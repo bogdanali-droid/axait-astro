@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8" />
+<title>AXA IT — Logo Final</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #18181B;
+    --paper: #FAFAFA;
+    --accent: #EAB308;
+    --muted: rgba(24,24,27,0.55);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #F4F4F5; font-family: 'Inter', system-ui, sans-serif; color: var(--ink); }
+  .page { max-width: 1280px; margin: 0 auto; padding: 64px 48px 120px; }
+  .hdr { margin-bottom: 48px; }
+  .hdr h1 { font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 700; letterSpacing: -0.03em; margin: 0 0 8px; letter-spacing: -0.03em; }
+  .hdr p { margin: 0; color: var(--muted); font-size: 15px; }
+  .sect-title { font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin: 48px 0 16px; }
+  .card { background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 0; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .frame { display: flex; align-items: center; justify-content: center; min-height: 280px; position: relative; overflow: hidden; }
+  .frame.sm { min-height: 180px; }
+  .frame.tall { min-height: 400px; }
+  .frame .tag { position: absolute; top: 14px; left: 16px; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; opacity: 0.45; }
+  .frame.dark { background: #0B1220; color: #fff; }
+  .frame.dark .tag { color: #fff; opacity: 0.5; }
+  .frame.paper { background: var(--paper); }
+  .frame.white { background: #fff; }
+  .frame.ink { background: var(--ink); color: #fff; }
+  .frame.ink .tag { color: #fff; opacity: 0.5; }
+  .frame.accent { background: var(--accent); color: var(--ink); }
+
+  /* ============ THE LOGO ============ */
+  .logo-lockup { display: inline-flex; flex-direction: column; align-items: center; gap: 6px; }
+  .logo-word {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .logo-bar {
+    height: 1.5px;
+    background: currentColor;
+    position: relative;
+  }
+  .logo-bar .dot {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: var(--accent);
+    border: 1.5px solid currentColor;
+  }
+  .logo-tag {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--muted);
+  }
+  .on-dark .logo-word, .on-dark .logo-bar { color: #fff; }
+  .on-dark .logo-tag { color: rgba(255,255,255,0.6); }
+
+  /* sizes */
+  .sz-xl .logo-word { font-size: 72px; }
+  .sz-xl .logo-bar { width: 400px; }
+  .sz-xl .logo-bar .dot { width: 12px; height: 12px; right: 70px; }
+  .sz-xl .logo-tag { font-size: 14px; }
+
+  .sz-lg .logo-word { font-size: 44px; }
+  .sz-lg .logo-bar { width: 240px; }
+  .sz-lg .logo-bar .dot { width: 8px; height: 8px; right: 42px; }
+  .sz-lg .logo-tag { font-size: 10px; }
+
+  .sz-md .logo-word { font-size: 28px; }
+  .sz-md .logo-bar { width: 155px; }
+  .sz-md .logo-bar .dot { width: 6px; height: 6px; right: 27px; }
+  .sz-md .logo-tag { font-size: 8px; }
+
+  .sz-sm .logo-word { font-size: 18px; letter-spacing: 0.03em; }
+  .sz-sm .logo-bar { width: 102px; }
+  .sz-sm .logo-bar .dot { width: 5px; height: 5px; right: 17px; }
+  .sz-sm .logo-tag { font-size: 7px; letter-spacing: 0.3em; }
+
+  /* ============ FAVICON / MONOGRAM ============ */
+  .mono-box {
+    display: flex; align-items: center; justify-content: center;
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+    border-radius: 4px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    color: var(--ink);
+    position: relative;
+  }
+  .mono-box.dark { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .mono-box.accent { background: var(--accent); color: var(--ink); border-color: var(--ink); }
+  .mono-box::after {
+    content: '';
+    position: absolute;
+    bottom: 18%;
+    left: 14%;
+    right: 14%;
+    height: 1px;
+    background: currentColor;
+  }
+  .mono-box .mdot {
+    position: absolute;
+    bottom: calc(18% - 2.5px);
+    right: 22%;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 1px solid currentColor;
+  }
+  .mono-box.accent .mdot { background: var(--ink); }
+
+  /* ============ MOCKUPS ============ */
+  /* Business card */
+  .biz-card {
+    width: 360px; height: 220px;
+    background: #fff;
+    box-shadow: 0 20px 60px -20px rgba(0,0,0,0.25), 0 1px 2px rgba(0,0,0,0.08);
+    padding: 28px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    position: relative;
+  }
+  .biz-card.back { background: var(--ink); color: #fff; align-items: center; justify-content: center; }
+  .biz-card .name { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 16px; margin-top: 12px; }
+  .biz-card .role { font-size: 11px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 2px; }
+  .biz-card .info { font-size: 10.5px; color: var(--muted); line-height: 1.8; font-family: 'Space Grotesk', sans-serif; }
+  .biz-card .info strong { color: var(--ink); font-weight: 500; }
+
+  /* Website header */
+  .browser {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px -20px rgba(0,0,0,0.2);
+    overflow: hidden;
+    width: 100%;
+    max-width: 780px;
+  }
+  .browser-bar {
+    background: #F4F4F5;
+    padding: 10px 14px;
+    display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .browser-bar .dots { display: flex; gap: 5px; }
+  .browser-bar .dots span { width: 10px; height: 10px; border-radius: 50%; background: rgba(0,0,0,0.12); }
+  .browser-bar .url { margin-left: 10px; background: #fff; padding: 4px 12px; border-radius: 20px; font-size: 11px; color: var(--muted); flex: 1; }
+  .site-header {
+    padding: 24px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  .site-nav { display: flex; gap: 28px; font-size: 12px; font-weight: 500; color: var(--ink); }
+  .site-nav .cta { padding: 6px 14px; background: var(--ink); color: #fff; border-radius: 2px; font-size: 11px; letter-spacing: 0.05em; }
+  .site-hero {
+    padding: 60px 40px 80px;
+    text-align: left;
+  }
+  .site-hero h2 { font-family: 'Space Grotesk', sans-serif; font-size: 34px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.05; margin: 0 0 14px; max-width: 480px; }
+  .site-hero p { font-size: 13px; color: var(--muted); margin: 0; max-width: 400px; line-height: 1.6; }
+
+  /* Social avatar */
+  .sm-profile {
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+  }
+  .sm-profile .handle { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; }
+  .sm-profile .bio { font-size: 10px; color: var(--muted); }
+
+  /* Type system card */
+  .ts-row { display: flex; align-items: baseline; gap: 20px; padding: 16px 20px; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .ts-row:last-child { border-bottom: none; }
+  .ts-row .label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); font-weight: 600; width: 90px; }
+  .ts-row .sample { font-family: 'Space Grotesk', sans-serif; }
+
+  .color-swatch { display: flex; flex-direction: column; }
+  .color-swatch .chip { height: 100px; display: flex; align-items: flex-end; padding: 14px; color: #fff; font-family: 'Space Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.1em; }
+  .color-swatch .meta { padding: 10px 14px; background: #fff; border: 1px solid rgba(0,0,0,0.06); border-top: none; font-size: 11px; }
+  .color-swatch .meta strong { font-family: 'Space Grotesk', sans-serif; display: block; margin-bottom: 2px; font-size: 13px; }
+  .color-swatch .meta code { font-family: 'JetBrains Mono', monospace; color: var(--muted); }
+
+  .spacing-demo { display: flex; align-items: center; justify-content: center; gap: 24px; padding: 40px; background: repeating-linear-gradient(45deg, #F4F4F5, #F4F4F5 8px, #E4E4E7 8px, #E4E4E7 16px); min-height: 180px; }
+
+  /* Final spec table */
+  .spec { background: #fff; border: 1px solid rgba(0,0,0,0.06); padding: 28px 32px; }
+  .spec h3 { font-family: 'Space Grotesk', sans-serif; margin: 0 0 20px; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .spec-row { display: grid; grid-template-columns: 160px 1fr; gap: 16px; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 13px; }
+  .spec-row:last-child { border-bottom: none; }
+  .spec-row .k { color: var(--muted); font-weight: 500; }
+  .spec-row .v { color: var(--ink); font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Header -->
+  <header class="hdr">
+    <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px;">LOGO FINAL · VARIANTA 8A</div>
+    <h1>AXA IT — Axis Line</h1>
+    <p>Wordmark minimalist, cu bara-axă și punctul galben ca "poziție" pe axă. Editorial, atemporal, premium.</p>
+  </header>
+
+  <!-- PRIMARY LOGO -->
+  <div class="sect-title">Logo principal</div>
+  <div class="card">
+    <div class="frame paper tall">
+      <span class="tag">LIGHT · PRIMARY</span>
+      <div class="logo-lockup sz-xl">
+        <div class="logo-word">AXA · IT</div>
+        <div class="logo-bar"><div class="dot"></div></div>
+        <div class="logo-tag">Enterprise IT Partner</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-top: 16px;">
+    <div class="card">
+      <div class="frame dark tall">
+        <span class="tag">DARK</span>
+        <div class="on-dark logo-lockup sz-lg">
+          <div class="logo-word">AXA · IT</div>
+          <div class="logo-bar"><div class="dot"></div></div>
+          <div class="logo-tag">Enterprise IT Partner</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="frame accent tall">
+        <span class="tag" style="color: var(--ink); opacity: 0.5;">ACCENT · BRAND</span>
+        <div class="logo-lockup sz-lg">
+          <div class="logo-word">AXA · IT</div>
+          <div class="logo-bar"><div class="dot" style="background: var(--ink); border-color: var(--ink);"></div></div>
+          <div class="logo-tag">Enterprise IT Partner</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIZES / RESPONSIVE -->
+  <div class="sect-title">Scale · cum arată la diferite mărimi</div>
+  <div class="card">
+    <div class="frame paper" style="flex-direction: column; gap: 40px; padding: 50px 30px;">
+      <div class="logo-lockup sz-lg">
+        <div class="logo-word">AXA · IT</div>
+        <div class="logo-bar"><div class="dot"></div></div>
+        <div class="logo-tag">Enterprise IT Partner</div>
+      </div>
+      <div class="logo-lockup sz-md">
+        <div class="logo-word">AXA · IT</div>
+        <div class="logo-bar"><div class="dot"></div></div>
+        <div class="logo-tag">Enterprise IT Partner</div>
+      </div>
+      <div class="logo-lockup sz-sm">
+        <div class="logo-word">AXA · IT</div>
+        <div class="logo-bar"><div class="dot"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MONOGRAM / FAVICON -->
+  <div class="sect-title">Monogramă · favicon · avatar</div>
+  <div class="grid-4">
+    <div class="card">
+      <div class="frame paper">
+        <span class="tag">128PX</span>
+        <div class="mono-box" style="width: 96px; height: 96px; font-size: 38px;">AXA<div class="mdot"></div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="frame ink">
+        <span class="tag">DARK</span>
+        <div class="mono-box dark" style="width: 96px; height: 96px; font-size: 38px;">AXA<div class="mdot"></div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="frame white">
+        <span class="tag">ACCENT</span>
+        <div class="mono-box accent" style="width: 96px; height: 96px; font-size: 38px;">AXA<div class="mdot"></div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="frame paper">
+        <span class="tag">FAVICON 32PX</span>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 18px;">
+          <div class="mono-box" style="width: 48px; height: 48px; font-size: 18px;"><span style="margin-bottom: 2px;">AXA</span></div>
+          <div class="mono-box" style="width: 32px; height: 32px; font-size: 12px;"><span style="margin-bottom: 1px;">AXA</span></div>
+          <div class="mono-box" style="width: 16px; height: 16px; font-size: 6px;"><span>AXA</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLEAR SPACE -->
+  <div class="sect-title">Clear space · aer minim în jurul logo-ului</div>
+  <div class="card">
+    <div class="frame paper" style="padding: 40px;">
+      <div class="spacing-demo" style="background: #fff; outline: 1px dashed rgba(0,0,0,0.15); padding: 60px;">
+        <div class="logo-lockup sz-md">
+          <div class="logo-word">AXA · IT</div>
+          <div class="logo-bar"><div class="dot"></div></div>
+          <div class="logo-tag">Enterprise IT Partner</div>
+        </div>
+      </div>
+    </div>
+    <div style="padding: 16px 20px; font-size: 12px; color: var(--muted); border-top: 1px solid rgba(0,0,0,0.06);">
+      Regulă: lasă cel puțin <strong style="color: var(--ink); font-family: 'Space Grotesk', sans-serif;">½ din înălțimea wordmark-ului</strong> ca spațiu liber în jurul logo-ului.
+    </div>
+  </div>
+
+  <!-- COLORS -->
+  <div class="sect-title">Paletă</div>
+  <div class="grid-4">
+    <div class="color-swatch">
+      <div class="chip" style="background: #18181B;">INK</div>
+      <div class="meta"><strong>Ink Black</strong><code>#18181B</code></div>
+    </div>
+    <div class="color-swatch">
+      <div class="chip" style="background: #FAFAFA; color: #18181B; border: 1px solid rgba(0,0,0,0.06);">PAPER</div>
+      <div class="meta"><strong>Paper</strong><code>#FAFAFA</code></div>
+    </div>
+    <div class="color-swatch">
+      <div class="chip" style="background: #EAB308; color: #18181B;">ACCENT</div>
+      <div class="meta"><strong>Signal Yellow</strong><code>#EAB308</code></div>
+    </div>
+    <div class="color-swatch">
+      <div class="chip" style="background: #0B1220;">MIDNIGHT</div>
+      <div class="meta"><strong>Midnight</strong><code>#0B1220</code></div>
+    </div>
+  </div>
+
+  <!-- TYPE -->
+  <div class="sect-title">Tipografie</div>
+  <div class="card">
+    <div class="ts-row">
+      <span class="label">Wordmark</span>
+      <span class="sample" style="font-size: 32px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;">AXA · IT</span>
+      <span style="margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted);">Space Grotesk 600 · +4% tracking</span>
+    </div>
+    <div class="ts-row">
+      <span class="label">Tagline</span>
+      <span class="sample" style="font-size: 11px; letter-spacing: 0.4em; text-transform: uppercase; font-weight: 500; color: var(--muted);">Enterprise IT Partner</span>
+      <span style="margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted);">Space Grotesk 500 · +40% tracking</span>
+    </div>
+    <div class="ts-row">
+      <span class="label">Body</span>
+      <span class="sample" style="font-size: 15px; font-family: Inter, sans-serif;">Servicii IT outsourcing, securitate, cloud, mentenanță.</span>
+      <span style="margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted);">Inter 400</span>
+    </div>
+  </div>
+
+  <!-- MOCKUPS -->
+  <div class="sect-title">Aplicații · cum arată pe materiale reale</div>
+
+  <!-- Website -->
+  <div class="card">
+    <div class="frame paper" style="padding: 40px; display: block;">
+      <div class="browser">
+        <div class="browser-bar">
+          <div class="dots"><span></span><span></span><span></span></div>
+          <div class="url">axait.ro</div>
+        </div>
+        <div class="site-header">
+          <div class="logo-lockup sz-sm">
+            <div class="logo-word">AXA · IT</div>
+            <div class="logo-bar"><div class="dot"></div></div>
+          </div>
+          <div class="site-nav">
+            <span>Servicii</span><span>Securitate</span><span>Cloud</span><span>Despre</span>
+            <span class="cta">Contact</span>
+          </div>
+        </div>
+        <div class="site-hero">
+          <h2>Departamentul tău IT,<br/>externalizat complet.</h2>
+          <p>Outsourcing, securitate, cloud și mentenanță — cu oameni care răspund la telefon.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Business cards -->
+  <div style="margin-top: 16px;">
+    <div class="card">
+      <div class="frame paper" style="padding: 48px 30px; gap: 30px; flex-wrap: wrap;">
+        <div class="biz-card">
+          <div class="logo-lockup sz-sm">
+            <div class="logo-word">AXA · IT</div>
+            <div class="logo-bar"><div class="dot"></div></div>
+          </div>
+          <div>
+            <div class="name">Numele Tău</div>
+            <div class="role">Managing Partner</div>
+          </div>
+          <div class="info">
+            <strong>+40 700 000 000</strong><br/>
+            contact@axait.ro<br/>
+            axait.ro
+          </div>
+        </div>
+        <div class="biz-card back">
+          <div class="logo-lockup sz-md on-dark">
+            <div class="logo-word">AXA · IT</div>
+            <div class="logo-bar"><div class="dot"></div></div>
+            <div class="logo-tag">Enterprise IT Partner</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Social avatars -->
+  <div class="grid-4" style="margin-top: 16px;">
+    <div class="card">
+      <div class="frame paper" style="flex-direction: column;">
+        <span class="tag">LINKEDIN</span>
+        <div class="sm-profile">
+          <div class="mono-box" style="width: 72px; height: 72px; font-size: 26px; border-radius: 50%;"><span style="margin-bottom: 2px;">AXA</span></div>
+          <div class="handle">AXA IT</div>
+          <div class="bio">Enterprise IT Services · Romania</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="frame paper" style="flex-direction: column;">
+        <span class="tag">X / TWITTER</span>
+        <div class="sm-profile">
+          <div class="mono-box dark" style="width: 72px; height: 72px; font-size: 26px; border-radius: 50%;"><span style="margin-bottom: 2px;">AXA</span></div>
+          <div class="handle">@axait</div>
+          <div class="bio">IT infra &amp; security</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="frame paper" style="flex-direction: column;">
+        <span class="tag">INSTAGRAM</span>
+        <div class="sm-profile">
+          <div class="mono-box accent" style="width: 72px; height: 72px; font-size: 26px; border-radius: 50%;"><span style="margin-bottom: 2px;">AXA</span></div>
+          <div class="handle">axa.it</div>
+          <div class="bio">IT outsourcing</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="frame ink" style="flex-direction: column;">
+        <span class="tag">GITHUB / DEV</span>
+        <div class="sm-profile" style="color: #fff;">
+          <div class="mono-box dark" style="width: 72px; height: 72px; font-size: 26px; border-radius: 50%; border-color: #fff; color: #fff;"><span style="margin-bottom: 2px;">AXA</span></div>
+          <div class="handle">axait</div>
+          <div class="bio" style="color: rgba(255,255,255,0.6);">Infra · DevOps</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Specifications -->
+  <div class="sect-title">Specificații tehnice</div>
+  <div class="spec">
+    <h3>Brief pentru imprimare &amp; web</h3>
+    <div class="spec-row"><span class="k">Font principal</span><span class="v">Space Grotesk (Google Fonts, free)</span></div>
+    <div class="spec-row"><span class="k">Font secundar</span><span class="v">Inter (Google Fonts, free)</span></div>
+    <div class="spec-row"><span class="k">Greutăți</span><span class="v">500, 600, 700</span></div>
+    <div class="spec-row"><span class="k">Tracking wordmark</span><span class="v">+4% (letter-spacing: 0.04em)</span></div>
+    <div class="spec-row"><span class="k">Tracking tagline</span><span class="v">+40% (letter-spacing: 0.4em)</span></div>
+    <div class="spec-row"><span class="k">Culoare primară</span><span class="v">#18181B (ink)</span></div>
+    <div class="spec-row"><span class="k">Culoare accent</span><span class="v">#EAB308 (signal yellow)</span></div>
+    <div class="spec-row"><span class="k">Mărime minimă</span><span class="v">Wordmark 14px · Monogramă 16px</span></div>
+    <div class="spec-row"><span class="k">Clear space</span><span class="v">½ din înălțimea wordmark-ului</span></div>
+    <div class="spec-row"><span class="k">Fișiere necesare</span><span class="v">SVG (primary, dark, mono), PNG @1x/@2x/@3x, ICO favicon</span></div>
+  </div>
+
+  <div style="margin-top: 48px; padding: 28px 32px; background: var(--ink); color: #fff; font-size: 13px; line-height: 1.7;">
+    <div style="font-family: 'Space Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 12px;">Pasul următor</div>
+    <div>Am construit logo-ul pur în <strong>HTML/CSS</strong> (nu ca imagine rasterizată) — poate fi exportat în orice format. Spune-mi dacă vrei:</div>
+    <ul style="margin: 12px 0 0; padding-left: 20px; color: rgba(255,255,255,0.8);">
+      <li>Fișiere SVG separate (logo principal, mono, favicon)</li>
+      <li>PNG-uri la rezoluții specifice pentru print</li>
+      <li>Ajustări pe culori, tagline, punct galben, sau alt detaliu</li>
+      <li>Să arăt logo-ul pe alte mock-up-uri (tricou, semnătură email, banner)</li>
+    </ul>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8" />
+<title>AXA IT — Variațiuni pătrate</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #E4E4E7; font-family: 'Inter', system-ui, sans-serif; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel">
+const ACC = '#FF5A1F';
+const INK = '#0A0A0A';
+const PAP = '#FAFAFA';
+
+const SLOGANS = [
+  'Enterprise IT Partner',
+  'IT Outsourcing · Cloud · Security',
+  'Infrastructura ta, fără griji',
+  'Your IT, handled.',
+];
+
+// Square canvas helper
+const Sq = ({ bg, children, pad = 40, label }) => (
+  <div style={{
+    position: 'relative', width: '100%', aspectRatio: '1 / 1',
+    background: bg, display: 'flex', alignItems: 'center', justifyContent: 'center',
+    padding: pad, overflow: 'hidden',
+  }}>
+    {children}
+    {label && (
+      <div style={{
+        position: 'absolute', top: 14, left: 16,
+        fontSize: 9, letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 700,
+        color: bg === INK || bg === ACC ? (bg === ACC ? 'rgba(10,10,10,0.55)' : 'rgba(255,255,255,0.5)') : 'rgba(10,10,10,0.45)',
+        fontFamily: "'Space Grotesk', sans-serif",
+      }}>{label}</div>
+    )}
+  </div>
+);
+
+const Showcase = ({ title, subtitle, renderHero, renderLight, renderAccent, renderSmall }) => (
+  <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <Sq bg={INK} label="DARK">{renderHero()}</Sq>
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+      <Sq bg={PAP} label="LIGHT">{renderLight()}</Sq>
+      <Sq bg={ACC} label="ACCENT">{renderAccent()}</Sq>
+    </div>
+    <Sq bg="#F4F4F5" label="SMALL · 80PX" pad={20}>
+      <div style={{ width: 120, height: 120 }}>{renderSmall()}</div>
+    </Sq>
+    <div style={{ padding: '16px 18px', background: '#fff', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+      <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 15, fontWeight: 700, color: INK, marginBottom: 6, letterSpacing: '-0.01em' }}>{title}</div>
+      <div style={{ fontSize: 12, color: 'rgba(10,10,10,0.6)', lineHeight: 1.55 }}>{subtitle}</div>
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════════
+// VARIATION A — STACKED CLASSIC
+// AXA cu punct portocaliu, IT jos mare, slogan micuț
+// ═══════════════════════════════════════════════════════════════════
+const StackedClassic = ({ bg = INK, fg = '#fff', acc = ACC, rule = '#fff', size = 1 }) => (
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 * size }}>
+    <div style={{
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
+      fontSize: 62 * size, letterSpacing: '0.02em', color: fg, lineHeight: 1,
+    }}>
+      AXA<span style={{ color: acc }}>.</span>
+    </div>
+    <div style={{ width: 160 * size, height: 2 * size, background: rule }} />
+    <div style={{
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
+      fontSize: 80 * size, letterSpacing: '0.06em', color: acc, lineHeight: 0.9,
+    }}>IT</div>
+    <div style={{
+      marginTop: 4 * size, fontFamily: "'Space Grotesk', sans-serif",
+      fontSize: 10 * size, letterSpacing: '0.35em', textTransform: 'uppercase',
+      color: fg === '#fff' ? 'rgba(255,255,255,0.65)' : 'rgba(10,10,10,0.6)', fontWeight: 500,
+    }}>Enterprise IT Partner</div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════════
+// VARIATION B — BIG IT / AXA LEADER
+// IT uriaș în fundal, AXA + slogan peste
+// ═══════════════════════════════════════════════════════════════════
+const BigIT = ({ bg = INK, fg = '#fff', acc = ACC, size = 1 }) => (
+  <div style={{ position: 'relative', width: 280 * size, height: 280 * size, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{
+      position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center',
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 800,
+      fontSize: 260 * size, letterSpacing: '-0.02em', color: acc, lineHeight: 0.8, zIndex: 0,
+    }}>IT</div>
+    <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 * size }}>
+      <div style={{
+        fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
+        fontSize: 52 * size, letterSpacing: '0.03em', color: fg, lineHeight: 1,
+        padding: `${8 * size}px ${14 * size}px`, background: bg,
+      }}>AXA</div>
+      <div style={{
+        fontFamily: "'Space Grotesk', sans-serif",
+        fontSize: 9 * size, letterSpacing: '0.4em', textTransform: 'uppercase', fontWeight: 600,
+        color: fg, background: bg, padding: `${4 * size}px ${10 * size}px`,
+      }}>Enterprise Partner</div>
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════════
+// VARIATION C — BADGE / CIRCULAR STAMP
+// Cerc cu AXA mare în centru, "IT OUTSOURCING · SECURITY · CLOUD" pe margine, IT mic
+// ═══════════════════════════════════════════════════════════════════
+const Badge = ({ bg = INK, fg = '#fff', acc = ACC, size = 1 }) => {
+  const radius = 130 * size;
+  const outerRadius = 150 * size;
+  return (
+    <div style={{ position: 'relative', width: outerRadius * 2, height: outerRadius * 2 }}>
+      {/* Outer circle */}
+      <div style={{
+        position: 'absolute', inset: 0, borderRadius: '50%',
+        border: `${2 * size}px solid ${fg}`,
+      }} />
+      {/* Inner circle with acc */}
+      <div style={{
+        position: 'absolute', inset: 15 * size, borderRadius: '50%',
+        border: `${1 * size}px solid ${acc}`,
+      }} />
+      {/* SVG for curved text */}
+      <svg viewBox="-150 -150 300 300" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
+        <defs>
+          <path id="circPath" d="M 0,-132 A 132,132 0 1,1 -0.01,-132" fill="none" />
+        </defs>
+        <text fill={fg} fontFamily="'Space Grotesk', sans-serif" fontSize={12 * size} fontWeight="600" letterSpacing="4">
+          <textPath href="#circPath" startOffset="0%">IT OUTSOURCING · SECURITY · CLOUD · SUPPORT ·</textPath>
+        </text>
+      </svg>
+      {/* Center */}
+      <div style={{
+        position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column',
+        alignItems: 'center', justifyContent: 'center', gap: 4 * size,
+      }}>
+        <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 9 * size, letterSpacing: '0.3em', color: acc, textTransform: 'uppercase' }}>EST · 2026</div>
+        <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 800, fontSize: 58 * size, letterSpacing: '0.02em', color: fg, lineHeight: 1 }}>
+          AXA
+        </div>
+        <div style={{ width: 60 * size, height: 1, background: fg }} />
+        <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 20 * size, letterSpacing: '0.25em', color: acc, lineHeight: 1 }}>IT</div>
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════════════════════
+// VARIATION D — BLOCK / TAG LAYOUT
+// AXA sus stânga mare, IT jos dreapta box portocaliu, slogan diagonal
+// ═══════════════════════════════════════════════════════════════════
+const BlockTag = ({ bg = INK, fg = '#fff', acc = ACC, size = 1 }) => (
+  <div style={{ position: 'relative', width: 300 * size, height: 300 * size }}>
+    <div style={{
+      position: 'absolute', top: 10 * size, left: 10 * size,
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 800,
+      fontSize: 100 * size, letterSpacing: '-0.03em', color: fg, lineHeight: 0.9,
+    }}>AXA</div>
+    <div style={{
+      position: 'absolute', bottom: 12 * size, right: 10 * size,
+      padding: `${6 * size}px ${16 * size}px`, background: acc, color: INK,
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 800,
+      fontSize: 80 * size, letterSpacing: '0.05em', lineHeight: 0.95,
+    }}>IT</div>
+    <div style={{
+      position: 'absolute', top: '48%', right: 10 * size, transform: 'translateY(-50%)',
+      fontFamily: "'JetBrains Mono', monospace", fontSize: 8 * size,
+      letterSpacing: '0.3em', color: acc, textTransform: 'uppercase', fontWeight: 600,
+    }}>/ ENTERPRISE</div>
+    <div style={{
+      position: 'absolute', bottom: 12 * size, left: 10 * size,
+      fontFamily: "'JetBrains Mono', monospace", fontSize: 9 * size,
+      color: 'rgba(255,255,255,0.5)', letterSpacing: '0.15em',
+    }}>axait.ro</div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════════
+// VARIATION E — MONOGRAM AXA with IT · slogan underneath
+// AXA mare centrat cu bară-axis + punct · IT jos mic · slogan sub
+// (cel mai apropiat de 8A final, refit pătrat)
+// ═══════════════════════════════════════════════════════════════════
+const AxisSquare = ({ bg = INK, fg = '#fff', acc = ACC, size = 1 }) => (
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 * size }}>
+    <div style={{
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
+      fontSize: 88 * size, letterSpacing: '0.03em', color: fg, lineHeight: 1,
+    }}>AXA</div>
+    <div style={{ width: 200 * size, height: 2 * size, background: fg, position: 'relative' }}>
+      <div style={{
+        position: 'absolute', top: '50%', transform: 'translateY(-50%)',
+        right: 40 * size, width: 10 * size, height: 10 * size,
+        borderRadius: '50%', background: acc, border: `${1.5 * size}px solid ${fg}`,
+      }} />
+    </div>
+    <div style={{
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600,
+      fontSize: 36 * size, letterSpacing: '0.35em', color: acc,
+    }}>IT</div>
+    <div style={{
+      marginTop: 8 * size, fontFamily: "'Space Grotesk', sans-serif",
+      fontSize: 10 * size, letterSpacing: '0.3em', textTransform: 'uppercase', fontWeight: 500,
+      color: fg === '#fff' ? 'rgba(255,255,255,0.65)' : 'rgba(10,10,10,0.6)',
+    }}>Enterprise IT Partner</div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════════
+// VARIATION F — SPLIT DIAGONAL
+// Pătratul tăiat diagonal: sus-stânga AXA, jos-dreapta IT, pe culori diferite
+// ═══════════════════════════════════════════════════════════════════
+const SplitDiag = ({ size = 1 }) => (
+  <div style={{ position: 'relative', width: 300 * size, height: 300 * size, overflow: 'hidden' }}>
+    <div style={{
+      position: 'absolute', inset: 0, background: INK,
+      clipPath: 'polygon(0 0, 100% 0, 0 100%)',
+    }} />
+    <div style={{
+      position: 'absolute', inset: 0, background: ACC,
+      clipPath: 'polygon(100% 0, 100% 100%, 0 100%)',
+    }} />
+    <div style={{
+      position: 'absolute', top: 30 * size, left: 30 * size,
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 800,
+      fontSize: 74 * size, letterSpacing: '-0.02em', color: '#fff', lineHeight: 0.95,
+    }}>AXA</div>
+    <div style={{
+      position: 'absolute', bottom: 30 * size, right: 30 * size,
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 800,
+      fontSize: 74 * size, letterSpacing: '0.04em', color: INK, lineHeight: 0.95,
+    }}>IT</div>
+    <div style={{
+      position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%) rotate(-45deg)',
+      fontFamily: "'JetBrains Mono', monospace", fontSize: 9 * size,
+      letterSpacing: '0.4em', textTransform: 'uppercase', fontWeight: 700,
+      color: '#fff', background: INK, padding: `${3 * size}px ${10 * size}px`,
+    }}>Enterprise Partner</div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════════
+// VARIATION G — MINIMAL INK · wordmark pătrat curat
+// AXA · IT pe două rânduri, slogan minimal
+// ═══════════════════════════════════════════════════════════════════
+const MinimalInk = ({ bg = INK, fg = '#fff', acc = ACC, size = 1 }) => (
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 6 * size, paddingLeft: 14 * size }}>
+    <div style={{
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600,
+      fontSize: 70 * size, letterSpacing: '0.02em', color: fg, lineHeight: 1,
+    }}>
+      AXA<span style={{ color: acc }}>/</span>
+    </div>
+    <div style={{
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
+      fontSize: 70 * size, letterSpacing: '0.04em', color: acc, lineHeight: 1,
+    }}>IT</div>
+    <div style={{ width: 120 * size, height: 2 * size, background: fg, marginTop: 8 * size }} />
+    <div style={{
+      marginTop: 4 * size, fontFamily: "'Space Grotesk', sans-serif",
+      fontSize: 9 * size, letterSpacing: '0.35em', textTransform: 'uppercase', fontWeight: 500,
+      color: fg === '#fff' ? 'rgba(255,255,255,0.55)' : 'rgba(10,10,10,0.55)',
+    }}>IT Outsourcing · Cloud · Security</div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════════
+// VARIATION H — ARCHITECTURAL / COORDINATE
+// AXA și IT aliniate la colțuri, cross/tip grid în fundal, confident
+// ═══════════════════════════════════════════════════════════════════
+const Architectural = ({ size = 1 }) => (
+  <div style={{ position: 'relative', width: 300 * size, height: 300 * size, background: INK }}>
+    {/* Grid marks */}
+    {[0, 1, 2, 3, 4].map(i => (
+      <React.Fragment key={i}>
+        <div style={{ position: 'absolute', top: (i * 60 + 30) * size, left: 10 * size, fontFamily: "'JetBrains Mono', monospace", fontSize: 7 * size, color: 'rgba(255,90,31,0.4)' }}>0{i}</div>
+      </React.Fragment>
+    ))}
+    {/* Cross axis */}
+    <div style={{ position: 'absolute', top: '50%', left: 20 * size, right: 20 * size, height: 1, background: 'rgba(255,255,255,0.15)' }} />
+    <div style={{ position: 'absolute', left: '50%', top: 20 * size, bottom: 20 * size, width: 1, background: 'rgba(255,255,255,0.15)' }} />
+    {/* AXA top */}
+    <div style={{
+      position: 'absolute', top: 30 * size, left: '50%', transform: 'translateX(-50%)',
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
+      fontSize: 52 * size, letterSpacing: '0.04em', color: '#fff', lineHeight: 1,
+    }}>AXA</div>
+    {/* Center dot */}
+    <div style={{
+      position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+      width: 14 * size, height: 14 * size, borderRadius: '50%', background: ACC,
+      border: `${2 * size}px solid #fff`,
+    }} />
+    {/* IT bottom */}
+    <div style={{
+      position: 'absolute', bottom: 30 * size, left: '50%', transform: 'translateX(-50%)',
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
+      fontSize: 52 * size, letterSpacing: '0.1em', color: ACC, lineHeight: 1,
+    }}>IT</div>
+    {/* Slogan rotated left side */}
+    <div style={{
+      position: 'absolute', left: 10 * size, top: '50%',
+      transform: 'translateY(-50%) rotate(-90deg)', transformOrigin: 'center',
+      fontFamily: "'JetBrains Mono', monospace", fontSize: 8 * size,
+      letterSpacing: '0.3em', color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', fontWeight: 600,
+      whiteSpace: 'nowrap',
+    }}>Enterprise · Cloud · Security</div>
+    {/* URL right side */}
+    <div style={{
+      position: 'absolute', right: 10 * size, top: '50%',
+      transform: 'translateY(-50%) rotate(90deg)', transformOrigin: 'center',
+      fontFamily: "'JetBrains Mono', monospace", fontSize: 8 * size,
+      letterSpacing: '0.3em', color: 'rgba(255,255,255,0.5)', whiteSpace: 'nowrap',
+    }}>axait.ro</div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════════
+// Compose variations
+// ═══════════════════════════════════════════════════════════════════
+const variations = [
+  {
+    title: 'A · Stacked Classic',
+    subtitle: 'AXA sus cu punct accent, bară, IT dedesubt mare portocaliu. Slogan discret. Echilibru — varianta cea mai versatilă.',
+    dark: () => <StackedClassic bg={INK} fg="#fff" acc={ACC} rule="#fff" />,
+    light: () => <StackedClassic bg={PAP} fg={INK} acc={ACC} rule={INK} size={0.75} />,
+    accent: () => <StackedClassic bg={ACC} fg={INK} acc="#fff" rule={INK} size={0.75} />,
+    small: () => <StackedClassic bg={INK} fg="#fff" acc={ACC} rule="#fff" size={0.45} />,
+  },
+  {
+    title: 'B · Big IT Leader',
+    subtitle: 'IT domină ca fundal masiv, AXA e eticheta peste el. Foarte afirmativ — pentru tricouri, standere, banner-e.',
+    dark: () => <BigIT bg={INK} fg="#fff" acc={ACC} />,
+    light: () => <BigIT bg={PAP} fg={INK} acc={ACC} size={0.75} />,
+    accent: () => <BigIT bg={ACC} fg="#fff" acc={INK} size={0.75} />,
+    small: () => <BigIT bg={INK} fg="#fff" acc={ACC} size={0.4} />,
+  },
+  {
+    title: 'C · Badge / Stamp',
+    subtitle: 'Insignă rotundă cu text curbat, AXA în centru, slogan pe margine. Foarte "official", excelent pentru autocolante/mape/parafe.',
+    dark: () => <Badge bg={INK} fg="#fff" acc={ACC} />,
+    light: () => <Badge bg={PAP} fg={INK} acc={ACC} size={0.75} />,
+    accent: () => <Badge bg={ACC} fg={INK} acc="#fff" size={0.75} />,
+    small: () => <Badge bg={INK} fg="#fff" acc={ACC} size={0.4} />,
+  },
+  {
+    title: 'D · Block / Tag',
+    subtitle: 'AXA sus-stânga uriaș, IT jos-dreapta box portocaliu. Energic, editorial, stil poster.',
+    dark: () => <BlockTag bg={INK} fg="#fff" acc={ACC} />,
+    light: () => <div style={{ background: PAP, padding: 10 }}><BlockTag size={0.75} /></div>,
+    accent: () => <div style={{ background: ACC, padding: 10 }}><BlockTag size={0.75} /></div>,
+    small: () => <BlockTag bg={INK} fg="#fff" acc={ACC} size={0.4} />,
+  },
+  {
+    title: 'E · Axis Square',
+    subtitle: 'Varianta 8A finală dar în format pătrat: AXA sus, bara-axă cu punct, IT jos, slogan dedesubt. Continuitate directă cu logo-ul principal.',
+    dark: () => <AxisSquare bg={INK} fg="#fff" acc={ACC} />,
+    light: () => <AxisSquare bg={PAP} fg={INK} acc={ACC} size={0.75} />,
+    accent: () => <AxisSquare bg={ACC} fg={INK} acc="#fff" size={0.75} />,
+    small: () => <AxisSquare bg={INK} fg="#fff" acc={ACC} size={0.35} />,
+  },
+  {
+    title: 'F · Split Diagonal',
+    subtitle: 'Pătratul împărțit diagonal negru/portocaliu. AXA pe una, IT pe cealaltă. Tricou de zile mari, merch tânăr.',
+    dark: () => <SplitDiag />,
+    light: () => <SplitDiag />,
+    accent: () => <SplitDiag />,
+    small: () => <SplitDiag size={0.35} />,
+  },
+  {
+    title: 'G · Minimal Ink',
+    subtitle: 'AXA/IT pe două rânduri cu slash separator, slogan tehnic. Minimalist dar cu caracter. Excelent pentru semnături email și docs.',
+    dark: () => <MinimalInk bg={INK} fg="#fff" acc={ACC} />,
+    light: () => <MinimalInk bg={PAP} fg={INK} acc={ACC} size={0.75} />,
+    accent: () => <MinimalInk bg={ACC} fg={INK} acc="#fff" size={0.75} />,
+    small: () => <MinimalInk bg={INK} fg="#fff" acc={ACC} size={0.4} />,
+  },
+  {
+    title: 'H · Architectural',
+    subtitle: 'Grid tehnic cu AXA sus, punct la intersecție, IT jos. Slogan rotit pe margini. Vibe engineering pur — pentru oameni care iubesc sistemele.',
+    dark: () => <Architectural />,
+    light: () => <Architectural />,
+    accent: () => <Architectural />,
+    small: () => <Architectural size={0.35} />,
+  },
+];
+
+function App() {
+  return (
+    <DesignCanvas
+      title="AXA IT — Variațiuni pătrate cu slogan"
+      subtitle="8 interpretări pătrate pe structura Electric Orange. Fiecare arată pe DARK, LIGHT, ACCENT + test la 80px (favicon/avatar)."
+    >
+      <DCSection id="squares" title="Variațiuni pătrate">
+        {variations.map((v, i) => (
+          <DCArtboard key={i} id={`sq-${i}`} label={v.title} width={420} height={960}>
+            <Showcase
+              title={v.title}
+              subtitle={v.subtitle}
+              renderHero={v.dark}
+              renderLight={v.light}
+              renderAccent={v.accent}
+              renderSmall={v.small}
+            />
+          </DCArtboard>
+        ))}
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

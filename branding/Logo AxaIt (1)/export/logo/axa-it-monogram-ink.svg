@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <title>AXA Monogram — ink</title>
+  <defs>
+    
+  </defs>
+  <rect x="0" y="0" width="256" height="256" rx="20" fill="#0A0A0A"></rect>
+  
+  <text class="m" x="128" y="140" text-anchor="middle" fill="#FFFFFF">AXA</text>
+  <line x1="50" y1="185" x2="206" y2="185" stroke="#FFFFFF" stroke-width="3"></line>
+  <circle cx="180" cy="185" r="7" fill="#FF5A1F" stroke="#FFFFFF" stroke-width="2"></circle>
+</svg>

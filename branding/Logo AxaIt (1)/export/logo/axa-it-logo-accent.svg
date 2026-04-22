@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" width="600" height="200">
+  <title>AXA IT Logo — accent</title>
+  <defs>
+    
+  </defs>
+  
+  <g>
+    
+    <text class="word" x="300" y="95" text-anchor="middle" fill="#0A0A0A">
+      AXA <tspan fill="#FFFFFF">·</tspan> IT
+    </text>
+    
+    <line x1="100" y1="120" x2="500" y2="120" stroke="#0A0A0A" stroke-width="2"></line>
+    
+    <circle cx="430" cy="120" r="6" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="1.5"></circle>
+    
+    <text class="tag" x="300" y="148" text-anchor="middle" fill="rgba(10,10,10,0.7)">ENTERPRISE IT PARTNER</text>
+  </g>
+</svg>

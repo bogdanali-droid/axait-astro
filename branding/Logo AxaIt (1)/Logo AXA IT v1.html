@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8" />
+<title>Logo AXA IT — 8 variante</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #E4E4E7; font-family: 'Inter', system-ui, sans-serif; }
+  * { box-sizing: border-box; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="logos.jsx"></script>
+
+<script type="text/babel">
+const { useState } = React;
+
+const variants = [
+  {
+    id: 'v1-monolith', label: '01 · Monolith',
+    Logo: window.Logo01, Mark: window.Logo01Mark,
+    accentName: 'Monolith',
+    tagline: 'Corporate și sigur. Wordmark solid, bloc negru-bleumarin, punct albastru ca accent subtil. Pentru cel mai serios posibil.',
+  },
+  {
+    id: 'v2-axis', label: '02 · Axis',
+    Logo: window.Logo02, Mark: window.Logo02Mark,
+    accentName: 'Axis',
+    tagline: 'Joc vizual cu numele: X = două axe. Gradient albastru-violet, tech modern. Recomandare personală.',
+  },
+  {
+    id: 'v3-shield', label: '03 · Shield',
+    Logo: window.Logo03, Mark: window.Logo03Mark,
+    accentName: 'Shield',
+    tagline: 'Emblemă/insignă. Accent pe securitate cibernetică. Verde premium, comunică protecție și stabilitate.',
+  },
+  {
+    id: 'v4-prism', label: '04 · Prism',
+    Logo: window.Logo04, Mark: window.Logo04Mark,
+    accentName: 'Prism',
+    tagline: 'Îndrăzneț și energic. Pătrat rotit la 45° — axa ca formă geometrică. Gradient portocaliu-roșu.',
+  },
+  {
+    id: 'v5-orbit', label: '05 · Orbit',
+    Logo: window.Logo05, Mark: window.Logo05Mark,
+    accentName: 'Orbit',
+    tagline: 'Premium-elegant. Cercuri concentrice + serif italic. "Infrastructură care gravitează în jurul tău".',
+  },
+  {
+    id: 'v6-block', label: '06 · Stack',
+    Logo: window.Logo06, Mark: window.Logo06Mark,
+    accentName: 'Stack',
+    tagline: 'Literele AX construite ca un server stack / infrastructură. Mono-font, violet premium, foarte "ingineresc".',
+  },
+  {
+    id: 'v7-arrow', label: '07 · Arrow',
+    Logo: window.Logo07, Mark: window.Logo07Mark,
+    accentName: 'Arrow',
+    tagline: 'Creștere și momentum. Săgeată ascendentă din formele A+X. Gradient albastru→verde (trust + growth).',
+  },
+  {
+    id: 'v8-axisline', label: '08 · Axis Line',
+    Logo: window.Logo08, Mark: window.Logo08Mark,
+    accentName: 'Axis Line',
+    tagline: 'Minimalism extrem. Wordmark cu bară-axă sub el. Foarte lizibil, premium, editorial.',
+  },
+];
+
+function App() {
+  return (
+    <DesignCanvas
+      title="Logo AXA IT"
+      subtitle="8 direcții · ia orice element din oricare (culoare / mark / font) și combinăm"
+    >
+      <DCSection id="logos" title="Explorare — 8 variante">
+        {variants.map(v => (
+          <DCArtboard key={v.id} id={v.id} label={v.label} width={420} height={720}>
+            <LogoShowcase
+              Logo={v.Logo}
+              Mark={v.Mark}
+              accentName={v.accentName}
+              tagline={v.tagline}
+            />
+          </DCArtboard>
+        ))}
+      </DCSection>
+
+      <DCSection id="notes" title="Cum citești canvas-ul">
+        <DCArtboard id="how" label="Ghid" width={520} height={420}>
+          <div style={{ padding: 32, fontFamily: 'Inter, system-ui, sans-serif', fontSize: 14, lineHeight: 1.65, color: '#27272A', background: '#fff', height: '100%' }}>
+            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 22, fontWeight: 700, marginBottom: 16, color: '#09090B' }}>Fiecare carton conține:</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <div><strong>1. Versiunea light</strong> — pe fundal alb (hârtie, site)</div>
+              <div><strong>2. Versiunea dark</strong> — pe fundal închis (social, modul dark)</div>
+              <div><strong>3. Mark-ul (iconița)</strong> — pe ambele fundaluri, cum arată ca favicon / avatar</div>
+              <div><strong>4. Nota</strong> — intenția din spatele variantei</div>
+            </div>
+            <div style={{ marginTop: 24, padding: 14, background: '#F4F4F5', borderRadius: 8, fontSize: 13 }}>
+              <strong>Pas următor:</strong> spune-mi 1-2 favorite și ce ai schimba (culoare? font? combinat cu alt mark?). Apoi rafinăm până la logo-ul final cu toate fișierele (SVG, PNG, favicon).
+            </div>
+          </div>
+        </DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8"/>
+<title>AXA IT — Pachet Final</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root { --acc: #FF5A1F; --ink: #0A0A0A; --pap: #FAFAFA; --slate: #71717A; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #F4F4F5; font-family: 'Inter', system-ui, sans-serif; color: var(--ink); }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 48px 32px 120px; }
+  .hero { padding: 48px 0 32px; border-bottom: 1px solid rgba(0,0,0,0.08); margin-bottom: 48px; }
+  .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--acc); font-weight: 600; margin-bottom: 16px; }
+  h1 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 56px; letter-spacing: -0.02em; margin: 0 0 16px; line-height: 1.05; }
+  .lede { font-size: 19px; color: var(--slate); line-height: 1.6; max-width: 720px; }
+  h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 28px; letter-spacing: -0.01em; margin: 64px 0 24px; }
+  h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 0.02em; margin: 0 0 8px; }
+  .tag { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--acc); font-weight: 600; padding: 4px 10px; border: 1px solid var(--acc); border-radius: 999px; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+  @media (max-width: 900px) { .grid3 { grid-template-columns: 1fr; } }
+  .card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04); }
+  .card-header { padding: 20px 24px; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .card-header h3 { margin-bottom: 4px; }
+  .card-header .sub { font-size: 13px; color: var(--slate); line-height: 1.5; }
+  .sample { aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; padding: 12px; }
+  .samples { display: grid; grid-template-columns: 1fr 1fr; }
+  .sample img { width: 100%; height: 100%; object-fit: contain; }
+  .bg-dark   { background: var(--ink); }
+  .bg-light  { background: var(--pap); border-top: 1px solid rgba(0,0,0,0.06); }
+  .bg-accent { background: var(--acc); border-top: 1px solid rgba(0,0,0,0.06); }
+  .bg-check  { background: repeating-conic-gradient(#e4e4e7 0% 25%, #f4f4f5 0% 50%) 50% / 16px 16px; border-top: 1px solid rgba(0,0,0,0.06); }
+  .card-foot { padding: 16px 24px 20px; border-top: 1px solid rgba(0,0,0,0.06); display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { font-family: 'JetBrains Mono', monospace; font-size: 10px; background: #F4F4F5; color: var(--ink); padding: 4px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+  .fav-row { display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px; align-items: end; background: #fff; padding: 24px; border-radius: 16px; box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04); }
+  .fav-row .col { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .fav-row .col img { image-rendering: -webkit-optimize-contrast; }
+  .fav-row .size { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--slate); }
+  .dl { display: inline-flex; align-items: center; gap: 10px; background: var(--ink); color: #fff; padding: 14px 22px; border-radius: 10px; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: 0.02em; text-decoration: none; border: none; cursor: pointer; }
+  .dl:hover { background: var(--acc); color: var(--ink); }
+  .dl svg { width: 16px; height: 16px; }
+  .dl-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+  .dl-ghost { background: #fff; color: var(--ink); border: 1px solid rgba(0,0,0,0.12); }
+  .palette { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .swatch { border-radius: 12px; padding: 20px; min-height: 140px; display: flex; flex-direction: column; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .swatch .name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.01em; }
+  .fav-bg-dark  { background: var(--ink); padding: 8px; border-radius: 12px; }
+  .fav-bg-light { background: #fff; padding: 8px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.08); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">Livrabil final · v1.0</div>
+    <h1>AXA IT — Pachet Brand</h1>
+    <p class="lede">Pachet complet: <strong>logo orizontal principal</strong> (Electric Orange) + trei variațiuni <strong>pătrate complementare</strong> (A · Stacked, B · Big IT, E · Axis) pentru favicon, avatar social, parafă, autocolante. Logo-ul orizontal rămâne forma primară a brandului; pătratele intră în joc doar când formatul cere pătrat.</p>
+    <div class="dl-row">
+      <button class="dl" id="dl-all">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+        Descarcă tot pachetul (.zip)
+      </button>
+      <button class="dl dl-ghost" id="dl-favicon">Doar favicon set</button>
+      <button class="dl dl-ghost" id="dl-squares">Doar pătrate A/B/E</button>
+    </div>
+  </div>
+
+  <h2>Logo orizontal <span class="tag">primary</span></h2>
+  <div class="grid3">
+    <div class="card">
+      <div class="card-header">
+        <h3>Dark</h3>
+        <div class="sub">Forma principală — pe fundal închis.</div>
+      </div>
+      <div class="sample bg-dark" style="aspect-ratio: 3/1;"><img src="export/logo/axa-it-logo-dark.svg" alt="logo dark"/></div>
+      <div class="card-foot">
+        <span class="chip">SVG</span><span class="chip">PNG 1x/2x/3x</span><span class="chip">PNG print</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <h3>Light</h3>
+        <div class="sub">Pentru fundal alb/deschis — docs, print.</div>
+      </div>
+      <div class="sample bg-light" style="aspect-ratio: 3/1;"><img src="export/logo/axa-it-logo-light.svg" alt="logo light"/></div>
+      <div class="card-foot">
+        <span class="chip">SVG</span><span class="chip">PNG 1x/2x/3x</span><span class="chip">PNG print</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <h3>Accent</h3>
+        <div class="sub">Pe fundal portocaliu — campanii, highlights.</div>
+      </div>
+      <div class="sample bg-accent" style="aspect-ratio: 3/1;"><img src="export/logo/axa-it-logo-accent.svg" alt="logo accent"/></div>
+      <div class="card-foot">
+        <span class="chip">SVG</span><span class="chip">PNG 1x/2x/3x</span><span class="chip">PNG print</span>
+      </div>
+    </div>
+  </div>
+
+  <h2>Paletă</h2>
+  <div class="palette">
+    <div class="swatch" style="background: var(--acc); color: var(--ink);">
+      <div class="name">Electric Orange</div>
+      <div>#FF5A1F<br/>255·90·31</div>
+    </div>
+    <div class="swatch" style="background: var(--ink); color: #fff;">
+      <div class="name">Deep Black</div>
+      <div>#0A0A0A<br/>10·10·10</div>
+    </div>
+    <div class="swatch" style="background: var(--pap); color: var(--ink); border: 1px solid rgba(0,0,0,0.08);">
+      <div class="name">Paper</div>
+      <div>#FAFAFA<br/>250·250·250</div>
+    </div>
+    <div class="swatch" style="background: var(--slate); color: #fff;">
+      <div class="name">Slate</div>
+      <div>#71717A<br/>113·113·122</div>
+    </div>
+  </div>
+
+  <h2>Variațiuni pătrate <span class="tag">secondary · A · B · E</span></h2>
+  <p class="lede" style="font-size: 15px; margin-bottom: 24px;">Folosește doar când formatul cere pătrat (favicon, avatar LinkedIn/Instagram, parafă, autocolante, tricouri). Pentru orice altă utilizare, logo-ul orizontal primary e alegerea corectă.</p>
+  <div class="grid3">
+    <!-- A -->
+    <div class="card">
+      <div class="card-header">
+        <h3>A · Stacked Classic</h3>
+        <div class="sub">Cea mai versatilă — prezentări, docs, cover-uri social.</div>
+      </div>
+      <div class="samples">
+        <div class="sample bg-dark"><img src="export/square/A-stacked/axa-it-A-stacked-dark.svg" alt="A dark"/></div>
+        <div class="sample bg-light"><img src="export/square/A-stacked/axa-it-A-stacked-light.svg" alt="A light"/></div>
+        <div class="sample bg-accent"><img src="export/square/A-stacked/axa-it-A-stacked-accent.svg" alt="A accent"/></div>
+        <div class="sample bg-check"><img src="export/square/A-stacked/axa-it-A-stacked-transparent.svg" alt="A transparent"/></div>
+      </div>
+      <div class="card-foot">
+        <span class="chip">SVG ×4</span>
+        <span class="chip">PNG 512</span>
+        <span class="chip">PNG 1024</span>
+        <span class="chip">PNG 2048</span>
+      </div>
+    </div>
+
+    <!-- B -->
+    <div class="card">
+      <div class="card-header">
+        <h3>B · Big IT Leader</h3>
+        <div class="sub">Afirmativ — tricouri, bannere, standere.</div>
+      </div>
+      <div class="samples">
+        <div class="sample bg-dark"><img src="export/square/B-bigIT/axa-it-B-bigIT-dark.svg" alt="B dark"/></div>
+        <div class="sample bg-light"><img src="export/square/B-bigIT/axa-it-B-bigIT-light.svg" alt="B light"/></div>
+        <div class="sample bg-accent"><img src="export/square/B-bigIT/axa-it-B-bigIT-accent.svg" alt="B accent"/></div>
+        <div class="sample bg-check"><img src="export/square/B-bigIT/axa-it-B-bigIT-transparent.svg" alt="B transparent"/></div>
+      </div>
+      <div class="card-foot">
+        <span class="chip">SVG ×4</span>
+        <span class="chip">PNG 512</span>
+        <span class="chip">PNG 1024</span>
+        <span class="chip">PNG 2048</span>
+      </div>
+    </div>
+
+    <!-- E -->
+    <div class="card">
+      <div class="card-header">
+        <h3>E · Axis Square</h3>
+        <div class="sub">Favicon, avatar, parafă. Continuitate cu logo orizontal.</div>
+      </div>
+      <div class="samples">
+        <div class="sample bg-dark"><img src="export/square/E-axis/axa-it-E-axis-dark.svg" alt="E dark"/></div>
+        <div class="sample bg-light"><img src="export/square/E-axis/axa-it-E-axis-light.svg" alt="E light"/></div>
+        <div class="sample bg-accent"><img src="export/square/E-axis/axa-it-E-axis-accent.svg" alt="E accent"/></div>
+        <div class="sample bg-check"><img src="export/square/E-axis/axa-it-E-axis-transparent.svg" alt="E transparent"/></div>
+      </div>
+      <div class="card-foot">
+        <span class="chip">SVG ×4</span>
+        <span class="chip">PNG 512</span>
+        <span class="chip">PNG 1024</span>
+        <span class="chip">PNG 2048</span>
+      </div>
+    </div>
+  </div>
+
+  <h2>Favicon set <span class="tag">bazat pe E</span></h2>
+  <div class="fav-row">
+    <div class="col"><div class="fav-bg-light"><img src="export/favicon/favicon-light-16.png" width="16" height="16" alt=""/></div><div class="size">16</div></div>
+    <div class="col"><div class="fav-bg-light"><img src="export/favicon/favicon-light-32.png" width="32" height="32" alt=""/></div><div class="size">32</div></div>
+    <div class="col"><div class="fav-bg-light"><img src="export/favicon/favicon-light-48.png" width="48" height="48" alt=""/></div><div class="size">48</div></div>
+    <div class="col"><div class="fav-bg-light"><img src="export/favicon/favicon-light-64.png" width="64" height="64" alt=""/></div><div class="size">64</div></div>
+    <div class="col"><div class="fav-bg-dark"><img src="export/favicon/favicon-dark-64.png" width="64" height="64" alt=""/></div><div class="size">64·dark</div></div>
+    <div class="col"><div class="fav-bg-dark"><img src="export/favicon/favicon-dark-128.png" width="128" height="128" alt=""/></div><div class="size">128·dark</div></div>
+    <div class="col"><div class="fav-bg-light"><img src="export/favicon/favicon-accent-128.png" width="128" height="128" alt=""/></div><div class="size">128·accent</div></div>
+    <div class="col"><div class="fav-bg-light"><img src="export/favicon/apple-touch-icon.png" width="128" height="128" alt=""/></div><div class="size">iOS 180</div></div>
+  </div>
+
+  <h2>Snippet HTML pentru site</h2>
+  <pre style="background: var(--ink); color: #fff; padding: 24px; border-radius: 12px; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.6;"><code>&lt;link rel="icon" type="image/svg+xml" href="/favicon/favicon-light.svg"
+      media="(prefers-color-scheme: light)"&gt;
+&lt;link rel="icon" type="image/svg+xml" href="/favicon/favicon-dark.svg"
+      media="(prefers-color-scheme: dark)"&gt;
+&lt;link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-light-32.png"&gt;
+&lt;link rel="icon" type="image/png" sizes="192x192" href="/favicon/favicon-light-192.png"&gt;
+&lt;link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png"&gt;
+&lt;meta name="theme-color" content="#FF5A1F"&gt;</code></pre>
+
+</div>
+
+<script>
+// Simulăm download-urile prin mesaj parent — sau folosim link-uri directe dacă serverul permite
+document.getElementById('dl-all').addEventListener('click', () => {
+  window.parent.postMessage({type: 'request-download', path: 'export'}, '*');
+  alert('Cere în chat: "descarcă pachetul export" — voi pregăti zip-ul.');
+});
+document.getElementById('dl-favicon').addEventListener('click', () => {
+  alert('Cere în chat: "descarcă favicon-urile"');
+});
+document.getElementById('dl-squares').addEventListener('click', () => {
+  alert('Cere în chat: "descarcă pătratele"');
+});
+</script>
+</body>
+</html>

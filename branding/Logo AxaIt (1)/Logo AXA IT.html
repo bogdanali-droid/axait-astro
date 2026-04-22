@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8" />
+<title>Logo AXA IT — Runda 2 (favoritele rafinate)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #E4E4E7; font-family: 'Inter', system-ui, sans-serif; }
+  * { box-sizing: border-box; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="logos-v2.jsx"></script>
+
+<script type="text/babel">
+const axis = [
+  { id: '2a', label: '2A · Gradient original', Logo: window.Logo2A, Mark: window.Logo2AMark,
+    accentName: 'Axis · Gradient', tagline: 'Versiunea originală rafinată cu AXA. X = două axe. Albastru→violet.' },
+  { id: '2b', label: '2B · Corporate blue', Logo: window.Logo2B, Mark: window.Logo2BMark,
+    accentName: 'Axis · Corporate', tagline: 'Doar albastru profund. Mai serios, mai safe. Tagline integrat.' },
+  { id: '2c', label: '2C · AxA simetric', Logo: window.Logo2C, Mark: window.Logo2CMark,
+    accentName: 'Axis · Symmetry', tagline: 'Cele două A-uri oglindite în jurul X-ului galben (axa). Simetrie perfectă A-X-A.' },
+];
+
+const prism = [
+  { id: '4a', label: '4A · Portocaliu original', Logo: window.Logo4A, Mark: window.Logo4AMark,
+    accentName: 'Prism · Energy', tagline: 'Diamant portocaliu-roșu. Îndrăzneț, energic, imposibil de ratat.' },
+  { id: '4b', label: '4B · Diamant albastru', Logo: window.Logo4B, Mark: window.Logo4BMark,
+    accentName: 'Prism · Corporate', tagline: 'Aceeași formă, culoare corporate. Mai premium, mai enterprise.' },
+  { id: '4c', label: '4C · Dublu-prism', Logo: window.Logo4C, Mark: window.Logo4CMark,
+    accentName: 'Prism · Layered', tagline: 'Două diamante suprapuse — violet + portocaliu. Layers = servicii stratificate.' },
+];
+
+const stack = [
+  { id: '6a', label: '6A · Stack violet', Logo: window.Logo6A, Mark: window.Logo6AMark,
+    accentName: 'Stack · Purple', tagline: 'Server stack vertical, mono-font. Wordmark "axa_it" cu underscore (vibe de cod).' },
+  { id: '6b', label: '6B · Stack verde/terminal', Logo: window.Logo6B, Mark: window.Logo6BMark,
+    accentName: 'Stack · Terminal', tagline: 'Verde DevOps. Prompt "$ axa.it" — foarte engineering-focused.' },
+  { id: '6c', label: '6C · Containere AXA', Logo: window.Logo6C, Mark: window.Logo6CMark,
+    accentName: 'Stack · Containers', tagline: 'Fiecare literă într-un container/ladă. Metafora infrastructurii făcută literal.' },
+];
+
+const axisline = [
+  { id: '8a', label: '8A · Minimal original', Logo: window.Logo8A, Mark: window.Logo8AMark,
+    accentName: 'Axis Line · Minimal', tagline: 'Wordmark + bara-axă. Punctul galben e "poziția". Editorial, elegant.' },
+  { id: '8b', label: '8B · A | X | A', Logo: window.Logo8B, Mark: window.Logo8BMark,
+    accentName: 'Axis Line · Separators', tagline: 'Literele separate de bare verticale. Tipografic brut, foarte confident.' },
+  { id: '8c', label: '8C · Insignă oval', Logo: window.Logo8C, Mark: window.Logo8CMark,
+    accentName: 'Axis Line · Badge', tagline: 'Wordmark încapsulat în oval. Serif Fraunces — premium editorial pur.' },
+];
+
+const renderBoard = (v) => (
+  <DCArtboard key={v.id} id={v.id} label={v.label} width={420} height={720}>
+    <LogoShowcase2 Logo={v.Logo} Mark={v.Mark} accentName={v.accentName} tagline={v.tagline} />
+  </DCArtboard>
+);
+
+function App() {
+  return (
+    <DesignCanvas
+      title="Logo AXA IT — Runda 2"
+      subtitle="Favoritele tale (2, 4, 6, 8) cu monograma AXA · fiecare cu 3 sub-variante"
+    >
+      <DCSection id="axis" title="Concept 2 — Axis (X = două axe)">
+        {axis.map(renderBoard)}
+      </DCSection>
+
+      <DCSection id="prism" title="Concept 4 — Prism (diamant rotit)">
+        {prism.map(renderBoard)}
+      </DCSection>
+
+      <DCSection id="stack" title="Concept 6 — Stack (infrastructură / cod)">
+        {stack.map(renderBoard)}
+      </DCSection>
+
+      <DCSection id="axisline" title="Concept 8 — Axis Line (minimalism)">
+        {axisline.map(renderBoard)}
+      </DCSection>
+
+      <DCSection id="next" title="Pasul următor">
+        <DCArtboard id="next-card" label="Cum alegem" width={560} height={440}>
+          <div style={{ padding: 36, fontFamily: 'Inter, system-ui, sans-serif', fontSize: 14, lineHeight: 1.65, color: '#27272A', background: '#fff', height: '100%' }}>
+            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 24, fontWeight: 700, marginBottom: 18, color: '#09090B', letterSpacing: '-0.02em' }}>Ce urmează</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+              <div>
+                <strong>1. Alege 1-2 preferate</strong> din cele 12 sub-variante de mai sus.
+              </div>
+              <div>
+                <strong>2. Spune-mi ce ajustăm</strong> — altă culoare? alt font? combinăm mark-ul de la X cu textul de la Y?
+              </div>
+              <div>
+                <strong>3. Eu livrez logo-ul final</strong> în toate formatele (SVG vectorial, PNG transparent, favicon, versiune light/dark, mock-up pe carte de vizită).
+              </div>
+            </div>
+            <div style={{ marginTop: 24, padding: 16, background: '#FEF3C7', borderRadius: 8, fontSize: 13, lineHeight: 1.55 }}>
+              <strong>💡 Recomandarea mea:</strong> 2C (AxA simetric) sau 8B (A|X|A cu bare) — ambele folosesc simetria naturală a cuvântului AXA. E un avantaj pe care weight un logo trebuie să-l aibă: să "spună" ceva despre nume.
+            </div>
+          </div>
+        </DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

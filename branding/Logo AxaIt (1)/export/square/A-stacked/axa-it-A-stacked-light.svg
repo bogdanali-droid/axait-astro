@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>AXA IT — Stacked Classic (light)</title>
+  <defs></defs>
+  <rect width="512" height="512" fill="#FAFAFA"></rect>
+  <text class="w" x="256" y="215" text-anchor="middle" fill="#0A0A0A" font-size="96" letter-spacing="2">AXA<tspan fill="#FF5A1F">.</tspan></text>
+  <line x1="176" y1="252" x2="336" y2="252" stroke="#0A0A0A" stroke-width="3"></line>
+  <text class="it" x="256" y="348" text-anchor="middle" fill="#FF5A1F" font-size="120">IT</text>
+  <text class="sl" x="256" y="410" text-anchor="middle" fill="rgba(10,10,10,0.55)" font-size="13">Enterprise IT Partner</text>
+</svg>

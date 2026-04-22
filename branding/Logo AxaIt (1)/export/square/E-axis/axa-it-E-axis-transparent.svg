@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>AXA IT — Axis Square (transparent)</title>
+  <defs></defs>
+  
+  <text class="axa" x="256" y="210" text-anchor="middle" fill="#0A0A0A" font-size="110">AXA</text>
+  <line x1="156" y1="248" x2="356" y2="248" stroke="#0A0A0A" stroke-width="3"></line>
+  <circle cx="316" cy="248" r="8" fill="#FF5A1F" stroke="#0A0A0A" stroke-width="2"></circle>
+  <text class="it" x="256" y="340" text-anchor="middle" fill="#FF5A1F" font-size="48">IT</text>
+  <text class="sl" x="256" y="400" text-anchor="middle" fill="#0A0A0A" fill-opacity="0.6" font-size="12">Enterprise IT Partner</text>
+</svg>

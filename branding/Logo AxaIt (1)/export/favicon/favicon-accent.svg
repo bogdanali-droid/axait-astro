@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs></defs>
+  <rect width="512" height="512" fill="#FF5A1F" rx="96"></rect>
+  <text class="axa" x="256" y="230" text-anchor="middle" fill="#0A0A0A" font-size="130">AXA</text>
+  <line x1="136" y1="275" x2="376" y2="275" stroke="#0A0A0A" stroke-width="6"></line>
+  <circle cx="326" cy="275" r="12" fill="#fff" stroke="#0A0A0A" stroke-width="3"></circle>
+  <text class="it" x="265" y="395" text-anchor="middle" fill="#fff" font-size="70">IT</text>
+</svg>

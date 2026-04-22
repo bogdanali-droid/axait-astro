@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>AXA IT — Big IT (transparent)</title>
+  <defs></defs>
+  
+  <text class="big" x="256" y="380" text-anchor="middle" fill="#FF5A1F" font-size="440">IT</text>
+  <g>
+    <rect x="160" y="200" width="192" height="72" fill="#fff"></rect>
+    <text class="axa" x="256" y="255" text-anchor="middle" fill="#0A0A0A" font-size="60" letter-spacing="2">AXA</text>
+  </g>
+  <g>
+    <rect x="176" y="280" width="160" height="24" fill="#fff"></rect>
+    <text class="sl" x="256" y="297" text-anchor="middle" fill="#0A0A0A" font-size="11">Enterprise Partner</text>
+  </g>
+</svg>

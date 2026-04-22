@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8" />
+<title>AXA IT — Variante bold de culoare</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #E4E4E7; font-family: 'Inter', system-ui, sans-serif; color: #18181B; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+
+<script type="text/babel">
+// Base wordmark: AXA · IT with a bar below + dot on axis
+// Each variant re-skins color, typography weight, background, and mark treatment
+
+const Word = ({ color, weight = 600, size = 44, track = 0.04, children }) => (
+  <div style={{
+    fontFamily: "'Space Grotesk', sans-serif",
+    fontWeight: weight, fontSize: size,
+    letterSpacing: `${track}em`, textTransform: 'uppercase',
+    color, lineHeight: 1,
+  }}>{children}</div>
+);
+
+const Bar = ({ color, dotColor, dotBorder, width = 240, dotRight = 42, dotSize = 8 }) => (
+  <div style={{ width, height: 1.5, background: color, position: 'relative' }}>
+    <div style={{
+      position: 'absolute', top: '50%', transform: 'translateY(-50%)',
+      right: dotRight, width: dotSize, height: dotSize,
+      borderRadius: '50%', background: dotColor,
+      border: `1.5px solid ${dotBorder || color}`,
+    }} />
+  </div>
+);
+
+const Tag = ({ color, children, size = 10 }) => (
+  <div style={{
+    fontFamily: "'Space Grotesk', sans-serif",
+    fontSize: size, letterSpacing: '0.4em', textTransform: 'uppercase',
+    color, fontWeight: 500,
+  }}>{children}</div>
+);
+
+const Lockup = ({ word, bar, tag, wordEl }) => (
+  <div style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
+    {wordEl || <Word {...word}>AXA · IT</Word>}
+    <Bar {...bar} />
+    {tag && <Tag {...tag}>Enterprise IT Partner</Tag>}
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════
+// Showcase component
+// ═══════════════════════════════════════════════════════════════
+
+const Card = ({ bg, children, label, labelColor }) => (
+  <div style={{
+    background: bg, minHeight: 240, display: 'flex', alignItems: 'center', justifyContent: 'center',
+    position: 'relative', overflow: 'hidden',
+  }}>
+    {label && (
+      <div style={{
+        position: 'absolute', top: 14, left: 16,
+        fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase',
+        color: labelColor || 'rgba(0,0,0,0.45)', fontWeight: 600,
+        fontFamily: "'Space Grotesk', sans-serif",
+      }}>{label}</div>
+    )}
+    {children}
+  </div>
+);
+
+const Showcase = ({ variant }) => (
+  <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+    {/* Hero panel — bold colored bg */}
+    <div style={{ flex: '0 0 auto' }}>
+      <Card bg={variant.heroBg} label="HERO" labelColor={variant.heroLabelColor}>
+        {variant.renderHero()}
+      </Card>
+    </div>
+    {/* Light */}
+    <div style={{ flex: '0 0 auto' }}>
+      <Card bg="#FFFFFF" label="LIGHT">
+        {variant.renderLight()}
+      </Card>
+    </div>
+    {/* Mark + favicon row */}
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', flex: '0 0 auto' }}>
+      <Card bg="#F4F4F5" label="MARK">
+        {variant.renderMark(80)}
+      </Card>
+      <Card bg={variant.markDarkBg || '#0B1220'} label="MARK · DARK" labelColor="rgba(255,255,255,0.5)">
+        {variant.renderMarkDark(80)}
+      </Card>
+    </div>
+    {/* Description */}
+    <div style={{
+      padding: '16px 18px', background: '#fff',
+      borderTop: '1px solid rgba(0,0,0,0.06)',
+      fontSize: 12, lineHeight: 1.55, color: '#3F3F46',
+      flex: 1,
+    }}>
+      <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 14, fontWeight: 700, color: '#18181B', marginBottom: 6 }}>
+        {variant.name}
+      </div>
+      <div>{variant.description}</div>
+      <div style={{ marginTop: 10, display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+        {variant.palette.map((c, i) => (
+          <div key={i} style={{
+            display: 'flex', alignItems: 'center', gap: 5,
+            background: '#F4F4F5', padding: '3px 8px', borderRadius: 3,
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+          }}>
+            <div style={{ width: 10, height: 10, background: c.hex, border: c.hex === '#FFFFFF' ? '1px solid #ddd' : 'none' }} />
+            <span>{c.hex}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════
+// 6 BOLD VARIANTS
+// ═══════════════════════════════════════════════════════════════
+
+// ─── V1 · ELECTRIC ORANGE ──────────────────────────────────────
+// Impact maxim, energic, SaaS modern (vibe Vercel/Stripe dar portocaliu)
+const v1 = {
+  name: '01 · Electric Orange',
+  description: 'Portocaliu electric pe negru profund. Impact maxim, energie, confidență. Varianta "nu poți să mă ignori".',
+  palette: [{ hex: '#FF5A1F' }, { hex: '#0A0A0A' }, { hex: '#FAFAFA' }],
+  heroBg: '#0A0A0A',
+  heroLabelColor: 'rgba(255,255,255,0.5)',
+  renderHero: () => (
+    <Lockup
+      word={{ color: '#fff', weight: 700, size: 52, track: 0.03 }}
+      bar={{ color: '#fff', dotColor: '#FF5A1F', dotBorder: '#fff', width: 290, dotRight: 50, dotSize: 10 }}
+      tag={{ color: '#FF5A1F', size: 11 }}
+      wordEl={
+        <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 52, letterSpacing: '0.03em', textTransform: 'uppercase', lineHeight: 1 }}>
+          <span style={{ color: '#fff' }}>AXA </span>
+          <span style={{ color: '#FF5A1F' }}>·</span>
+          <span style={{ color: '#fff' }}> IT</span>
+        </div>
+      }
+    />
+  ),
+  renderLight: () => (
+    <Lockup
+      word={{ color: '#0A0A0A', weight: 700, size: 40 }}
+      bar={{ color: '#0A0A0A', dotColor: '#FF5A1F', dotBorder: '#0A0A0A', width: 220 }}
+      tag={{ color: 'rgba(10,10,10,0.6)' }}
+    />
+  ),
+  renderMark: (s) => (
+    <div style={{
+      width: s, height: s, background: '#0A0A0A', borderRadius: 8,
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
+      fontSize: s * 0.35, color: '#fff', position: 'relative',
+    }}>
+      AXA
+      <div style={{ position: 'absolute', bottom: s*0.18, left: s*0.14, right: s*0.14, height: 1.5, background: '#fff' }} />
+      <div style={{ position: 'absolute', bottom: s*0.18 - 3, right: s*0.22, width: 7, height: 7, borderRadius: '50%', background: '#FF5A1F' }} />
+    </div>
+  ),
+  renderMarkDark: (s) => (
+    <div style={{
+      width: s, height: s, background: '#FF5A1F', borderRadius: 8,
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
+      fontSize: s * 0.35, color: '#0A0A0A', position: 'relative',
+    }}>
+      AXA
+      <div style={{ position: 'absolute', bottom: s*0.18, left: s*0.14, right: s*0.14, height: 1.5, background: '#0A0A0A' }} />
+      <div style={{ position: 'absolute', bottom: s*0.18 - 3, right: s*0.22, width: 7, height: 7, borderRadius: '50%', background: '#fff' }} />
+    </div>
+  ),
+};
+
+// ─── V2 · CYBER MAGENTA ──────────────────────────────────────
+// Neon magenta + cyan, tech futurist, cyber-security vibe
+const v2 = {
+  name: '02 · Cyber Neon',
+  description: 'Magenta neon + cyan pe fundal intens violet. Futurist, cyber-security, "nu suntem ca ceilalți". Pentru un brand care vrea să fie memorabil.',
+  palette: [{ hex: '#FF2E9A' }, { hex: '#00E5FF' }, { hex: '#0D0221' }],
+  heroBg: '#0D0221',
+  heroLabelColor: 'rgba(255,255,255,0.5)',
+  renderHero: () => (
+    <Lockup
+      wordEl={
+        <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 52, letterSpacing: '0.03em', textTransform: 'uppercase', lineHeight: 1, position: 'relative' }}>
+          <span style={{ color: '#fff', textShadow: '2px 0 #FF2E9A, -2px 0 #00E5FF' }}>AXA · IT</span>
+        </div>
+      }
+      bar={{ color: '#00E5FF', dotColor: '#FF2E9A', dotBorder: '#00E5FF', width: 290, dotRight: 50, dotSize: 10 }}
+      tag={{ color: '#00E5FF', size: 11 }}
+    />
+  ),
+  renderLight: () => (
+    <Lockup
+      wordEl={
+        <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 40, letterSpacing: '0.03em', textTransform: 'uppercase', lineHeight: 1 }}>
+          <span style={{ color: '#0D0221' }}>AXA </span>
+          <span style={{ color: '#FF2E9A' }}>·</span>
+          <span style={{ color: '#0D0221' }}> IT</span>
+        </div>
+      }
+      bar={{ color: '#0D0221', dotColor: '#FF2E9A', dotBorder: '#0D0221', width: 220 }}
+      tag={{ color: 'rgba(13,2,33,0.6)' }}
+    />
+  ),
+  renderMark: (s) => (
+    <div style={{
+      width: s, height: s, background: '#0D0221', borderRadius: 8,
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
+      fontSize: s * 0.33, color: '#fff', position: 'relative',
+      textShadow: '1.5px 0 #FF2E9A, -1.5px 0 #00E5FF',
+    }}>
+      AXA
+      <div style={{ position: 'absolute', bottom: s*0.18, left: s*0.14, right: s*0.14, height: 1.5, background: '#00E5FF' }} />
+      <div style={{ position: 'absolute', bottom: s*0.18 - 3, right: s*0.22, width: 7, height: 7, borderRadius: '50%', background: '#FF2E9A' }} />
+    </div>
+  ),
+  renderMarkDark: (s) => (
+    <div style={{
+      width: s, height: s, background: 'linear-gradient(135deg, #FF2E9A, #00E5FF)', borderRadius: 8,
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
+      fontSize: s * 0.33, color: '#0D0221', position: 'relative',
+    }}>
+      AXA
+      <div style={{ position: 'absolute', bottom: s*0.18, left: s*0.14, right: s*0.14, height: 1.5, background: '#0D0221' }} />
+      <div style={{ position: 'absolute', bottom: s*0.18 - 3, right: s*0.22, width: 7, height: 7, borderRadius: '50%', background: '#fff' }} />
+    </div>
+  ),
+};
+
+// ─── V3 · VOLT (cobalt + lime) ──────────────────────────────────
+// High-voltage electric — cobalt + lime galben-verzui
+const v3 = {
+  name: '03 · Volt',
+  description: 'Cobalt profund cu lime voltaj. Enterprise cu atitudine — trust-ul albastrului plus energia limei. Foarte memorabil în context corporate.',
+  palette: [{ hex: '#1D4ED8' }, { hex: '#D6F532' }, { hex: '#0F172A' }],
+  heroBg: '#1D4ED8',
+  heroLabelColor: 'rgba(255,255,255,0.55)',
+  markDarkBg: '#0F172A',
+  renderHero: () => (
+    <Lockup
+      word={{ color: '#fff', weight: 700, size: 52, track: 0.03 }}
+      bar={{ color: '#D6F532', dotColor: '#D6F532', dotBorder: '#fff', width: 290, dotRight: 50, dotSize: 10 }}
+      tag={{ color: '#D6F532', size: 11 }}
+    />
+  ),
+  renderLight: () => (
+    <Lockup
+      wordEl={
+        <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 40, letterSpacing: '0.03em', textTransform: 'uppercase', lineHeight: 1 }}>
+          <span style={{ color: '#1D4ED8' }}>AXA · IT</span>
+        </div>
+      }
+      bar={{ color: '#1D4ED8', dotColor: '#D6F532', dotBorder: '#1D4ED8', width: 220 }}
+      tag={{ color: 'rgba(29,78,216,0.7)' }}
+    />
+  ),
+  renderMark: (s) => (
+    <div style={{
+      width: s, height: s, background: '#1D4ED8', borderRadius: 8,
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
+      fontSize: s * 0.35, color: '#fff', position: 'relative',
+    }}>
+      AXA
+      <div style={{ position: 'absolute', bottom: s*0.18, left: s*0.14, right: s*0.14, height: 1.5, background: '#D6F532' }} />
+      <div style={{ position: 'absolute', bottom: s*0.18 - 3, right: s*0.22, width: 7, height: 7, borderRadius: '50%', background: '#D6F532', border: '1.5px solid #fff' }} />
+    </div>
+  ),
+  renderMarkDark: (s) => (
+    <div style={{
+      width: s, height: s, background: '#D6F532', borderRadius: 8,
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
+      fontSize: s * 0.35, color: '#0F172A', position: 'relative',
+    }}>
+      AXA
+      <div style={{ position: 'absolute', bottom: s*0.18, left: s*0.14, right: s*0.14, height: 1.5, background: '#0F172A' }} />
+      <div style={{ position: 'absolute', bottom: s*0.18 - 3, right: s*0.22, width: 7, height: 7, borderRadius: '50%', background: '#1D4ED8', border: '1.5px solid #0F172A' }} />
+    </div>
+  ),
+};
+
+// ─── V4 · GRADIENT FLUX ──────────────────────────────────
+// Gradient modern purple-red-orange (vibe Stripe/Linear)
+const v4 = {
+  name: '04 · Gradient Flux',
+  description: 'Gradient fluid violet→coral→galben. Modern, SaaS premium, foarte digital. Pentru impresie de "tech care inovează".',
+  palette: [{ hex: '#7C3AED' }, { hex: '#EC4899' }, { hex: '#F59E0B' }],
+  heroBg: 'linear-gradient(135deg, #7C3AED 0%, #EC4899 50%, #F59E0B 100%)',
+  heroLabelColor: 'rgba(255,255,255,0.7)',
+  renderHero: () => (
+    <Lockup
+      word={{ color: '#fff', weight: 700, size: 52, track: 0.03 }}
+      bar={{ color: '#fff', dotColor: '#fff', dotBorder: '#fff', width: 290, dotRight: 50, dotSize: 10 }}
+      tag={{ color: 'rgba(255,255,255,0.9)', size: 11 }}
+    />
+  ),
+  renderLight: () => (
+    <Lockup
+      wordEl={
+        <div style={{
+          fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 40,
+          letterSpacing: '0.03em', textTransform: 'uppercase', lineHeight: 1,
+          background: 'linear-gradient(90deg, #7C3AED, #EC4899, #F59E0B)',
+          WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+        }}>AXA · IT</div>
+      }
+      bar={{ color: '#EC4899', dotColor: '#F59E0B', dotBorder: '#EC4899', width: 220 }}
+      tag={{ color: 'rgba(124,58,237,0.7)' }}
+    />
+  ),
+  renderMark: (s) => (
+    <div style={{
+      width: s, height: s, background: 'linear-gradient(135deg, #7C3AED, #EC4899, #F59E0B)', borderRadius: 8,
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
+      fontSize: s * 0.35, color: '#fff', position: 'relative',
+    }}>
+      AXA
+      <div style={{ position: 'absolute', bottom: s*0.18, left: s*0.14, right: s*0.14, height: 1.5, background: '#fff' }} />
+      <div style={{ position: 'absolute', bottom: s*0.18 - 3, right: s*0.22, width: 7, height: 7, borderRadius: '50%', background: '#fff' }} />
+    </div>
+  ),
+  renderMarkDark: (s) => (
+    <div style={{
+      width: s, height: s, background: '#0B1220', borderRadius: 8, border: '1.5px solid transparent',
+      backgroundImage: 'linear-gradient(#0B1220,#0B1220), linear-gradient(135deg, #7C3AED, #EC4899, #F59E0B)',
+      backgroundOrigin: 'border-box', backgroundClip: 'padding-box, border-box',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
+      fontSize: s * 0.33, position: 'relative',
+    }}>
+      <span style={{
+        background: 'linear-gradient(135deg, #7C3AED, #EC4899, #F59E0B)',
+        WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+      }}>AXA</span>
+      <div style={{ position: 'absolute', bottom: s*0.18, left: s*0.14, right: s*0.14, height: 1.5, background: 'linear-gradient(90deg, #7C3AED, #EC4899, #F59E0B)' }} />
+      <div style={{ position: 'absolute', bottom: s*0.18 - 3, right: s*0.22, width: 7, height: 7, borderRadius: '50%', background: '#F59E0B' }} />
+    </div>
+  ),
+};
+
+// ─── V5 · BRUTALIST RED ──────────────────────────────────
+// Roșu Signal pur + negru, brutalism industrial
+const v5 = {
+  name: '05 · Signal Red',
+  description: 'Roșu Signal pur + negru brut. Agresiv, industrial, brutal. Fără compromisuri. Pentru "noi rezolvăm probleme serioase".',
+  palette: [{ hex: '#DC2626' }, { hex: '#000000' }, { hex: '#FAFAFA' }],
+  heroBg: '#DC2626',
+  heroLabelColor: 'rgba(255,255,255,0.6)',
+  markDarkBg: '#000',
+  renderHero: () => (
+    <Lockup
+      word={{ color: '#fff', weight: 800, size: 54, track: 0.02 }}
+      bar={{ color: '#fff', dotColor: '#000', dotBorder: '#fff', width: 300, dotRight: 52, dotSize: 10 }}
+      tag={{ color: 'rgba(255,255,255,0.85)', size: 11 }}
+    />
+  ),
+  renderLight: () => (
+    <Lockup
+      wordEl={
+        <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 800, fontSize: 42, letterSpacing: '0.02em', textTransform: 'uppercase', lineHeight: 1 }}>
+          <span style={{ color: '#000' }}>AXA </span>
+          <span style={{ color: '#DC2626' }}>·</span>
+          <span style={{ color: '#000' }}> IT</span>
+        </div>
+      }
+      bar={{ color: '#000', dotColor: '#DC2626', dotBorder: '#000', width: 220 }}
+      tag={{ color: 'rgba(0,0,0,0.7)' }}
+    />
+  ),
+  renderMark: (s) => (
+    <div style={{
+      width: s, height: s, background: '#DC2626', borderRadius: 0,
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 800,
+      fontSize: s * 0.35, color: '#fff', position: 'relative',
+      border: '3px solid #000',
+    }}>
+      AXA
+      <div style={{ position: 'absolute', bottom: s*0.18, left: s*0.14, right: s*0.14, height: 2, background: '#000' }} />
+      <div style={{ position: 'absolute', bottom: s*0.18 - 3, right: s*0.22, width: 7, height: 7, borderRadius: '50%', background: '#000' }} />
+    </div>
+  ),
+  renderMarkDark: (s) => (
+    <div style={{
+      width: s, height: s, background: '#000', borderRadius: 0,
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 800,
+      fontSize: s * 0.35, color: '#DC2626', position: 'relative',
+      border: '3px solid #DC2626',
+    }}>
+      AXA
+      <div style={{ position: 'absolute', bottom: s*0.18, left: s*0.14, right: s*0.14, height: 2, background: '#DC2626' }} />
+      <div style={{ position: 'absolute', bottom: s*0.18 - 3, right: s*0.22, width: 7, height: 7, borderRadius: '50%', background: '#DC2626' }} />
+    </div>
+  ),
+};
+
+// ─── V6 · TEAL + CORAL (duotone premium) ─────────────────────
+// Teal închis + coral cald, premium dar cu personalitate
+const v6 = {
+  name: '06 · Teal & Coral',
+  description: 'Teal profund + coral cald. Premium cu personalitate. Nu e corporate clasic, e mai "editorial". Se distinge fără să fie țipător.',
+  palette: [{ hex: '#0F766E' }, { hex: '#FB7185' }, { hex: '#FEF7ED' }],
+  heroBg: '#0F766E',
+  heroLabelColor: 'rgba(255,255,255,0.6)',
+  markDarkBg: '#134E4A',
+  renderHero: () => (
+    <Lockup
+      wordEl={
+        <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: 52, letterSpacing: '0.04em', textTransform: 'uppercase', lineHeight: 1 }}>
+          <span style={{ color: '#fff' }}>AXA </span>
+          <span style={{ color: '#FB7185' }}>·</span>
+          <span style={{ color: '#fff' }}> IT</span>
+        </div>
+      }
+      bar={{ color: '#FB7185', dotColor: '#FB7185', dotBorder: '#fff', width: 290, dotRight: 50, dotSize: 10 }}
+      tag={{ color: '#FB7185', size: 11 }}
+    />
+  ),
+  renderLight: () => (
+    <Lockup
+      wordEl={
+        <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: 40, letterSpacing: '0.04em', textTransform: 'uppercase', lineHeight: 1 }}>
+          <span style={{ color: '#0F766E' }}>AXA </span>
+          <span style={{ color: '#FB7185' }}>·</span>
+          <span style={{ color: '#0F766E' }}> IT</span>
+        </div>
+      }
+      bar={{ color: '#0F766E', dotColor: '#FB7185', dotBorder: '#0F766E', width: 220 }}
+      tag={{ color: 'rgba(15,118,110,0.7)' }}
+    />
+  ),
+  renderMark: (s) => (
+    <div style={{
+      width: s, height: s, background: '#0F766E', borderRadius: '50%',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
+      fontSize: s * 0.3, color: '#fff', position: 'relative',
+    }}>
+      AXA
+      <div style={{ position: 'absolute', bottom: s*0.22, left: s*0.22, right: s*0.22, height: 1.5, background: '#FB7185' }} />
+      <div style={{ position: 'absolute', bottom: s*0.22 - 3, right: s*0.3, width: 6, height: 6, borderRadius: '50%', background: '#FB7185', border: '1.5px solid #fff' }} />
+    </div>
+  ),
+  renderMarkDark: (s) => (
+    <div style={{
+      width: s, height: s, background: '#FB7185', borderRadius: '50%',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
+      fontSize: s * 0.3, color: '#0F766E', position: 'relative',
+    }}>
+      AXA
+      <div style={{ position: 'absolute', bottom: s*0.22, left: s*0.22, right: s*0.22, height: 1.5, background: '#0F766E' }} />
+      <div style={{ position: 'absolute', bottom: s*0.22 - 3, right: s*0.3, width: 6, height: 6, borderRadius: '50%', background: '#0F766E' }} />
+    </div>
+  ),
+};
+
+const variants = [v1, v2, v3, v4, v5, v6];
+
+const renderBoard = (v, i) => (
+  <DCArtboard key={i} id={`bold-${i}`} label={v.name} width={440} height={860}>
+    <Showcase variant={v} />
+  </DCArtboard>
+);
+
+function App() {
+  return (
+    <DesignCanvas
+      title="Logo AXA IT — Direcții bold de culoare"
+      subtitle="Aceeași structură (wordmark + axă + punct), 6 tratări vizuale cu impact — de la energie brută la gradient modern"
+    >
+      <DCSection id="bold" title="6 direcții de culoare">
+        {variants.map(renderBoard)}
+      </DCSection>
+
+      <DCSection id="info" title="Cum alegem">
+        <DCArtboard id="info-card" label="Ghid" width={560} height={420}>
+          <div style={{ padding: 36, background: '#fff', height: '100%', fontSize: 14, lineHeight: 1.65, color: '#27272A' }}>
+            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 22, fontWeight: 700, marginBottom: 18, letterSpacing: '-0.02em' }}>Fiecare variantă arată:</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <div>🔥 <strong>Hero</strong> — cum arată logo-ul pe brand color plin (banner, poster)</div>
+              <div>📄 <strong>Light</strong> — pe fundal alb (hârtie, print, site)</div>
+              <div>🔹 <strong>Mark</strong> — varianta iconiță pentru favicon/avatar</div>
+              <div>🎨 <strong>Paleta</strong> — cele 3 culori cheie</div>
+            </div>
+            <div style={{ marginTop: 22, padding: 14, background: '#FEF3C7', borderRadius: 6, fontSize: 13, lineHeight: 1.55 }}>
+              <strong>Spune-mi:</strong> care 1-2 variante îți plac cel mai mult? Putem combina (ex: structura de la V1 cu paleta de la V3) sau ajusta orice detaliu (saturație, punct, font).
+            </div>
+          </div>
+        </DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
