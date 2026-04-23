@@ -60,143 +60,115 @@ import Footer from '../components/Footer.astro';
           </div>
         </div>
 
-        <!-- Right: Animated Network X SVG -->
+        <!-- Right: Animated Shield Network SVG -->
         <div class="lg:w-1/2 hidden lg:flex items-center justify-center">
-          <svg viewBox="0 0 400 400" class="w-full max-w-[440px] h-auto" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 400 400" class="w-full max-w-[440px] h-auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AXA IT - Infrastructură IT securizată și conectată">
             <style>
-              @keyframes pulse-center {
-                0%, 100% { transform: scale(1); }
-                50% { transform: scale(1.1); }
+              @keyframes nodePulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.35); opacity: 0.75; } }
+              @keyframes nodeGlow { 0%, 100% { opacity: 0.15; } 50% { opacity: 0.45; } }
+              @keyframes orbitCW { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+              @keyframes orbitCCW { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+              @keyframes dataFlow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -60; } }
+              @keyframes dataFlowReverse { from { stroke-dashoffset: 0; } to { stroke-dashoffset: 60; } }
+              @keyframes shieldBreath { 0%, 100% { opacity: 0.55; stroke-width: 1.5; } 50% { opacity: 0.95; stroke-width: 2; } }
+              @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+              @keyframes satelliteFade { 0%, 100% { opacity: 0.3; r: 2; } 50% { opacity: 1; r: 3.5; } }
+
+              .g-root { animation: fadeIn 1.2s ease-out both; transform-origin: 200px 200px; }
+              .shield { animation: shieldBreath 4s ease-in-out infinite; transform-origin: 200px 200px; }
+              .orbit-cw { animation: orbitCW 22s linear infinite; transform-origin: 200px 200px; transform-box: fill-box; }
+              .orbit-ccw { animation: orbitCCW 30s linear infinite; transform-origin: 200px 200px; transform-box: fill-box; }
+              .node { animation: nodePulse 2.6s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+              .node.n2 { animation-delay: 0.4s; }
+              .node.n3 { animation-delay: 0.8s; }
+              .node.n4 { animation-delay: 1.2s; }
+              .node.n5 { animation-delay: 1.6s; }
+              .node.n6 { animation-delay: 2.0s; }
+              .node-glow { animation: nodeGlow 2.6s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+              .node-glow.n2 { animation-delay: 0.4s; }
+              .node-glow.n3 { animation-delay: 0.8s; }
+              .node-glow.n4 { animation-delay: 1.2s; }
+              .node-glow.n5 { animation-delay: 1.6s; }
+              .node-glow.n6 { animation-delay: 2.0s; }
+              .data-line { stroke-dasharray: 6 12; animation: dataFlow 3s linear infinite; }
+              .data-line.reverse { animation: dataFlowReverse 3.5s linear infinite; }
+              .data-line.slow { animation-duration: 4.5s; }
+              .satellite { animation: satelliteFade 3s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+              .satellite.s2 { animation-delay: 1s; }
+              .satellite.s3 { animation-delay: 2s; }
+
+              @media (prefers-reduced-motion: reduce) {
+                .g-root, .shield, .orbit-cw, .orbit-ccw, .node, .node-glow, .data-line, .satellite { animation: none !important; }
               }
-              @keyframes pulse-corner {
-                0%, 100% { transform: scale(1); opacity: 0.9; }
-                50% { transform: scale(1.06); opacity: 1; }
-              }
-              @keyframes travel-dot-1 {
-                0% { offset-distance: 0%; opacity: 0; }
-                8% { opacity: 1; }
-                92% { opacity: 1; }
-                100% { offset-distance: 100%; opacity: 0; }
-              }
-              @keyframes travel-dot-2 {
-                0% { offset-distance: 0%; opacity: 0; }
-                8% { opacity: 1; }
-                92% { opacity: 1; }
-                100% { offset-distance: 100%; opacity: 0; }
-              }
-              @keyframes fade-node {
-                0%, 100% { opacity: 0.15; }
-                50% { opacity: 0.5; }
-              }
-              @keyframes glow-ring {
-                0%, 100% { opacity: 0.08; r: 24; }
-                50% { opacity: 0.2; r: 30; }
-              }
-              .center-node {
-                transform-origin: 200px 200px;
-                animation: pulse-center 3s ease-in-out infinite;
-              }
-              .corner-tl { transform-origin: 80px 80px; animation: pulse-corner 4s ease-in-out infinite; }
-              .corner-tr { transform-origin: 320px 80px; animation: pulse-corner 4s ease-in-out 1s infinite; }
-              .corner-bl { transform-origin: 80px 320px; animation: pulse-corner 4s ease-in-out 2s infinite; }
-              .corner-br { transform-origin: 320px 320px; animation: pulse-corner 4s ease-in-out 3s infinite; }
-              .particle-1 {
-                offset-path: path('M 80 80 L 320 320');
-                animation: travel-dot-1 3s linear infinite;
-              }
-              .particle-2 {
-                offset-path: path('M 320 80 L 80 320');
-                animation: travel-dot-2 3.5s linear 0.5s infinite;
-              }
-              .particle-3 {
-                offset-path: path('M 320 320 L 80 80');
-                animation: travel-dot-1 4s linear 1s infinite;
-              }
-              .particle-4 {
-                offset-path: path('M 80 320 L 320 80');
-                animation: travel-dot-2 3.2s linear 1.5s infinite;
-              }
-              .particle-5 {
-                offset-path: path('M 80 80 L 200 200');
-                animation: travel-dot-1 2.5s linear 0.3s infinite;
-              }
-              .particle-6 {
-                offset-path: path('M 200 200 L 320 80');
-                animation: travel-dot-2 2.8s linear 0.7s infinite;
-              }
-              .whisker-node { animation: fade-node 5s ease-in-out infinite; }
-              .whisker-node-2 { animation: fade-node 6s ease-in-out 1.5s infinite; }
-              .whisker-node-3 { animation: fade-node 4.5s ease-in-out 3s infinite; }
-              .whisker-node-4 { animation: fade-node 5.5s ease-in-out 0.8s infinite; }
-              .whisker-node-5 { animation: fade-node 7s ease-in-out 2s infinite; }
-              .whisker-node-6 { animation: fade-node 4s ease-in-out 4s infinite; }
-              .whisker-node-7 { animation: fade-node 6.5s ease-in-out 2.5s infinite; }
-              .whisker-node-8 { animation: fade-node 5s ease-in-out 3.5s infinite; }
-              .glow-ring { animation: glow-ring 3s ease-in-out infinite; }
             </style>
 
-            <!-- Subtle glow behind center -->
-            <circle cx="200" cy="200" r="60" fill="#FF5A1F" opacity="0.04" />
-            <circle cx="200" cy="200" r="100" fill="#FF5A1F" opacity="0.02" />
+            <defs>
+              <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FF5A1F" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="#FF5A1F" stop-opacity="0.4"/>
+              </linearGradient>
+              <radialGradient id="nodeGlowGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#FF5A1F" stop-opacity="0.7"/>
+                <stop offset="70%" stop-color="#FF5A1F" stop-opacity="0.1"/>
+                <stop offset="100%" stop-color="#FF5A1F" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
 
-            <!-- Whisker lines from corners outward -->
-            <line x1="80" y1="80" x2="30" y2="30" stroke="#FF5A1F" stroke-width="1" opacity="0.15" />
-            <line x1="320" y1="80" x2="370" y2="30" stroke="#FF5A1F" stroke-width="1" opacity="0.15" />
-            <line x1="80" y1="320" x2="30" y2="370" stroke="#FF5A1F" stroke-width="1" opacity="0.15" />
-            <line x1="320" y1="320" x2="370" y2="370" stroke="#FF5A1F" stroke-width="1" opacity="0.15" />
-            <line x1="80" y1="80" x2="40" y2="80" stroke="#FF5A1F" stroke-width="1" opacity="0.1" />
-            <line x1="320" y1="80" x2="360" y2="80" stroke="#FF5A1F" stroke-width="1" opacity="0.1" />
-            <line x1="80" y1="320" x2="80" y2="360" stroke="#FF5A1F" stroke-width="1" opacity="0.1" />
-            <line x1="320" y1="320" x2="320" y2="360" stroke="#FF5A1F" stroke-width="1" opacity="0.1" />
-            <line x1="80" y1="80" x2="80" y2="40" stroke="#FF5A1F" stroke-width="1" opacity="0.1" />
-            <line x1="320" y1="80" x2="320" y2="40" stroke="#FF5A1F" stroke-width="1" opacity="0.1" />
+            <g class="g-root">
+              <!-- Orbite rotative -->
+              <g class="orbit-ccw" opacity="0.6">
+                <ellipse cx="200" cy="200" rx="175" ry="175" fill="none" stroke="#FAFAFA" stroke-opacity="0.08" stroke-width="1"/>
+                <circle class="satellite" cx="375" cy="200" r="2.5" fill="#FF5A1F"/>
+                <circle class="satellite s2" cx="25" cy="200" r="2" fill="#FAFAFA" fill-opacity="0.7"/>
+              </g>
+              <g class="orbit-cw" opacity="0.5">
+                <ellipse cx="200" cy="200" rx="155" ry="155" fill="none" stroke="#FAFAFA" stroke-opacity="0.06" stroke-width="1" stroke-dasharray="2 6"/>
+                <circle class="satellite s3" cx="200" cy="45" r="2.5" fill="#FF5A1F"/>
+              </g>
 
-            <!-- Outer whisker nodes -->
-            <circle cx="30" cy="30" r="4" fill="#FF5A1F" class="whisker-node" />
-            <circle cx="370" cy="30" r="3.5" fill="#FF5A1F" class="whisker-node-2" />
-            <circle cx="30" cy="370" r="3.5" fill="#FF5A1F" class="whisker-node-3" />
-            <circle cx="370" cy="370" r="4" fill="#FF5A1F" class="whisker-node-4" />
-            <circle cx="40" cy="80" r="3" fill="#FF5A1F" class="whisker-node-5" />
-            <circle cx="360" cy="80" r="3" fill="#FF5A1F" class="whisker-node-6" />
-            <circle cx="80" cy="40" r="3" fill="#FF5A1F" class="whisker-node-7" />
-            <circle cx="320" cy="40" r="2.5" fill="#FF5A1F" class="whisker-node-8" />
-            <circle cx="80" cy="360" r="3" fill="#FF5A1F" class="whisker-node" />
-            <circle cx="320" cy="360" r="2.5" fill="#FF5A1F" class="whisker-node-3" />
+              <!-- Scut hexagonal -->
+              <g class="shield">
+                <polygon points="200,60 320,130 320,270 200,340 80,270 80,130" fill="none" stroke="url(#shieldGrad)" stroke-width="2" stroke-linejoin="round"/>
+                <polygon points="200,105 280,150 280,250 200,295 120,250 120,150" fill="none" stroke="#FF5A1F" stroke-opacity="0.25" stroke-width="1"/>
+              </g>
 
-            <!-- Main X diagonal lines -->
-            <line x1="80" y1="80" x2="320" y2="320" stroke="#FF5A1F" stroke-width="3" opacity="0.7" stroke-linecap="round" />
-            <line x1="320" y1="80" x2="80" y2="320" stroke="#FF5A1F" stroke-width="3" opacity="0.7" stroke-linecap="round" />
+              <!-- Linii de date -->
+              <g stroke="#FF5A1F" stroke-width="1.2" fill="none" stroke-linecap="round">
+                <line class="data-line" x1="200" y1="200" x2="200" y2="110"/>
+                <line class="data-line reverse" x1="200" y1="200" x2="278" y2="155"/>
+                <line class="data-line slow" x1="200" y1="200" x2="278" y2="245"/>
+                <line class="data-line" x1="200" y1="200" x2="200" y2="290"/>
+                <line class="data-line reverse" x1="200" y1="200" x2="122" y2="245"/>
+                <line class="data-line slow" x1="200" y1="200" x2="122" y2="155"/>
+                <line class="data-line reverse" x1="200" y1="110" x2="278" y2="155" stroke-opacity="0.4"/>
+                <line class="data-line slow" x1="278" y1="155" x2="278" y2="245" stroke-opacity="0.4"/>
+                <line class="data-line" x1="278" y1="245" x2="200" y2="290" stroke-opacity="0.4"/>
+                <line class="data-line reverse" x1="200" y1="290" x2="122" y2="245" stroke-opacity="0.4"/>
+                <line class="data-line slow" x1="122" y1="245" x2="122" y2="155" stroke-opacity="0.4"/>
+                <line class="data-line" x1="122" y1="155" x2="200" y2="110" stroke-opacity="0.4"/>
+              </g>
 
-            <!-- Secondary connection lines (center to corners, thinner) -->
-            <line x1="200" y1="200" x2="80" y2="80" stroke="#FF5A1F" stroke-width="1.5" opacity="0.3" />
-            <line x1="200" y1="200" x2="320" y2="80" stroke="#FF5A1F" stroke-width="1.5" opacity="0.3" />
-            <line x1="200" y1="200" x2="80" y2="320" stroke="#FF5A1F" stroke-width="1.5" opacity="0.3" />
-            <line x1="200" y1="200" x2="320" y2="320" stroke="#FF5A1F" stroke-width="1.5" opacity="0.3" />
+              <!-- Halo-uri noduri -->
+              <circle class="node-glow" cx="200" cy="110" r="18" fill="url(#nodeGlowGrad)"/>
+              <circle class="node-glow n2" cx="278" cy="155" r="18" fill="url(#nodeGlowGrad)"/>
+              <circle class="node-glow n3" cx="278" cy="245" r="18" fill="url(#nodeGlowGrad)"/>
+              <circle class="node-glow n4" cx="200" cy="290" r="18" fill="url(#nodeGlowGrad)"/>
+              <circle class="node-glow n5" cx="122" cy="245" r="18" fill="url(#nodeGlowGrad)"/>
+              <circle class="node-glow n6" cx="122" cy="155" r="18" fill="url(#nodeGlowGrad)"/>
 
-            <!-- Traveling particles -->
-            <circle r="3" fill="#FF5A1F" class="particle-1" />
-            <circle r="3" fill="#FF5A1F" class="particle-2" />
-            <circle r="2.5" fill="#FF5A1F" class="particle-3" />
-            <circle r="2.5" fill="#FF5A1F" class="particle-4" />
-            <circle r="2" fill="#FF5A1F" class="particle-5" />
-            <circle r="2" fill="#FF5A1F" class="particle-6" />
+              <!-- Noduri -->
+              <circle class="node" cx="200" cy="110" r="5" fill="#FF5A1F"/>
+              <circle class="node n2" cx="278" cy="155" r="5" fill="#FF5A1F"/>
+              <circle class="node n3" cx="278" cy="245" r="5" fill="#FF5A1F"/>
+              <circle class="node n4" cx="200" cy="290" r="5" fill="#FF5A1F"/>
+              <circle class="node n5" cx="122" cy="245" r="5" fill="#FF5A1F"/>
+              <circle class="node n6" cx="122" cy="155" r="5" fill="#FF5A1F"/>
 
-            <!-- Center glow ring -->
-            <circle cx="200" cy="200" r="24" fill="none" stroke="#FF5A1F" stroke-width="1" class="glow-ring" />
-
-            <!-- 4 Corner nodes -->
-            <circle cx="80" cy="80" r="12" fill="#FF5A1F" class="corner-tl" />
-            <circle cx="80" cy="80" r="5" fill="#FAFAFA" opacity="0.6" class="corner-tl" />
-            <circle cx="320" cy="80" r="12" fill="#FF5A1F" class="corner-tr" />
-            <circle cx="320" cy="80" r="5" fill="#FAFAFA" opacity="0.6" class="corner-tr" />
-            <circle cx="80" cy="320" r="12" fill="#FF5A1F" class="corner-bl" />
-            <circle cx="80" cy="320" r="5" fill="#FAFAFA" opacity="0.6" class="corner-bl" />
-            <circle cx="320" cy="320" r="12" fill="#FF5A1F" class="corner-br" />
-            <circle cx="320" cy="320" r="5" fill="#FAFAFA" opacity="0.6" class="corner-br" />
-
-            <!-- Center node (largest) -->
-            <circle cx="200" cy="200" r="16" fill="#FF5A1F" class="center-node" />
-            <circle cx="200" cy="200" r="7" fill="#FAFAFA" opacity="0.3" class="center-node" />
+              <!-- Hub central -->
+              <circle cx="200" cy="200" r="26" fill="url(#nodeGlowGrad)" opacity="0.9"/>
+              <circle cx="200" cy="200" r="12" fill="#0A0A0A" stroke="#FF5A1F" stroke-width="1.5"/>
+              <circle cx="200" cy="200" r="5" fill="#FAFAFA"/>
+            </g>
           </svg>
         </div>
       </div>
@@ -229,8 +201,8 @@ import Footer from '../components/Footer.astro';
       <div class="max-w-6xl mx-auto px-6">
         <div class="text-center mb-16">
           <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-accent/10 rounded-full mb-6">
-            <svg class="w-4 h-4 text-brand-blue" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
-            <span class="text-brand-blue text-[13px] font-medium">Serviciile noastre</span>
+            <svg class="w-4 h-4 text-brand-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
+            <span class="text-brand-accent text-[13px] font-medium">Serviciile noastre</span>
           </div>
           <h2 class="text-[28px] md:text-[42px] font-medium text-brand-dark">
             Servicii IT complete
@@ -248,12 +220,12 @@ import Footer from '../components/Footer.astro';
             <div class="p-6">
               <div class="flex items-center gap-3 mb-3">
                 <div class="w-9 h-9 bg-brand-accent/10 rounded-lg flex items-center justify-center">
-                  <svg class="w-5 h-5 text-brand-blue" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085"/></svg>
+                  <svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085"/></svg>
                 </div>
-                <h3 class="text-brand-dark font-medium text-[18px] group-hover:text-brand-blue transition-colors">Mentenanță & Suport IT</h3>
+                <h3 class="text-brand-dark font-medium text-[18px] group-hover:text-brand-accent transition-colors">Mentenanță & Suport IT</h3>
               </div>
               <p class="text-brand-steel text-[14px] leading-relaxed mb-4 font-light">Mentenanță preventivă, intervenții rapide și monitorizare permanentă. Sistemele tale funcționează fără întreruperi.</p>
-              <span class="text-brand-blue text-[14px] font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+              <span class="text-brand-accent text-[14px] font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                 Află mai mult <span class="transition-transform group-hover:translate-x-0.5">→</span>
               </span>
             </div>
@@ -455,25 +427,25 @@ import Footer from '../components/Footer.astro';
       <div class="max-w-5xl mx-auto px-6">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div>
-            <p class="text-brand-blue text-[36px] font-semibold leading-none">
+            <p class="text-brand-accent text-[36px] font-semibold leading-none">
               <span class="counter" data-target="150" data-suffix="+">0</span>
             </p>
             <p class="text-brand-steel text-[14px] mt-2 font-normal">clienți activi</p>
           </div>
           <div>
-            <p class="text-brand-blue text-[36px] font-semibold leading-none">
+            <p class="text-brand-accent text-[36px] font-semibold leading-none">
               <span class="counter" data-target="10" data-suffix="+">0</span>
             </p>
             <p class="text-brand-steel text-[14px] mt-2 font-normal">ani experiență</p>
           </div>
           <div>
-            <p class="text-brand-blue text-[36px] font-semibold leading-none">
+            <p class="text-brand-accent text-[36px] font-semibold leading-none">
               <span class="counter" data-target="98" data-suffix="%">0</span>
             </p>
             <p class="text-brand-steel text-[14px] mt-2 font-normal">uptime garantat</p>
           </div>
           <div>
-            <p class="text-brand-blue text-[36px] font-semibold leading-none">
+            <p class="text-brand-accent text-[36px] font-semibold leading-none">
               24/7
             </p>
             <p class="text-brand-steel text-[14px] mt-2 font-normal">suport disponibil</p>

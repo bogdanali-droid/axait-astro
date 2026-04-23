@@ -36,8 +36,8 @@ const ogImage = image.startsWith('http') ? image : `https://axait.ro${image}`;
   <link rel="manifest" href="/site.webmanifest">
   
   <!-- Theme color -->
-  <meta name="theme-color" content="#1A2332">
-  <meta name="msapplication-TileColor" content="#1A2332">
+  <meta name="theme-color" content="#0A0A0A">
+  <meta name="msapplication-TileColor" content="#FF5A1F">
   
   <!-- Open Graph -->
   <meta property="og:type" content={type} />
@@ -202,20 +202,20 @@ const ogImage = image.startsWith('http') ? image : `https://axait.ro${image}`;
   }
 
   ::selection {
-    background: #2563A8;
-    color: #fff;
+    background: #FF5A1F;
+    color: #0A0A0A;
   }
 
   ::-webkit-scrollbar {
     width: 8px;
   }
-  
+
   ::-webkit-scrollbar-track {
-    background: #F4F6F9;
+    background: rgba(255, 255, 255, 0.05);
   }
-  
+
   ::-webkit-scrollbar-thumb {
-    background: #6B8299;
+    background: #FF5A1F;
     border-radius: 4px;
   }
 

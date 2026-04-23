@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="m365bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A0A0A"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+    <linearGradient id="m365cloud" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF5A1F" stop-opacity="0.95"/>
+      <stop offset="100%" style="stop-color:#FF5A1F" stop-opacity="0.55"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#m365bg)"/>
+  <circle cx="130" cy="110" r="170" fill="#FF5A1F" opacity="0.08"/>
+  <circle cx="700" cy="320" r="140" fill="#FF5A1F" opacity="0.06"/>
+  <!-- Cloud icon -->
+  <g transform="translate(260, 110)">
+    <path d="M80 120 C50 120 30 100 30 75 C30 55 45 40 65 38 C70 15 92 0 120 0 C150 0 175 20 180 50 C205 52 225 70 225 95 C225 115 210 130 185 130 L80 130 Z" fill="url(#m365cloud)" stroke="#FF5A1F" stroke-width="2"/>
+    <!-- Four tiles representing M365 apps -->
+    <rect x="75" y="55" width="30" height="30" fill="#FAFAFA" opacity="0.95" rx="3"/>
+    <rect x="110" y="55" width="30" height="30" fill="#FAFAFA" opacity="0.75" rx="3"/>
+    <rect x="75" y="90" width="30" height="30" fill="#FAFAFA" opacity="0.75" rx="3"/>
+    <rect x="110" y="90" width="30" height="30" fill="#FAFAFA" opacity="0.55" rx="3"/>
+  </g>
+  <!-- Accent dots -->
+  <circle cx="180" cy="260" r="4" fill="#FF5A1F" opacity="0.5"/>
+  <circle cx="620" cy="140" r="5" fill="#FF5A1F" opacity="0.4"/>
+  <circle cx="150" cy="330" r="3" fill="#FF5A1F" opacity="0.6"/>
+  <text x="400" y="330" text-anchor="middle" fill="#FAFAFA" font-family="system-ui" font-size="22" font-weight="500" opacity="0.95">Microsoft 365 Business</text>
+  <text x="400" y="358" text-anchor="middle" fill="#FAFAFA" font-family="system-ui" font-size="13" opacity="0.4">AXA IT Blog</text>
+</svg>

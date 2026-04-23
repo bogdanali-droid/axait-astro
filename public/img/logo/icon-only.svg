@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" class="axa-monogram">
-  <title>AXA IT Monogram</title>
-  <defs>
-    <style>
-      .axa-mono-bg { fill: #0A0A0A; }
-      .axa-mono-text { font-family: 'Space Grotesk', sans-serif; font-size: 48px; font-weight: 700; letter-spacing: 0.03em; fill: #FFFFFF; }
-      .axa-mono-line { stroke: #FFFFFF; stroke-width: 1.5; }
-      .axa-mono-dot { fill: #FF5A1F; stroke: #FFFFFF; stroke-width: 1.2; }
-    </style>
-  </defs>
-  <rect class="axa-mono-bg" width="120" height="120" rx="12"></rect>
-  <text class="axa-mono-text" x="60" y="65" text-anchor="middle">AXA</text>
-  <line class="axa-mono-line" x1="15" y1="80" x2="105" y2="80"></line>
-  <circle class="axa-mono-dot" cx="85" cy="80" r="4"></circle>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <title>AXA Monogram — ink</title>
+  <rect x="0" y="0" width="256" height="256" rx="20" fill="#0A0A0A"/>
+  <text x="128" y="145" text-anchor="middle" fill="#FFFFFF"
+    font-family="'Space Grotesk', 'Geist', 'Inter', sans-serif"
+    font-size="72" font-weight="700" letter-spacing="2">AXA</text>
+  <line x1="50" y1="185" x2="206" y2="185" stroke="#FFFFFF" stroke-width="3"/>
+  <circle cx="180" cy="185" r="7" fill="#FF5A1F" stroke="#FFFFFF" stroke-width="2"/>
 </svg>

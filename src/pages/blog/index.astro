@@ -4,6 +4,11 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 
 const posts = [
+  { slug: "microsoft-365-pentru-firme-ghid", title: "Microsoft 365 pentru firme: De ce migrează toată lumea în 2026", desc: "Beneficii reale, costuri transparente și motivele pentru care Microsoft 365 Business este alegerea preferată a firmelor din România în 2026.", date: "2026-04-20", category: "Cloud", readTime: "7", image: "/img/blog/microsoft-365-pentru-firme-ghid.svg" },
+  { slug: "nis2-directiva-ue-conformitate", title: "NIS2: Ce înseamnă noua directivă UE pentru firma ta", desc: "Ghid practic despre directiva NIS2: cine trebuie să se conformeze, sancțiuni, pași concreți și checklist pentru audit în 2026.", date: "2026-04-15", category: "Securitate", readTime: "8", image: "/img/blog/nis2-directiva-ue-conformitate.svg" },
+  { slug: "ai-unelte-business-it-2026", title: "AI în IT business: 5 unelte care economisesc timp în 2026", desc: "Cele mai utile aplicații AI pentru firme în 2026: Copilot, ChatGPT Enterprise, chatboturi și automatizări, cu exemple reale de ROI.", date: "2026-04-10", category: "AI", readTime: "6", image: "/img/blog/ai-unelte-business-it-2026.svg" },
+  { slug: "plan-disaster-recovery-ghid", title: "Plan de Disaster Recovery: Cum eviți pierderi de milioane", desc: "Ghid practic de Disaster Recovery: RTO vs RPO, tipuri de dezastre, testare DR, cloud failover și documentare pentru firme B2B.", date: "2026-04-05", category: "Backup", readTime: "7", image: "/img/blog/plan-disaster-recovery-ghid.svg" },
+  { slug: "remote-work-setup-securizat", title: "Work from home securizat: Setup IT complet pentru echipe remote", desc: "Ghid complet pentru setup remote work securizat în 2026: VPN, MFA, MDM, endpoint security, politici BYOD și recomandări hardware pentru firme.", date: "2026-04-02", category: "Securitate", readTime: "6", image: "/img/blog/remote-work-setup-securizat.svg" },
   { slug: "de-ce-mentenanta-preventiva-it", title: "De ce mentenanța preventivă IT economisește bani pe termen lung", desc: "Afla cum un plan de mentenanță previne blocajele costisitoare și protejează investițiile tale IT.", date: "2026-04-01", category: "Mentenanță", readTime: "5", image: "/img/blog/mentenanta.svg" },
   { slug: "ghid-securitate-cibernetica-imm", title: "Ghid complet de securitate cibernetică pentru IMM-uri", desc: "Cele mai importante măsuri de protecție pe care orice firmă mică trebuie să le implementeze în 2026.", date: "2026-03-25", category: "Securitate", readTime: "7", image: "/img/blog/securitate.svg" },
   { slug: "cloud-vs-server-local", title: "Cloud vs. Server Local: Ce alegi pentru afacerea ta?", desc: "Comparație detaliată între infrastructura cloud și serverele on-premise. Avantaje, dezavantaje și costuri reale.", date: "2026-03-18", category: "Cloud", readTime: "6", image: "/img/blog/cloud.svg" },
@@ -48,17 +53,17 @@ const posts = [
               </div>
               <div class="p-6">
                 <div class="flex items-center gap-3 mb-3">
-                  <span class="bg-brand-accent/10 text-brand-blue text-[11px] font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">{post.category}</span>
+                  <span class="bg-brand-accent/10 text-brand-accent text-[11px] font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">{post.category}</span>
                   <span class="text-brand-steel text-[12px]">{post.readTime} min</span>
                 </div>
                 <h2 class:list={[
-                  "font-medium text-brand-dark group-hover:text-brand-blue transition-colors leading-snug",
+                  "font-medium text-brand-dark group-hover:text-brand-accent transition-colors leading-snug",
                   i === 0 ? "text-[22px]" : "text-[17px]"
                 ]}>{post.title}</h2>
                 <p class="mt-2 text-brand-steel text-[14px] font-light leading-relaxed line-clamp-2">{post.desc}</p>
                 <div class="mt-4 flex items-center justify-between">
                   <span class="text-brand-steel text-[12px]">{new Date(post.date).toLocaleDateString('ro-RO', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
-                  <span class="text-brand-blue text-[13px] font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                  <span class="text-brand-accent text-[13px] font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
                     Citește
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
                   </span>
@@ -74,7 +79,7 @@ const posts = [
       <div class="max-w-3xl mx-auto px-6 text-center">
         <h2 class="text-[24px] font-medium text-brand-dark mb-4">Ai nevoie de ajutor cu infrastructura IT?</h2>
         <p class="text-brand-steel text-[16px] font-light mb-8">Echipa AXA IT te poate ajuta cu orice provocare tehnologica. Solicita o consultatie gratuita.</p>
-        <a href="/contact" class="inline-flex items-center gap-2 bg-brand-accent hover:bg-brand-accent/90 text-white font-medium text-[15px] px-7 py-3.5 rounded-full transition-all shadow-sm shadow-brand-blue/20">
+        <a href="/contact" class="inline-flex items-center gap-2 bg-brand-accent hover:bg-brand-accent/90 text-white font-medium text-[15px] px-7 py-3.5 rounded-full transition-all shadow-sm shadow-brand-accent/20">
           Solicita o consultatie
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/></svg>
         </a>

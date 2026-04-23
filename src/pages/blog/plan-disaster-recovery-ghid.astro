@@ -1,0 +1,123 @@
+---
+import BlogPost from '../../layouts/BlogPost.astro';
+---
+
+<BlogPost title="Plan de Disaster Recovery: Cum eviti pierderi de milioane" description="Ghid practic de Disaster Recovery: RTO vs RPO, tipuri de dezastre, testare DR, cloud failover si documentare pentru firme B2B." date="2026-04-05" author="Echipa AXA IT" category="Backup" image="/img/blog/plan-disaster-recovery-ghid.svg" readTime="7">
+
+<h2>De ce majoritatea firmelor descoperă DR-ul prea târziu</h2>
+
+<p>Un plan de <strong>Disaster Recovery (DR)</strong> nu este același lucru cu backup-ul. Backup-ul înseamnă să ai o copie a datelor. DR înseamnă să poți <strong>opera în continuare</strong> după ce serverele, datele sau sediul devin indisponibile.</p>
+
+<p>Un studiu internațional arată că 60% dintre firmele care suferă un incident major fără plan DR își închid porțile în mai puțin de 12 luni. În România, problema este agravată de faptul că multe firme cred că "avem backup, suntem OK" — până în ziua în care încearcă să-l restaureze.</p>
+
+<h2>RTO vs RPO: cei doi parametri critici</h2>
+
+<p>Orice discuție serioasă de DR începe cu acești doi termeni. Trebuie să-i înțelegi înainte de a cumpăra orice soluție.</p>
+
+<h3>RTO — Recovery Time Objective</h3>
+<p><strong>Cât timp accepți ca sistemul să fie indisponibil</strong> înainte să ai pierderi inacceptabile. RTO de 4 ore înseamnă că ai nevoie să fii operațional în maxim 4 ore după incident.</p>
+
+<h3>RPO — Recovery Point Objective</h3>
+<p><strong>Cât de multe date accepți să pierzi</strong>. RPO de 1 oră înseamnă că backup-urile trebuie să fie mai recente de 1 oră — altfel pierderea e inacceptabilă.</p>
+
+<p>Ambele se stabilesc <strong>per sistem</strong>, nu global. Emailul poate tolera RTO de 2 ore. Sistemul de facturare, poate 30 de minute. Server-ul de producție în manufactură, poate 10 minute.</p>
+
+<h2>Tipuri de dezastre care trebuie anticipate</h2>
+
+<p>Un plan DR complet acoperă cel puțin aceste categorii:</p>
+
+<ul>
+  <li><strong>Atac cibernetic</strong> — ransomware, wiper, DDoS prelungit</li>
+  <li><strong>Defecțiuni hardware</strong> — server mort, NAS crăpat, disk array corupt</li>
+  <li><strong>Erori umane</strong> — ștergere accidentală, config greșit în producție</li>
+  <li><strong>Dezastre fizice</strong> — incendiu, inundație, furt, cutremur</li>
+  <li><strong>Pierderea furnizorului</strong> — cloud provider offline, ISP down prelungit</li>
+  <li><strong>Compromis la nivel de furnizor</strong> — supply chain attack</li>
+</ul>
+
+<h2>Componentele unui plan DR funcțional</h2>
+
+<h3>1. Inventar și clasificare sisteme</h3>
+<p>Listă completă: servere, aplicații, baze de date, stocare, rețea. Fiecare primește o <strong>criticalitate</strong> (Tier 1 = esențial, Tier 3 = poate aștepta zile).</p>
+
+<h3>2. Analiza de impact (BIA)</h3>
+<p>Pentru fiecare sistem: cât costă o oră de downtime? Cât costă 1 zi? Cine este afectat? Această analiză justifică investiția.</p>
+
+<h3>3. Strategia de recuperare</h3>
+<ul>
+  <li><strong>Backup clasic</strong> — copii pe storage secundar și offsite, restaurare manuală (RTO ore-zile)</li>
+  <li><strong>Replicare la cald</strong> — copie sincronizată pe alt site, pornire rapidă (RTO minute-ore)</li>
+  <li><strong>Cloud failover</strong> — infrastructura se pornește on-demand în Azure/AWS (RTO minute)</li>
+  <li><strong>High Availability activ-activ</strong> — sisteme rulează în paralel, failover instant (RTO secunde)</li>
+</ul>
+
+<p>Nu ai nevoie de HA pentru tot. Alege strategia în funcție de criticalitate și buget.</p>
+
+<h3>4. Procedurile operaționale</h3>
+<p>Documentație pas cu pas: cine face ce, în ce ordine, cu ce parole, pe ce echipament. Proceduri scrise astfel încât <strong>un tehnician nou să le poată executa</strong> la ora 3 dimineața.</p>
+
+<h3>5. Contact list și escaladare</h3>
+<p>Numere de telefon verificate: furnizori, management, parteneri IT, autorități (DNSC, poliție cyber). Datele nu trebuie să fie doar în email — email-ul poate fi indisponibil.</p>
+
+<h2>Cloud failover: opțiunea preferată în 2026</h2>
+
+<p>Pentru firmele medii, <strong>DR-as-a-Service</strong> în cloud a devenit standardul. Motivele sunt practice:</p>
+
+<ul>
+  <li>Nu plătești hardware dublat care stă inactiv</li>
+  <li>Plătești doar stocarea + resurse minime în stand-by</li>
+  <li>În caz de dezastru, infrastructura virtuală pornește în cloud în minute</li>
+  <li>Testabil periodic fără impact asupra producției</li>
+  <li>Scalabil — adaugi/scoți sisteme fără investiție hardware</li>
+</ul>
+
+<p>Furnizori verificați: Azure Site Recovery, AWS Elastic DR, Veeam Cloud Connect, Zerto.</p>
+
+<h2>Testarea: punctul unde majoritatea firmelor cad</h2>
+
+<p>Un plan DR netestat nu este un plan — este o speranță. Testele minime pe care le recomandăm:</p>
+
+<ul>
+  <li><strong>Test lunar de backup</strong> — restaurare fișiere aleatorii, verificare integritate</li>
+  <li><strong>Test trimestrial de sistem</strong> — pornire completă a unui server din backup</li>
+  <li><strong>Test semestrial de failover</strong> — comutare efectivă la site-ul secundar</li>
+  <li><strong>Exercițiu anual tabletop</strong> — simulare cu toată echipa, scenariu realist</li>
+  <li><strong>Full DR drill anual</strong> — simulare completă, inclusiv comunicarea cu clienții</li>
+</ul>
+
+<p>Fiecare test produce un raport cu lecții învățate, iar planul se actualizează. Un plan scris acum 3 ani și niciodată testat nu valorează nimic.</p>
+
+<h2>Cost vs beneficiu: cum justifici investiția</h2>
+
+<p>Folosește o formulă simplă pentru managementul tău:</p>
+
+<ul>
+  <li><strong>Cost downtime/oră</strong> = (salarii/oră × angajați blocați) + (venit pierdut/oră) + (penalizări contractuale)</li>
+  <li><strong>Probabilitate incident grav/an</strong> = între 5% și 25% în funcție de sector și maturitate IT</li>
+  <li><strong>Cost anual așteptat</strong> = cost downtime × durată medie × probabilitate</li>
+</ul>
+
+<p>Pentru o firmă de 50 de oameni care operează 8 ore/zi, <strong>o zi de downtime ușor costă peste 30.000€</strong>. Un plan DR bine făcut costă între 3.000€ și 15.000€/an — se amortizează la primul incident evitat.</p>
+
+<h2>Documentare: DR-ul pe hârtie care funcționează</h2>
+
+<p>Documentele esențiale pe care trebuie să le ai:</p>
+
+<ul>
+  <li><strong>DR Plan</strong> — documentul master, cu roluri și scenarii</li>
+  <li><strong>Runbook-uri</strong> — proceduri tehnice pas cu pas pentru fiecare sistem</li>
+  <li><strong>Liste de contact</strong> — actualizate trimestrial</li>
+  <li><strong>Hartă infrastructură</strong> — diagramă actualizată a rețelei și dependențelor</li>
+  <li><strong>Registru de teste</strong> — ce s-a testat, când, cu ce rezultat</li>
+  <li><strong>Copii offline</strong> — documentele trebuie să fie accesibile și dacă sistemele sunt down</li>
+</ul>
+
+<h2>Concluzie</h2>
+
+<p>Un plan de Disaster Recovery modern nu este un document pus într-un sertar, ci un <strong>proces viu</strong> care protejează continuitatea afacerii. Cu cloud failover și instrumente moderne, DR-ul de calitate este accesibil și pentru firme medii — nu mai este exclusiv pentru corporate.</p>
+
+<p>Întrebarea nu este "dacă" va apărea un incident, ci <strong>"când"</strong>. Firmele care au testat scenariul revin la normal în ore. Cele care n-au testat pierd săptămâni și, uneori, clienți-cheie.</p>
+
+<p>Echipa AXA IT proiectează, implementează și testează planuri DR complete pentru firme B2B. Contactează-ne pentru o evaluare gratuită a capacității actuale de recuperare.</p>
+
+</BlogPost>

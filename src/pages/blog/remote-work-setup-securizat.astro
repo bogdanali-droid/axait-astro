@@ -1,0 +1,134 @@
+---
+import BlogPost from '../../layouts/BlogPost.astro';
+---
+
+<BlogPost title="Work from home securizat: Setup IT complet pentru echipe remote" description="Ghid complet pentru setup remote work securizat in 2026: VPN, MFA, MDM, endpoint security, politici BYOD si recomandari hardware pentru firme." date="2026-04-02" author="Echipa AXA IT" category="Securitate" image="/img/blog/remote-work-setup-securizat.svg" readTime="6">
+
+<h2>Remote work nu mai este temporar — este o arhitectură IT</h2>
+
+<p>În 2026, majoritatea firmelor B2B au echipe hibride sau complet remote. Problema: multe setup-uri au fost <strong>improvizate rapid în 2020</strong> și nu au fost niciodată redesigna corect. Rezultatul — VPN-uri haotice, laptopuri personale cu date de business, lipsă vizibilitate asupra securității.</p>
+
+<p>Un setup remote bine gândit nu este doar "laptop + VPN". Este o <strong>arhitectură în straturi</strong> care protejează datele, indiferent unde se află angajatul.</p>
+
+<h2>Stratul 1: Identitate și acces (IAM)</h2>
+
+<p>Nimic nu funcționează fără o bază solidă de identitate. Componentele obligatorii:</p>
+
+<ul>
+  <li><strong>Single Sign-On (SSO)</strong> — un singur set de credențiale pentru toate aplicațiile (Azure AD, Okta)</li>
+  <li><strong>MFA obligatoriu</strong> — pentru toți, nu doar pentru admin; preferabil app de autentificare, nu SMS</li>
+  <li><strong>Conditional Access</strong> — reguli care blochează autentificările din țări neobișnuite, IP-uri suspecte, dispozitive necunoscute</li>
+  <li><strong>Passwordless acolo unde se poate</strong> — Windows Hello, FIDO2 keys, certificate</li>
+  <li><strong>Privileged Access Management (PAM)</strong> — conturi cu drepturi elevate, izolate</li>
+</ul>
+
+<p>O firmă care implementează corect MFA și Conditional Access reduce probabilitatea de compromitere a contului cu <strong>peste 99%</strong>, conform datelor publicate de Microsoft.</p>
+
+<h2>Stratul 2: Conectivitate sigură</h2>
+
+<h3>VPN clasic vs ZTNA</h3>
+
+<p>VPN-ul tradițional IPSec/SSL funcționează, dar are probleme: latență, complexitate, acces prea larg după conectare. Alternativa modernă este <strong>Zero Trust Network Access (ZTNA)</strong>.</p>
+
+<ul>
+  <li><strong>VPN</strong> — oferă acces la întreaga rețea după autentificare; potrivit pentru backup și cazuri punctuale</li>
+  <li><strong>ZTNA</strong> — acces granular doar la aplicația specifică; verificare continuă a contextului (Zscaler, Cloudflare Access, Perimeter 81)</li>
+</ul>
+
+<p>Pentru echipe remote mari, ZTNA este recomandat. Aplicațiile interne devin accesibile <strong>doar utilizatorilor autorizați</strong>, fără să expui toată rețeaua.</p>
+
+<h3>DNS filtering</h3>
+<p>Un DNS sigur (Cisco Umbrella, NextDNS, Cloudflare Gateway) blochează accesul la domenii cunoscute ca malițioase <strong>înainte de orice conexiune</strong>. Protecție valoroasă, cost mic.</p>
+
+<h2>Stratul 3: Endpoint security</h2>
+
+<p>Laptopul angajatului este noul perimetru. Nu poți depinde doar de firewall-ul de la birou.</p>
+
+<ul>
+  <li><strong>EDR modern</strong> — Microsoft Defender for Endpoint, CrowdStrike, SentinelOne; obligatoriu, nu antivirus clasic</li>
+  <li><strong>Disk encryption</strong> — BitLocker pe Windows, FileVault pe macOS; impus prin politică</li>
+  <li><strong>Patch management automat</strong> — nu lăsa update-urile la latitudinea userului</li>
+  <li><strong>USB control</strong> — blocare stickuri neautorizate, device control policies</li>
+  <li><strong>Application control</strong> — liste albe, blocare instalări nesupravegheate</li>
+</ul>
+
+<h2>Stratul 4: Mobile Device Management (MDM)</h2>
+
+<p>MDM-ul (Microsoft Intune, Jamf, Kandji) este <strong>coloana vertebrală</strong> a unui setup remote profesional. Ce-ți permite:</p>
+
+<ul>
+  <li>Înrolare automată a laptopurilor noi, cu politici deja aplicate</li>
+  <li>Aplicare forțată a encripției, MFA, patch-urilor</li>
+  <li>Configurare Wi-Fi, VPN, certificate, email de la distanță</li>
+  <li>Ștergere selectivă la demisii sau pierdere echipament</li>
+  <li>Raportare compliance — câte dispozitive sunt conforme, care nu</li>
+</ul>
+
+<p>Fără MDM, nu știi ce au angajații pe laptopuri. Cu MDM, ai control fără a avea nevoie de acces fizic la mașini.</p>
+
+<h2>Stratul 5: Politici BYOD și workspace izolat</h2>
+
+<p>Nu toți angajații primesc laptop de la firmă. Pentru <strong>BYOD (Bring Your Own Device)</strong>, recomandăm separarea datelor:</p>
+
+<ul>
+  <li><strong>Cloud PC (Windows 365, AWS Workspaces)</strong> — un desktop virtual în cloud; laptopul personal devine doar terminal</li>
+  <li><strong>Containere de aplicații</strong> — Intune MAM, Android Work Profile — datele de business izolate de cele personale</li>
+  <li><strong>Virtualizare browser</strong> — pentru acces la aplicații web critice, fără a atinge endpointul</li>
+</ul>
+
+<p>Avantajul: angajatul păstrează dispozitivul personal curat, iar firma nu are date expuse pe hardware necontrolat. La ieșire, ștergi doar containerul / profilul, nu "formatezi" laptopul personal.</p>
+
+<h2>Hardware recomandat pentru echipe remote</h2>
+
+<h3>Laptop companie (setup B2B)</h3>
+<ul>
+  <li><strong>Business line</strong> — Lenovo ThinkPad, Dell Latitude, HP EliteBook, Apple MacBook Pro</li>
+  <li><strong>CPU modern</strong> — Intel vPro sau AMD Ryzen Pro pentru management la distanță</li>
+  <li><strong>16 GB RAM minim</strong> (32 GB pentru developeri, designeri)</li>
+  <li><strong>SSD NVMe 512 GB+</strong> — pentru performanță și durabilitate</li>
+  <li><strong>TPM 2.0 și BitLocker activ</strong> — obligatoriu</li>
+</ul>
+
+<h3>Accesorii care fac diferența</h3>
+<ul>
+  <li><strong>FIDO2 key</strong> (YubiKey, Feitian) — pentru MFA rezistent la phishing</li>
+  <li><strong>Cameră webcam + microfon bun</strong> — apelurile cu clienții sunt reprezentarea firmei</li>
+  <li><strong>Monitor extern + dock</strong> — productivitate dublată</li>
+  <li><strong>Privacy screen</strong> — pentru lucru în spații publice</li>
+  <li><strong>Router prosumer la domiciliu</strong> — în sarcina firmei pentru poziții-cheie</li>
+</ul>
+
+<h2>Politici scrise: partea plictisitoare, dar critică</h2>
+
+<p>Tehnologia fără politică produce haos. Documentele minime necesare:</p>
+
+<ul>
+  <li><strong>Remote Work Policy</strong> — ce e permis/interzis, responsabilitățile angajatului</li>
+  <li><strong>Acceptable Use Policy (AUP)</strong> — cum se folosesc resursele IT</li>
+  <li><strong>BYOD Policy</strong> — dacă se permite, cu ce condiții</li>
+  <li><strong>Data Classification</strong> — ce date pot ieși din infrastructură, ce nu</li>
+  <li><strong>Incident Response</strong> — cum raportează angajatul o suspiciune</li>
+</ul>
+
+<p>Aceste documente trebuie semnate la angajare și recitite anual.</p>
+
+<h2>Greșeli frecvente în setup-ul remote</h2>
+
+<ul>
+  <li>VPN care dă acces la <strong>tot ce este în rețea</strong>, fără segmentare</li>
+  <li>Laptopuri fără EDR, cu antivirus gratuit</li>
+  <li>Fără MDM — dispozitivele sunt "invizibile" pentru IT</li>
+  <li>MFA doar pentru admin, restul pe parolă simplă</li>
+  <li>Date salvate local pe laptop, fără OneDrive/Google Drive sync</li>
+  <li>Parole partajate pe chat — fără password manager corporativ</li>
+</ul>
+
+<h2>Concluzie</h2>
+
+<p>Un setup remote work securizat în 2026 nu este mai scump decât soluțiile improvizate — este <strong>mai ieftin pe termen lung</strong>. Costul unui singur incident de securitate (ransomware, data leak, compromitere cont) depășește cu mult investiția inițială în identitate, MDM și EDR.</p>
+
+<p>Firmele care tratează remote work ca pe o arhitectură proiectată, nu ca pe o extensie ad-hoc a biroului, atrag <strong>angajați mai buni</strong>, pierd mai puțin timp pe incidente și trec ușor de audituri (ISO 27001, NIS2).</p>
+
+<p>AXA IT implementează infrastructuri complete pentru echipe remote și hibride: identitate, MDM, ZTNA, endpoint. Contactează-ne pentru un audit al setupului actual și recomandări concrete.</p>
+
+</BlogPost>

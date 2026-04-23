@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
   <defs>
     <linearGradient id="bg8" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#1A2332"/>
+      <stop offset="0%" style="stop-color:#0A0A0A"/>
       <stop offset="100%" style="stop-color:#dc2626"/>
     </linearGradient>
   </defs>
@@ -9,7 +9,7 @@
   <circle cx="300" cy="500" r="200" fill="#ef4444" opacity="0.05"/>
   <!-- Email envelope -->
   <g transform="translate(450, 130)">
-    <rect x="0" y="40" width="300" height="200" rx="12" fill="#1A2332" stroke="#ef4444" stroke-width="2" opacity="0.8"/>
+    <rect x="0" y="40" width="300" height="200" rx="12" fill="#0A0A0A" stroke="#ef4444" stroke-width="2" opacity="0.8"/>
     <path d="M0 52 L150 160 L300 52" fill="none" stroke="#ef4444" stroke-width="2" opacity="0.6"/>
     <!-- Warning triangle -->
     <g transform="translate(110, 100)">

@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 120" width="600" height="120" class="axa-logo">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" width="600" height="200">
   <title>AXA IT Logo — Dark</title>
-  <defs>
-    <style>
-      .axa-word { font-family: 'Space Grotesk', sans-serif; font-size: 56px; font-weight: 700; letter-spacing: 0.03em; }
-      .axa-accent { fill: #FF5A1F; }
-      .axa-line { stroke: #FFFFFF; stroke-width: 2; }
-      .axa-dot { fill: #FF5A1F; stroke: #FFFFFF; stroke-width: 1.5; }
-      .axa-tag { font-family: 'Space Grotesk', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.4em; text-transform: uppercase; }
-    </style>
-  </defs>
-  <g>
-    <text class="axa-word" x="300" y="55" text-anchor="middle" fill="#FFFFFF">
-      AXA <tspan class="axa-accent">·</tspan> IT
-    </text>
-    <line class="axa-line" x1="60" y1="75" x2="540" y2="75"></line>
-    <circle class="axa-dot" cx="460" cy="75" r="6"></circle>
-    <text class="axa-tag" x="300" y="100" text-anchor="middle" fill="#FF5A1F">ENTERPRISE IT PARTNER</text>
-  </g>
+  <text x="300" y="95" text-anchor="middle" fill="#FFFFFF"
+    font-family="'Space Grotesk', 'Geist', 'Inter', sans-serif"
+    font-size="72" font-weight="700" letter-spacing="2">AXA <tspan fill="#FF5A1F">·</tspan> IT</text>
+  <line x1="125" y1="120" x2="475" y2="120" stroke="#FFFFFF" stroke-width="2"/>
+  <circle cx="400" cy="120" r="6" fill="#FF5A1F" stroke="#FFFFFF" stroke-width="1.5"/>
+  <text x="300" y="155" text-anchor="middle" fill="#FF5A1F"
+    font-family="'Space Grotesk', 'Geist', 'Inter', sans-serif"
+    font-size="13" font-weight="600" letter-spacing="5.2">ENTERPRISE IT PARTNER</text>
 </svg>

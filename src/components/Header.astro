@@ -8,14 +8,14 @@ const { variant = 'light', currentPage = '' } = Astro.props;
 const isDark = variant === 'dark';
 
 const services = [
-  { href: '/servicii/mentenanta-suport-it', label: 'Mentenanță & Suport IT', desc: 'Intervenții rapide, monitorizare 24/7', icon: 'wrench', color: '#2563A8' },
-  { href: '/servicii/retelistică-wifi', label: 'Rețelistică & Wi-Fi', desc: 'Rețele cablate și wireless', icon: 'wifi', color: '#3B8FD4' },
-  { href: '/servicii/cloud-backup', label: 'Cloud & Backup', desc: 'Date sigure, accesibile oriunde', icon: 'cloud', color: '#2563A8' },
-  { href: '/servicii/securitate-supraveghere', label: 'Securitate & Supraveghere', desc: 'Video, acces, automatizări', icon: 'shield', color: '#5BA3DE' },
-  { href: '/servicii/outsourcing-it', label: 'Outsourcing IT', desc: 'Departament IT complet', icon: 'building', color: '#2563A8' },
-  { href: '/servicii/protectie-cibernetica', label: 'Protecție Cibernetică', desc: 'Firewall, antivirus, GDPR', icon: 'lock', color: '#3B8FD4' },
-  { href: '/servicii/virtualizare-servere', label: 'Virtualizare & Servere', desc: 'VMware, Hyper-V, Proxmox', icon: 'server', color: '#2563A8' },
-  { href: '/servicii/consultanta-audit', label: 'Consultanță & Audit', desc: 'Analiză și optimizare IT', icon: 'clipboard', color: '#5BA3DE' },
+  { href: '/servicii/mentenanta-suport-it', label: 'Mentenanță & Suport IT', desc: 'Intervenții rapide, monitorizare 24/7', icon: 'wrench', color: '#FF5A1F' },
+  { href: '/servicii/retelistică-wifi', label: 'Rețelistică & Wi-Fi', desc: 'Rețele cablate și wireless', icon: 'wifi', color: '#FF5A1F' },
+  { href: '/servicii/cloud-backup', label: 'Cloud & Backup', desc: 'Date sigure, accesibile oriunde', icon: 'cloud', color: '#FF5A1F' },
+  { href: '/servicii/securitate-supraveghere', label: 'Securitate & Supraveghere', desc: 'Video, acces, automatizări', icon: 'shield', color: '#FF5A1F' },
+  { href: '/servicii/outsourcing-it', label: 'Outsourcing IT', desc: 'Departament IT complet', icon: 'building', color: '#FF5A1F' },
+  { href: '/servicii/protectie-cibernetica', label: 'Protecție Cibernetică', desc: 'Firewall, antivirus, GDPR', icon: 'lock', color: '#FF5A1F' },
+  { href: '/servicii/virtualizare-servere', label: 'Virtualizare & Servere', desc: 'VMware, Hyper-V, Proxmox', icon: 'server', color: '#FF5A1F' },
+  { href: '/servicii/consultanta-audit', label: 'Consultanță & Audit', desc: 'Analiză și optimizare IT', icon: 'clipboard', color: '#FF5A1F' },
 ];
 ---
 
@@ -83,7 +83,7 @@ const services = [
       ]}>Contact</a>
     </div>
 
-    <a href="/contact" class="hidden md:inline-flex items-center gap-2 bg-brand-accent hover:bg-brand-accent/90 text-white font-medium text-[14px] px-5 py-2.5 rounded-full transition-all shadow-sm shadow-brand-blue/20">
+    <a href="/contact" class="hidden md:inline-flex items-center gap-2 bg-brand-accent hover:bg-brand-accent/90 text-white font-medium text-[14px] px-5 py-2.5 rounded-full transition-all shadow-sm shadow-brand-accent/20">
       Solicită o consultație
     </a>
 
@@ -105,7 +105,7 @@ const services = [
   <div class="flex flex-col h-full overflow-y-auto">
     <nav class="flex flex-col p-6 space-y-2">
       <div class="border-b border-brand-border/30 pb-4 mb-2">
-        <p class="text-brand-blue text-[12px] font-semibold uppercase tracking-wider mb-3">Servicii</p>
+        <p class="text-brand-accent text-[12px] font-semibold uppercase tracking-wider mb-3">Servicii</p>
         {services.map(s => (
           <a href={s.href} class="flex items-center gap-3 py-3 text-brand-steel hover:text-brand-dark transition-colors mobile-menu-link">
             <div class="w-10 h-10 rounded-xl flex items-center justify-center" style={`background: ${s.color}12`}>
@@ -125,9 +125,9 @@ const services = [
           </a>
         ))}
       </div>
-      <a href="/despre" class="py-3 text-[18px] text-brand-dark hover:text-brand-blue font-medium transition-colors mobile-menu-link">Despre noi</a>
-      <a href="/blog" class="py-3 text-[18px] text-brand-dark hover:text-brand-blue font-medium transition-colors mobile-menu-link">Blog</a>
-      <a href="/contact" class="py-3 text-[18px] text-brand-dark hover:text-brand-blue font-medium transition-colors mobile-menu-link">Contact</a>
+      <a href="/despre" class="py-3 text-[18px] text-brand-dark hover:text-brand-accent font-medium transition-colors mobile-menu-link">Despre noi</a>
+      <a href="/blog" class="py-3 text-[18px] text-brand-dark hover:text-brand-accent font-medium transition-colors mobile-menu-link">Blog</a>
+      <a href="/contact" class="py-3 text-[18px] text-brand-dark hover:text-brand-accent font-medium transition-colors mobile-menu-link">Contact</a>
     </nav>
     <div class="mt-auto p-6 border-t border-brand-border/30">
       <a href="/contact" class="mobile-menu-link flex items-center justify-center gap-2 w-full bg-brand-accent hover:bg-brand-accent/90 text-white font-semibold text-[16px] px-6 py-4 rounded-xl transition-all">

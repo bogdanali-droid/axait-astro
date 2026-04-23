@@ -37,7 +37,7 @@ const {
 } = Astro.props;
 
 const a = {
-  blue:    { text: 'text-brand-blue',    bg: 'bg-blue-50',    borderHover: 'hover:border-brand-accent/50', pill: 'bg-blue-50 text-brand-blue',    blob: 'bg-brand-accent/10' },
+  blue:    { text: 'text-brand-accent',    bg: 'bg-blue-50',    borderHover: 'hover:border-brand-accent/50', pill: 'bg-blue-50 text-brand-accent',    blob: 'bg-brand-accent/10' },
   cyan:    { text: 'text-cyan-600',      bg: 'bg-cyan-50',    borderHover: 'hover:border-cyan-300',        pill: 'bg-cyan-50 text-cyan-700',      blob: 'bg-cyan-500/10' },
   violet:  { text: 'text-violet-600',    bg: 'bg-violet-50',  borderHover: 'hover:border-violet-300',      pill: 'bg-violet-50 text-violet-700',  blob: 'bg-violet-500/10' },
   red:     { text: 'text-red-600',       bg: 'bg-red-50',     borderHover: 'hover:border-red-300',         pill: 'bg-red-50 text-red-700',        blob: 'bg-red-500/10' },
@@ -141,7 +141,7 @@ const c = a[accent];
           {i < steps.length - 1 && (
             <div class="hidden md:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-px bg-brand-border" aria-hidden="true"></div>
           )}
-          <div class="w-14 h-14 rounded-2xl bg-brand-accent text-white font-bold text-xl flex items-center justify-center mb-5 shadow-lg shadow-brand-blue/20">
+          <div class="w-14 h-14 rounded-2xl bg-brand-accent text-white font-bold text-xl flex items-center justify-center mb-5 shadow-lg shadow-brand-accent/20">
             {i + 1}
           </div>
           <h3 class="text-brand-dark font-semibold text-xl mb-2">{step.title}</h3>

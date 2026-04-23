@@ -1,17 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
   <defs>
     <linearGradient id="bg6" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#1A2332"/>
+      <stop offset="0%" style="stop-color:#0A0A0A"/>
       <stop offset="100%" style="stop-color:#0369a1"/>
     </linearGradient>
   </defs>
   <rect width="1200" height="600" fill="url(#bg6)"/>
   <!-- Server stack -->
   <g transform="translate(420, 100)">
-    <rect x="0" y="0" width="360" height="60" rx="8" fill="#2563A8" opacity="0.25" stroke="#5BA3DE" stroke-width="1.5"/>
-    <rect x="0" y="80" width="360" height="60" rx="8" fill="#2563A8" opacity="0.2" stroke="#5BA3DE" stroke-width="1.5"/>
-    <rect x="0" y="160" width="360" height="60" rx="8" fill="#2563A8" opacity="0.15" stroke="#5BA3DE" stroke-width="1.5"/>
-    <rect x="0" y="240" width="360" height="60" rx="8" fill="#2563A8" opacity="0.1" stroke="#5BA3DE" stroke-width="1.5"/>
+    <rect x="0" y="0" width="360" height="60" rx="8" fill="#FF5A1F" opacity="0.25" stroke="#FF5A1F" stroke-width="1.5"/>
+    <rect x="0" y="80" width="360" height="60" rx="8" fill="#FF5A1F" opacity="0.2" stroke="#FF5A1F" stroke-width="1.5"/>
+    <rect x="0" y="160" width="360" height="60" rx="8" fill="#FF5A1F" opacity="0.15" stroke="#FF5A1F" stroke-width="1.5"/>
+    <rect x="0" y="240" width="360" height="60" rx="8" fill="#FF5A1F" opacity="0.1" stroke="#FF5A1F" stroke-width="1.5"/>
     <!-- Status dots -->
     <circle cx="30" cy="30" r="5" fill="#10b981" opacity="0.8"/>
     <circle cx="30" cy="110" r="5" fill="#10b981" opacity="0.7"/>

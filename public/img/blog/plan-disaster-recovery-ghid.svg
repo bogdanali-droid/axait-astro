@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="drbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A0A0A"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#drbg)"/>
+  <circle cx="130" cy="280" r="170" fill="#FF5A1F" opacity="0.07"/>
+  <circle cx="680" cy="120" r="140" fill="#FF5A1F" opacity="0.05"/>
+  <!-- Server stack with circular recovery arrow -->
+  <g transform="translate(310, 100)">
+    <!-- Server rack -->
+    <rect x="40" y="30" width="100" height="25" rx="3" fill="#FF5A1F" opacity="0.5" stroke="#FF5A1F" stroke-width="2"/>
+    <circle cx="50" cy="42" r="3" fill="#FAFAFA"/>
+    <circle cx="62" cy="42" r="3" fill="#FAFAFA" opacity="0.7"/>
+    <rect x="40" y="60" width="100" height="25" rx="3" fill="#FF5A1F" opacity="0.35" stroke="#FF5A1F" stroke-width="2"/>
+    <circle cx="50" cy="72" r="3" fill="#FAFAFA"/>
+    <circle cx="62" cy="72" r="3" fill="#FAFAFA" opacity="0.7"/>
+    <rect x="40" y="90" width="100" height="25" rx="3" fill="#FF5A1F" opacity="0.25" stroke="#FF5A1F" stroke-width="2"/>
+    <circle cx="50" cy="102" r="3" fill="#FAFAFA"/>
+    <circle cx="62" cy="102" r="3" fill="#FAFAFA" opacity="0.7"/>
+    <!-- Circular recovery arrow around server -->
+    <path d="M 180 72 A 95 95 0 1 1 0 72" fill="none" stroke="#FF5A1F" stroke-width="4" opacity="0.85"/>
+    <polygon points="0,72 10,62 10,82" fill="#FF5A1F" opacity="0.85"/>
+    <!-- Shield on top -->
+    <path d="M90 -20 L115 -10 L115 15 C115 30 90 40 90 40 C90 40 65 30 65 15 L65 -10 Z" fill="#FAFAFA" opacity="0.9"/>
+    <path d="M80 10 L88 18 L100 5" fill="none" stroke="#FF5A1F" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <!-- Accent dots -->
+  <circle cx="180" cy="180" r="4" fill="#FF5A1F" opacity="0.5"/>
+  <circle cx="620" cy="260" r="5" fill="#FF5A1F" opacity="0.4"/>
+  <circle cx="150" cy="100" r="3" fill="#FF5A1F" opacity="0.6"/>
+  <text x="400" y="330" text-anchor="middle" fill="#FAFAFA" font-family="system-ui" font-size="22" font-weight="500" opacity="0.95">Disaster Recovery</text>
+  <text x="400" y="358" text-anchor="middle" fill="#FAFAFA" font-family="system-ui" font-size="13" opacity="0.4">AXA IT Blog</text>
+</svg>
