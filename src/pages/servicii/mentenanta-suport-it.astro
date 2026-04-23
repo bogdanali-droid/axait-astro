@@ -6,9 +6,37 @@ import ServiceSections from '../../components/ServiceSections.astro';
 
 const description =
   'Mentenanță preventivă, suport IT la distanță și la fața locului, ticketing și monitorizare continuă pentru infrastructura ta.';
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Mentenanță & Suport IT",
+  "serviceType": "IT Maintenance & Support",
+  "description": description,
+  "url": "https://axait.ro/servicii/mentenanta-suport-it",
+  "provider": { "@id": "https://axait.ro/#business" },
+  "areaServed": [
+    { "@type": "City", "name": "București" },
+    { "@type": "Country", "name": "România" }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://axait.ro/" },
+    { "@type": "ListItem", "position": 2, "name": "Servicii", "item": "https://axait.ro/#servicii" },
+    { "@type": "ListItem", "position": 3, "name": "Mentenanță & Suport IT", "item": "https://axait.ro/servicii/mentenanta-suport-it" }
+  ]
+};
 ---
 
 <Layout title="Mentenanță & Suport IT" description={description}>
+  <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
   <Header variant="light" currentPage="/servicii/mentenanta-suport-it" />
   <main>
     <ServiceSections

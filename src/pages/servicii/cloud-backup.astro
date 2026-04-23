@@ -6,9 +6,37 @@ import ServiceSections from '../../components/ServiceSections.astro';
 
 const description =
   'Backup automatizat, planuri de disaster recovery, migrări cloud și conformitate GDPR — datele tale accesibile și protejate.';
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Cloud & Backup",
+  "serviceType": "Cloud & Backup IT",
+  "description": description,
+  "url": "https://axait.ro/servicii/cloud-backup",
+  "provider": { "@id": "https://axait.ro/#business" },
+  "areaServed": [
+    { "@type": "City", "name": "București" },
+    { "@type": "Country", "name": "România" }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://axait.ro/" },
+    { "@type": "ListItem", "position": 2, "name": "Servicii", "item": "https://axait.ro/#servicii" },
+    { "@type": "ListItem", "position": 3, "name": "Cloud & Backup", "item": "https://axait.ro/servicii/cloud-backup" }
+  ]
+};
 ---
 
 <Layout title="Cloud & Backup" description={description}>
+  <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
   <Header variant="light" currentPage="/servicii/cloud-backup" />
   <main>
     <ServiceSections
