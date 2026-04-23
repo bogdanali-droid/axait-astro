@@ -9,16 +9,16 @@ export default {
       },
       colors: {
         brand: {
-          accent: '#FF5A1F',
           ink: '#0A0A0A',
           paper: '#FAFAFA',
-          dark: '#0A0A0A',
-          light: '#FAFAFA',
-          muted: 'rgba(10, 10, 10, 0.55)',
-          border: '#D0D8E0',
+          accent: '#FF5A1F',
           blue: '#2563A8',
           node: '#5BA3DE',
+          muted: 'rgba(10, 10, 10, 0.55)',
           steel: '#6B8299',
+          light: '#FAFAFA',
+          dark: '#0A0A0A',
+          border: '#D0D8E0',
         }
       },
     },
