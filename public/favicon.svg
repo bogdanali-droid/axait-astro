@@ -1,19 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <rect width="512" height="512" rx="96" fill="#0A0A0A"/>
-  <!-- Outer hexagon -->
-  <polygon points="256,72 432,168 432,344 256,440 80,344 80,168"
-           fill="none" stroke="#FF5A1F" stroke-width="20" stroke-linejoin="round"/>
-  <!-- Inner hexagon -->
-  <polygon points="256,140 372,202 372,310 256,372 140,310 140,202"
-           fill="none" stroke="#FF5A1F" stroke-width="8" opacity="0.45"/>
-  <!-- Corner nodes -->
-  <circle cx="256" cy="72" r="24" fill="#FF5A1F"/>
-  <circle cx="432" cy="168" r="24" fill="#FF5A1F"/>
-  <circle cx="432" cy="344" r="24" fill="#FF5A1F"/>
-  <circle cx="256" cy="440" r="24" fill="#FF5A1F"/>
-  <circle cx="80" cy="344" r="24" fill="#FF5A1F"/>
-  <circle cx="80" cy="168" r="24" fill="#FF5A1F"/>
-  <!-- Hub central -->
-  <circle cx="256" cy="256" r="52" fill="#FF5A1F"/>
-  <circle cx="256" cy="256" r="22" fill="#FAFAFA"/>
+  <rect width="512" height="512" fill="#0A0A0A" rx="96"/>
+  <text x="256" y="260" text-anchor="middle" fill="#FFFFFF"
+    font-family="'Space Grotesk', 'Geist', 'Inter', sans-serif"
+    font-size="130" font-weight="700" letter-spacing="4"
+    style="text-transform: uppercase;">AXA</text>
+  <line x1="136" y1="305" x2="376" y2="305" stroke="#FFFFFF" stroke-width="6"/>
+  <circle cx="326" cy="305" r="12" fill="#FF5A1F" stroke="#FFFFFF" stroke-width="3"/>
+  <text x="256" y="410" text-anchor="middle" fill="#FF5A1F"
+    font-family="'Space Grotesk', 'Geist', 'Inter', sans-serif"
+    font-size="70" font-weight="700" letter-spacing="3">IT</text>
 </svg>
