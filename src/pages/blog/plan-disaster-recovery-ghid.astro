@@ -1,8 +1,55 @@
 ---
 import BlogPost from '../../layouts/BlogPost.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Care este diferența dintre RTO și RPO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RTO (Recovery Time Objective) definește cât timp accepți ca sistemul să fie indisponibil înainte de pierderi inacceptabile, iar RPO (Recovery Point Objective) definește câte date accepți să pierzi — altfel spus, cât de recente trebuie să fie backup-urile. Ambele se stabilesc per sistem, nu global."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Un backup este același lucru cu un plan de Disaster Recovery?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nu. Backup-ul înseamnă o copie a datelor, în timp ce DR înseamnă capacitatea de a opera în continuare după ce serverele, datele sau sediul devin indisponibile. Un plan DR complet include proceduri, runbook-uri, contacte, test periodic și strategie de recuperare pentru fiecare sistem critic."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Cât de des trebuie testat un plan de Disaster Recovery?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Recomandăm test lunar de backup (restaurare fișiere aleatorii), test trimestrial de sistem (pornire server din backup), test semestrial de failover, exercițiu anual tabletop și un full DR drill anual. Un plan netestat nu este un plan — este o speranță."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Cât costă un plan DR pentru o firmă medie?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pentru o firmă de 50 de oameni, un plan DR bine făcut costă între 3.000€ și 15.000€/an, în funcție de RTO/RPO și complexitatea infrastructurii. O singură zi de downtime poate costa peste 30.000€, așa că investiția se amortizează de regulă la primul incident evitat."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Este cloud failover-ul o opțiune potrivită pentru IMM-uri?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Da. DR-as-a-Service în Azure Site Recovery, AWS Elastic DR, Veeam Cloud Connect sau Zerto a devenit standardul pentru firmele medii: plătești doar stocarea plus resurse minime în stand-by, iar în caz de dezastru infrastructura pornește în minute, scalabil fără investiție hardware."
+      }
+    }
+  ]
+};
 ---
 
-<BlogPost title="Plan de Disaster Recovery: Cum eviti pierderi de milioane" description="Ghid practic de Disaster Recovery: RTO vs RPO, tipuri de dezastre, testare DR, cloud failover si documentare pentru firme B2B." date="2026-04-05" author="Echipa AXA IT" category="Backup" image="/img/blog/plan-disaster-recovery-ghid.svg" readTime="7">
+<BlogPost title="Plan de Disaster Recovery: Cum eviti pierderi de milioane" description="Ghid practic de Disaster Recovery: RTO vs RPO, tipuri de dezastre, testare DR, cloud failover si documentare pentru firme B2B." date="2026-04-05" author="Echipa AXA IT" category="Backup" image="/img/blog/plan-disaster-recovery-ghid.svg" readTime="7" extraSchemas={[faqSchema]}>
 
 <h2>De ce majoritatea firmelor descoperă DR-ul prea târziu</h2>
 
@@ -119,5 +166,14 @@ import BlogPost from '../../layouts/BlogPost.astro';
 <p>Întrebarea nu este "dacă" va apărea un incident, ci <strong>"când"</strong>. Firmele care au testat scenariul revin la normal în ore. Cele care n-au testat pierd săptămâni și, uneori, clienți-cheie.</p>
 
 <p>Echipa AXA IT proiectează, implementează și testează planuri DR complete pentru firme B2B. Contactează-ne pentru o evaluare gratuită a capacității actuale de recuperare.</p>
+
+<h2>Articole și servicii conexe</h2>
+<ul>
+  <li>Serviciul nostru de <a href="/servicii/cloud-backup">cloud & backup</a> acoperă complet strategiile 3-2-1, imutabilitate și replicare off-site.</li>
+  <li>Pentru redundanță a serverelor critice, vezi <a href="/servicii/virtualizare-servere">virtualizare & server management</a> cu live migration și snapshot-uri.</li>
+  <li>Mai multe despre <a href="/blog/backup-3-2-1-regula-de-aur">regula 3-2-1 aplicată corect în firme</a>.</li>
+  <li>Comparația <a href="/blog/cloud-vs-server-local">cloud vs server local</a> ajută la alegerea arhitecturii potrivite pentru DR.</li>
+  <li>Cerințele <a href="/blog/nis2-directiva-ue-conformitate">directivei NIS2</a> includ explicit continuitatea activității și testarea planului DR.</li>
+</ul>
 
 </BlogPost>

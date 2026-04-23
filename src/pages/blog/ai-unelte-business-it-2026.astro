@@ -1,8 +1,47 @@
 ---
 import BlogPost from '../../layouts/BlogPost.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Care este ROI-ul Microsoft 365 Copilot într-o firmă medie?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un director care salvează 30 de minute pe zi cu rezumate Outlook și draft-uri de email recuperează peste 100 de ore pe an. La un salariu mediu de management, costul licenței Copilot se amortizează de regulă în 2-3 săptămâni, iar economia scalează direct cu numărul utilizatorilor pregătiți corect."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Este sigur să folosim ChatGPT public cu date de business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nu. Versiunile publice nu garantează izolarea datelor și pot folosi prompturile pentru antrenare. Pentru business este necesar ChatGPT Enterprise, Claude for Work sau Gemini Enterprise — cu SSO, log-uri, contracte DPA și izolare regională conform GDPR."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Cât de mult reduc chatboturile AI volumul de suport intern?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un chatbot bine configurat pe documentația internă (RAG) reduce volumul de tichete L1 cu 30-50%, eliberând echipa IT pentru probleme complexe. Cheia este documentația internă actualizată — un bot pe date vechi pierde rapid credibilitate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ce politici trebuie să aibă o firmă înainte de adopția AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Minimum: politică scrisă despre ce date pot și NU pot fi introduse în unelte AI, listă de unelte aprobate pentru evitarea shadow AI, training pentru limitele AI (halucinații, bias) și review uman obligatoriu pentru decizii importante — contracte, date financiare, HR."
+      }
+    }
+  ]
+};
 ---
 
-<BlogPost title="AI in IT business: 5 unelte care economisesc timp in 2026" description="Cele mai utile aplicatii AI pentru firme in 2026: Copilot, ChatGPT Enterprise, chatboturi si automatizari, cu exemple reale de ROI." date="2026-04-10" author="Echipa AXA IT" category="AI" image="/img/blog/ai-unelte-business-it-2026.svg" readTime="6">
+<BlogPost title="AI in IT business: 5 unelte care economisesc timp in 2026" description="Cele mai utile aplicatii AI pentru firme in 2026: Copilot, ChatGPT Enterprise, chatboturi si automatizari, cu exemple reale de ROI." date="2026-04-10" author="Echipa AXA IT" category="AI" image="/img/blog/ai-unelte-business-it-2026.svg" readTime="6" extraSchemas={[faqSchema]}>
 
 <h2>De ce AI a devenit o investiție de productivitate, nu un moft</h2>
 
@@ -107,5 +146,14 @@ import BlogPost from '../../layouts/BlogPost.astro';
 <p>AI în 2026 nu este despre tehnologie de vârf, ci despre <strong>productivitate măsurabilă</strong>. Cele 5 unelte descrise aici au ROI verificabil în firme de 20-500 de angajați și pot fi implementate cu bugete rezonabile.</p>
 
 <p>AXA IT ajută firmele B2B să evalueze, implementeze și securizeze adopția AI — de la licențiere Copilot la chatboturi RAG pe documentația proprie. Contactează-ne pentru un audit AI gratuit.</p>
+
+<h2>Articole și servicii conexe</h2>
+<ul>
+  <li>Adopția Copilot vine natural odată cu <a href="/blog/microsoft-365-pentru-firme-ghid">Microsoft 365 Business</a> — ghidul complet pe pachete și securitate.</li>
+  <li>Pentru evaluarea maturității actuale înainte de AI, recomandăm un <a href="/servicii/consultanta-audit">audit IT și consultanță</a> dedicat.</li>
+  <li>Automatizarea AI pe fluxuri business se sprijină pe o <a href="/servicii/protectie-cibernetica">protecție cibernetică</a> solidă — altfel datele ajung în locuri greșite.</li>
+  <li>Detalii despre <a href="/blog/phishing-cum-te-protejezi">phishing în era AI</a>, cu deepfake-uri vocale și BEC generat automat.</li>
+  <li>Dacă datele tale sunt sensibile, vezi <a href="/blog/nis2-directiva-ue-conformitate">cerințele NIS2</a> înainte de orice adopție AI la scară.</li>
+</ul>
 
 </BlogPost>

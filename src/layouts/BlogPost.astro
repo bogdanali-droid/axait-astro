@@ -11,9 +11,10 @@ interface Props {
   category: string;
   image: string;
   readTime: string;
+  extraSchemas?: any[];
 }
 
-const { title, description, date, author, category, image, readTime } = Astro.props;
+const { title, description, date, author, category, image, readTime, extraSchemas = [] } = Astro.props;
 const formattedDate = new Date(date).toLocaleDateString('ro-RO', { year: 'numeric', month: 'long', day: 'numeric' });
 const canonicalURL = new URL(Astro.url.pathname, 'https://axait.ro');
 const ogImage = image.startsWith('http') ? image : `https://axait.ro${image}`;
@@ -76,6 +77,9 @@ const breadcrumbSchema = {
   <Fragment slot="schema">
     <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    {extraSchemas.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
   </Fragment>
 
   <Header />

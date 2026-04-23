@@ -1,8 +1,47 @@
 ---
 import BlogPost from '../../layouts/BlogPost.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Cât costă cu adevărat un angajat IT intern?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Costul real lunar al unui administrator de sistem cu experiență medie este între 11.000 și 18.000 lei, nu doar salariul. Se adaugă contribuții, beneficii, echipament, licențe și cele ~22 de zile/an cu concediu/boală în care nu lucrează. Un singur om nu acoperă la nivel expert rețelistică, securitate, cloud și helpdesk în același timp."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Cât costă outsourcing-ul IT pentru o firmă medie?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pentru o companie cu 20-50 angajați, un contract complet de outsourcing IT costă tipic 3.000-8.000 lei/lună și include echipă multidisciplinară, SLA contractual, monitorizare, ticketing și instrumente profesionale. Economia comparativ cu un angajat intern este de regulă 40-60%."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Când este mai potrivită o echipă internă?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Când ai peste 100 de angajați cu nevoi IT complexe, infrastructură foarte personalizată, necesitate de prezență fizică permanentă și buget pentru training continuu. Sub 80 de angajați, outsourcing-ul sau modelul hibrid oferă aproape întotdeauna un raport cost-beneficiu superior."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ce este modelul hibrid IT manager + outsourcing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ai un IT manager intern care coordonează activitățile și cunoaște business-ul, iar execuția tehnică (rețelistică, securitate, cloud, helpdesk) este externalizată. Obții cunoașterea profundă a contextului intern plus accesul la o echipă completă de specialiști, fără costurile și riscul de fluctuație ale unei echipe interne mari."
+      }
+    }
+  ]
+};
 ---
 
-<BlogPost title="Outsourcing IT vs. Echipă internă: Ce merită mai mult?" description="Analiza cost-beneficiu între a avea un departament IT propriu și externalizarea completă a serviciilor." date="2026-02-17" author="Echipa AXA IT" category="Outsourcing" image="/img/blog/outsourcing.svg" readTime="6">
+<BlogPost title="Outsourcing IT vs. Echipă internă: Ce merită mai mult?" description="Analiza cost-beneficiu între a avea un departament IT propriu și externalizarea completă a serviciilor." date="2026-02-17" author="Echipa AXA IT" category="Outsourcing" image="/img/blog/outsourcing.svg" readTime="6" extraSchemas={[faqSchema]}>
 
 <h2>Întrebarea de un milion de lei</h2>
 
@@ -74,5 +113,13 @@ import BlogPost from '../../layouts/BlogPost.astro';
 <p>Mulți clienți AXA IT au un „IT manager" intern care coordonează activitățile și cunoaște business-ul, iar execuția tehnică este externalizată. <strong>Cel mai bun din ambele lumi.</strong></p>
 
 <p>Vrei să afli exact cât ai economisi cu outsourcing? <strong>Solicită o analiză personalizată gratuită.</strong></p>
+
+<h2>Articole și servicii conexe</h2>
+<ul>
+  <li>Vezi în detaliu ce include pachetul de <a href="/servicii/outsourcing-it">outsourcing IT complet</a> pe care îl oferim.</li>
+  <li>Pentru clienții care vor doar execuție operațională, avem <a href="/servicii/mentenanta-suport-it">mentenanță & suport IT</a> cu SLA contractual.</li>
+  <li>Mai multe despre beneficiile <a href="/blog/de-ce-mentenanta-preventiva-it">mentenanței preventive IT</a> față de abordarea reactivă.</li>
+  <li>Un <a href="/blog/audit-it-de-ce-ai-nevoie">audit IT complet</a> este punctul de start logic înainte de a alege între intern și outsourcing.</li>
+</ul>
 
 </BlogPost>

@@ -6,9 +6,37 @@ import ServiceSections from '../../components/ServiceSections.astro';
 
 const description =
   'Virtualizare VMware, Hyper-V și Proxmox: consolidare servere, scalabilitate, administrare eficientă și economie de resurse.';
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Virtualizare & Server Management",
+  "serviceType": "Virtualizare servere & Administrare infrastructură",
+  "description": description,
+  "url": "https://axait.ro/servicii/virtualizare-servere",
+  "provider": { "@id": "https://axait.ro/#business" },
+  "areaServed": [
+    { "@type": "City", "name": "București" },
+    { "@type": "Country", "name": "România" }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://axait.ro/" },
+    { "@type": "ListItem", "position": 2, "name": "Servicii", "item": "https://axait.ro/#servicii" },
+    { "@type": "ListItem", "position": 3, "name": "Virtualizare & Server Management", "item": "https://axait.ro/servicii/virtualizare-servere" }
+  ]
+};
 ---
 
 <Layout title="Virtualizare & Server Management" description={description}>
+  <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
   <Header variant="light" currentPage="/servicii/virtualizare-servere" />
   <main>
     <ServiceSections

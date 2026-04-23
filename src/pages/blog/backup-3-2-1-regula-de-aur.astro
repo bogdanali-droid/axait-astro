@@ -1,8 +1,47 @@
 ---
 import BlogPost from '../../layouts/BlogPost.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Ce înseamnă regula 3-2-1 de backup?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Regula 3-2-1 înseamnă păstrarea a cel puțin 3 copii ale datelor, stocate pe cel puțin 2 tipuri diferite de medii, dintre care cel puțin 1 copie off-site (în altă locație fizică sau în cloud). Este standardul de aur recunoscut global pentru protecția datelor de business."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ce este versiunea extinsă 3-2-1-1-0?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Versiunea modernă adaugă 2 elemente: 1 copie offline sau imutabilă (care nu poate fi criptată de ransomware) și 0 erori la verificarea restaurării — adică testezi periodic că backup-urile chiar se pot restaura corect."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Cât de des trebuie testat backup-ul?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Recomandăm test lunar de restaurare pe fișiere aleatorii și test trimestrial de restaurare completă a unui sistem. Un backup netestat nu este un backup — multe firme descoperă abia la incident că datele nu pot fi recuperate sau că RTO-ul este inacceptabil."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Este backup-ul suficient ca protecție împotriva ransomware?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nu dacă backup-ul este conectat la rețea. Ransomware-ul modern caută și criptează și backup-urile accesibile. Soluția este o copie imutabilă (immutable storage) sau offline, care nu poate fi modificată nici chiar de administrator."
+      }
+    }
+  ]
+};
 ---
 
-<BlogPost title="Regula 3-2-1: Strategia de backup care îți salvează afacerea" description="Cum să implementezi corect o strategie de backup care te protejează de ransomware, erori umane și dezastre." date="2026-03-10" author="Echipa AXA IT" category="Backup" image="/img/blog/backup.svg" readTime="5">
+<BlogPost title="Regula 3-2-1: Strategia de backup care îți salvează afacerea" description="Cum să implementezi corect o strategie de backup care te protejează de ransomware, erori umane și dezastre." date="2026-03-10" author="Echipa AXA IT" category="Backup" image="/img/blog/backup.svg" readTime="5" extraSchemas={[faqSchema]}>
 
 <h2>Ce este regula 3-2-1?</h2>
 
@@ -72,5 +111,13 @@ import BlogPost from '../../layouts/BlogPost.astro';
 </ul>
 
 <p>Dacă nu poți răspunde cu încredere la toate, <strong>contactează AXA IT pentru o evaluare a strategiei de backup</strong>.</p>
+
+<h2>Articole și servicii conexe</h2>
+<ul>
+  <li>Implementăm regula 3-2-1 end-to-end prin serviciul de <a href="/servicii/cloud-backup">cloud & backup</a>, cu retenție, imutabilitate și replicare UE.</li>
+  <li>Backup-ul este primul strat dintr-un <a href="/blog/plan-disaster-recovery-ghid">plan de Disaster Recovery</a> complet — cu RTO, RPO și runbook-uri.</li>
+  <li>Vezi de ce <a href="/blog/cloud-vs-server-local">cloud-ul completează serverul local</a> pentru copia off-site.</li>
+  <li>Un <a href="/blog/audit-it-de-ce-ai-nevoie">audit IT</a> identifică lacunele actuale de backup și restore.</li>
+</ul>
 
 </BlogPost>

@@ -1,8 +1,47 @@
 ---
 import BlogPost from '../../layouts/BlogPost.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Este cloud-ul mai ieftin decât un server local pe 5 ani?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nu neapărat pe 5 ani, dar cloud-ul include nativ disponibilitate 99.9%, backup automat, suport 24/7, actualizări și scalabilitate. Pentru a obține aceleași beneficii on-premise, costurile cresc considerabil. La 30 de angajați, serverul local costă ~145-160.000 lei pe 5 ani, iar cloud-ul ~210-300.000 lei, dar cu garanții mult mai mari."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Când este mai potrivit serverul local decât cloud-ul?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Când ai cerințe de latență foarte mică pentru aplicații industriale, când ai reglementări care impun stocarea locală, când ai investit recent în infrastructură fizică amortizabilă sau când conexiunea la internet este instabilă. În rest, cloud-ul aduce avantaje semnificative în disponibilitate și mentenanță."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ce este o infrastructură hibridă și de ce este recomandată?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hibrid înseamnă on-premise pentru aplicațiile cu cerințe de latență mică sau conformitate strictă și cloud pentru email, colaborare, backup, DR și aplicații SaaS. Din experiența noastră, majoritatea firmelor românești obțin cel mai bun raport cost-beneficiu-siguranță cu o arhitectură hibridă bine proiectată."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ce este vendor lock-in și cum îl eviți?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Vendor lock-in înseamnă dependența tehnică de un singur furnizor cloud, care face costisitoare sau dificilă migrarea la altul. Îl reduci folosind standarde deschise (containere, Terraform, formate portabile), păstrând backup-uri independente și evitând servicii proprietare exclusive în arhitectura de bază."
+      }
+    }
+  ]
+};
 ---
 
-<BlogPost title="Cloud vs. Server Local: Ce alegi pentru afacerea ta?" description="Comparație detaliată între infrastructura cloud și serverele on-premise. Avantaje, dezavantaje și costuri reale." date="2026-03-18" author="Echipa AXA IT" category="Cloud" image="/img/blog/cloud.svg" readTime="6">
+<BlogPost title="Cloud vs. Server Local: Ce alegi pentru afacerea ta?" description="Comparație detaliată între infrastructura cloud și serverele on-premise. Avantaje, dezavantaje și costuri reale." date="2026-03-18" author="Echipa AXA IT" category="Cloud" image="/img/blog/cloud.svg" readTime="6" extraSchemas={[faqSchema]}>
 
 <h2>Dilema modernă: cloud sau on-premise?</h2>
 
@@ -70,5 +109,14 @@ import BlogPost from '../../layouts/BlogPost.astro';
 <h2>Cum te ajută AXA IT</h2>
 
 <p>Facem o analiză completă a nevoilor tale și recomandăm soluția optimă — fără bias comercial. Fie că alegi cloud, on-premise sau hibrid, <strong>implementăm, configurăm și întreținem întreaga infrastructură</strong>.</p>
+
+<h2>Articole și servicii conexe</h2>
+<ul>
+  <li>Pentru scenariul cloud, vezi ce include serviciul nostru de <a href="/servicii/cloud-backup">cloud & backup</a> pentru migrări, retenție și DR.</li>
+  <li>Pentru on-premise modern, detalii despre <a href="/servicii/virtualizare-servere">virtualizare & server management</a> (VMware, Hyper-V, Proxmox).</li>
+  <li>De ce <a href="/blog/virtualizare-servere-avantaje">virtualizarea consolidează 3-5 servere într-unul</a> — reducere costuri 40-60%.</li>
+  <li>Strategia corectă de <a href="/blog/backup-3-2-1-regula-de-aur">backup 3-2-1</a> este esențială indiferent de mediu.</li>
+  <li>Dacă migrezi la Microsoft 365, vezi <a href="/blog/microsoft-365-pentru-firme-ghid">ghidul complet M365 pentru firme</a>.</li>
+</ul>
 
 </BlogPost>

@@ -6,9 +6,37 @@ import ServiceSections from '../../components/ServiceSections.astro';
 
 const description =
   'Supraveghere video, control acces, pontaj și automatizări clădiri — integrare cu partenerul Consal Security, soluții certificate ARTS.';
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Securitate & Supraveghere",
+  "serviceType": "Securitate fizică & Supraveghere video",
+  "description": description,
+  "url": "https://axait.ro/servicii/securitate-supraveghere",
+  "provider": { "@id": "https://axait.ro/#business" },
+  "areaServed": [
+    { "@type": "City", "name": "București" },
+    { "@type": "Country", "name": "România" }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://axait.ro/" },
+    { "@type": "ListItem", "position": 2, "name": "Servicii", "item": "https://axait.ro/#servicii" },
+    { "@type": "ListItem", "position": 3, "name": "Securitate & Supraveghere", "item": "https://axait.ro/servicii/securitate-supraveghere" }
+  ]
+};
 ---
 
 <Layout title="Securitate & Supraveghere" description={description}>
+  <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
   <Header variant="light" currentPage="/servicii/securitate-supraveghere" />
   <main>
     <ServiceSections
