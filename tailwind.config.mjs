@@ -12,18 +12,20 @@ export default {
         mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       colors: {
-        // Legacy — se elimină în Faza 5 după ce paginile migrează
+        // Brand v2 — reasignare semantică big-bang (Faza 3).
+        // Numele rămân identice, valorile pointează spre paleta dark+cyan.
+        // Cleanup (renaming) — Faza 5.
         brand: {
-          ink: '#0A0A0A',
-          paper: '#FAFAFA',
-          accent: '#FF5A1F',
-          blue: '#2563A8',
-          node: '#5BA3DE',
-          muted: 'rgba(10, 10, 10, 0.55)',
-          steel: '#6B8299',
-          light: '#FAFAFA',
-          dark: '#0A0A0A',
-          border: '#D0D8E0',
+          ink: '#F5F7FB',
+          paper: '#0B1226',
+          accent: '#19B6E6',
+          blue: '#19B6E6',
+          node: '#19B6E6',
+          muted: 'rgba(245, 247, 251, 0.55)',
+          steel: '#9AA4BE',
+          light: '#0B1226',
+          dark: '#F5F7FB',
+          border: 'rgba(255, 255, 255, 0.1)',
         },
         // Brand v2 — dark + cyan (din manual)
         ink: {
