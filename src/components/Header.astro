@@ -1,4 +1,3 @@
----
 interface Props {
   variant?: 'dark' | 'light';
   currentPage?: string;
@@ -8,7 +7,7 @@ const { variant = 'light', currentPage = '' } = Astro.props;
 const isDark = variant === 'dark';
 
 const services = [
-  { href: '/servicii/mentenanta-suport-it', label: 'Mentenanță & Suport IT', desc: 'Intervenții rapide, monitorizare 24/7', icon: 'wrench' },
+  { href: '/servicii/mentenanta-suport-it', label: 'Mentenanță & Suport IT', desc: 'Monitorizare automată 24/7, intervenții în program', icon: 'wrench' },
   { href: '/servicii/retelistica-wifi', label: 'Rețelistică & Wi-Fi', desc: 'Rețele cablate și wireless', icon: 'wifi' },
   { href: '/servicii/cloud-backup', label: 'Cloud & Backup', desc: 'Date sigure, accesibile oriunde', icon: 'cloud' },
   { href: '/servicii/securitate-supraveghere', label: 'Securitate & Supraveghere', desc: 'Video, acces, automatizări', icon: 'shield' },
