@@ -6,8 +6,8 @@ interface Props {
   type?: string;
 }
 
-const { 
-  title, 
+const {
+  title,
   description = "AXA IT oferă soluții IT complete, adaptate afacerii tale — mentenanță, rețelistică, cloud, securitate și monitorizare automată 24/7 cu suport tehnic Lu-Vi 08-18.",
   image = "/og-image-1200x630.png",
   type = "website"
@@ -25,9 +25,9 @@ const fullTitle = title.length > 45 ? title : `${title} | AXA IT`;
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{fullTitle}</title>
   <meta name="description" content={description}>
-  
+
   <link rel="canonical" href={canonicalURL} />
-  
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -35,11 +35,11 @@ const fullTitle = title.length > 45 ? title : `${title} | AXA IT`;
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  
+
   <!-- Theme color (Brand v2: ink-800 + cyan accent) -->
   <meta name="theme-color" content="#0B1226">
   <meta name="msapplication-TileColor" content="#19B6E6">
-  
+
   <!-- Open Graph -->
   <meta property="og:type" content={type} />
   <meta property="og:url" content={canonicalURL} />
@@ -48,19 +48,19 @@ const fullTitle = title.length > 45 ? title : `${title} | AXA IT`;
   <meta property="og:image" content={ogImage} />
   <meta property="og:site_name" content="AXA IT" />
   <meta property="og:locale" content="ro_RO" />
-  
+
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content={canonicalURL} />
   <meta name="twitter:title" content={fullTitle} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
-  
-  <!-- Fonts: Geist (legacy, Faza 1) + Brand v2 (Inter body, Space Grotesk display, JetBrains Mono) -->
+
+  <!-- Fonts: Geist (legacy, Faza 1) + Brand v2 (Inter body, Manrope display, JetBrains Mono) -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
   <style>
     @font-face {
       font-family: 'Geist';
@@ -91,7 +91,7 @@ const fullTitle = title.length > 45 ? title : `${title} | AXA IT`;
       font-display: swap;
     }
   </style>
-  
+
   <!-- LocalBusiness + WebSite Schema -->
   <script type="application/ld+json">
   {
@@ -167,14 +167,14 @@ const fullTitle = title.length > 45 ? title : `${title} | AXA IT`;
     ]
   }
   </script>
-  
+
   <slot name="schema" />
 </head>
 <body class="antialiased bg-brand-light text-brand-dark">
   <slot />
 
   <!-- WhatsApp Floating Button -->
-  <a 
+  <a
     href="https://wa.me/40727897849?text=Bună%20ziua!%20Aș%20dori%20mai%20multe%20informații%20despre%20serviciile%20AXA%20IT."
     target="_blank"
     rel="noopener"
@@ -219,7 +219,7 @@ const fullTitle = title.length > 45 ? title : `${title} | AXA IT`;
     --signal-down: #E64545;
     --signal-info: #6C8CFF;
 
-    --font-display: 'Space Grotesk', system-ui, sans-serif;
+    --font-display: 'Manrope', system-ui, sans-serif;
     --font-body: 'Inter', system-ui, sans-serif;
     --font-mono: 'JetBrains Mono', ui-monospace, monospace;
   }
@@ -229,7 +229,7 @@ const fullTitle = title.length > 45 ? title : `${title} | AXA IT`;
     padding: 0;
     box-sizing: border-box;
   }
-  
+
   html, body {
     font-family: 'Inter', 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
     overflow-x: hidden;
