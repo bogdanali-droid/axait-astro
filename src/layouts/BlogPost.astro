@@ -84,55 +84,56 @@ const breadcrumbSchema = {
 
   <Header />
 
-  <main class="pt-20">
+  <main class="pt-20 bg-ink-900">
     <article>
-      <div class="bg-brand-dark py-16 md:py-24">
-        <div class="max-w-4xl mx-auto px-6">
+      <div class="bg-ink-800 py-16 md:py-24 brand-grid-bg overflow-hidden relative">
+        <div class="absolute top-10 right-0 w-[420px] h-[420px] rounded-full blur-3xl opacity-50 pointer-events-none bg-brand-cyan-500/10"></div>
+        <div class="relative max-w-4xl mx-auto px-6">
           <nav aria-label="Breadcrumb" class="mb-6">
-            <ol class="flex flex-wrap items-center gap-2 text-[13px] text-white/50">
-              <li><a href="/" class="hover:text-brand-accent transition-colors">Home</a></li>
-              <li aria-hidden="true" class="text-white/30">/</li>
-              <li><a href="/blog" class="hover:text-brand-accent transition-colors">Blog</a></li>
-              <li aria-hidden="true" class="text-white/30">/</li>
-              <li aria-current="page" class="text-white/80 truncate max-w-[260px] md:max-w-none">{title}</li>
+            <ol class="flex flex-wrap items-center gap-2 text-[13px] text-surface-400 font-mono">
+              <li><a href="/" class="hover:text-brand-cyan-500 transition-colors">Home</a></li>
+              <li aria-hidden="true" class="text-surface-500">/</li>
+              <li><a href="/blog" class="hover:text-brand-cyan-500 transition-colors">Blog</a></li>
+              <li aria-hidden="true" class="text-surface-500">/</li>
+              <li aria-current="page" class="text-surface-200 truncate max-w-[260px] md:max-w-none">{title}</li>
             </ol>
           </nav>
           <div class="flex items-center gap-3 mb-6">
-            <span class="bg-brand-accent/20 text-brand-accent text-[12px] font-semibold px-3 py-1 rounded-full uppercase tracking-wider">{category}</span>
-            <span class="text-white/40 text-[13px]">{readTime} min citire</span>
+            <span class="bg-brand-cyan-500/15 text-brand-cyan-500 text-[12px] font-semibold px-3 py-1 rounded-full uppercase tracking-wider font-mono">{category}</span>
+            <span class="text-surface-400 text-[13px] font-mono">{readTime} min citire</span>
           </div>
-          <h1 class="text-[28px] md:text-[42px] font-medium text-white leading-tight">{title}</h1>
-          <p class="mt-4 text-white/50 text-[17px] font-light leading-relaxed max-w-2xl">{description}</p>
+          <h1 class="text-[28px] md:text-[44px] font-display font-bold text-surface-50 leading-tight tracking-tight">{title}</h1>
+          <p class="mt-4 text-surface-300 text-[17px] font-light leading-relaxed max-w-2xl">{description}</p>
           <div class="mt-8 flex items-center gap-4">
-            <div class="w-10 h-10 bg-brand-accent rounded-full flex items-center justify-center">
-              <span class="text-white font-semibold text-[14px]">{author.split(' ').map(n => n[0]).join('')}</span>
+            <div class="w-10 h-10 bg-brand-cyan-500 rounded-full flex items-center justify-center">
+              <span class="text-ink-900 font-semibold text-[14px]">{author.split(' ').map(n => n[0]).join('')}</span>
             </div>
             <div>
-              <p class="text-white font-medium text-[14px]">{author}</p>
-              <p class="text-white/40 text-[13px]">{formattedDate}</p>
+              <p class="text-surface-50 font-medium text-[14px]">{author}</p>
+              <p class="text-surface-400 text-[13px] font-mono">{formattedDate}</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="max-w-4xl mx-auto px-6 -mt-2">
-        <img src={image} alt={title} class="w-full h-[300px] md:h-[420px] object-cover rounded-2xl shadow-xl" />
+      <div class="max-w-4xl mx-auto px-6 -mt-2 relative z-10">
+        <img src={image} alt={title} class="w-full h-[300px] md:h-[420px] object-cover rounded-2xl shadow-2xl border border-white/10" />
       </div>
 
       <div class="max-w-3xl mx-auto px-6 py-16">
-        <div class="prose prose-lg max-w-none prose-headings:text-brand-dark prose-headings:font-medium prose-p:text-brand-steel prose-p:leading-relaxed prose-p:font-light prose-a:text-brand-accent prose-strong:text-brand-dark prose-li:text-brand-steel prose-li:font-light">
+        <div class="blog-prose prose prose-lg prose-invert max-w-none">
           <slot />
         </div>
       </div>
 
       <div class="max-w-3xl mx-auto px-6 pb-16">
-        <div class="border-t border-brand-border/40 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <a href="/blog" class="inline-flex items-center gap-2 text-brand-accent hover:text-brand-accent/80 font-medium text-[14px] transition-colors">
+        <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <a href="/blog" class="inline-flex items-center gap-2 text-brand-cyan-500 hover:text-brand-cyan-400 font-medium text-[14px] transition-colors">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
             Toate articolele
           </a>
-          <a href="/contact" class="inline-flex items-center gap-2 bg-brand-accent hover:bg-brand-accent/90 text-white font-medium text-[14px] px-5 py-2.5 rounded-full transition-all">
-            Solicita o consultatie
+          <a href="/contact" class="inline-flex items-center gap-2 bg-brand-cyan-500 hover:bg-brand-cyan-400 text-ink-900 font-semibold text-[14px] px-5 py-2.5 rounded-full transition-all shadow-lg shadow-brand-cyan-500/20">
+            Solicită o consultație
           </a>
         </div>
       </div>
@@ -141,3 +142,101 @@ const breadcrumbSchema = {
 
   <Footer />
 </Layout>
+
+<style is:global>
+  /* Blog typography pe fundal dark — Brand v2.
+     Folosim @tailwindcss/typography prose-invert ca bază, suprascriem culori și code blocks pentru paleta cyan/ink. */
+  .blog-prose {
+    color: var(--surface-200);
+    font-family: var(--font-body);
+    font-weight: 300;
+  }
+  .blog-prose h1,
+  .blog-prose h2,
+  .blog-prose h3,
+  .blog-prose h4,
+  .blog-prose h5,
+  .blog-prose h6 {
+    color: var(--surface-50);
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .blog-prose p,
+  .blog-prose li {
+    color: var(--surface-200);
+    line-height: 1.75;
+  }
+  .blog-prose strong {
+    color: var(--surface-50);
+    font-weight: 600;
+  }
+  .blog-prose a {
+    color: var(--cyan-500);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(25, 182, 230, 0.4);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .blog-prose a:hover {
+    color: var(--cyan-400);
+    border-bottom-color: var(--cyan-400);
+  }
+  .blog-prose blockquote {
+    border-left: 3px solid var(--cyan-500);
+    background: rgba(25, 182, 230, 0.06);
+    color: var(--surface-200);
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    font-style: normal;
+  }
+  .blog-prose blockquote p {
+    color: var(--surface-200);
+  }
+  .blog-prose code {
+    background: var(--ink-900);
+    color: var(--cyan-400);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .blog-prose pre {
+    background: var(--ink-900);
+    color: var(--surface-50);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 20px;
+    overflow-x: auto;
+  }
+  .blog-prose pre code {
+    background: transparent;
+    border: 0;
+    color: var(--surface-50);
+    padding: 0;
+  }
+  .blog-prose hr {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  .blog-prose table {
+    color: var(--surface-200);
+  }
+  .blog-prose thead {
+    border-bottom-color: rgba(255, 255, 255, 0.15);
+  }
+  .blog-prose thead th {
+    color: var(--surface-50);
+  }
+  .blog-prose tbody tr {
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+  }
+  /* Tolerăm inline-uri vechi `bg-white` în corpul articolelor (Faza 5 cleanup) — forțăm fundal neutru cu text dark păstrat ca-i. */
+  .blog-prose .bg-white {
+    background: var(--surface-50) !important;
+    color: var(--ink-900) !important;
+    border-radius: 12px;
+  }
+  .blog-prose .bg-white * {
+    color: inherit;
+  }
+</style>
