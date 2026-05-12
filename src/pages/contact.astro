@@ -142,11 +142,17 @@ import Footer from '../components/Footer.astro';
           <div class="lg:col-span-3">
             <form
               id="contact-form"
+              action="https://api.web3forms.com/submit"
               method="POST"
-              action="/api/contact"
               class="brand-card brand-card-glow p-8 md:p-10"
               novalidate
             >
+              <!-- Web3Forms hidden config — access_key public, safe în client. -->
+              <input type="hidden" name="access_key" value="950f7323-a68f-4085-b892-1224f34b4c81" />
+              <input type="hidden" name="subject" value="[axait.ro] Mesaj nou de la formular contact" />
+              <input type="hidden" name="from_name" value="AXA IT Site" />
+              <input type="hidden" name="redirect" value="false" />
+
               <div class="grid sm:grid-cols-2 gap-5">
                 <div class="sm:col-span-2">
                   <label for="name" class="block font-mono text-[10px] uppercase tracking-[0.18em] text-surface-400 mb-2">Nume complet</label>
@@ -223,6 +229,8 @@ import Footer from '../components/Footer.astro';
                   autocomplete="off"
                 />
               </div>
+              <!-- Web3Forms native botcheck (server-side honeypot). -->
+              <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" aria-hidden="true" />
 
               <!-- GDPR consent -->
               <div class="mt-6 flex items-start gap-3">
@@ -308,26 +316,34 @@ import Footer from '../components/Footer.astro';
 
       try {
         const formData = new FormData(form);
-        const res = await fetch('/api/contact', {
+        // Web3Forms preferă JSON; convertim FormData într-un obiect plain.
+        const payload = Object.fromEntries(formData.entries());
+
+        const res = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
-          body: formData,
-          headers: { Accept: 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(payload),
         });
-        let payload = {};
+
+        let data = {};
         try {
-          payload = await res.json();
+          data = await res.json();
         } catch (_) {
-          // răspuns non-JSON; lăsăm payload gol
+          // răspuns non-JSON; lăsăm data gol
         }
-        if (res.ok && payload.ok) {
-          showStatus('success', 'Mulțumim! Mesajul a fost trimis. Îți răspundem prompt.');
+
+        if (res.ok && data.success) {
+          showStatus('success', 'Mulțumim! Mesajul a fost trimis cu succes — răspundem în 24-48h în zilele lucrătoare.');
           form.reset();
         } else {
-          const msg = payload.error || 'A apărut o eroare. Te rugăm să încerci din nou sau să ne suni la +40 727 897 849.';
+          const msg = data.message || 'A apărut o eroare. Încearcă din nou sau scrie-ne direct pe office@axa-it.ro.';
           showStatus('error', msg);
         }
       } catch (err) {
-        showStatus('error', 'Conexiune întreruptă. Verifică internetul și încearcă din nou.');
+        showStatus('error', 'Conexiune eșuată. Verifică internetul sau scrie-ne pe office@axa-it.ro.');
       } finally {
         setLoading(false);
       }
