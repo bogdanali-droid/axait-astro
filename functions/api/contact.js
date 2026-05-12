@@ -13,6 +13,8 @@
  *      pentru AMBELE medii (Production + Preview).
  *   5. Re-deploy preview pentru a aplica env var.
  *
+ * Pentru diagnostic rapid (fără a trimite email) folosește GET /api/contact-status.
+ *
  * Endpoint: POST /api/contact
  * Content-Type: application/x-www-form-urlencoded sau multipart/form-data
  */
@@ -47,8 +49,22 @@ export async function onRequestPost(context) {
 
     const apiKey = context.env.RESEND_API_KEY;
     if (!apiKey) {
-      return json({ error: 'Configurare server lipsă (RESEND_API_KEY).' }, 500);
+      console.error(`[${new Date().toISOString()}] contact: RESEND_API_KEY missing`);
+      return json(
+        {
+          error: 'RESEND_API_KEY missing',
+          hint: 'Setează env var în Cloudflare Pages → Settings → Environment variables (Preview + Production) și redeploy.',
+        },
+        500
+      );
     }
+
+    // Log diagnostic — vizibil în Cloudflare Workers Logs. NU logăm conținut/PII.
+    console.log(
+      `[${new Date().toISOString()}] contact: dispatching to bogdan@axait.ro (from=noreply@axait.ro, deploy=${
+        context.env.CF_PAGES_COMMIT_SHA || 'unknown'
+      })`
+    );
 
     const html = `
       <h2 style="font-family:sans-serif;color:#0f172a">Mesaj nou de pe axait.ro</h2>
@@ -72,31 +88,59 @@ export async function onRequestPost(context) {
       (phone ? `Telefon: ${phone}\n` : '') +
       `\n---\n\n${message}\n`;
 
-    const resendRes = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        from: 'AXA IT Site <noreply@axait.ro>',
-        to: ['bogdan@axait.ro'],
-        reply_to: email,
-        subject: `[axait.ro] Mesaj nou de la ${name}`,
-        html,
-        text,
-      }),
-    });
+    let resendRes;
+    try {
+      resendRes = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: 'AXA IT Site <noreply@axait.ro>',
+          to: ['bogdan@axait.ro'],
+          reply_to: email,
+          subject: `[axait.ro] Mesaj nou de la ${name}`,
+          html,
+          text,
+        }),
+      });
+    } catch (networkErr) {
+      console.error(`[${new Date().toISOString()}] contact: Resend fetch threw`, networkErr);
+      return json(
+        {
+          error: 'Resend API failed',
+          resend_status: 0,
+          resend_error: String(networkErr).slice(0, 200),
+        },
+        502
+      );
+    }
 
     if (!resendRes.ok) {
-      const detail = await resendRes.text();
-      console.error('Resend API error:', resendRes.status, detail);
-      return json({ error: 'Trimiterea emailului a eșuat. Te rugăm să încerci din nou sau să ne contactezi direct.' }, 502);
+      const detail = (await resendRes.text()).slice(0, 200);
+      console.error(
+        `[${new Date().toISOString()}] contact: Resend API error ${resendRes.status} — ${detail}`
+      );
+      return json(
+        {
+          error: 'Resend API failed',
+          resend_status: resendRes.status,
+          resend_error: detail,
+          hint:
+            resendRes.status === 422
+              ? 'Probabil domeniul axait.ro nu e verificat în Resend (DNS SPF/DKIM lipsă) sau adresa from nu corespunde.'
+              : resendRes.status === 401 || resendRes.status === 403
+              ? 'API key invalid sau revocat — regenerează din Resend dashboard.'
+              : undefined,
+        },
+        502
+      );
     }
 
     return json({ ok: true }, 200);
   } catch (err) {
-    console.error('Contact handler error:', err);
+    console.error(`[${new Date().toISOString()}] contact: unexpected handler error`, err);
     return json({ error: 'Eroare neașteptată. Te rugăm să încerci din nou.' }, 500);
   }
 }
