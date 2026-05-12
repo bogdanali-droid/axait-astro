@@ -4,192 +4,204 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Soluții IT complete, adaptate afacerii tale" description="AXA IT oferă mentenanță IT, rețelistică, cloud, securitate și suport permanent. 150+ clienți activi, 10+ ani experiență, suport 24/7.">
+<Layout title="Soluții IT complete, adaptate afacerii tale" description="AXA IT oferă mentenanță IT, rețelistică, cloud, securitate și monitorizare automată 24/7. 150+ sisteme active, 8+ ani experiență (din 2016), suport tehnic Lu-Vi 08-18.">
 
   <Header variant="dark" />
 
   <main>
 
     <!-- ═══════════════════ HERO ═══════════════════ -->
-    <section class="relative min-h-screen flex items-center bg-brand-dark overflow-hidden">
-      <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.015)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
-      <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-brand-light to-transparent z-20 pointer-events-none"></div>
+    <section class="relative min-h-screen flex items-center bg-ink-900 overflow-hidden pt-24">
+      <!-- z-0: brand grid bg -->
+      <div class="brand-grid-bg absolute inset-0 opacity-60 z-0"></div>
+      <div class="absolute top-1/3 -left-32 w-[500px] h-[500px] bg-brand-cyan-500/10 rounded-full blur-[180px] pointer-events-none z-0"></div>
+      <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-brand-cyan-500/5 rounded-full blur-[150px] pointer-events-none z-0"></div>
+      <!-- bottom fade -->
+      <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-ink-900 to-transparent z-10 pointer-events-none"></div>
 
-      <div class="relative z-10 max-w-7xl mx-auto px-6 py-32 flex flex-col lg:flex-row items-center gap-16 w-full">
+      <div class="relative z-20 max-w-7xl mx-auto px-6 py-24 flex flex-col lg:flex-row items-center gap-16 w-full">
 
-        <!-- Left content -->
+        <!-- Left content (editorial) -->
         <div class="lg:w-1/2">
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-accent/30 bg-brand-accent/5 mb-8">
-            <span class="text-brand-accent text-[12px] font-medium tracking-widest uppercase">Infrastructură · Servicii · Securitate</span>
-          </div>
+          <p class="brand-eyebrow mb-8">Soluții IT</p>
 
-          <h1 class="text-[36px] md:text-[48px] lg:text-[56px] font-medium text-white leading-[1.12] tracking-tight">
+          <h1 class="font-display text-[40px] md:text-[56px] lg:text-[68px] font-medium leading-[1.05] tracking-tight bg-gradient-to-br from-white via-surface-100 to-surface-300 bg-clip-text text-transparent">
             Infrastructura ta digitală,<br/>
-            <span class="text-brand-accent">grija noastră.</span>
+            <span class="text-brand-cyan-500">grija noastră.</span>
           </h1>
 
-          <p class="mt-6 text-[17px] md:text-[19px] text-white/60 max-w-xl leading-relaxed font-light">
-            De peste 10 ani construim, securizăm și întreținem infrastructuri IT pentru companii din România. Mentenanță preventivă, rețelistică avansată și suport non-stop.
+          <p class="mt-8 text-[18px] md:text-[20px] text-surface-300 max-w-xl leading-relaxed font-light">
+            Din 2016 construim, securizăm și întreținem infrastructuri IT pentru companii din România. Mentenanță preventivă, rețelistică avansată și monitorizare automată 24/7.
           </p>
 
-          <div class="mt-10 flex flex-col sm:flex-row gap-4">
-            <a href="/contact" class="group inline-flex items-center justify-center gap-2 bg-brand-accent hover:bg-brand-accent/90 text-white font-medium text-[15px] px-7 py-3.5 rounded-full transition-all hover:shadow-lg hover:shadow-brand-accent/25">
-              Solicită o consultație
-              <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/></svg>
+          <div class="mt-10 flex flex-col sm:flex-row gap-3">
+            <a href="/contact" class="group inline-flex items-center justify-center gap-2 bg-brand-cyan-500 hover:bg-brand-cyan-400 text-ink-900 font-mono text-[12px] uppercase tracking-[0.18em] font-semibold px-7 py-3.5 rounded-full transition-all hover:shadow-lg hover:shadow-brand-cyan-500/25">
+              Solicită consultație
+              <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/></svg>
             </a>
-            <a href="#servicii" class="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/40 text-white/70 hover:text-white font-medium text-[15px] px-7 py-3.5 rounded-full transition-all">
+            <a href="#servicii" class="inline-flex items-center justify-center gap-2 border border-brand-cyan-500/30 hover:border-brand-cyan-500/60 text-surface-300 hover:text-brand-cyan-500 font-mono text-[12px] uppercase tracking-[0.18em] font-medium px-7 py-3.5 rounded-full transition-all">
               Descoperă serviciile
             </a>
           </div>
 
-          <div class="mt-12 flex flex-wrap items-center gap-8 text-[13px]">
-            <div>
-              <span class="text-white font-medium text-[20px]">150+</span>
-              <span class="text-white/40 ml-1.5">clienți</span>
+          <!-- Hero meta grid 4col (mono labels) -->
+          <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-px bg-brand-cyan-500/10 border border-brand-cyan-500/10 rounded-xl overflow-hidden">
+            <div class="bg-ink-900 p-4">
+              <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-surface-500 mb-1">EST.</p>
+              <p class="font-display text-[22px] text-surface-50 font-medium">2016</p>
+              <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-brand-cyan-500 mt-1">Est.</p>
             </div>
-            <div class="w-px h-5 bg-white/10"></div>
-            <div>
-              <span class="text-white font-medium text-[20px]">10+</span>
-              <span class="text-white/40 ml-1.5">ani experiență</span>
+            <div class="bg-ink-900 p-4">
+              <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-surface-500 mb-1">SISTEME</p>
+              <p class="font-display text-[22px] text-surface-50 font-medium">150<span class="text-brand-cyan-500">+</span></p>
+              <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-brand-cyan-500 mt-1">Active</p>
             </div>
-            <div class="w-px h-5 bg-white/10"></div>
-            <div>
-              <span class="text-white font-medium text-[20px]">24/7</span>
-              <span class="text-white/40 ml-1.5">suport</span>
+            <div class="bg-ink-900 p-4">
+              <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-surface-500 mb-1">INDUSTRII</p>
+              <p class="font-display text-[22px] text-surface-50 font-medium">7</p>
+              <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-brand-cyan-500 mt-1">Sectors</p>
+            </div>
+            <div class="bg-ink-900 p-4">
+              <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-surface-500 mb-1">MONITORIZARE</p>
+              <p class="font-display text-[22px] text-surface-50 font-medium">24/7</p>
+              <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-brand-cyan-500 mt-1">Automată</p>
             </div>
           </div>
         </div>
 
-        <!-- Right: Animated Shield Network SVG -->
-        <div class="lg:w-1/2 hidden lg:flex items-center justify-center">
-          <svg viewBox="0 0 400 400" class="w-full max-w-[440px] h-auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AXA IT - Infrastructură IT securizată și conectată">
+        <!-- Right: Signal Mesh SVG animation -->
+        <div class="lg:w-1/2 hidden lg:flex items-center justify-center signal-mesh-wrap">
+          <svg viewBox="0 0 400 400" class="signal-mesh w-full max-w-[440px] h-auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AXA IT — Signal Mesh: rețea de noduri și fluxuri de date">
             <style>
-              @keyframes nodePulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.35); opacity: 0.75; } }
-              @keyframes nodeGlow { 0%, 100% { opacity: 0.15; } 50% { opacity: 0.45; } }
-              @keyframes orbitCW { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-              @keyframes orbitCCW { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
-              @keyframes dataFlow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -60; } }
-              @keyframes dataFlowReverse { from { stroke-dashoffset: 0; } to { stroke-dashoffset: 60; } }
-              @keyframes shieldBreath { 0%, 100% { opacity: 0.55; stroke-width: 1.5; } 50% { opacity: 0.95; stroke-width: 2; } }
-              @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-              @keyframes satelliteFade { 0%, 100% { opacity: 0.3; r: 2; } 50% { opacity: 1; r: 3.5; } }
+              .signal-mesh .g-root {
+                animation: fade-in 1.2s ease-out both, float 12s ease-in-out 1.2s infinite;
+                transform-origin: 200px 200px;
+              }
+              .signal-mesh .halo { opacity: 0.35; transition: opacity 600ms ease-out; }
+              .signal-mesh .status-pulse {
+                animation: pulse-node 3.6s ease-in-out infinite;
+                transform-origin: center;
+                transform-box: fill-box;
+              }
+              .signal-mesh .status-pulse.delay-1 { animation-delay: 1.8s; }
+              .signal-mesh .travel {
+                animation: travel 6s linear infinite;
+                transition: animation-duration 600ms ease-out;
+              }
+              .signal-mesh .travel.t1 { offset-path: path('M80 90 L180 200'); animation-duration: 5.5s; animation-delay: 0s; }
+              .signal-mesh .travel.t2 { offset-path: path('M180 200 L320 240'); animation-duration: 6.8s; animation-delay: 2.1s; }
+              .signal-mesh .travel.t3 { offset-path: path('M180 200 L230 320'); animation-duration: 7.2s; animation-delay: 3.8s; }
 
-              .g-root { animation: fadeIn 1.2s ease-out both; transform-origin: 200px 200px; }
-              .shield { animation: shieldBreath 4s ease-in-out infinite; transform-origin: 200px 200px; }
-              .orbit-cw { animation: orbitCW 22s linear infinite; transform-origin: 200px 200px; transform-box: fill-box; }
-              .orbit-ccw { animation: orbitCCW 30s linear infinite; transform-origin: 200px 200px; transform-box: fill-box; }
-              .node { animation: nodePulse 2.6s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
-              .node.n2 { animation-delay: 0.4s; }
-              .node.n3 { animation-delay: 0.8s; }
-              .node.n4 { animation-delay: 1.2s; }
-              .node.n5 { animation-delay: 1.6s; }
-              .node.n6 { animation-delay: 2.0s; }
-              .node-glow { animation: nodeGlow 2.6s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
-              .node-glow.n2 { animation-delay: 0.4s; }
-              .node-glow.n3 { animation-delay: 0.8s; }
-              .node-glow.n4 { animation-delay: 1.2s; }
-              .node-glow.n5 { animation-delay: 1.6s; }
-              .node-glow.n6 { animation-delay: 2.0s; }
-              .data-line { stroke-dasharray: 6 12; animation: dataFlow 3s linear infinite; }
-              .data-line.reverse { animation: dataFlowReverse 3.5s linear infinite; }
-              .data-line.slow { animation-duration: 4.5s; }
-              .satellite { animation: satelliteFade 3s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
-              .satellite.s2 { animation-delay: 1s; }
-              .satellite.s3 { animation-delay: 2s; }
+              .signal-mesh-wrap:hover .signal-mesh .halo { opacity: 0.6; }
+              .signal-mesh-wrap:hover .signal-mesh .travel.t1 { animation-duration: 3.85s; }
+              .signal-mesh-wrap:hover .signal-mesh .travel.t2 { animation-duration: 4.76s; }
+              .signal-mesh-wrap:hover .signal-mesh .travel.t3 { animation-duration: 5.04s; }
 
               @media (prefers-reduced-motion: reduce) {
-                .g-root, .shield, .orbit-cw, .orbit-ccw, .node, .node-glow, .data-line, .satellite { animation: none !important; }
+                .signal-mesh .g-root,
+                .signal-mesh .status-pulse { animation: none !important; }
+                .signal-mesh .travel { opacity: 0 !important; animation: none !important; }
+                .signal-mesh .halo { opacity: 0.25 !important; }
               }
             </style>
 
             <defs>
-              <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#FF5A1F" stop-opacity="0.9"/>
-                <stop offset="100%" stop-color="#FF5A1F" stop-opacity="0.4"/>
-              </linearGradient>
-              <radialGradient id="nodeGlowGrad" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#FF5A1F" stop-opacity="0.7"/>
-                <stop offset="70%" stop-color="#FF5A1F" stop-opacity="0.1"/>
-                <stop offset="100%" stop-color="#FF5A1F" stop-opacity="0"/>
+              <radialGradient id="meshHalo" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="var(--cyan-500)" stop-opacity="0.55"/>
+                <stop offset="60%" stop-color="var(--cyan-500)" stop-opacity="0.12"/>
+                <stop offset="100%" stop-color="var(--cyan-500)" stop-opacity="0"/>
               </radialGradient>
             </defs>
 
             <g class="g-root">
-              <!-- Orbite rotative -->
-              <g class="orbit-ccw" opacity="0.6">
-                <ellipse cx="200" cy="200" rx="175" ry="175" fill="none" stroke="#FAFAFA" stroke-opacity="0.08" stroke-width="1"/>
-                <circle class="satellite" cx="375" cy="200" r="2.5" fill="#FF5A1F"/>
-                <circle class="satellite s2" cx="25" cy="200" r="2" fill="#FAFAFA" fill-opacity="0.7"/>
-              </g>
-              <g class="orbit-cw" opacity="0.5">
-                <ellipse cx="200" cy="200" rx="155" ry="155" fill="none" stroke="#FAFAFA" stroke-opacity="0.06" stroke-width="1" stroke-dasharray="2 6"/>
-                <circle class="satellite s3" cx="200" cy="45" r="2.5" fill="#FF5A1F"/>
-              </g>
 
-              <!-- Scut hexagonal -->
-              <g class="shield">
-                <polygon points="200,60 320,130 320,270 200,340 80,270 80,130" fill="none" stroke="url(#shieldGrad)" stroke-width="2" stroke-linejoin="round"/>
-                <polygon points="200,105 280,150 280,250 200,295 120,250 120,150" fill="none" stroke="#FF5A1F" stroke-opacity="0.25" stroke-width="1"/>
+              <!-- Static lines (5) -->
+              <g stroke="var(--ink-500)" stroke-width="0.75" stroke-linecap="round" fill="none">
+                <line x1="80"  y1="90"  x2="200" y2="60"  opacity="0.3"/><!-- n1-n2 -->
+                <line x1="200" y1="60"  x2="330" y2="110" opacity="0.3"/><!-- n2-n3 -->
+                <line x1="330" y1="110" x2="320" y2="240" opacity="0.3"/><!-- n3-n6 -->
+                <line x1="60"  y1="220" x2="110" y2="340" opacity="0.3"/><!-- n4-n7 -->
+                <line x1="320" y1="240" x2="340" y2="350" opacity="0.3"/><!-- n6-n9 -->
               </g>
 
-              <!-- Linii de date -->
-              <g stroke="#FF5A1F" stroke-width="1.2" fill="none" stroke-linecap="round">
-                <line class="data-line" x1="200" y1="200" x2="200" y2="110"/>
-                <line class="data-line reverse" x1="200" y1="200" x2="278" y2="155"/>
-                <line class="data-line slow" x1="200" y1="200" x2="278" y2="245"/>
-                <line class="data-line" x1="200" y1="200" x2="200" y2="290"/>
-                <line class="data-line reverse" x1="200" y1="200" x2="122" y2="245"/>
-                <line class="data-line slow" x1="200" y1="200" x2="122" y2="155"/>
-                <line class="data-line reverse" x1="200" y1="110" x2="278" y2="155" stroke-opacity="0.4"/>
-                <line class="data-line slow" x1="278" y1="155" x2="278" y2="245" stroke-opacity="0.4"/>
-                <line class="data-line" x1="278" y1="245" x2="200" y2="290" stroke-opacity="0.4"/>
-                <line class="data-line reverse" x1="200" y1="290" x2="122" y2="245" stroke-opacity="0.4"/>
-                <line class="data-line slow" x1="122" y1="245" x2="122" y2="155" stroke-opacity="0.4"/>
-                <line class="data-line" x1="122" y1="155" x2="200" y2="110" stroke-opacity="0.4"/>
+              <!-- Active trace lines (under travel dots) -->
+              <g stroke="var(--ink-500)" stroke-width="0.75" stroke-linecap="round" fill="none" opacity="0.4">
+                <line x1="80"  y1="90"  x2="180" y2="200"/><!-- n1-n5 -->
+                <line x1="180" y1="200" x2="320" y2="240"/><!-- n5-n6 -->
+                <line x1="180" y1="200" x2="230" y2="320"/><!-- n5-n8 -->
               </g>
 
-              <!-- Halo-uri noduri -->
-              <circle class="node-glow" cx="200" cy="110" r="18" fill="url(#nodeGlowGrad)"/>
-              <circle class="node-glow n2" cx="278" cy="155" r="18" fill="url(#nodeGlowGrad)"/>
-              <circle class="node-glow n3" cx="278" cy="245" r="18" fill="url(#nodeGlowGrad)"/>
-              <circle class="node-glow n4" cx="200" cy="290" r="18" fill="url(#nodeGlowGrad)"/>
-              <circle class="node-glow n5" cx="122" cy="245" r="18" fill="url(#nodeGlowGrad)"/>
-              <circle class="node-glow n6" cx="122" cy="155" r="18" fill="url(#nodeGlowGrad)"/>
+              <!-- Halos on n2, n5, n8 -->
+              <circle class="halo" cx="200" cy="60"  r="22" fill="url(#meshHalo)"/>
+              <circle class="halo" cx="180" cy="200" r="22" fill="url(#meshHalo)"/>
+              <circle class="halo" cx="230" cy="320" r="22" fill="url(#meshHalo)"/>
 
-              <!-- Noduri -->
-              <circle class="node" cx="200" cy="110" r="5" fill="#FF5A1F"/>
-              <circle class="node n2" cx="278" cy="155" r="5" fill="#FF5A1F"/>
-              <circle class="node n3" cx="278" cy="245" r="5" fill="#FF5A1F"/>
-              <circle class="node n4" cx="200" cy="290" r="5" fill="#FF5A1F"/>
-              <circle class="node n5" cx="122" cy="245" r="5" fill="#FF5A1F"/>
-              <circle class="node n6" cx="122" cy="155" r="5" fill="#FF5A1F"/>
+              <!-- 9 nodes -->
+              <circle cx="80"  cy="90"  r="4" fill="var(--cyan-500)"/>
+              <circle cx="200" cy="60"  r="4" fill="var(--cyan-500)"/>
+              <circle cx="330" cy="110" r="4" fill="var(--cyan-500)"/>
+              <circle cx="60"  cy="220" r="4" fill="var(--cyan-500)"/>
+              <circle cx="180" cy="200" r="4" fill="var(--cyan-500)"/>
+              <circle cx="320" cy="240" r="4" fill="var(--cyan-500)"/>
+              <circle cx="110" cy="340" r="4" fill="var(--cyan-500)"/>
+              <circle cx="230" cy="320" r="4" fill="var(--cyan-500)"/>
+              <circle cx="340" cy="350" r="4" fill="var(--cyan-500)"/>
 
-              <!-- Hub central -->
-              <circle cx="200" cy="200" r="26" fill="url(#nodeGlowGrad)" opacity="0.9"/>
-              <circle cx="200" cy="200" r="12" fill="#0A0A0A" stroke="#FF5A1F" stroke-width="1.5"/>
-              <circle cx="200" cy="200" r="5" fill="#FAFAFA"/>
+              <!-- Status pulses on n2 and n8 -->
+              <circle class="status-pulse" cx="200" cy="60" r="4" fill="var(--signal-up)"/>
+              <circle class="status-pulse delay-1" cx="230" cy="320" r="4" fill="var(--signal-up)"/>
+
+              <!-- Travel dots (3 active routes) -->
+              <circle class="travel t1" r="2" fill="var(--signal-info)"/>
+              <circle class="travel t2" r="2" fill="var(--signal-info)"/>
+              <circle class="travel t3" r="2" fill="var(--signal-info)"/>
+
             </g>
           </svg>
         </div>
       </div>
+
+      <!-- Scroll cue -->
+      <div class="scroll-cue absolute bottom-32 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-3 pointer-events-none">
+        <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-surface-400">Scroll</span>
+        <span class="scroll-cue-bar"></span>
+      </div>
+      <style>
+        .scroll-cue-bar {
+          width: 1px;
+          height: 36px;
+          background: linear-gradient(to bottom, var(--cyan-500) 0%, transparent 100%);
+          display: block;
+          animation: scroll-cue-pulse 2.4s ease-in-out infinite;
+          transform-origin: top;
+        }
+        @keyframes scroll-cue-pulse {
+          0%, 100% { transform: scaleY(0.4); opacity: 0.5; }
+          50%      { transform: scaleY(1);   opacity: 1;   }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .scroll-cue-bar { animation: none; opacity: 0.6; }
+        }
+      </style>
     </section>
 
 
+
     <!-- ═══════════════════ PARTNERS BAND ═══════════════════ -->
-    <section class="py-10 bg-white">
+    <section class="py-12 bg-ink-800 border-y border-brand-cyan-500/10">
       <div class="max-w-7xl mx-auto px-6">
-        <p class="text-center text-brand-steel text-[12px] tracking-widest uppercase font-medium mb-6">Parteneri de încredere</p>
-        <div class="flex flex-wrap justify-center items-center gap-x-3 gap-y-3 text-brand-steel font-medium text-[14px]">
+        <p class="brand-eyebrow text-center mb-6">— Parteneri tehnologici</p>
+        <div class="flex flex-wrap justify-center items-center gap-x-4 gap-y-3 font-mono text-surface-300 text-[12px] uppercase tracking-[0.2em]">
           <span>Microsoft</span>
-          <span class="text-brand-border">·</span>
+          <span class="text-brand-cyan-500/40">/</span>
           <span>Fortinet</span>
-          <span class="text-brand-border">·</span>
+          <span class="text-brand-cyan-500/40">/</span>
           <span>Ubiquiti</span>
-          <span class="text-brand-border">·</span>
+          <span class="text-brand-cyan-500/40">/</span>
           <span>TP-Link</span>
-          <span class="text-brand-border">·</span>
+          <span class="text-brand-cyan-500/40">/</span>
           <span>Acronis</span>
-          <span class="text-brand-border">·</span>
+          <span class="text-brand-cyan-500/40">/</span>
           <span>Bitdefender</span>
         </div>
       </div>
@@ -197,154 +209,146 @@ import Footer from '../components/Footer.astro';
 
 
     <!-- ═══════════════════ SERVICES GRID ═══════════════════ -->
-    <section id="servicii" class="py-24 bg-brand-light">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-16">
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-accent/10 rounded-full mb-6">
-            <svg class="w-4 h-4 text-brand-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
-            <span class="text-brand-accent text-[13px] font-medium">Serviciile noastre</span>
-          </div>
-          <h2 class="text-[28px] md:text-[42px] font-medium text-brand-dark">
+    <section id="servicii" class="py-24 bg-ink-900 relative overflow-hidden">
+      <div class="brand-grid-bg absolute inset-0 opacity-30 pointer-events-none"></div>
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <div class="brand-section-head index mb-14">
+          <p><strong>01</strong> / Capabilities</p>
+        </div>
+        <div class="max-w-2xl mb-14">
+          <h2 class="font-display text-[32px] md:text-[44px] font-medium text-surface-50 leading-tight">
             Servicii IT complete
           </h2>
-          <p class="mt-4 text-brand-steel text-[17px] max-w-2xl mx-auto font-light">
+          <p class="mt-4 text-surface-300 text-[17px] font-light">
             De la mentenanță preventivă la securitate completă — acoperim întreaga infrastructură IT a afacerii tale.
           </p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-6">
 
-          <!-- Mentenanță & Suport IT -->
-          <a href="/servicii/mentenanta-suport-it" class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+          <a href="/servicii/mentenanta-suport-it" class="brand-card brand-card-glow group block overflow-hidden">
             <img src="/img/servicii/mentenanta-suport-it.jpg" alt="Mentenanță & Suport IT" class="w-full h-48 object-cover" loading="lazy" />
             <div class="p-6">
               <div class="flex items-center gap-3 mb-3">
-                <div class="w-9 h-9 bg-brand-accent/10 rounded-lg flex items-center justify-center">
-                  <svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085"/></svg>
+                <div class="w-9 h-9 bg-brand-cyan-500/10 rounded-lg flex items-center justify-center text-brand-cyan-500">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085"/></svg>
                 </div>
-                <h3 class="text-brand-dark font-medium text-[18px] group-hover:text-brand-accent transition-colors">Mentenanță & Suport IT</h3>
+                <h3 class="text-surface-50 font-medium text-[18px] group-hover:text-brand-cyan-500 transition-colors">Mentenanță & Suport IT</h3>
               </div>
-              <p class="text-brand-steel text-[14px] leading-relaxed mb-4 font-light">Mentenanță preventivă, intervenții rapide și monitorizare permanentă. Sistemele tale funcționează fără întreruperi.</p>
-              <span class="text-brand-accent text-[14px] font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+              <p class="text-surface-300 text-[14px] leading-relaxed mb-4 font-light">Mentenanță preventivă, intervenții în timp util și monitorizare automată 24/7. Sistemele tale funcționează stabil, cu incidențe detectate proactiv.</p>
+              <span class="font-mono text-brand-cyan-500 text-[11px] uppercase tracking-[0.18em] inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                 Află mai mult <span class="transition-transform group-hover:translate-x-0.5">→</span>
               </span>
             </div>
           </a>
 
-          <!-- Rețelistică & Wi-Fi -->
-          <a href="/servicii/retelistica-wifi" class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+          <a href="/servicii/retelistica-wifi" class="brand-card brand-card-glow group block overflow-hidden">
             <img src="/img/servicii/retelistica-wifi.jpg" alt="Rețelistică & Wi-Fi" class="w-full h-48 object-cover" loading="lazy" />
             <div class="p-6">
               <div class="flex items-center gap-3 mb-3">
-                <div class="w-9 h-9 bg-brand-accent/10 rounded-lg flex items-center justify-center">
-                  <svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z"/></svg>
+                <div class="w-9 h-9 bg-brand-cyan-500/10 rounded-lg flex items-center justify-center text-brand-cyan-500">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z"/></svg>
                 </div>
-                <h3 class="text-brand-dark font-medium text-[18px] group-hover:text-brand-accent transition-colors">Rețelistică & Wi-Fi</h3>
+                <h3 class="text-surface-50 font-medium text-[18px] group-hover:text-brand-cyan-500 transition-colors">Rețelistică & Wi-Fi</h3>
               </div>
-              <p class="text-brand-steel text-[14px] leading-relaxed mb-4 font-light">Rețele cablate și wireless performante, adaptate mediului tău — de la birouri la hale logistice și spații industriale.</p>
-              <span class="text-brand-accent text-[14px] font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+              <p class="text-surface-300 text-[14px] leading-relaxed mb-4 font-light">Rețele cablate și wireless performante, adaptate mediului tău — de la birouri la hale logistice și spații industriale.</p>
+              <span class="font-mono text-brand-cyan-500 text-[11px] uppercase tracking-[0.18em] inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                 Află mai mult <span class="transition-transform group-hover:translate-x-0.5">→</span>
               </span>
             </div>
           </a>
 
-          <!-- Cloud & Backup -->
-          <a href="/servicii/cloud-backup" class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+          <a href="/servicii/cloud-backup" class="brand-card brand-card-glow group block overflow-hidden">
             <img src="/img/servicii/cloud-backup.jpg" alt="Cloud & Backup" class="w-full h-48 object-cover" loading="lazy" />
             <div class="p-6">
               <div class="flex items-center gap-3 mb-3">
-                <div class="w-9 h-9 bg-brand-node/10 rounded-lg flex items-center justify-center">
-                  <svg class="w-5 h-5 text-brand-node" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"/></svg>
+                <div class="w-9 h-9 bg-brand-cyan-500/10 rounded-lg flex items-center justify-center text-brand-cyan-500">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"/></svg>
                 </div>
-                <h3 class="text-brand-dark font-medium text-[18px] group-hover:text-brand-node transition-colors">Cloud & Backup</h3>
+                <h3 class="text-surface-50 font-medium text-[18px] group-hover:text-brand-cyan-500 transition-colors">Cloud & Backup</h3>
               </div>
-              <p class="text-brand-steel text-[14px] leading-relaxed mb-4 font-light">Soluții cloud și backup automatizat cu Acronis. Date securizate, accesibile de oriunde și conforme GDPR.</p>
-              <span class="text-brand-node text-[14px] font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+              <p class="text-surface-300 text-[14px] leading-relaxed mb-4 font-light">Soluții cloud și backup automatizat cu Acronis. Date securizate, accesibile de oriunde și conforme GDPR.</p>
+              <span class="font-mono text-brand-cyan-500 text-[11px] uppercase tracking-[0.18em] inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                 Află mai mult <span class="transition-transform group-hover:translate-x-0.5">→</span>
               </span>
             </div>
           </a>
 
-          <!-- Securitate & Supraveghere -->
-          <a href="/servicii/securitate-supraveghere" class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+          <a href="/servicii/securitate-supraveghere" class="brand-card brand-card-glow group block overflow-hidden">
             <img src="/img/servicii/securitate-supraveghere.jpg" alt="Securitate & Supraveghere" class="w-full h-48 object-cover" loading="lazy" />
             <div class="p-6">
               <div class="flex items-center gap-3 mb-3">
-                <div class="w-9 h-9 bg-red-500/10 rounded-lg flex items-center justify-center">
-                  <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z"/></svg>
+                <div class="w-9 h-9 bg-brand-cyan-500/10 rounded-lg flex items-center justify-center text-brand-cyan-500">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z"/></svg>
                 </div>
-                <h3 class="text-brand-dark font-medium text-[18px] group-hover:text-red-500 transition-colors">Securitate & Supraveghere</h3>
+                <h3 class="text-surface-50 font-medium text-[18px] group-hover:text-brand-cyan-500 transition-colors">Securitate & Supraveghere</h3>
               </div>
-              <p class="text-brand-steel text-[14px] leading-relaxed mb-4 font-light">Supraveghere video, control acces, pontaj și automatizări integrate. Securitate fizică și digitală într-un singur pachet.</p>
-              <span class="text-red-500 text-[14px] font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+              <p class="text-surface-300 text-[14px] leading-relaxed mb-4 font-light">Supraveghere video, control acces, pontaj și automatizări integrate. Securitate fizică și digitală într-un singur pachet.</p>
+              <span class="font-mono text-brand-cyan-500 text-[11px] uppercase tracking-[0.18em] inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                 Află mai mult <span class="transition-transform group-hover:translate-x-0.5">→</span>
               </span>
             </div>
           </a>
 
-          <!-- Outsourcing IT -->
-          <a href="/servicii/outsourcing-it" class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+          <a href="/servicii/outsourcing-it" class="brand-card brand-card-glow group block overflow-hidden">
             <img src="/img/servicii/outsourcing-it.jpg" alt="Outsourcing IT" class="w-full h-48 object-cover" loading="lazy" />
             <div class="p-6">
               <div class="flex items-center gap-3 mb-3">
-                <div class="w-9 h-9 bg-emerald-500/10 rounded-lg flex items-center justify-center">
-                  <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+                <div class="w-9 h-9 bg-brand-cyan-500/10 rounded-lg flex items-center justify-center text-brand-cyan-500">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
                 </div>
-                <h3 class="text-brand-dark font-medium text-[18px] group-hover:text-emerald-500 transition-colors">Outsourcing IT</h3>
+                <h3 class="text-surface-50 font-medium text-[18px] group-hover:text-brand-cyan-500 transition-colors">Outsourcing IT</h3>
               </div>
-              <p class="text-brand-steel text-[14px] leading-relaxed mb-4 font-light">Departament IT complet externalizat, fără costurile angajării interne. Suport permanent și monitorizare 24/7.</p>
-              <span class="text-emerald-500 text-[14px] font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+              <p class="text-surface-300 text-[14px] leading-relaxed mb-4 font-light">Departament IT externalizat, fără costurile angajării interne. Suport tehnic în program Lu–Vi și monitorizare automată 24/7.</p>
+              <span class="font-mono text-brand-cyan-500 text-[11px] uppercase tracking-[0.18em] inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                 Află mai mult <span class="transition-transform group-hover:translate-x-0.5">→</span>
               </span>
             </div>
           </a>
 
-          <!-- Protecție Cibernetică -->
-          <a href="/servicii/protectie-cibernetica" class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+          <a href="/servicii/protectie-cibernetica" class="brand-card brand-card-glow group block overflow-hidden">
             <img src="/img/servicii/protectie-cibernetica.jpg" alt="Protecție Cibernetică" class="w-full h-48 object-cover" loading="lazy" />
             <div class="p-6">
               <div class="flex items-center gap-3 mb-3">
-                <div class="w-9 h-9 bg-amber-500/10 rounded-lg flex items-center justify-center">
-                  <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+                <div class="w-9 h-9 bg-brand-cyan-500/10 rounded-lg flex items-center justify-center text-brand-cyan-500">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
                 </div>
-                <h3 class="text-brand-dark font-medium text-[18px] group-hover:text-amber-500 transition-colors">Protecție Cibernetică</h3>
+                <h3 class="text-surface-50 font-medium text-[18px] group-hover:text-brand-cyan-500 transition-colors">Protecție Cibernetică</h3>
               </div>
-              <p class="text-brand-steel text-[14px] leading-relaxed mb-4 font-light">Firewall-uri Fortinet, politici de acces, monitorizare rețea și antivirus centralizat Bitdefender. Conformitate NIS2.</p>
-              <span class="text-amber-500 text-[14px] font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+              <p class="text-surface-300 text-[14px] leading-relaxed mb-4 font-light">Firewall-uri Fortinet, politici de acces, monitorizare rețea și antivirus centralizat Bitdefender. Conformitate NIS2.</p>
+              <span class="font-mono text-brand-cyan-500 text-[11px] uppercase tracking-[0.18em] inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                 Află mai mult <span class="transition-transform group-hover:translate-x-0.5">→</span>
               </span>
             </div>
           </a>
 
-          <!-- Virtualizare & Servere -->
-          <a href="/servicii/virtualizare-servere" class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+          <a href="/servicii/virtualizare-servere" class="brand-card brand-card-glow group block overflow-hidden">
             <img src="/img/servicii/virtualizare-servere.jpg" alt="Virtualizare & Servere" class="w-full h-48 object-cover" loading="lazy" />
             <div class="p-6">
               <div class="flex items-center gap-3 mb-3">
-                <div class="w-9 h-9 bg-indigo-500/10 rounded-lg flex items-center justify-center">
-                  <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 17.25v-.228a4.5 4.5 0 00-.12-1.03l-2.268-9.64a3.375 3.375 0 00-3.285-2.602H7.923a3.375 3.375 0 00-3.285 2.602l-2.268 9.64a4.5 4.5 0 00-.12 1.03v.228m19.5 0a3 3 0 01-3 3H5.25a3 3 0 01-3-3m19.5 0a3 3 0 00-3-3H5.25a3 3 0 00-3 3m16.5 0h.008v.008h-.008v-.008zm-3 0h.008v.008h-.008v-.008z"/></svg>
+                <div class="w-9 h-9 bg-brand-cyan-500/10 rounded-lg flex items-center justify-center text-brand-cyan-500">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 17.25v-.228a4.5 4.5 0 00-.12-1.03l-2.268-9.64a3.375 3.375 0 00-3.285-2.602H7.923a3.375 3.375 0 00-3.285 2.602l-2.268 9.64a4.5 4.5 0 00-.12 1.03v.228m19.5 0a3 3 0 01-3 3H5.25a3 3 0 01-3-3m19.5 0a3 3 0 00-3-3H5.25a3 3 0 00-3 3m16.5 0h.008v.008h-.008v-.008zm-3 0h.008v.008h-.008v-.008z"/></svg>
                 </div>
-                <h3 class="text-brand-dark font-medium text-[18px] group-hover:text-indigo-500 transition-colors">Virtualizare & Servere</h3>
+                <h3 class="text-surface-50 font-medium text-[18px] group-hover:text-brand-cyan-500 transition-colors">Virtualizare & Servere</h3>
               </div>
-              <p class="text-brand-steel text-[14px] leading-relaxed mb-4 font-light">Medii virtuale VMware, Hyper-V, Proxmox. Stabilitate, scalabilitate și economie de resurse hardware.</p>
-              <span class="text-indigo-500 text-[14px] font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+              <p class="text-surface-300 text-[14px] leading-relaxed mb-4 font-light">Medii virtuale VMware, Hyper-V, Proxmox. Stabilitate, scalabilitate și economie de resurse hardware.</p>
+              <span class="font-mono text-brand-cyan-500 text-[11px] uppercase tracking-[0.18em] inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                 Află mai mult <span class="transition-transform group-hover:translate-x-0.5">→</span>
               </span>
             </div>
           </a>
 
-          <!-- Consultanță & Audit -->
-          <a href="/servicii/consultanta-audit" class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+          <a href="/servicii/consultanta-audit" class="brand-card brand-card-glow group block overflow-hidden">
             <img src="/img/servicii/consultanta-audit.jpg" alt="Consultanță & Audit IT" class="w-full h-48 object-cover" loading="lazy" />
             <div class="p-6">
               <div class="flex items-center gap-3 mb-3">
-                <div class="w-9 h-9 bg-teal-500/10 rounded-lg flex items-center justify-center">
-                  <svg class="w-5 h-5 text-teal-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z"/></svg>
+                <div class="w-9 h-9 bg-brand-cyan-500/10 rounded-lg flex items-center justify-center text-brand-cyan-500">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z"/></svg>
                 </div>
-                <h3 class="text-brand-dark font-medium text-[18px] group-hover:text-teal-500 transition-colors">Consultanță & Audit</h3>
+                <h3 class="text-surface-50 font-medium text-[18px] group-hover:text-brand-cyan-500 transition-colors">Consultanță & Audit</h3>
               </div>
-              <p class="text-brand-steel text-[14px] leading-relaxed mb-4 font-light">Analiză completă a infrastructurii IT, propuneri personalizate de optimizare. Reduceri de costuri și vulnerabilități.</p>
-              <span class="text-teal-500 text-[14px] font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+              <p class="text-surface-300 text-[14px] leading-relaxed mb-4 font-light">Analiză completă a infrastructurii IT, propuneri personalizate de optimizare. Reduceri de costuri și vulnerabilități.</p>
+              <span class="font-mono text-brand-cyan-500 text-[11px] uppercase tracking-[0.18em] inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                 Află mai mult <span class="transition-transform group-hover:translate-x-0.5">→</span>
               </span>
             </div>
@@ -356,65 +360,63 @@ import Footer from '../components/Footer.astro';
 
 
     <!-- ═══════════════════ WHY AXA IT ═══════════════════ -->
-    <section class="py-24 bg-brand-dark relative overflow-hidden">
-      <div class="absolute top-1/4 -left-32 w-[500px] h-[500px] bg-brand-accent/10 rounded-full blur-[180px] pointer-events-none"></div>
-      <div class="absolute bottom-1/4 -right-32 w-[400px] h-[400px] bg-brand-accent/10 rounded-full blur-[150px] pointer-events-none"></div>
+    <section class="py-24 bg-ink-800 relative overflow-hidden">
+      <div class="absolute top-1/4 -left-32 w-[500px] h-[500px] bg-brand-cyan-500/10 rounded-full blur-[180px] pointer-events-none"></div>
+      <div class="absolute bottom-1/4 -right-32 w-[400px] h-[400px] bg-brand-cyan-500/10 rounded-full blur-[150px] pointer-events-none"></div>
 
       <div class="relative z-10 max-w-6xl mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-[28px] md:text-[42px] font-medium text-white">
+        <div class="brand-section-head index mb-14">
+          <p><strong>02</strong> / Why AXA IT</p>
+        </div>
+        <div class="max-w-2xl mb-14">
+          <h2 class="font-display text-[32px] md:text-[44px] font-medium text-surface-50">
             De ce AXA IT?
           </h2>
-          <p class="mt-4 text-white/50 text-[17px] max-w-xl mx-auto font-light">
+          <p class="mt-4 text-surface-300 text-[17px] font-light">
             5 motive pentru care clienții ne aleg și rămân alături de noi.
           </p>
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
 
-          <!-- Rapiditate -->
-          <div class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl p-6 text-center hover:border-brand-accent/30 transition-all">
-            <div class="w-12 h-12 mx-auto mb-4 flex items-center justify-center">
-              <svg class="w-7 h-7 text-brand-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+          <div class="brand-card p-6 text-center">
+            <div class="w-12 h-12 mx-auto mb-4 flex items-center justify-center text-brand-cyan-500">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
             </div>
-            <h3 class="text-white font-medium text-[16px] mb-2">Rapiditate</h3>
-            <p class="text-white/50 text-[13px] font-light">Sub 4 ore timp de intervenție la orice solicitare critică.</p>
+            <h3 class="text-surface-50 font-medium text-[16px] mb-2">Rapiditate</h3>
+            <p class="text-surface-300 text-[13px] font-light">Intenție de intervenție sub 4 ore la solicitări critice, conform pachetului contractat.</p>
           </div>
 
-          <!-- Personalizare -->
-          <div class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl p-6 text-center hover:border-brand-accent/30 transition-all">
-            <div class="w-12 h-12 mx-auto mb-4 flex items-center justify-center">
-              <svg class="w-7 h-7 text-brand-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.241-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 010-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.28z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <div class="brand-card p-6 text-center">
+            <div class="w-12 h-12 mx-auto mb-4 flex items-center justify-center text-brand-cyan-500">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.241-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 010-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.28z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
             </div>
-            <h3 class="text-white font-medium text-[16px] mb-2">Personalizare</h3>
-            <p class="text-white/50 text-[13px] font-light">Soluții IT pe măsura afacerii tale, nu pachete generice.</p>
+            <h3 class="text-surface-50 font-medium text-[16px] mb-2">Personalizare</h3>
+            <p class="text-surface-300 text-[13px] font-light">Soluții IT pe măsura afacerii tale, nu pachete generice.</p>
           </div>
 
-          <!-- Top Partners -->
-          <div class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl p-6 text-center hover:border-brand-accent/30 transition-all">
-            <div class="w-12 h-12 mx-auto mb-4 flex items-center justify-center">
-              <svg class="w-7 h-7 text-brand-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"/></svg>
+          <div class="brand-card p-6 text-center">
+            <div class="w-12 h-12 mx-auto mb-4 flex items-center justify-center text-brand-cyan-500">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"/></svg>
             </div>
-            <h3 class="text-white font-medium text-[16px] mb-2">Top Partners</h3>
-            <p class="text-white/50 text-[13px] font-light">Microsoft, Fortinet, Ubiquiti — echipamente de top.</p>
+            <h3 class="text-surface-50 font-medium text-[16px] mb-2">Top Partners</h3>
+            <p class="text-surface-300 text-[13px] font-light">Microsoft, Fortinet, Ubiquiti — echipamente de top.</p>
           </div>
 
-          <!-- Durabilitate -->
-          <div class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl p-6 text-center hover:border-brand-accent/30 transition-all">
-            <div class="w-12 h-12 mx-auto mb-4 flex items-center justify-center">
-              <svg class="w-7 h-7 text-brand-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+          <div class="brand-card p-6 text-center">
+            <div class="w-12 h-12 mx-auto mb-4 flex items-center justify-center text-brand-cyan-500">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
             </div>
-            <h3 class="text-white font-medium text-[16px] mb-2">Durabilitate</h3>
-            <p class="text-white/50 text-[13px] font-light">Soluții pe termen lung, nu fix-uri temporare.</p>
+            <h3 class="text-surface-50 font-medium text-[16px] mb-2">Durabilitate</h3>
+            <p class="text-surface-300 text-[13px] font-light">Soluții pe termen lung, nu fix-uri temporare.</p>
           </div>
 
-          <!-- Suport 24/7 -->
-          <div class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl p-6 text-center hover:border-brand-accent/30 transition-all">
-            <div class="w-12 h-12 mx-auto mb-4 flex items-center justify-center">
-              <svg class="w-7 h-7 text-brand-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+          <div class="brand-card p-6 text-center">
+            <div class="w-12 h-12 mx-auto mb-4 flex items-center justify-center text-brand-cyan-500">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
             </div>
-            <h3 class="text-white font-medium text-[16px] mb-2">Suport 24/7</h3>
-            <p class="text-white/50 text-[13px] font-light">Disponibili non-stop, inclusiv în weekend și sărbători.</p>
+            <h3 class="text-surface-50 font-medium text-[16px] mb-2">Acoperire monitorizare</h3>
+            <p class="text-surface-300 text-[13px] font-light">Monitorizare automată 24/7 a sistemelor critice; suport tehnic asistat Lu–Vi 08–18.</p>
           </div>
 
         </div>
@@ -423,32 +425,34 @@ import Footer from '../components/Footer.astro';
 
 
     <!-- ═══════════════════ STATS STRIP ═══════════════════ -->
-    <section class="py-16 bg-white">
-      <div class="max-w-5xl mx-auto px-6">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div>
-            <p class="text-brand-accent text-[36px] font-semibold leading-none">
+    <section class="py-20 bg-ink-900 border-y border-brand-cyan-500/10 relative overflow-hidden">
+      <div class="brand-grid-bg absolute inset-0 opacity-30 pointer-events-none"></div>
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <div class="brand-section-head index mb-12">
+          <p><strong>03</strong> / By the numbers</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-brand-cyan-500/10 border border-brand-cyan-500/10 rounded-2xl overflow-hidden">
+          <div class="bg-ink-900 p-8 text-center md:text-left">
+            <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-surface-500 mb-2">Sisteme active</p>
+            <p class="font-display text-brand-cyan-500 text-[44px] font-medium leading-none">
               <span class="counter" data-target="150" data-suffix="+">0</span>
             </p>
-            <p class="text-brand-steel text-[14px] mt-2 font-normal">clienți activi</p>
           </div>
-          <div>
-            <p class="text-brand-accent text-[36px] font-semibold leading-none">
-              <span class="counter" data-target="10" data-suffix="+">0</span>
+          <div class="bg-ink-900 p-8 text-center md:text-left">
+            <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-surface-500 mb-2">Ani experiență (din 2016)</p>
+            <p class="font-display text-brand-cyan-500 text-[44px] font-medium leading-none">
+              <span class="counter" data-target="8" data-suffix="+">0</span>
             </p>
-            <p class="text-brand-steel text-[14px] mt-2 font-normal">ani experiență</p>
           </div>
-          <div>
-            <p class="text-brand-accent text-[36px] font-semibold leading-none">
-              <span class="counter" data-target="98" data-suffix="%">0</span>
+          <div class="bg-ink-900 p-8 text-center md:text-left">
+            <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-surface-500 mb-2">Uptime mediu observat</p>
+            <p class="font-display text-brand-cyan-500 text-[44px] font-medium leading-none">
+              ~<span class="counter" data-target="98" data-suffix="%">0</span>
             </p>
-            <p class="text-brand-steel text-[14px] mt-2 font-normal">uptime garantat</p>
           </div>
-          <div>
-            <p class="text-brand-accent text-[36px] font-semibold leading-none">
-              24/7
-            </p>
-            <p class="text-brand-steel text-[14px] mt-2 font-normal">suport disponibil</p>
+          <div class="bg-ink-900 p-8 text-center md:text-left">
+            <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-surface-500 mb-2">Monitorizare automată</p>
+            <p class="font-display text-brand-cyan-500 text-[44px] font-medium leading-none">24/7</p>
           </div>
         </div>
       </div>
@@ -456,124 +460,121 @@ import Footer from '../components/Footer.astro';
 
 
     <!-- ═══════════════════ TESTIMONIALS ═══════════════════ -->
-    <section class="py-24 bg-brand-light">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-[28px] md:text-[42px] font-medium text-brand-dark">
+    <section class="py-24 bg-ink-800 relative overflow-hidden">
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <div class="brand-section-head index mb-14">
+          <p><strong>04</strong> / Field reports</p>
+        </div>
+        <div class="max-w-2xl mb-14">
+          <h2 class="font-display text-[32px] md:text-[44px] font-medium text-surface-50">
             Ce spun clienții noștri
           </h2>
-          <p class="mt-4 text-brand-steel text-[17px] max-w-xl mx-auto font-light">
+          <p class="mt-4 text-surface-300 text-[17px] font-light">
             Feedback real de la companii cu care colaborăm zilnic.
           </p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-6">
 
-          <!-- Testimonial 1 -->
-          <div class="bg-white rounded-2xl p-8">
-            <div class="flex items-center gap-1 mb-5">
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+          <div class="brand-card p-8">
+            <div class="flex items-center gap-1 mb-5 text-signal-warn">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
             </div>
-            <p class="text-brand-dark text-[15px] leading-relaxed mb-6 font-light">
+            <p class="text-surface-100 text-[15px] leading-relaxed mb-6 font-light">
               „Am lucrat cu mai multe firme de IT înainte. Diferența cu AXA IT e că nu trebuie să sun eu când apare o problemă — ei deja o rezolvă. Monitorizarea proactivă ne-a redus timpii de nefuncționare la aproape zero."
             </p>
             <div>
-              <p class="text-brand-dark font-medium text-[14px]">Alex Dragason</p>
-              <p class="text-brand-steel text-[13px]">Director General, Agrinatura Group</p>
+              <p class="text-surface-50 font-medium text-[14px]">Alex Dragason</p>
+              <p class="font-mono text-surface-400 text-[11px] uppercase tracking-[0.12em] mt-1">Director General · Agrinatura Group</p>
             </div>
           </div>
 
-          <!-- Testimonial 2 -->
-          <div class="bg-white rounded-2xl p-8">
-            <div class="flex items-center gap-1 mb-5">
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+          <div class="brand-card p-8">
+            <div class="flex items-center gap-1 mb-5 text-signal-warn">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
             </div>
-            <p class="text-brand-dark text-[15px] leading-relaxed mb-6 font-light">
+            <p class="text-surface-100 text-[15px] leading-relaxed mb-6 font-light">
               „Într-o clinică, fiecare minut de downtime costă. AXA IT ne-a configurat rețeaua, backup-ul și securitatea de la zero. Răspund rapid, explică clar și nu complică lucrurile inutil."
             </p>
             <div>
-              <p class="text-brand-dark font-medium text-[14px]">Dr. Radu Costea</p>
-              <p class="text-brand-steel text-[13px]">Fondator, Clinica Dentară Dentexpert Magic</p>
+              <p class="text-surface-50 font-medium text-[14px]">Dr. Radu Costea</p>
+              <p class="font-mono text-surface-400 text-[11px] uppercase tracking-[0.12em] mt-1">Fondator · Clinica Dentexpert Magic</p>
             </div>
           </div>
 
-          <!-- Testimonial 3 -->
-          <div class="bg-white rounded-2xl p-8">
-            <div class="flex items-center gap-1 mb-5">
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+          <div class="brand-card p-8">
+            <div class="flex items-center gap-1 mb-5 text-signal-warn">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
             </div>
-            <p class="text-brand-dark text-[15px] leading-relaxed mb-6 font-light">
+            <p class="text-surface-100 text-[15px] leading-relaxed mb-6 font-light">
               „AXA IT a fost alături de noi din prima zi de extindere. Au configurat infrastructura completă — rețelistică, Wi-Fi industrial, servere și supraveghere. Profesionalism și promptitudine la cel mai înalt nivel."
             </p>
             <div>
-              <p class="text-brand-dark font-medium text-[14px]">Cherciu Petrișor</p>
-              <p class="text-brand-steel text-[13px]">CEO, Wood Class Design</p>
+              <p class="text-surface-50 font-medium text-[14px]">Cherciu Petrișor</p>
+              <p class="font-mono text-surface-400 text-[11px] uppercase tracking-[0.12em] mt-1">CEO · Wood Class Design</p>
             </div>
           </div>
 
-          <!-- Testimonial 4 -->
-          <div class="bg-white rounded-2xl p-8">
-            <div class="flex items-center gap-1 mb-5">
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+          <div class="brand-card p-8">
+            <div class="flex items-center gap-1 mb-5 text-signal-warn">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
             </div>
-            <p class="text-brand-dark text-[15px] leading-relaxed mb-6 font-light">
+            <p class="text-surface-100 text-[15px] leading-relaxed mb-6 font-light">
               „Pe șantier, comunicarea rapidă și accesul la date sunt esențiale. AXA IT ne-a pus la punct întreaga infrastructură IT — de la rețea și servere până la soluții de backup. Colaborăm de ani buni și nu am avut nicio surpriză neplăcută."
             </p>
             <div>
-              <p class="text-brand-dark font-medium text-[14px]">Marcel Simion</p>
-              <p class="text-brand-steel text-[13px]">Administrator, Consal Edilitare</p>
+              <p class="text-surface-50 font-medium text-[14px]">Marcel Simion</p>
+              <p class="font-mono text-surface-400 text-[11px] uppercase tracking-[0.12em] mt-1">Administrator · Consal Edilitare</p>
             </div>
           </div>
 
-          <!-- Testimonial 5 -->
-          <div class="bg-white rounded-2xl p-8">
-            <div class="flex items-center gap-1 mb-5">
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+          <div class="brand-card p-8">
+            <div class="flex items-center gap-1 mb-5 text-signal-warn">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
             </div>
-            <p class="text-brand-dark text-[15px] leading-relaxed mb-6 font-light">
+            <p class="text-surface-100 text-[15px] leading-relaxed mb-6 font-light">
               „Avem magazine și depozite cu zeci de sisteme interconectate. AXA IT ne gestionează rețeaua, securitatea și suportul tehnic cu o reactivitate impresionantă. De când lucrăm cu ei, nu am mai avut probleme cu infrastructura IT."
             </p>
             <div>
-              <p class="text-brand-dark font-medium text-[14px]">Kadir Ayguz</p>
-              <p class="text-brand-steel text-[13px]">Director, Spot Vision Electric & Lighting</p>
+              <p class="text-surface-50 font-medium text-[14px]">Kadir Ayguz</p>
+              <p class="font-mono text-surface-400 text-[11px] uppercase tracking-[0.12em] mt-1">Director · Spot Vision Electric & Lighting</p>
             </div>
           </div>
 
-          <!-- Testimonial 6 -->
-          <div class="bg-white rounded-2xl p-8">
-            <div class="flex items-center gap-1 mb-5">
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+          <div class="brand-card p-8">
+            <div class="flex items-center gap-1 mb-5 text-signal-warn">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
             </div>
-            <p class="text-brand-dark text-[15px] leading-relaxed mb-6 font-light">
-              „Ca firmă de producție, avem nevoie de sisteme care funcționează non-stop. AXA IT ne-a implementat soluții de monitorizare și backup automat care ne dau liniște. Suntem o echipă mică, dar cu ei lângă noi ne simțim acoperiți complet."
+            <p class="text-surface-100 text-[15px] leading-relaxed mb-6 font-light">
+              „Ca firmă de producție, avem nevoie de sisteme stabile. AXA IT ne-a implementat soluții de monitorizare automată și backup care ne dau liniște. Suntem o echipă mică, dar cu ei alături ne simțim bine acoperiți."
             </p>
             <div>
-              <p class="text-brand-dark font-medium text-[14px]">Elena</p>
-              <p class="text-brand-steel text-[13px]">Administrator, Plast Du Iv SRL</p>
+              <p class="text-surface-50 font-medium text-[14px]">Elena</p>
+              <p class="font-mono text-surface-400 text-[11px] uppercase tracking-[0.12em] mt-1">Administrator · Plast Du Iv SRL</p>
             </div>
           </div>
 
@@ -583,34 +584,38 @@ import Footer from '../components/Footer.astro';
 
 
     <!-- ═══════════════════ CTA FINAL ═══════════════════ -->
-    <section class="py-24 bg-brand-dark relative overflow-hidden">
-      <div class="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-brand-accent/5 rounded-full blur-[150px] pointer-events-none"></div>
-      <div class="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] bg-brand-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <section class="py-24 bg-ink-900 relative overflow-hidden">
+      <div class="brand-grid-bg absolute inset-0 opacity-40 pointer-events-none"></div>
+      <div class="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-brand-cyan-500/5 rounded-full blur-[150px] pointer-events-none"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] bg-brand-cyan-500/5 rounded-full blur-[120px] pointer-events-none"></div>
 
       <div class="relative z-10 max-w-3xl mx-auto px-6 text-center">
-        <h2 class="text-[32px] md:text-[42px] font-medium text-white leading-tight mb-4">
+        <p class="brand-eyebrow mb-8">— 05 / Next step</p>
+        <h2 class="font-display text-[36px] md:text-[48px] font-medium text-surface-50 leading-tight mb-4">
           Pregătit să-ți securizezi<br/>
-          <span class="text-brand-accent">infrastructura?</span>
+          <span class="text-brand-cyan-500">infrastructura?</span>
         </h2>
-        <p class="text-white/50 text-[17px] max-w-xl mx-auto mb-10 font-light">
+        <p class="text-surface-300 text-[17px] max-w-xl mx-auto mb-10 font-light">
           Contactează-ne pentru o consultație gratuită. Analizăm infrastructura ta și propunem soluții concrete.
         </p>
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="/contact" class="group inline-flex items-center gap-3 bg-brand-accent hover:bg-brand-accent/90 text-white font-medium text-[15px] px-8 py-4 rounded-full transition-all shadow-lg hover:shadow-xl hover:shadow-brand-accent/25">
-            <span>Solicită o consultație</span>
-            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          <a href="/contact" class="group inline-flex items-center gap-3 bg-brand-cyan-500 hover:bg-brand-cyan-400 text-ink-900 font-mono text-[12px] uppercase tracking-[0.18em] font-semibold px-8 py-4 rounded-full transition-all shadow-lg hover:shadow-xl hover:shadow-brand-cyan-500/25">
+            <span>Solicită consultație</span>
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
           </a>
-          <a href="tel:+40727897849" class="inline-flex items-center gap-2 text-white/60 hover:text-white text-[15px] transition-colors">
-            <svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+          <a href="tel:+40727897849" class="inline-flex items-center gap-2 text-surface-300 hover:text-brand-cyan-500 text-[15px] transition-colors">
+            <span class="text-brand-cyan-500">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+            </span>
             +40 727 897 849
           </a>
         </div>
 
-        <div class="mt-12 flex flex-wrap justify-center gap-6 text-white/40 text-[13px] font-light">
-          <span>Lu–Vi: 08:00 – 18:00</span>
+        <div class="mt-12 flex flex-wrap justify-center gap-6 font-mono text-surface-500 text-[11px] uppercase tracking-[0.18em]">
+          <span>Lu–Vi · 08:00–18:00</span>
           <span>office@axa-it.ro</span>
-          <span>București, Dealul Tugulea 64</span>
+          <span>București · Dealul Tugulea 64</span>
         </div>
       </div>
     </section>

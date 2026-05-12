@@ -6,3 +6,9 @@ dist/
 .env
 .env.*
 axait-brand_1.zip
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/

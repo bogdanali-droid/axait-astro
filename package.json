@@ -7,7 +7,11 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test:visual": "playwright test",
+    "test:visual:update": "playwright test --update-snapshots",
+    "test:visual:baseline:prod": "PREVIEW_URL=https://axait.ro playwright test --update-snapshots",
+    "test:visual:preview": "PREVIEW_URL=https://claude-team-greeting-rbtow.axait-astro.pages.dev playwright test"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.3",

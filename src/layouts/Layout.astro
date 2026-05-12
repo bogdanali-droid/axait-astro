@@ -6,9 +6,9 @@ interface Props {
   type?: string;
 }
 
-const { 
-  title, 
-  description = "AXA IT oferă soluții IT complete, adaptate afacerii tale — mentenanță, rețelistică, cloud, securitate și suport permanent.",
+const {
+  title,
+  description = "AXA IT oferă soluții IT complete, adaptate afacerii tale — mentenanță, rețelistică, cloud, securitate și monitorizare automată 24/7 cu suport tehnic Lu-Vi 08-18.",
   image = "/og-image-1200x630.png",
   type = "website"
 } = Astro.props;
@@ -25,9 +25,9 @@ const fullTitle = title.length > 45 ? title : `${title} | AXA IT`;
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{fullTitle}</title>
   <meta name="description" content={description}>
-  
+
   <link rel="canonical" href={canonicalURL} />
-  
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -35,11 +35,11 @@ const fullTitle = title.length > 45 ? title : `${title} | AXA IT`;
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  
-  <!-- Theme color -->
-  <meta name="theme-color" content="#0A0A0A">
-  <meta name="msapplication-TileColor" content="#FF5A1F">
-  
+
+  <!-- Theme color (Brand v2: ink-800 + cyan accent) -->
+  <meta name="theme-color" content="#0B1226">
+  <meta name="msapplication-TileColor" content="#19B6E6">
+
   <!-- Open Graph -->
   <meta property="og:type" content={type} />
   <meta property="og:url" content={canonicalURL} />
@@ -48,19 +48,19 @@ const fullTitle = title.length > 45 ? title : `${title} | AXA IT`;
   <meta property="og:image" content={ogImage} />
   <meta property="og:site_name" content="AXA IT" />
   <meta property="og:locale" content="ro_RO" />
-  
+
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content={canonicalURL} />
   <meta name="twitter:title" content={fullTitle} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
-  
-  <!-- Geist Sans + Space Grotesk Fonts -->
+
+  <!-- Fonts: Geist (legacy, Faza 1) + Brand v2 (Inter body, Manrope display, JetBrains Mono) -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
   <style>
     @font-face {
       font-family: 'Geist';
@@ -91,7 +91,7 @@ const fullTitle = title.length > 45 ? title : `${title} | AXA IT`;
       font-display: swap;
     }
   </style>
-  
+
   <!-- LocalBusiness + WebSite Schema -->
   <script type="application/ld+json">
   {
@@ -102,12 +102,13 @@ const fullTitle = title.length > 45 ? title : `${title} | AXA IT`;
         "@id": "https://axait.ro/#business",
         "name": "AXA IT",
         "url": "https://axait.ro",
+        "foundingDate": "2016",
         "logo": {
           "@type": "ImageObject",
           "url": "https://axait.ro/img/logo/logo-horizontal-light.svg"
         },
         "image": "https://axait.ro/og-image-1200x630.png",
-        "description": "Soluții IT complete pentru firme din București — mentenanță, rețelistică, cloud, securitate și outsourcing IT. 10+ ani experiență, 150+ clienți activi.",
+        "description": "Soluții IT complete pentru firme din București — mentenanță, rețelistică, cloud, securitate și outsourcing IT. 8+ ani experiență (din 2016), 150+ sisteme active.",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Dealul Tugulea 64",
@@ -166,21 +167,21 @@ const fullTitle = title.length > 45 ? title : `${title} | AXA IT`;
     ]
   }
   </script>
-  
+
   <slot name="schema" />
 </head>
 <body class="antialiased bg-brand-light text-brand-dark">
   <slot />
 
   <!-- WhatsApp Floating Button -->
-  <a 
+  <a
     href="https://wa.me/40727897849?text=Bună%20ziua!%20Aș%20dori%20mai%20multe%20informații%20despre%20serviciile%20AXA%20IT."
     target="_blank"
     rel="noopener"
     aria-label="Contactează-ne pe WhatsApp"
     class="whatsapp-fab group fixed bottom-6 right-6 z-[100] flex items-center"
   >
-    <span class="hidden group-hover:flex items-center mr-3 bg-white text-brand-dark text-[14px] font-medium px-4 py-2 rounded-full shadow-lg border border-brand-border/40 whitespace-nowrap transition-all">
+    <span class="hidden group-hover:flex items-center mr-3 bg-white text-[#0B1226] text-[14px] font-medium px-4 py-2 rounded-full shadow-lg border border-brand-border/40 whitespace-nowrap transition-all">
       Scrie-ne pe WhatsApp
     </span>
     <span class="relative flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-lg shadow-[#25D366]/30 hover:shadow-xl hover:shadow-[#25D366]/40 hover:scale-105 transition-all">
@@ -192,22 +193,53 @@ const fullTitle = title.length > 45 ? title : `${title} | AXA IT`;
 </html>
 
 <style is:global>
+  /* === Brand v2 design tokens — disponibile global pentru utility classes manuale === */
+  :root {
+    --ink-900: #070C1C;
+    --ink-800: #0B1226;
+    --ink-700: #111A38;
+    --ink-600: #1A2548;
+    --ink-500: #243364;
+    --ink-400: #3C4B7E;
+
+    --cyan-500: #19B6E6;
+    --cyan-400: #4DCFF5;
+    --cyan-600: #0E8FBA;
+    --cyan-700: #0A6A8C;
+    --cyan-900: #062C3D;
+
+    --surface-50: #F5F7FB;
+    --surface-200: #C7CFE0;
+    --surface-300: #9AA4BE;
+    --surface-400: #6E7896;
+    --surface-500: #4B5677;
+
+    --signal-up: #16C784;
+    --signal-warn: #F5A623;
+    --signal-down: #E64545;
+    --signal-info: #6C8CFF;
+
+    --font-display: 'Manrope', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
-  
+
   html, body {
-    font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
     overflow-x: hidden;
     width: 100%;
     max-width: 100vw;
   }
 
   ::selection {
-    background: #FF5A1F;
-    color: #0A0A0A;
+    background: #19B6E6;
+    color: #0B1226;
   }
 
   ::-webkit-scrollbar {
@@ -219,7 +251,7 @@ const fullTitle = title.length > 45 ? title : `${title} | AXA IT`;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #FF5A1F;
+    background: #19B6E6;
     border-radius: 4px;
   }
 
@@ -331,4 +363,150 @@ const fullTitle = title.length > 45 ? title : `${title} | AXA IT`;
   .animation-delay-1000 { animation-delay: 1000ms; }
   .animation-delay-2000 { animation-delay: 2000ms; }
   .animation-delay-3000 { animation-delay: 3000ms; }
+
+  /* === Brand v2 utility classes — prefix `brand-` ca să evite coliziuni cu paginile actuale === */
+  /* Sunt disponibile global; Faza 2 le va wrap în primitive Astro (Eyebrow.astro, Pill.astro etc.) */
+
+  .brand-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cyan-500);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .brand-eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--cyan-500);
+  }
+
+  .brand-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    background: rgba(25, 182, 230, 0.12);
+    color: var(--cyan-500);
+    border: 1px solid rgba(25, 182, 230, 0.3);
+  }
+  .brand-pill.brand-pill-ok {
+    background: rgba(22, 199, 132, 0.12);
+    color: var(--signal-up);
+    border-color: rgba(22, 199, 132, 0.3);
+  }
+  .brand-pill.brand-pill-no {
+    background: rgba(230, 69, 69, 0.12);
+    color: var(--signal-down);
+    border-color: rgba(230, 69, 69, 0.3);
+  }
+
+  .brand-wordmark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    display: inline-flex;
+    gap: 0.25em;
+    line-height: 1;
+  }
+  .brand-wordmark .axa { color: #FFFFFF; }
+  .brand-wordmark .it { color: var(--cyan-500); }
+  .brand-wordmark.brand-wordmark-mono-white .axa,
+  .brand-wordmark.brand-wordmark-mono-white .it { color: #FFFFFF; }
+  .brand-wordmark.brand-wordmark-mono-ink .axa,
+  .brand-wordmark.brand-wordmark-mono-ink .it { color: var(--ink-900); }
+
+  .brand-grid-bg { position: relative; }
+  .brand-grid-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(25, 182, 230, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(25, 182, 230, 0.06) 1px, transparent 1px);
+    background-size: 64px 64px;
+    background-position: center center;
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 90%);
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 90%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .brand-grid-bg > * { position: relative; z-index: 1; }
+
+  .brand-section-head {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 48px;
+    align-items: end;
+    margin-bottom: 64px;
+  }
+  .brand-section-head .index {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--surface-400);
+  }
+  .brand-section-head .index strong {
+    color: var(--cyan-500);
+    font-weight: 500;
+  }
+  @media (max-width: 800px) {
+    .brand-section-head { grid-template-columns: 1fr; gap: 16px; }
+  }
+
+  .brand-spec-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 24px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    align-items: baseline;
+  }
+  .brand-spec-row .label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--surface-400);
+  }
+  .brand-spec-row .value { color: var(--surface-50); }
+  .brand-spec-row .tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--cyan-500);
+    text-align: right;
+  }
+  @media (max-width: 720px) {
+    .brand-spec-row { grid-template-columns: 1fr; gap: 4px; }
+    .brand-spec-row .tag { text-align: left; }
+  }
+
+  .brand-card {
+    background: var(--ink-700);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .brand-card.brand-card-glow::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: 20px;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--cyan-500), transparent 40%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
 </style>
