@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ro" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AxaIT AI Team 2026 · 73 agenti</title>
+<meta name="description" content="Echipa AxaIT virtuala — 73 agenti AI specializati" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
+<script>
+tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter','system-ui','sans-serif'], mono: ['JetBrains Mono','monospace'] }, animation: { 'slide-up': 'slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1)', 'pulse-soft': 'pulseSoft 2.5s ease-in-out infinite' }, keyframes: { slideUp: { '0%': { opacity: 0, transform: 'translateY(12px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } }, pulseSoft: { '0%, 100%': { opacity: 1 }, '50%': { opacity: 0.5 } } } } } };
+</script>
+<style>
+  html { font-family: 'Inter', sans-serif; }
+  body { font-feature-settings: 'cv02','cv03','cv04','cv11'; }
+  .glass { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background-color: rgba(100,116,139,0.4); border-radius: 9999px; }
+  .card-hover { transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+  .card-hover:hover { transform: translateY(-3px); box-shadow: 0 12px 24px -8px rgba(0,0,0,0.12); }
+  [x-cloak] { display: none !important; }
+</style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased min-h-screen" x-data="teamDashboard()" x-cloak>
+  <nav class="sticky top-0 z-40 glass bg-white/70 dark:bg-slate-900/70 border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/25"><span class="text-white font-black text-base">A</span></div>
+        <div><div class="font-bold text-base tracking-tight">AxaIT AI Team</div><div class="text-[11px] text-slate-500 dark:text-slate-400 font-mono">v2026.05 · 73 agenti</div></div>
+      </div>
+      <button @click="toggleDark()" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+        <svg x-show="!dark" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg x-show="dark" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+      </button>
+    </div>
+  </nav>
+  <section class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-slate-900 dark:via-blue-950/30 dark:to-purple-950/30 border-b border-slate-200 dark:border-slate-800">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse-soft"></span>ACTIV · 73 agenti</span>
+        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-400">⭐ Tudor adaugat azi</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-white max-w-3xl">Echipa AxaIT virtuala</h1>
+      <p class="mt-3 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl">Organigrama completa cu specializari, escalari si protocoale. Click pe orice agent pentru profil detaliat.</p>
+      <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+        <template x-for="stat in stats" :key="stat.label"><div class="bg-white dark:bg-slate-800/50 rounded-xl p-4 border border-slate-200 dark:border-slate-700"><div class="text-2xl sm:text-3xl font-black" :class="stat.color" x-text="stat.value"></div><div class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider mt-1" x-text="stat.label"></div></div></template>
+      </div>
+    </div>
+  </section>
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <div class="flex flex-col sm:flex-row gap-3 mb-6">
+      <div class="relative flex-1">
+        <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <input type="text" x-model="search" placeholder="Cauta agent..." class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+      <select x-model="filterDept" class="px-4 py-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <option value="">Toate departamentele</option>
+        <template x-for="dept in departments" :key="dept.id"><option :value="dept.id" x-text="`${dept.icon} ${dept.name} (${dept.agents.length})`"></option></template>
+      </select>
+    </div>
+    <template x-for="dept in filteredDepartments" :key="dept.id">
+      <section class="mb-10 animate-slide-up">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl" :style="`background:${dept.bgColor};`"><span x-text="dept.icon"></span></div>
+          <div class="flex-1"><h2 class="text-lg font-bold tracking-tight" x-text="dept.name"></h2><p class="text-xs text-slate-500 dark:text-slate-400" x-text="dept.description"></p></div>
+          <span class="text-xs font-mono text-slate-400" x-text="`${filterAgents(dept.agents).length} / ${dept.agents.length}`"></span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+          <template x-for="agent in filterAgents(dept.agents)" :key="agent.id">
+            <article @click="openAgent(agent, dept)" class="card-hover cursor-pointer bg-white dark:bg-slate-800/80 rounded-xl border border-slate-200 dark:border-slate-700 p-4" :class="agent.isLead ? 'ring-2 ring-amber-300 dark:ring-amber-500/40' : ''">
+              <div class="flex items-start gap-3 mb-3">
+                <div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm shrink-0" :style="`background:${dept.bgColor};color:${dept.textColor};`" x-text="agent.name.charAt(0).toUpperCase()"></div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-1.5">
+                    <h3 class="font-semibold text-sm truncate" x-text="`@${agent.id}`"></h3>
+                    <template x-if="agent.isLead"><span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-400">LEAD</span></template>
+                    <template x-if="agent.isNew"><span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-400">NEW</span></template>
+                  </div>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 truncate" x-text="agent.role"></p>
+                </div>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 line-clamp-2 mb-3" x-text="agent.description"></p>
+              <div class="flex flex-wrap gap-1"><template x-for="tag in (agent.tags || []).slice(0, 3)" :key="tag"><span class="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-mono" x-text="tag"></span></template></div>
+            </article>
+          </template>
+        </div>
+      </section>
+    </template>
+  </main>
+  <div x-show="selected" x-transition.opacity @click.self="selected = null" @keydown.escape.window="selected = null" class="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-y-auto">
+    <div x-show="selected" x-transition.scale.95 class="bg-white dark:bg-slate-900 w-full max-w-3xl rounded-t-2xl sm:rounded-2xl shadow-2xl my-0 sm:my-4 max-h-[95vh] overflow-y-auto scrollbar-thin" @click.stop>
+      <template x-if="selected"><div>
+        <div class="sticky top-0 z-10 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-5 sm:px-6 py-4 flex items-start gap-4">
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center font-bold text-2xl shrink-0" :style="`background:${selectedDept.bgColor};color:${selectedDept.textColor};`" x-text="selected.name.charAt(0).toUpperCase()"></div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <h2 class="text-xl font-black tracking-tight" x-text="`@${selected.id}`"></h2>
+              <template x-if="selected.isLead"><span class="px-2 py-0.5 rounded text-xs font-bold bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-400">LEAD</span></template>
+              <template x-if="selected.isNew"><span class="px-2 py-0.5 rounded text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-400">NEW</span></template>
+            </div>
+            <p class="text-sm font-semibold text-slate-700 dark:text-slate-300" x-text="selected.role"></p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5" x-text="`${selectedDept.icon} ${selectedDept.name}`"></p>
+          </div>
+          <button @click="selected = null" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        </div>
+        <div class="p-5 sm:p-6 space-y-5">
+          <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed" x-text="selected.description"></p>
+          <template x-if="selected.expertise && selected.expertise.length"><div><h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Expertiza</h3><ul class="space-y-1.5"><template x-for="e in selected.expertise" :key="e"><li class="flex items-start gap-2 text-sm"><span class="text-blue-500 mt-0.5">▸</span><span x-text="e"></span></li></template></ul></div></template>
+          <template x-if="selected.team && selected.team.length"><div><h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Coordoneaza</h3><div class="flex flex-wrap gap-1.5"><template x-for="t in selected.team" :key="t"><span class="px-2 py-1 rounded-md text-xs font-mono bg-slate-100 dark:bg-slate-800" x-text="t"></span></template></div></div></template>
+          <template x-if="selected.escalation"><div class="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/40 rounded-lg p-4"><h3 class="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2">Flux escalare</h3><p class="text-sm text-slate-700 dark:text-slate-300" x-text="selected.escalation"></p></div></template>
+          <template x-if="selected.protocols && selected.protocols.length"><div><h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Protocoale</h3><ul class="space-y-1"><template x-for="p in selected.protocols" :key="p"><li class="text-xs font-mono text-slate-600 dark:text-slate-400 flex items-center gap-2"><span class="text-purple-500">●</span><span x-text="p"></span></li></template></ul></div></template>
+        </div>
+      </div></template>
+    </div>
+  </div>
+  <footer class="border-t border-slate-200 dark:border-slate-800 mt-12"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3"><div class="text-xs text-slate-500 dark:text-slate-400">AxaIT AI Team Dashboard · @ana · <span class="font-mono">18.05.2026</span></div><div class="text-xs text-slate-500 dark:text-slate-400">axait.ro/team-2026.html</div></div></footer>
+<script>
+function teamDashboard() {
+  return {
+    dark: false, search: '', filterDept: '', selected: null, selectedDept: null, copied: false,
+    init() { this.dark = window.matchMedia('(prefers-color-scheme: dark)').matches; document.documentElement.classList.toggle('dark', this.dark); },
+    toggleDark() { this.dark = !this.dark; document.documentElement.classList.toggle('dark', this.dark); },
+    departments: [
+      { id:'leadership', name:'Leadership & Strategie', icon:'👑', bgColor:'#FEF3C7', textColor:'#92400E', description:'Decizii strategice, coordonare, alocare resurse', agents:[
+        { id:'victoria', name:'Victoria', role:'Strategic Lead · CSO', isLead:true, description:'Strateg sef, viziune business, prioritizare proiecte.', expertise:['Strategie business','OKR/KPI','Aliante','M&A advisory'], team:['@ana','@elena','@radu','@tudor'], escalation:'Bogdan pentru decizii > 50K EUR.', protocols:['shared/rules.md','shared/escalation-gate.md'], tags:['strategy','C-level','lead'] },
+        { id:'ana', name:'Ana', role:'PM Lead · Orchestrator', isLead:true, description:'PM principal, orchestreaza echipa.', expertise:['Project management','Orchestrare sub-agenti','Comunicare cu Bogdan','Sinteza si raportare'], team:['toti agentii'], escalation:'Victoria → Bogdan.', protocols:['shared/memory-protocol.md'], tags:['PM','lead','orchestrator'] },
+        { id:'ana-pm', name:'Ana-PM', role:'Junior PM · Backup', description:'Versiune lite a Anei pentru proiecte mici.', expertise:['Status tracking','Daily standups','Task assignment'], escalation:'@ana → @victoria', tags:['PM','backup'] },
+        { id:'router', name:'Router', role:'Query Dispatcher', description:'Rutare automata catre specialisti.', expertise:['Classification','Multi-agent routing'], escalation:'@ana.', tags:['routing','meta'] },
+        { id:'admin-architect', name:'Admin Architect', role:'System Architect', description:'Arhitectul echipei AI.', expertise:['System design','Protocol authoring','Memory schema'], escalation:'@ana → @victoria', tags:['architecture','meta'] },
+      ]},
+      { id:'legal', name:'Legal & Compliance', icon:'⚖️', bgColor:'#DBEAFE', textColor:'#1E40AF', description:'GDPR, contracte, NIS2, fiscal RO', agents:[
+        { id:'tudor', name:'Tudor', role:'Legal Counsel & Compliance Lead', isLead:true, isNew:true, description:'Avocat in-house. GDPR, contracte, NIS2, fiscal RO.', expertise:['GDPR (UE 679 + Legea RO 190/2018)','Contracte MSA/SOW/NDA/DPA','NIS2 (Legea RO 58/2024)','Fiscal RO IMM/SRL'], team:['@razvan','@horia'], escalation:'Litigii → avocat extern. Data breach → @razvan + Bogdan in <72h.', protocols:['disclaimer obligatoriu'], tags:['legal','gdpr','lead','NEW'] },
+        { id:'bianca', name:'Bianca', role:'Compliance Manager', description:'Compliance generala — claim-uri marketing, ANSPDCP.', expertise:['ANSPDCP','Cookie consent','Advertising claims'], escalation:'@tudor.', tags:['compliance'] },
+        { id:'clara', name:'Clara', role:'Medical Compliance', description:'Compliance medical content (Dentexpert, AI-Psiho, RugbyHub).', expertise:['Medical advertising RO','Health claim validation'], escalation:'@tudor + @radu.', tags:['compliance','medical'] },
+        { id:'horia', name:'Horia', role:'Security/Privacy Officer', description:'Securitate date GDPR tehnic.', expertise:['Data security','GDPR DPIA','Privacy by design','Encryption'], escalation:'@tudor + @razvan.', tags:['security','privacy','gdpr'] },
+      ]},
+      { id:'marketing', name:'Marketing & Content', icon:'📣', bgColor:'#FCE7F3', textColor:'#9D174D', description:'SEO, social media, copywriting', agents:[
+        { id:'elena', name:'Elena', role:'SEO Lead', isLead:true, description:'SEO lead, coordoneaza echipa SEO/Content.', expertise:['Keyword research','E-E-A-T','AEO citation','GSC + GA4'], team:['@mihai','@andrei','@petru'], escalation:'@dragos pentru date.', tags:['SEO','content','lead'] },
+        { id:'mihai', name:'Mihai', role:'Copy + On-Page SEO', description:'Copywriter + on-page SEO.', expertise:['On-page','Schema markup'], escalation:'@elena.', tags:['SEO','copy'] },
+        { id:'andrei', name:'Andrei', role:'Content Strategy', description:'Content strategy + long-form.', expertise:['Pillar+cluster','Editorial calendars'], escalation:'@elena.', tags:['content'] },
+        { id:'petru', name:'Petru', role:'Technical SEO', description:'SEO tehnic — GSC, sitemap, CWV.', expertise:['GSC audit','Core Web Vitals'], escalation:'@elena.', tags:['SEO','technical'] },
+        { id:'cristina', name:'Cristina', role:'Social Media Strategist', description:'Social media IG/FB/LinkedIn. Editorial Dentexpert.', expertise:['Social calendars','Reels'], team:['@ion','@motion-specialist'], escalation:'@elena.', tags:['social'] },
+        { id:'ion', name:'Ion', role:'Copywriter Blog', description:'Copy blog AxaIT + Dentexpert.', expertise:['Blog','Newsletter'], escalation:'@elena.', tags:['copy','blog'] },
+        { id:'ion.weekly', name:'Ion Weekly', role:'Weekly Newsletter', description:'Newsletter saptamanal.', tags:['newsletter'] },
+        { id:'dragos', name:'Dragos', role:'Data Analyst', description:'Data analyst — GSC, GA4, BigQuery.', expertise:['GA4','GSC API','BigQuery'], escalation:'@elena.', tags:['data'] },
+        { id:'irina', name:'Irina', role:'Marketing Support', description:'Support marketing.', tags:['marketing'] },
+        { id:'laura', name:'Laura', role:'PR & Brand', description:'PR si brand AxaIT.', tags:['PR','brand'] },
+      ]},
+      { id:'medical', name:'Medical Verticals', icon:'🏥', bgColor:'#FEE2E2', textColor:'#991B1B', description:'Stomatologie, medicina sportiva', agents:[
+        { id:'radu', name:'Radu', role:'Senior Medical Consultant', isLead:true, description:'Dr. Radu Costea — implantologie + medicina sportiva.', expertise:['Implantologie','Endodontie','RTP World Rugby','HIA concussion'], team:['@ion','@cristina','@rares'], escalation:'Comotie = zero negociere.', protocols:['Wellness 5 = trigger','RTP cleared_by'], tags:['medical','dental','sports'] },
+        { id:'rares', name:'Rares', role:'S&C Coach', description:'Strength & Conditioning RugbyHub.', expertise:['Sprint benchmarks','Recovery'], escalation:'@radu.', tags:['S&C','rugby'] },
+        { id:'serban', name:'Serban', role:'Rugby Operations', description:'Rugby ops.', tags:['rugby','ops'] },
+        { id:'robert', name:'Robert', role:'Sports Analytics', description:'Analiza sport.', expertise:['SQL RugbyHub','Trend analysis'], escalation:'@radu.', tags:['analytics','rugby'] },
+      ]},
+      { id:'development', name:'Development & DevOps', icon:'💻', bgColor:'#E0E7FF', textColor:'#3730A3', description:'Frontend, backend, security, testing', agents:[
+        { id:'cosmin', name:'Cosmin', role:'Frontend Developer', description:'Frontend — React, Next.js, Astro.', expertise:['React/Next.js','Tailwind','Accessibility'], escalation:'@nicolae.', tags:['frontend'] },
+        { id:'nicolae', name:'Nicolae', role:'Senior Fullstack', description:'Fullstack senior — Python, Node, PostgreSQL.', expertise:['Python','Node.js','PostgreSQL'], escalation:'@admin-architect.', tags:['fullstack'] },
+        { id:'razvan', name:'Razvan', role:'Security Engineer · NIS2 Tech Lead', description:'Securitate + NIS2 tehnic.', expertise:['NIS2','EDR/MDR','Pen-test','Incident response'], team:['@endpoint-security','@horia'], escalation:'@tudor legal.', tags:['security','NIS2'] },
+        { id:'endpoint-security', name:'Endpoint Security', role:'Endpoint Specialist', description:'Endpoint — antivirus, EDR, MDM.', expertise:['EDR','MDM','Antivirus'], escalation:'@razvan.', tags:['security'] },
+        { id:'cloudflare', name:'Cloudflare', role:'CDN/DNS Specialist', description:'Cloudflare — Workers, R2, Pages, WAF.', expertise:['Workers','R2','WAF','Pages'], tags:['infra','cdn'] },
+        { id:'sentry', name:'Sentry', role:'Observability', description:'Sentry — errors, performance.', expertise:['Sentry SDK','Source maps'], tags:['observability'] },
+        { id:'playwright', name:'Playwright', role:'E2E Testing', description:'Playwright — E2E + CI.', expertise:['E2E','Visual regression'], tags:['testing'] },
+        { id:'prisma', name:'Prisma', role:'Database ORM', description:'Prisma ORM.', expertise:['Schema','Migrations'], tags:['database'] },
+        { id:'astro-specialist', name:'Astro Specialist', role:'Astro Framework', description:'Astro framework specialist.', expertise:['Components','Content Collections','Islands'], tags:['astro'] },
+        { id:'florin', name:'Florin', role:'DevOps Engineer', description:'DevOps — CI/CD, Docker, K8s.', expertise:['Docker','GitHub Actions'], tags:['devops'] },
+        { id:'stefan', name:'Stefan', role:'Backend Developer', description:'Backend — Python/Node.', tags:['backend'] },
+        { id:'octavian', name:'Octavian', role:'Senior Software Engineer', description:'Senior engineer.', tags:['engineering','senior'] },
+        { id:'sorin', name:'Sorin', role:'Software Engineer', description:'Software engineer.', tags:['engineering'] },
+        { id:'marius', name:'Marius', role:'Software Engineer', description:'Software engineer.', tags:['engineering'] },
+        { id:'lucian', name:'Lucian', role:'Junior Developer', description:'Junior developer.', tags:['engineering','junior'] },
+        { id:'vlad', name:'Vlad', role:'Senior Engineer', description:'Senior engineer.', tags:['engineering','senior'] },
+        { id:'valentin', name:'Valentin', role:'Senior Engineer', description:'Senior engineer.', tags:['engineering','senior'] },
+        { id:'teodor', name:'Teodor', role:'Senior Engineer', description:'Senior engineer.', tags:['engineering','senior'] },
+        { id:'victor', name:'Victor', role:'Engineer', description:'Engineer.', tags:['engineering'] },
+        { id:'danbastan', name:'Dan Bastan', role:'Senior Architect', description:'Senior architect.', tags:['engineering','architecture'] },
+        { id:'george', name:'George', role:'Engineer', description:'Engineer.', tags:['engineering'] },
+        { id:'marian', name:'Marian', role:'Engineer', description:'Engineer.', tags:['engineering'] },
+      ]},
+      { id:'odoo', name:'Odoo / ERP Team', icon:'🏗️', bgColor:'#FEF3C7', textColor:'#854D0E', description:'Implementari Odoo', agents:[
+        { id:'odoo', name:'Odoo Lead', role:'Odoo Generalist', isLead:true, description:'Odoo lead.', escalation:'@victoria.', tags:['odoo','lead'] },
+        { id:'odoo-architect', name:'Odoo Architect', role:'Solution Architect', description:'Arhitect Odoo.', expertise:['Odoo 17/18','Module design'], tags:['odoo'] },
+        { id:'odoo-developer', name:'Odoo Developer', role:'Custom Module Dev', description:'Module custom Odoo.', expertise:['Odoo ORM','XML','OWL'], tags:['odoo','developer'] },
+        { id:'odoo-consultant', name:'Odoo Consultant', role:'Business Analyst', description:'Business analyst Odoo.', expertise:['Business analysis'], tags:['odoo'] },
+        { id:'odoo-designer', name:'Odoo Designer', role:'UX/Theme Designer', description:'UX Odoo.', expertise:['Web themes','OWL'], tags:['odoo','design'] },
+        { id:'odoo-devops', name:'Odoo DevOps', role:'Hosting & Deploy', description:'Odoo DevOps.', expertise:['Odoo.sh','Docker','PG backup'], tags:['odoo','devops'] },
+        { id:'odoo-integrator', name:'Odoo Integrator', role:'Third-Party APIs', description:'Integrari Odoo.', expertise:['Connectors','XML-RPC','REST'], tags:['odoo'] },
+        { id:'odoo-localizer-ro', name:'Odoo Localizer RO', role:'Romania Localization', description:'l10n_ro.', expertise:['l10n_ro','Plan conturi RO'], escalation:'@odoo-accountant.', tags:['odoo','localizer'] },
+        { id:'odoo-trainer', name:'Odoo Trainer', role:'User Training', description:'Training Odoo.', tags:['odoo','training'] },
+        { id:'odoo-accountant', name:'Odoo Accountant', role:'Accounting', description:'Contabilitate Odoo.', expertise:['RO accounting','TVA'], escalation:'Contabil extern.', tags:['odoo','accounting'] },
+        { id:'smartbill', name:'SmartBill', role:'SmartBill Integration', description:'Integrare SmartBill.', expertise:['SmartBill API'], tags:['integrations'] },
+      ]},
+      { id:'design', name:'Design & Creative', icon:'🎨', bgColor:'#FAE8FF', textColor:'#86198F', description:'UI/UX, motion, branding', agents:[
+        { id:'v0-designer', name:'v0 Designer', role:'UI Designer (v0.dev)', description:'Designer UI v0.dev.', expertise:['v0.dev','shadcn/ui'], tags:['design','ui'] },
+        { id:'motion-specialist', name:'Motion Specialist', role:'Motion Graphics', description:'Animatii UI + reels.', expertise:['Framer Motion','After Effects'], tags:['motion'] },
+        { id:'daniela', name:'Daniela', role:'Graphic Designer', description:'Designer grafic.', tags:['design'] },
+        { id:'diana', name:'Diana', role:'Visual Designer', description:'Visual designer.', tags:['design'] },
+        { id:'emma', name:'Emma', role:'Creative Coordinator', description:'Coordonare creative.', tags:['creative'] },
+      ]},
+      { id:'specialists', name:'Specialists & Verticals', icon:'🔧', bgColor:'#D1FAE5', textColor:'#065F46', description:'Verticale + roluri suport', agents:[
+        { id:'auto-vertical', name:'Auto Vertical', role:'Automotive', description:'Vertical auto — DAG Auto.', expertise:['Auto SEO','GBP','Car listing'], tags:['auto'] },
+        { id:'ecolet', name:'Ecolet', role:'Eco/Sustainability', description:'Sustenabilitate.', tags:['eco'] },
+        { id:'gogu', name:'Gogu', role:'Local SEO & Auto', description:'Local SEO + auto.', tags:['SEO','local'] },
+        { id:'dorel', name:'Dorel', role:'Field Operations', description:'Ops field.', tags:['ops'] },
+        { id:'adrian', name:'Adrian', role:'Senior Consultant', description:'Senior consultant.', tags:['consultant'] },
+        { id:'alex', name:'Alex', role:'Tech Lead', description:'Tech lead.', tags:['tech','lead'] },
+        { id:'alina', name:'Alina', role:'Customer Success', description:'Customer success.', tags:['cs'] },
+        { id:'anca', name:'Anca', role:'Account Manager', description:'Account manager.', tags:['account-mgmt'] },
+        { id:'ioana', name:'Ioana', role:'HR & People Ops', description:'HR si people ops AxaIT.', tags:['hr'] },
+      ]},
+    ],
+    get stats() {
+      const total = this.departments.reduce((s,d) => s + d.agents.length, 0);
+      const leads = this.departments.reduce((s,d) => s + d.agents.filter(a => a.isLead).length, 0);
+      const news = this.departments.reduce((s,d) => s + d.agents.filter(a => a.isNew).length, 0);
+      return [
+        { value: total, label: 'Agenti totali', color: 'text-blue-600 dark:text-blue-400' },
+        { value: this.departments.length, label: 'Departamente', color: 'text-purple-600 dark:text-purple-400' },
+        { value: leads, label: 'Leads', color: 'text-amber-600 dark:text-amber-400' },
+        { value: news, label: 'Noi', color: 'text-emerald-600 dark:text-emerald-400' },
+      ];
+    },
+    get filteredDepartments() { return this.filterDept ? this.departments.filter(d => d.id === this.filterDept) : this.departments; },
+    filterAgents(agents) {
+      if (!this.search.trim()) return agents;
+      const q = this.search.toLowerCase();
+      return agents.filter(a => a.id.toLowerCase().includes(q) || a.name.toLowerCase().includes(q) || (a.role || '').toLowerCase().includes(q) || (a.description || '').toLowerCase().includes(q) || (a.tags || []).some(t => t.toLowerCase().includes(q)) || (a.expertise || []).some(e => e.toLowerCase().includes(q)));
+    },
+    openAgent(agent, dept) { this.selected = agent; this.selectedDept = dept; },
+  };
+}
+</script>
+</body>
+</html>
