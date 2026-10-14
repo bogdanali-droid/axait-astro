@@ -6,3 +6,8 @@
 # llms.txt: UTF-8 explicit (contine diacritice romanesti).
 /llms.txt
   Content-Type: text/plain; charset=utf-8
+
+# Subtitrare live: are nevoie de microfon (recunoaștere vocală în Chrome); no-cache ca o corectură să ajungă imediat.
+/subtitrare/*
+  Permissions-Policy: camera=(), microphone=(self), geolocation=()
+  Cache-Control: no-cache
