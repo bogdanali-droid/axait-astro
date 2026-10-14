@@ -1,0 +1,4 @@
+# Carte de vizită digitală: fișierul .vcf se descarcă și se deschide în agenda telefonului.
+/card/*.vcf
+  Content-Type: text/vcard; charset=utf-8
+  Content-Disposition: attachment; filename="bogdan-aliciuc.vcf"
