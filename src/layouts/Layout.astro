@@ -92,27 +92,38 @@ const fullTitle = title.length > 45 ? title : `${title} | AXA IT`;
     }
   </style>
 
-  <!-- LocalBusiness + WebSite Schema -->
+  <!-- Organization (ProfessionalService) + Person + WebSite Schema.
+       Date oficiale ONRC (taxID/identifier/legalName). Fără vatID: nu știm dacă firma e plătitoare de TVA. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "LocalBusiness",
+        "@type": ["Organization", "ProfessionalService"],
         "@id": "https://axait.ro/#business",
         "name": "AXA IT",
-        "url": "https://axait.ro",
-        "foundingDate": "2016",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://axait.ro/img/logo/axait-logo.png"
-        },
+        "legalName": "AXA IT COMPANY SRL",
+        "alternateName": ["AXA IT", "Axa IT Company", "axait.ro"],
+        "url": "https://axait.ro/",
+        "foundingDate": "2016-04-07",
+        "taxID": "35924136",
+        "identifier": [
+          {"@type": "PropertyValue", "propertyID": "Nr. Reg. Com.", "value": "J2016005099400"},
+          {"@type": "PropertyValue", "propertyID": "EUID", "value": "ROONRC.J2016005099400"}
+        ],
+        "isicV4": "6220",
+        "disambiguatingDescription": "AXA IT (Axa IT Company SRL, România) este o firmă independentă de servicii IT și nu are legătură cu grupul de asigurări AXA.",
+        "logo": {"@type": "ImageObject", "url": "https://axait.ro/img/logo/axait-logo.png"},
         "image": "https://axait.ro/og-image-1200x630.png",
         "description": "Soluții IT complete pentru firme din București — mentenanță, rețelistică, cloud, securitate și outsourcing IT. 8+ ani experiență (din 2016), 150+ sisteme active.",
+        "founder": {"@id": "https://axait.ro/#bogdan-aliciuc"},
+        "brand": {"@type": "Brand", "name": "StudioAI", "url": "https://studioai.axait.ro/"},
+        "knowsAbout": ["Mentenanță și suport IT", "Rețelistică și Wi-Fi", "Cloud și backup", "Disaster recovery", "Securitate cibernetică", "Conformitate NIS2", "Conformitate GDPR", "Virtualizare servere (VMware, Hyper-V, Proxmox)", "Outsourcing IT", "Consultanță și audit IT", "Supraveghere video și control acces", "Microsoft 365 pentru firme", "agenți AI pentru IMM-uri"],
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Dealul Tugulea 64",
+          "streetAddress": "Strada Dealul Țugulea 64",
           "addressLocality": "București",
+          "addressRegion": "Sector 6",
           "addressCountry": "RO"
         },
         "telephone": "+40-727-897-849",
@@ -121,7 +132,7 @@ const fullTitle = title.length > 45 ? title : `${title} | AXA IT`;
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
             "opens": "08:00",
             "closes": "18:00"
           }
@@ -140,26 +151,56 @@ const fullTitle = title.length > 45 ? title : `${title} | AXA IT`;
           "@type": "OfferCatalog",
           "name": "Servicii IT",
           "itemListElement": [
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Mentenanță IT"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Outsourcing IT"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Cloud & Backup"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Protecție Cibernetică"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Rețelistică & Wi-Fi"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Securitate & Supraveghere"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Virtualizare Servere"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Consultanță & Audit IT"}}
+            {
+              "@type": "Offer",
+              "itemOffered": {"@type": "Service", "name": "Mentenanță IT"}
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {"@type": "Service", "name": "Outsourcing IT"}
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {"@type": "Service", "name": "Cloud & Backup"}
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {"@type": "Service", "name": "Protecție Cibernetică"}
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {"@type": "Service", "name": "Rețelistică & Wi-Fi"}
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {"@type": "Service", "name": "Securitate & Supraveghere"}
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {"@type": "Service", "name": "Virtualizare Servere"}
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {"@type": "Service", "name": "Consultanță & Audit IT"}
+            }
           ]
         },
-        "sameAs": [
-          "https://www.facebook.com/axait.ro",
-          "https://www.instagram.com/axait.ro"
-        ]
+        "sameAs": ["https://www.facebook.com/axait.ro", "https://www.instagram.com/axait.ro"]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://axait.ro/#bogdan-aliciuc",
+        "name": "Bogdan Aliciuc",
+        "jobTitle": "Fondator & CEO",
+        "worksFor": {"@id": "https://axait.ro/#business"},
+        "url": "https://axait.ro/card/"
       },
       {
         "@type": "WebSite",
         "@id": "https://axait.ro/#website",
-        "url": "https://axait.ro",
+        "url": "https://axait.ro/",
         "name": "AXA IT",
+        "alternateName": ["Axa IT Company", "axait.ro"],
         "description": "Soluții IT complete pentru firme din București",
         "publisher": {"@id": "https://axait.ro/#business"},
         "inLanguage": "ro-RO"

@@ -1,4 +1,56 @@
+# robots.txt for https://axait.ro
+# Everything is crawlable. Nothing is blocked.
+
 User-agent: *
+Allow: /
+
+# AI search and citation crawlers: explicitly allowed so AXA IT can be cited in AI answers.
+# OpenAI - ChatGPT Search index
+User-agent: OAI-SearchBot
+Allow: /
+
+# OpenAI - fetch on user request in ChatGPT
+User-agent: ChatGPT-User
+Allow: /
+
+# OpenAI - general crawler
+User-agent: GPTBot
+Allow: /
+
+# Perplexity - search index
+User-agent: PerplexityBot
+Allow: /
+
+# Perplexity - fetch on user request
+User-agent: Perplexity-User
+Allow: /
+
+# Anthropic - general crawler
+User-agent: ClaudeBot
+Allow: /
+
+# Anthropic - fetch on user request in Claude
+User-agent: Claude-User
+Allow: /
+
+# Anthropic - Claude search index
+User-agent: Claude-SearchBot
+Allow: /
+
+# Google - control token for Gemini / AI use (does not affect Search ranking)
+User-agent: Google-Extended
+Allow: /
+
+# Apple - control token for Apple AI use (does not affect Applebot)
+User-agent: Applebot-Extended
+Allow: /
+
+# Microsoft Bing - index also used by Copilot
+User-agent: Bingbot
+Allow: /
+
+# DuckDuckGo - DuckAssist answers
+User-agent: DuckAssistBot
 Allow: /
 
 Sitemap: https://axait.ro/sitemap-index.xml

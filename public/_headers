@@ -2,3 +2,7 @@
 /card/*.vcf
   Content-Type: text/vcard; charset=utf-8
   Content-Disposition: attachment; filename="bogdan-aliciuc.vcf"
+
+# llms.txt: UTF-8 explicit (contine diacritice romanesti).
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
