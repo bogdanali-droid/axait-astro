@@ -1,0 +1,365 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FaqList from '../components/FaqList.astro';
+import { buildFaqSchema, type FaqItem } from '../components/faq';
+
+const pageUrl = 'https://axait.ro/agenti-ai/';
+const studioaiUrl = 'https://studioai.axait.ro/studioai';
+const title = 'Agenți AI pentru firme din România | AXA IT și StudioAI';
+const description =
+  'Ce sunt agenții AI pentru firme, ce pot prelua, cum lucrăm și cum protejăm datele. Serviciu oferit de Axa IT Company SRL sub brandul StudioAI.';
+const updatedIso = '2026-10-14';
+const updatedLabel = '14 octombrie 2026';
+
+const capabilities = [
+  {
+    title: 'Vânzări și relația cu clienții',
+    text: 'Pregătirea ofertelor, urmărirea cererilor și a relației cu clienții.',
+  },
+  {
+    title: 'Marketing și conținut',
+    text: 'Texte, grafică, prezentări și conținut pentru social media, plus SEO și campanii, pregătite de agenți specializați pe fiecare zonă.',
+  },
+  {
+    title: 'Documente și date',
+    text: 'Preiau munca repetitivă și leagă sistemele între ele. Un scan PDF cu lista mijloacelor fixe devine, de exemplu, un fișier Excel structurat.',
+  },
+  {
+    title: 'Aplicații și site-uri',
+    text: 'Site-uri, aplicații mobile iOS și Android, panouri de administrare și infrastructură cloud, făcute pe nevoile fiecărui client.',
+  },
+  {
+    title: 'Securitate și conformitate',
+    text: 'Securitate cibernetică și conformitate NIS2 și GDPR, cu date personale mascate și jurnale de audit, introduse în proiect încă de la început.',
+  },
+  {
+    title: 'Analiză și rapoarte',
+    text: 'Analize și rapoarte pe datele firmei, plus fluxuri de date (pipeline-uri) care le alimentează.',
+  },
+];
+
+const steps = [
+  { n: '01', title: 'Descoperire', text: 'Discutăm despre afacerea ta, obiective și despre ce îți ia cel mai mult timp.' },
+  { n: '02', title: 'Propunere', text: 'Primești un scop, un calendar și condiții clare, pe care le validezi tu înainte de start.' },
+  { n: '03', title: 'Onboarding', text: 'Echipa primește acces controlat și contextul firmei tale: industrie, brand, procese.' },
+  { n: '04', title: 'Execuție', text: 'Agenții livrează, coordonatorul urmărește munca, iar tu confirmi ce nu se mai poate anula.' },
+];
+
+const faqItems: FaqItem[] = [
+  {
+    id: 'agent-ai-vs-chatgpt',
+    q: 'Cu ce diferă un agent AI de ChatGPT?',
+    a: 'ChatGPT este un asistent general, care răspunde la cerere. Un agent AI de la StudioAI este configurat pentru firma ta: cunoaște industria și brandul, păstrează contextul de la o sesiune la alta, lucrează în echipă cu alți agenți și produce livrabile concrete, nu doar răspunsuri. Deciziile care nu se mai pot anula rămân la un om.',
+    links: [{ label: 'Cum lucrăm', href: '/agenti-ai/#cum-lucram' }],
+  },
+  {
+    id: 'cine-ofera-serviciul',
+    q: 'Cine oferă serviciul de agenți AI?',
+    a: 'Serviciul este oferit de Axa IT Company SRL, firma din spatele AXA IT, activă din 2016, sub brandul StudioAI. Fondatorul este Bogdan Aliciuc. Nu este un startup separat: este aceeași firmă care oferă servicii IT pentru IMM-uri din România, la care s-a adăugat linia de agenți AI.',
+    links: [
+      { label: 'Despre AXA IT', href: '/despre/' },
+      { label: 'Prezentarea StudioAI', href: studioaiUrl },
+    ],
+  },
+  {
+    id: 'ce-face-agentul-si-ce-decide-omul',
+    q: 'Ce face un agent AI singur și ce decide un om?',
+    a: 'Agentul face singur ce se poate anula rapid: ciorne, analize, texte, modificări care pot fi refăcute. Ce nu se mai poate anula, precum publicarea pe un site live, ștergerea sau migrarea datelor, schimbarea accesurilor, trimiterea de mesaje către terți sau costurile peste un prag, cere confirmarea explicită a unui om înainte de execuție.',
+    links: [{ label: 'Regula noastră de lucru', href: '/agenti-ai/#cum-lucram' }],
+  },
+  {
+    id: 'date-si-gdpr',
+    q: 'Cum sunt protejate datele firmei când lucrează cu agenți AI?',
+    a: 'GDPR și NIS2 intră în proiect de la început: datele personale sunt mascate, acțiunile agenților rămân în jurnale de audit, iar agenți dedicați securității și protecției datelor fac parte din echipă. Unele instrumente au limite proprii: subtitrarea live trimite vocea prin serviciile Google și nu se folosește pentru date sensibile, iar OCR-ul rulează în cloud.',
+    links: [{ label: 'Date și GDPR', href: '/agenti-ai/#date-gdpr' }],
+  },
+  {
+    id: 'de-unde-pornesc',
+    q: 'De unde pornesc dacă nu știu ce să automatizez?',
+    a: 'Pornește de la sarcina care îți ia cel mai mult timp în firmă, de exemplu documente care se retranscriu manual, rapoarte sau texte repetitive. O descrii în prima discuție cu noi, iar împreună vedem ce poate prelua un agent AI și ce rămâne la oameni.',
+    links: [{ label: 'Contact', href: '/contact/' }],
+  },
+];
+
+const faqSchema = buildFaqSchema(faqItems);
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${pageUrl}#service`,
+  name: 'Agenți AI pentru firme',
+  serviceType: 'Echipe de agenți AI pentru IMM-uri',
+  description:
+    'Echipă de agenți AI specializați pentru firme din România: documente, marketing, vânzări, dezvoltare, securitate și conformitate. Agentul execută ce se poate anula, iar acțiunile care nu se mai pot anula cer confirmarea unui om.',
+  url: pageUrl,
+  provider: { '@id': 'https://axait.ro/#business' },
+  brand: { '@type': 'Brand', name: 'StudioAI', url: 'https://studioai.axait.ro/' },
+  areaServed: { '@type': 'Country', name: 'România' },
+  audience: { '@type': 'BusinessAudience', audienceType: 'IMM-uri din România' },
+};
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': `${pageUrl}#webpage`,
+  url: pageUrl,
+  name: 'Agenți AI pentru firme',
+  description,
+  inLanguage: 'ro-RO',
+  dateModified: updatedIso,
+  isPartOf: { '@id': 'https://axait.ro/#website' },
+  about: { '@id': `${pageUrl}#service` },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://axait.ro/' },
+    { '@type': 'ListItem', position: 2, name: 'Agenți AI', item: pageUrl },
+  ],
+};
+---
+
+<Layout title={title} description={description}>
+  <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <Header variant="dark" currentPage="/agenti-ai/" />
+
+  <main class="bg-ink-900 min-h-screen">
+    <!-- Hero: definiție + brand -->
+    <section class="relative pt-32 pb-16 bg-ink-900 overflow-hidden">
+      <div class="brand-grid-bg absolute inset-0 opacity-50"></div>
+      <div class="absolute top-24 left-1/4 w-[320px] h-[320px] bg-brand-cyan-500/10 rounded-full blur-[90px] pointer-events-none"></div>
+      <div class="relative max-w-4xl mx-auto px-6">
+        <nav aria-label="Breadcrumb" class="mb-6">
+          <ol class="flex flex-wrap items-center gap-2 text-[13px] text-surface-400 font-mono">
+            <li><a href="/" class="hover:text-brand-cyan-500 transition-colors">Home</a></li>
+            <li aria-hidden="true" class="text-surface-500">/</li>
+            <li aria-current="page" class="text-surface-200">Agenți AI</li>
+          </ol>
+        </nav>
+        <p class="brand-eyebrow mb-6">— Agenți AI</p>
+        <h1 class="font-display text-[36px] md:text-[52px] font-medium leading-[1.08] tracking-tight bg-gradient-to-br from-white via-surface-100 to-surface-300 bg-clip-text text-transparent">Agenți AI pentru firme</h1>
+        <p class="mt-6 text-surface-200 text-[18px] md:text-[20px] leading-relaxed font-light max-w-3xl">
+          <strong class="text-surface-50 font-medium">Agenții AI pentru firme</strong> sunt programe bazate pe inteligență artificială care preiau sarcini repetitive din munca zilnică, precum documente, marketing, vânzări sau verificări de securitate, și le duc la capăt, pas cu pas, într-un cadru stabilit de oameni. Spre deosebire de un chatbot, ei produc livrabile: un fișier Excel, un text, o analiză.
+        </p>
+
+        <div class="mt-8 brand-card brand-card-glow p-6 md:p-7 max-w-3xl">
+          <p class="brand-eyebrow mb-3">Cine oferă serviciul</p>
+          <p class="text-surface-200 text-[16px] leading-relaxed font-light">
+            Serviciul de agenți AI este oferit de <strong class="text-surface-50 font-medium">Axa IT Company SRL</strong> (AXA IT) sub brandul <strong class="text-surface-50 font-medium">StudioAI</strong>, brandul nostru pentru echipe de agenți AI dedicate firmelor.
+          </p>
+          <p class="mt-4">
+            <a
+              href={studioaiUrl}
+              class="inline-flex items-center gap-2 text-brand-cyan-500 hover:text-brand-cyan-400 font-medium text-[15px] underline decoration-brand-cyan-500/40 underline-offset-4 transition-colors"
+            >
+              Vezi prezentarea echipelor de agenți AI pe StudioAI
+              <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+            </a>
+          </p>
+        </div>
+
+        <p class="mt-6 text-surface-400 text-[13px] font-mono">
+          Actualizat: <time datetime={updatedIso}>{updatedLabel}</time>
+        </p>
+      </div>
+    </section>
+
+    <!-- Ce pot prelua -->
+    <section id="ce-pot-prelua" class="py-16 md:py-20 bg-ink-800 border-y border-brand-cyan-500/10 scroll-mt-24">
+      <div class="max-w-6xl mx-auto px-6">
+        <p class="brand-eyebrow mb-4"><span>01</span> / Ce pot prelua</p>
+        <h2 class="font-display text-[28px] md:text-[36px] font-medium text-surface-50 max-w-3xl">Ce pot prelua agenții AI din munca unei firme</h2>
+        <p class="mt-3 mb-10 text-surface-300 text-[16px] font-light max-w-3xl">
+          Lucrăm cu o echipă de agenți AI specializați: fiecare agent are o zonă clară, iar echipa se compune în funcție de ce are nevoie firma ta.
+        </p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {capabilities.map((c) => (
+            <div class="brand-card brand-card-glow p-7">
+              <h3 class="text-surface-50 font-semibold text-[18px] mb-2">{c.title}</h3>
+              <p class="text-surface-300 text-[15px] leading-relaxed font-light">{c.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Cum lucrăm -->
+    <section id="cum-lucram" class="py-16 md:py-20 bg-ink-900 relative overflow-hidden scroll-mt-24">
+      <div class="brand-grid-bg absolute inset-0 opacity-30"></div>
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <p class="brand-eyebrow mb-4"><span>02</span> / Cum lucrăm</p>
+        <h2 class="font-display text-[28px] md:text-[36px] font-medium text-surface-50 max-w-3xl">Cum lucrăm: agentul execută, omul confirmă</h2>
+        <p class="mt-3 text-surface-300 text-[16px] font-light max-w-3xl leading-relaxed">
+          Primești o echipă de agenți AI specializați, configurată pentru firma ta. Un coordonator preia cererea, o împarte între agenți și răspunde către tine, deci ai un singur punct de contact. Agenții lucrează în română, pe industria și brandul tău, și păstrează contextul de la o sesiune la alta.
+        </p>
+
+        <div class="mt-10 brand-card p-6 md:p-8">
+          <p class="brand-eyebrow mb-3">Regula de lucru</p>
+          <p class="font-display text-surface-50 text-[20px] md:text-[24px] font-medium leading-snug">
+            Ce se poate anula, face agentul. Ce nu se mai poate anula, cere confirmarea unui om.
+          </p>
+          <div class="mt-6 grid md:grid-cols-2 gap-6">
+            <div class="rounded-2xl border border-brand-cyan-500/25 bg-brand-cyan-500/5 p-6">
+              <p class="brand-pill brand-pill-ok mb-4">Face agentul singur</p>
+              <ul class="space-y-2 text-surface-200 text-[15px] leading-relaxed font-light">
+                <li class="flex gap-3"><span class="text-brand-cyan-500 font-mono text-[12px] mt-1" aria-hidden="true">→</span><span>ciorne de texte și prezentări</span></li>
+                <li class="flex gap-3"><span class="text-brand-cyan-500 font-mono text-[12px] mt-1" aria-hidden="true">→</span><span>analize și rapoarte</span></li>
+                <li class="flex gap-3"><span class="text-brand-cyan-500 font-mono text-[12px] mt-1" aria-hidden="true">→</span><span>extragerea datelor din documente</span></li>
+                <li class="flex gap-3"><span class="text-brand-cyan-500 font-mono text-[12px] mt-1" aria-hidden="true">→</span><span>modificări care se pot reveni imediat</span></li>
+              </ul>
+            </div>
+            <div class="rounded-2xl border border-amber-500/40 bg-amber-500/5 p-6">
+              <p class="brand-pill mb-4 !text-amber-500 !border-amber-500/40 !bg-amber-500/10">Cere confirmarea unui om</p>
+              <ul class="space-y-2 text-surface-200 text-[15px] leading-relaxed font-light">
+                <li class="flex gap-3"><span class="text-amber-500 font-mono text-[12px] mt-1" aria-hidden="true">→</span><span>publicarea pe un site sau într-un sistem live</span></li>
+                <li class="flex gap-3"><span class="text-amber-500 font-mono text-[12px] mt-1" aria-hidden="true">→</span><span>ștergerea sau migrarea datelor</span></li>
+                <li class="flex gap-3"><span class="text-amber-500 font-mono text-[12px] mt-1" aria-hidden="true">→</span><span>schimbarea accesurilor și a permisiunilor</span></li>
+                <li class="flex gap-3"><span class="text-amber-500 font-mono text-[12px] mt-1" aria-hidden="true">→</span><span>trimiterea de mesaje către terți</span></li>
+                <li class="flex gap-3"><span class="text-amber-500 font-mono text-[12px] mt-1" aria-hidden="true">→</span><span>costuri peste un prag stabilit</span></li>
+              </ul>
+            </div>
+          </div>
+          <p class="mt-6 text-surface-300 text-[15px] leading-relaxed font-light">
+            Testul este simplu: dacă acțiunea se poate anula rapid, fără pierdere de date și fără efect în afara firmei, o face agentul. Altfel, decide un om.
+          </p>
+        </div>
+
+        <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {steps.map((s) => (
+            <div class="brand-card p-6">
+              <p class="font-mono text-[12px] tracking-[0.2em] text-brand-cyan-500 mb-3">{s.n}</p>
+              <h3 class="text-surface-50 font-semibold text-[17px] mb-2">{s.title}</h3>
+              <p class="text-surface-300 text-[14px] leading-relaxed font-light">{s.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Exemple concrete -->
+    <section id="exemple" class="py-16 md:py-20 bg-ink-800 border-y border-brand-cyan-500/10 scroll-mt-24">
+      <div class="max-w-6xl mx-auto px-6">
+        <p class="brand-eyebrow mb-4"><span>03</span> / Exemple concrete</p>
+        <h2 class="font-display text-[28px] md:text-[36px] font-medium text-surface-50 max-w-3xl">Două instrumente construite de noi</h2>
+        <p class="mt-3 mb-10 text-surface-300 text-[16px] font-light max-w-3xl">
+          Exemple din munca pe care AI-ul o poate prelua, descrise așa cum funcționează.
+        </p>
+        <div class="grid lg:grid-cols-2 gap-6">
+          <article class="brand-card brand-card-glow p-7 md:p-8">
+            <p class="brand-eyebrow mb-3">Documente</p>
+            <h3 class="font-display text-surface-50 text-[22px] font-medium leading-snug mb-3">OCR pentru mijloace fixe: din scan PDF în Excel</h3>
+            <p class="text-surface-300 text-[15px] leading-relaxed font-light">
+              Încarci un PDF scanat cu lista mijloacelor fixe, scoasă din orice program contabil românesc (de exemplu WinMENTOR, SAGA sau Ciel). Un model AI citește fiecare pagină și returnează un fișier Excel structurat, cu câmpurile identificate: număr curent, denumire, grupă, număr de inventar, valoare de intrare, valoare amortizată, valoare rămasă, data intrării și durata normală. Rândul de total se calculează automat.
+            </p>
+            <p class="mt-3 text-surface-300 text-[15px] leading-relaxed font-light">
+              Calitatea scanului contează: contrast bun și pagini drepte dau rezultate mai bune. Instrumentul rulează în cloud, fără nimic de instalat. Accesul se solicită prin <a href="/contact/" class="text-brand-cyan-500 hover:text-brand-cyan-400 underline decoration-brand-cyan-500/40 underline-offset-4">pagina de contact</a>.
+            </p>
+          </article>
+          <article class="brand-card brand-card-glow p-7 md:p-8">
+            <p class="brand-eyebrow mb-3">Evenimente și prezentări</p>
+            <h3 class="font-display text-surface-50 text-[22px] font-medium leading-snug mb-3">Subtitrare live: română → engleză și alte limbi</h3>
+            <p class="text-surface-300 text-[15px] leading-relaxed font-light">
+              Vorbești în română, iar pe ecran apare textul tradus în timp real, într-o bară așezată peste prezentarea PowerPoint. Traducerea se poate face în engleză, franceză, germană, italiană, spaniolă, maghiară, neerlandeză (flamandă), turcă, chineză sau japoneză.
+            </p>
+            <p class="mt-3 text-surface-300 text-[15px] leading-relaxed font-light">
+              Funcționează cu internet, cel mai bine în Google Chrome pe laptop. Un microfon de tip headset sau lavalieră dă cele mai bune rezultate, iar o probă făcută cu o zi înainte, pe același laptop, evită surprizele.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Date și GDPR -->
+    <section id="date-gdpr" class="py-16 md:py-20 bg-ink-900 scroll-mt-24">
+      <div class="max-w-4xl mx-auto px-6">
+        <p class="brand-eyebrow mb-4"><span>04</span> / Date și GDPR</p>
+        <h2 class="font-display text-[28px] md:text-[36px] font-medium text-surface-50">Date și GDPR</h2>
+        <p class="mt-3 text-surface-300 text-[16px] font-light leading-relaxed">
+          Conformitatea intră în proiect de la început, nu la final. Concret:
+        </p>
+        <ul class="mt-6 space-y-4 text-surface-200 text-[16px] leading-relaxed font-light">
+          <li class="flex gap-3"><span class="text-brand-cyan-500 font-mono text-[12px] mt-1.5" aria-hidden="true">→</span><span>Datele personale sunt mascate, iar acțiunile agenților rămân în jurnale de audit.</span></li>
+          <li class="flex gap-3"><span class="text-brand-cyan-500 font-mono text-[12px] mt-1.5" aria-hidden="true">→</span><span>Din echipă fac parte agenți dedicați securității și protecției datelor.</span></li>
+          <li class="flex gap-3"><span class="text-brand-cyan-500 font-mono text-[12px] mt-1.5" aria-hidden="true">→</span><span>Echipa lucrează în română și ține cont de reglementările din România și din UE, inclusiv GDPR și NIS2.</span></li>
+          <li class="flex gap-3"><span class="text-brand-cyan-500 font-mono text-[12px] mt-1.5" aria-hidden="true">→</span><span>Fiecare instrument are limitele lui. Subtitrarea live trimite vocea prin recunoașterea vocală din Chrome, iar textul prin Google Translate, deci nu se folosește pentru date despre pacienți sau alte date sensibile. OCR-ul pentru mijloace fixe rulează în cloud, iar fiecare pagină este citită de un model AI.</span></li>
+        </ul>
+        <p class="mt-6 text-surface-300 text-[15px] leading-relaxed font-light">
+          Dacă documentele tale conțin date personale, spune-ne la prima discuție. Mai multe despre cum tratăm datele găsești în <a href="/politica-confidentialitate/" class="text-brand-cyan-500 hover:text-brand-cyan-400 underline decoration-brand-cyan-500/40 underline-offset-4">politica de confidențialitate</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="intrebari" class="py-16 md:py-20 bg-ink-800 border-y border-brand-cyan-500/10 scroll-mt-24">
+      <div class="max-w-4xl mx-auto px-6">
+        <p class="brand-eyebrow mb-4"><span>05</span> / Întrebări</p>
+        <h2 class="font-display text-[28px] md:text-[36px] font-medium text-surface-50">Întrebări despre agenții AI</h2>
+        <p class="mt-3 mb-8 text-surface-300 text-[16px] font-light">
+          Mai multe răspunsuri, și despre serviciile IT, găsești la <a href="/intrebari-frecvente/" class="text-brand-cyan-500 hover:text-brand-cyan-400 underline decoration-brand-cyan-500/40 underline-offset-4">întrebări frecvente</a>.
+        </p>
+        <FaqList items={faqItems} />
+      </div>
+    </section>
+
+    <!-- Citește și -->
+    <section class="py-14 bg-ink-900">
+      <div class="max-w-6xl mx-auto px-6">
+        <p class="brand-eyebrow mb-6">Citește și</p>
+        <div class="grid sm:grid-cols-3 gap-4">
+          <a href="/blog/ai-unelte-business-it-2026/" class="brand-card p-5 hover:border-brand-cyan-500/40 transition-colors block">
+            <p class="text-surface-50 font-medium text-[16px] leading-snug">AI în IT business: 5 unelte care economisesc timp în 2026</p>
+            <p class="mt-2 text-surface-400 text-[13px] font-light">Articol pe blog</p>
+          </a>
+          <a href="/blog/nis2-directiva-ue-conformitate/" class="brand-card p-5 hover:border-brand-cyan-500/40 transition-colors block">
+            <p class="text-surface-50 font-medium text-[16px] leading-snug">NIS2: ce înseamnă noua directivă UE pentru firma ta</p>
+            <p class="mt-2 text-surface-400 text-[13px] font-light">Articol pe blog</p>
+          </a>
+          <a href="/servicii/protectie-cibernetica/" class="brand-card p-5 hover:border-brand-cyan-500/40 transition-colors block">
+            <p class="text-surface-50 font-medium text-[16px] leading-snug">Protecție cibernetică și securitate IT</p>
+            <p class="mt-2 text-surface-400 text-[13px] font-light">Serviciu AXA IT</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-ink-800 border-t border-brand-cyan-500/10">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <p class="brand-eyebrow mb-6">— Next step</p>
+        <h2 class="font-display text-[28px] md:text-[36px] font-medium text-surface-50">Spune-ne ce îți ia cel mai mult timp în firmă</h2>
+        <p class="mt-4 text-surface-300 text-[16px] leading-relaxed font-light">
+          Descrie-ne sarcinile repetitive din firma ta și vedem împreună ce poate prelua un agent AI și ce rămâne la oameni.
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="/contact/"
+            class="inline-flex items-center justify-center gap-2 bg-brand-cyan-500 hover:bg-brand-cyan-400 text-ink-900 font-mono text-[12px] uppercase tracking-[0.18em] font-semibold px-10 py-4 rounded-full transition-all hover:shadow-lg hover:shadow-brand-cyan-500/25"
+          >
+            Mergi la Contact
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+          <a
+            href={studioaiUrl}
+            class="text-brand-cyan-500 hover:text-brand-cyan-400 text-[15px] underline decoration-brand-cyan-500/40 underline-offset-4 transition-colors"
+          >
+            Vezi prezentarea echipelor StudioAI
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
