@@ -3,8 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-// JSON-LD propriu paginii. Nodul #business completează entitatea din Layout (același @id):
-// denumire legală, fondator, brand StudioAI și dezambiguizare față de grupul de asigurări AXA.
+// JSON-LD propriu paginii: AboutPage. Entitatea #business și fondatorul sunt definite o singură dată, în Layout.
 const aboutSchema = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -17,24 +16,6 @@ const aboutSchema = {
       isPartOf: { '@id': 'https://axait.ro/#website' },
       about: { '@id': 'https://axait.ro/#business' },
       mainEntity: { '@id': 'https://axait.ro/#business' },
-    },
-    {
-      '@type': 'LocalBusiness',
-      '@id': 'https://axait.ro/#business',
-      name: 'AXA IT',
-      legalName: 'Axa IT Company SRL',
-      foundingDate: '2016-04',
-      founder: { '@id': 'https://axait.ro/despre/#bogdan-aliciuc' },
-      brand: { '@type': 'Brand', name: 'StudioAI', url: 'https://studioai.axait.ro/' },
-      disambiguatingDescription:
-        'Firmă independentă de servicii IT și agenți AI din România, fără legătură cu grupul de asigurări AXA.',
-    },
-    {
-      '@type': 'Person',
-      '@id': 'https://axait.ro/despre/#bogdan-aliciuc',
-      name: 'Bogdan Aliciuc',
-      jobTitle: 'Fondator și CEO',
-      worksFor: { '@id': 'https://axait.ro/#business' },
     },
   ],
 };
@@ -116,7 +97,7 @@ const aboutSchema = {
 
         <div class="max-w-3xl mb-10">
           <h2 class="font-display text-[28px] md:text-[36px] font-medium text-surface-50">Indicatori operaționali</h2>
-          <p class="mt-3 text-surface-300 text-[16px] font-light">Numere reale, asumate, măsurate pe parcursul a 8+ ani de activitate (din 2016).</p>
+          <p class="mt-3 text-surface-300 text-[16px] font-light">Numere reale, asumate, măsurate pe parcursul a 10 ani de activitate (din 2016).</p>
         </div>
 
         <div class="border-t border-brand-cyan-500/15">

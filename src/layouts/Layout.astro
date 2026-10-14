@@ -14,7 +14,9 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://axait.ro");
-const ogImage = image.startsWith('http') ? image : `https://axait.ro${image}`;
+// SVG nu are previzualizare pe Facebook, LinkedIn și WhatsApp: folosim imaginea PNG implicită.
+const ogSrc = image.endsWith('.svg') ? '/og-image-1200x630.png' : image;
+const ogImage = ogSrc.startsWith('http') ? ogSrc : `https://axait.ro${ogSrc}`;
 const fullTitle = title.length > 45 ? title : `${title} | AXA IT`;
 ---
 
@@ -115,7 +117,7 @@ const fullTitle = title.length > 45 ? title : `${title} | AXA IT`;
         "disambiguatingDescription": "AXA IT (Axa IT Company SRL, România) este o firmă independentă de servicii IT și nu are legătură cu grupul de asigurări AXA.",
         "logo": {"@type": "ImageObject", "url": "https://axait.ro/img/logo/axait-logo.png"},
         "image": "https://axait.ro/og-image-1200x630.png",
-        "description": "Soluții IT complete pentru firme din București — mentenanță, rețelistică, cloud, securitate și outsourcing IT. 8+ ani experiență (din 2016), 150+ sisteme active.",
+        "description": "Soluții IT complete pentru firme din București — mentenanță, rețelistică, cloud, securitate și outsourcing IT. 10 ani de experiență (din 2016), 150+ sisteme active.",
         "founder": {"@id": "https://axait.ro/#bogdan-aliciuc"},
         "brand": {"@type": "Brand", "name": "StudioAI", "url": "https://studioai.axait.ro/"},
         "knowsAbout": ["Mentenanță și suport IT", "Rețelistică și Wi-Fi", "Cloud și backup", "Disaster recovery", "Securitate cibernetică", "Conformitate NIS2", "Conformitate GDPR", "Virtualizare servere (VMware, Hyper-V, Proxmox)", "Outsourcing IT", "Consultanță și audit IT", "Supraveghere video și control acces", "Microsoft 365 pentru firme", "agenți AI pentru IMM-uri"],
