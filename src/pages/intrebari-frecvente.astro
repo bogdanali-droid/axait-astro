@@ -1,0 +1,232 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FaqList from '../components/FaqList.astro';
+import { buildFaqSchema, type FaqItem } from '../components/faq';
+
+const pageUrl = 'https://axait.ro/intrebari-frecvente/';
+const title = 'Întrebări frecvente: IT, NIS2, backup, agenți AI | AXA IT';
+const description =
+  'Răspunsuri scurte la întrebările IMM-urilor din România: suport IT, backup 3-2-1, NIS2, cloud sau server local, audit IT, outsourcing și agenți AI.';
+const updatedIso = '2026-10-14';
+const updatedLabel = '14 octombrie 2026';
+
+interface FaqGroup {
+  index: string;
+  heading: string;
+  intro: string;
+  items: FaqItem[];
+}
+
+const groups: FaqGroup[] = [
+  {
+    index: '01',
+    heading: 'Despre AXA IT',
+    intro: 'Cine suntem, unde lucrăm și cum arată colaborarea.',
+    items: [
+      {
+        id: 'ce-face-axa-it',
+        q: 'Ce face AXA IT?',
+        a: 'AXA IT este o firmă de servicii IT din București, activă din 2016 (Axa IT Company SRL). Oferim IMM-urilor mentenanță și suport IT, rețelistică și Wi-Fi, cloud și backup, protecție cibernetică, securitate și supraveghere video, virtualizare, outsourcing IT, consultanță și audit, plus agenți AI pentru firme.',
+        links: [{ label: 'Despre AXA IT', href: '/despre/' }],
+      },
+      {
+        id: 'zone-de-lucru',
+        q: 'În ce zone lucrează AXA IT?',
+        a: 'Sediul AXA IT este în București, iar serviciile acoperă România. Asistența securizată la distanță funcționează oriunde în țară, fără deplasări inutile. Deplasările la sediul clientului, pentru montaj, înlocuiri de echipamente sau remedieri care cer prezență fizică, se stabilesc împreună, în funcție de locație.',
+        links: [{ label: 'Mentenanță & Suport IT', href: '/servicii/mentenanta-suport-it/' }],
+      },
+      {
+        id: 'program-suport-tehnic',
+        q: 'Care este programul de suport tehnic?',
+        a: 'Suportul tehnic funcționează de luni până vineri, între 08:00 și 18:00. Monitorizarea automată a sistemelor critice rulează 24/7. Pentru incidentele majore din afara programului oferim canale de escaladare stabilite prin contract. Intervențiile se urmăresc prin ticketing, iar clienții primesc rapoarte periodice despre starea sistemelor.',
+        links: [{ label: 'Mentenanță & Suport IT', href: '/servicii/mentenanta-suport-it/' }],
+      },
+      {
+        id: 'cum-incep-o-colaborare',
+        q: 'Cum încep o colaborare cu AXA IT?',
+        a: 'Contactezi AXA IT prin telefon (0727 897 849), email (office@axa-it.ro) sau WhatsApp și descrii ce te încurcă în firmă. Pentru infrastructura IT, un audit este un bun punct de plecare. Pentru agenți AI, pornim de la ce îți ia cel mai mult timp și vedem împreună ce se poate automatiza.',
+        links: [{ label: 'Contact', href: '/contact/' }],
+      },
+    ],
+  },
+  {
+    index: '02',
+    heading: 'Servicii IT, backup și securitate',
+    intro: 'Întrebările pe care ni le pun cel mai des firmele care își aleg partenerul IT.',
+    items: [
+      {
+        id: 'mentenanta-preventiva-it',
+        q: 'Ce este mentenanța preventivă IT și ce include?',
+        a: 'Mentenanța preventivă IT înseamnă verificări și intervenții planificate, care rezolvă problemele înainte să oprească activitatea. Include monitorizare proactivă, actualizări de securitate la zi, testarea lunară a restaurării backup-urilor, inspecții hardware periodice și un raport lunar cu starea infrastructurii și recomandări de îmbunătățire.',
+        links: [{ label: 'De ce mentenanța preventivă IT economisește bani', href: '/blog/de-ce-mentenanta-preventiva-it/' }],
+      },
+      {
+        id: 'backup-3-2-1',
+        q: 'Ce este regula de backup 3-2-1?',
+        a: 'Regula 3-2-1 cere cel puțin 3 copii ale datelor, pe 2 tipuri diferite de medii, dintre care 1 copie în afara sediului, de exemplu în cloud. Varianta extinsă, 3-2-1-1-0, adaugă o copie offline sau imutabilă, care rezistă la ransomware, și zero erori la testele periodice de restaurare.',
+        links: [{ label: 'Regula 3-2-1, strategia de backup', href: '/blog/backup-3-2-1-regula-de-aur/' }],
+      },
+      {
+        id: 'nis2',
+        q: 'Ce este NIS2 și ce firme intră sub incidența ei?',
+        a: 'NIS2 este directiva europeană de securitate cibernetică, transpusă în legislația din România. Se aplică în general firmelor medii și mari, cu 50 de angajați sau mai mulți ori cifră de afaceri peste 10 milioane €, din sectoare precum energie, transport, sănătate, infrastructură digitală sau producție. Unele sectoare critice intră indiferent de dimensiune. Autoritatea competentă este DNSC.',
+        links: [{ label: 'NIS2: ce înseamnă directiva pentru firma ta', href: '/blog/nis2-directiva-ue-conformitate/' }],
+      },
+      {
+        id: 'cloud-sau-server-local',
+        q: 'Cloud sau server local: ce alege o firmă mică?',
+        a: 'Depinde de firmă. Cloud-ul oferă scalare rapidă, backup și acces de oriunde, fără investiție inițială. Serverul local are sens pentru aplicații cu latență foarte mică, reglementări care cer stocare locală sau echipamente recent amortizate. În experiența AXA IT, majoritatea firmelor românești obțin cel mai bun raport cost-siguranță cu o arhitectură hibridă.',
+        links: [{ label: 'Cloud vs. server local', href: '/blog/cloud-vs-server-local/' }],
+      },
+      {
+        id: 'outsourcing-it-sau-echipa-interna',
+        q: 'Outsourcing IT sau echipă internă: ce merită mai mult?',
+        a: 'Sub aproximativ 80 de angajați, outsourcing-ul sau un model hibrid oferă de regulă un raport cost-beneficiu mai bun. În estimările AXA IT, un administrator IT intern costă 11.000-18.000 lei pe lună cu tot cu beneficii, iar un contract de outsourcing pentru 20-50 de angajați, 3.000-8.000 lei pe lună.',
+        links: [{ label: 'Outsourcing IT vs. echipă internă', href: '/blog/outsourcing-it-vs-echipa-interna/' }],
+      },
+      {
+        id: 'cat-dureaza-un-audit-it',
+        q: 'Cât durează un audit IT?',
+        a: 'Un audit IT complet pentru o firmă cu 20-80 de angajați durează 3-5 zile. Include vizită la sediu, scanarea automată a rețelei și a vulnerabilităților, interviuri cu personalul-cheie, un raport cu riscuri și recomandări prioritizate și o prezentare a rezultatelor către management.',
+        links: [{ label: 'Audit IT: de ce ai nevoie de o evaluare', href: '/blog/audit-it-de-ce-ai-nevoie/' }],
+      },
+      {
+        id: 'protectie-phishing-ransomware',
+        q: 'Cum se protejează o firmă de phishing și ransomware?',
+        a: 'Protecția se face în straturi: autentificare multi-factor pe conturile importante, actualizări la zi, firewall și antivirus sau EDR administrate centralizat, backup imutabil testat periodic și instruirea angajaților să recunoască emailurile frauduloase. Un singur strat nu ajunge: ransomware-ul modern caută și criptează și backup-urile accesibile din rețea.',
+        links: [{ label: 'Protecție Cibernetică', href: '/servicii/protectie-cibernetica/' }],
+      },
+    ],
+  },
+  {
+    index: '03',
+    heading: 'Agenți AI și StudioAI',
+    intro: 'Ce pot face agenții AI într-o firmă, cine îi oferă și unde se oprește rolul lor.',
+    items: [
+      {
+        id: 'ce-sunt-agentii-ai',
+        q: 'Ce sunt agenții AI pentru firme?',
+        a: 'Agenții AI pentru firme sunt programe bazate pe inteligență artificială care preiau sarcini repetitive din munca zilnică, de la documente și marketing la vânzări sau verificări de securitate, și le duc la capăt pas cu pas. Spre deosebire de un chatbot, produc livrabile concrete, iar deciziile care nu se mai pot anula rămân la un om.',
+        links: [{ label: 'Agenți AI pentru firme', href: '/agenti-ai/' }],
+      },
+      {
+        id: 'ce-este-studioai',
+        q: 'Ce este StudioAI?',
+        a: 'StudioAI este brandul Axa IT Company SRL pentru echipe de agenți AI dedicate firmelor. Agenții sunt specializați pe marketing, dezvoltare, design și securitate, lucrează în română, pe industria și brandul clientului, și comunică printr-un singur punct de contact. Este același operator ca AXA IT, nu o firmă separată.',
+        links: [
+          { label: 'Agenți AI pentru firme', href: '/agenti-ai/' },
+          { label: 'Prezentarea echipelor StudioAI', href: 'https://studioai.axait.ro/studioai' },
+        ],
+      },
+      {
+        id: 'ce-face-agentul-si-ce-decide-omul',
+        q: 'Ce face un agent AI singur și ce decide un om?',
+        a: 'Agentul face singur ce se poate anula rapid: ciorne, analize, texte, modificări care pot fi refăcute. Ce nu se mai poate anula, precum publicarea pe un site live, ștergerea sau migrarea datelor, schimbarea accesurilor, trimiterea de mesaje către terți sau costurile peste un prag, cere confirmarea explicită a unui om înainte de execuție.',
+        links: [{ label: 'Cum lucrăm cu agenții AI', href: '/agenti-ai/#cum-lucram' }],
+      },
+      {
+        id: 'date-si-gdpr-agenti-ai',
+        q: 'Cum sunt protejate datele firmei când lucrează cu agenți AI?',
+        a: 'GDPR și NIS2 intră în proiect de la început: datele personale sunt mascate, acțiunile agenților rămân în jurnale de audit, iar agenți dedicați securității și protecției datelor fac parte din echipă. Unele instrumente au limite proprii: subtitrarea live trimite vocea prin serviciile Google și nu se folosește pentru date sensibile, iar OCR-ul rulează în cloud.',
+        links: [{ label: 'Date și GDPR', href: '/agenti-ai/#date-gdpr' }],
+      },
+    ],
+  },
+];
+
+const allItems: FaqItem[] = groups.flatMap((g) => g.items);
+
+const faqSchema = buildFaqSchema(allItems);
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': `${pageUrl}#webpage`,
+  url: pageUrl,
+  name: 'Întrebări frecvente despre AXA IT',
+  description,
+  inLanguage: 'ro-RO',
+  dateModified: updatedIso,
+  isPartOf: { '@id': 'https://axait.ro/#website' },
+  about: { '@id': 'https://axait.ro/#business' },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://axait.ro/' },
+    { '@type': 'ListItem', position: 2, name: 'Întrebări frecvente', item: pageUrl },
+  ],
+};
+---
+
+<Layout title={title} description={description}>
+  <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <Header variant="dark" currentPage="/intrebari-frecvente/" />
+
+  <main class="bg-ink-900 min-h-screen">
+    <!-- Hero -->
+    <section class="relative pt-32 pb-14 bg-ink-900 overflow-hidden">
+      <div class="brand-grid-bg absolute inset-0 opacity-50"></div>
+      <div class="absolute top-24 left-1/4 w-[320px] h-[320px] bg-brand-cyan-500/10 rounded-full blur-[90px] pointer-events-none"></div>
+      <div class="relative max-w-4xl mx-auto px-6">
+        <nav aria-label="Breadcrumb" class="mb-6">
+          <ol class="flex flex-wrap items-center gap-2 text-[13px] text-surface-400 font-mono">
+            <li><a href="/" class="hover:text-brand-cyan-500 transition-colors">Home</a></li>
+            <li aria-hidden="true" class="text-surface-500">/</li>
+            <li aria-current="page" class="text-surface-200">Întrebări frecvente</li>
+          </ol>
+        </nav>
+        <p class="brand-eyebrow mb-6">— FAQ</p>
+        <h1 class="font-display text-[36px] md:text-[52px] font-medium leading-[1.08] tracking-tight bg-gradient-to-br from-white via-surface-100 to-surface-300 bg-clip-text text-transparent">Întrebări frecvente despre AXA IT</h1>
+        <p class="mt-6 text-surface-300 text-[17px] md:text-[19px] leading-relaxed font-light max-w-3xl">
+          Răspunsuri directe la întrebările pe care le primim cel mai des de la firme din România: ce face AXA IT, cum arată suportul tehnic, ce înseamnă NIS2, cum funcționează backup-ul 3-2-1 și ce pot face agenții AI. Fiecare răspuns trimite la pagina de serviciu sau la articolul cu detalii.
+        </p>
+        <p class="mt-4 text-surface-400 text-[13px] font-mono">
+          Actualizat: <time datetime={updatedIso}>{updatedLabel}</time>
+        </p>
+      </div>
+    </section>
+
+    {groups.map((group, gi) => (
+      <section class:list={['py-14 md:py-16', gi % 2 === 0 ? 'bg-ink-800 border-y border-brand-cyan-500/10' : 'bg-ink-900']}>
+        <div class="max-w-4xl mx-auto px-6">
+          <p class="brand-eyebrow mb-4"><span>{group.index}</span> / {group.heading}</p>
+          <h2 class="font-display text-[26px] md:text-[34px] font-medium text-surface-50">{group.heading}</h2>
+          <p class="mt-3 mb-8 text-surface-300 text-[16px] font-light">{group.intro}</p>
+          <FaqList items={group.items} />
+        </div>
+      </section>
+    ))}
+
+    <!-- CTA -->
+    <section class="py-20 bg-ink-800 border-t border-brand-cyan-500/10">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <p class="brand-eyebrow mb-6">— Next step</p>
+        <h2 class="font-display text-[28px] md:text-[36px] font-medium text-surface-50">Nu ai găsit răspunsul?</h2>
+        <p class="mt-4 text-surface-300 text-[16px] leading-relaxed font-light">
+          Scrie-ne ce te interesează și îți răspundem direct. Pentru o discuție despre infrastructura sau despre agenții AI din firma ta, folosește pagina de contact.
+        </p>
+        <a
+          href="/contact/"
+          class="mt-8 inline-flex items-center justify-center gap-2 bg-brand-cyan-500 hover:bg-brand-cyan-400 text-ink-900 font-mono text-[12px] uppercase tracking-[0.18em] font-semibold px-10 py-4 rounded-full transition-all hover:shadow-lg hover:shadow-brand-cyan-500/25"
+        >
+          Mergi la Contact
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
