@@ -1,0 +1,308 @@
+---
+import BlogPost from '../../layouts/BlogPost.astro';
+import { buildFaqSchema, type FaqItem } from '../../components/faq';
+
+const ic3_2025 = 'https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf';
+const ic3_2024 = 'https://www.ic3.gov/AnnualReport/Reports/2024_IC3Report.pdf';
+const europolInfographic = 'https://www.europol.europa.eu/sites/default/files/documents/fraud_scams_infographic.pdf';
+const europolLeaflet = 'https://www.europol.europa.eu/cms/sites/default/files/documents/uk.pdf';
+const europolIocta = 'https://www.europol.europa.eu/cms/sites/default/files/documents/IOCTA-2026.pdf';
+const cnnArup = 'https://edition.cnn.com/2024/05/16/tech/arup-deepfake-scam-loss-hong-kong-intl-hnk/index.html';
+const theDriveFerrari = 'https://www.thedrive.com/news/ferrari-thwarted-an-ai-deepfake-scammer-posing-as-its-ceo-with-an-age-old-trick';
+const alba24 = 'https://alba24.ro/cum-functioneaza-inselaciunea-man-in-the-middle-o-firma-din-alba-iulia-a-pierdut-peste-76-000-de-euro-pe-baza-unui-e-mail-fals-1154262.html';
+const puterea = 'https://www.puterea.ro/?p=577996';
+const adevarul = 'https://adevarul.ro/stiri-interne/societate/politia-romana-avertizeaza-asupra-cresterii-2489417.html';
+const hotnewsDnsc = 'https://hotnews.ro/cum-sa-te-aperi-de-pericolul-deepfake-cti-bani-au-pierdut-o-pensionara-din-vaslui-ori-un-director-din-marea-britanie-ghid-dnsc-8855';
+const dnscGhid = 'https://www.dnsc.ro/vezi/document/ghid-deepfake';
+
+// Aceeași listă produce FAQ-ul vizibil și JSON-LD-ul FAQPage.
+const faqItems: FaqItem[] = [
+  {
+    id: 'cum-recunosc-un-deepfake',
+    q: 'Cum recunosc un deepfake în timpul unui apel?',
+    a: 'Nu te baza doar pe asta. DNSC enumeră indicii precum buzele nesincronizate cu sunetul, umbrele sau reflexiile nefirești și clipitul ciudat, dar FBI notează în raportul IC3 pentru 2025 că astfel de conținut devine tot mai greu de detectat. Verificarea prin alt canal (apel înapoi la un număr cunoscut, cuvânt-cod) funcționează chiar dacă falsul este foarte bun.',
+    links: [
+      { label: 'Ghidul DNSC, prezentat de HotNews', href: hotnewsDnsc },
+      { label: 'Raportul IC3 2025', href: ic3_2025 },
+    ],
+  },
+  {
+    id: 'sefu-cere-urgent-si-nu-raspunde',
+    q: 'Ce fac dacă „șeful” cere ceva urgent și nu răspunde la telefon?',
+    a: 'Plata sau accesul așteaptă. Urgența, cererea de discreție și mesajul „sunt indisponibil” sunt chiar semnele pe care Europol le listează pentru frauda de tip CEO. Mergi la a doua persoană din regulă și stabilește din timp cine hotărăște când conducerea lipsește. O plată întârziată cu o oră se repară ușor, una greșită mult mai greu.',
+    links: [{ label: 'Fișa Europol despre fraudele care vizează angajații', href: europolInfographic }],
+  },
+  {
+    id: 'cuvant-cod-firma-mica',
+    q: 'Merită un cuvânt-cod într-o firmă cu 5 angajați?',
+    a: 'Da, poate chiar mai mult decât într-o firmă mare, pentru că într-una mică o singură persoană decide și execută adesea totul. Nu costă nimic: îl stabiliți față în față între director și cine face plățile, respectiv între director și cine administrează IT-ul. Nu înlocuiește apelul înapoi, îl completează.',
+    links: [],
+  },
+  {
+    id: 'am-platit-deja',
+    q: 'Ce fac dacă am plătit deja?',
+    a: 'Sună imediat banca și cere blocarea sau retragerea transferului. Apoi sesizează Poliția, chiar dacă recuperarea pare improbabilă, și păstrează mesajele cu antetele tehnice, numerele de telefon și capturile de ecran. Anunță și furnizorul IT, ca să verifice conturile de e-mail și accesele. Europol recomandă să anunți poliția și la tentativele de fraudă, chiar dacă nu ai pierdut bani.',
+    links: [
+      { label: 'Recomandări după o plată greșită (Puterea.ro)', href: puterea },
+      { label: 'Fișa Europol', href: europolInfographic },
+    ],
+  },
+];
+
+const faqSchema = buildFaqSchema(faqItems);
+---
+
+<BlogPost
+  title="Protocol anti-deepfake pentru firme mici: 4 verificări înainte de o plată sau un acces cerut prin telefon ori video"
+  description="Sună înapoi la un număr cunoscut, cuvânt-cod, două persoane pentru plăți și niciun IBAN schimbat după un apel sau un mail. Pași concreți și checklist de printat."
+  date="2026-10-14"
+  author="Echipa AXA IT"
+  category="Securitate"
+  image="/img/blog/securitate.svg"
+  readTime="9"
+  extraSchemas={[faqSchema]}
+>
+
+<div class="my-8 rounded-r-xl border-l-4 border-brand-cyan-500 bg-brand-cyan-500/10 px-6 py-2" id="raspuns-direct">
+  <p>Nu poți fi sigur că o voce sau o față dintr-un apel sunt reale, deci protocolul nu se bazează pe ele. Înainte de o plată sau un acces cerut prin telefon ori video: sună înapoi la un număr cunoscut, cere cuvântul-cod, cere a doua aprobare și nu schimba niciun IBAN după un apel sau un mail.</p>
+</div>
+
+<h2>De ce un protocol, și nu atenția la detalii</h2>
+
+<p>Un deepfake este o voce sau un video generat cu inteligență artificială, care imită o persoană reală. DNSC enumeră în ghidul său indicii prin care îl poți recunoaște, precum buzele nesincronizate cu sunetul sau umbrele nefirești (<a href={hotnewsDnsc} rel="noopener">prezentarea ghidului, 1 aprilie 2024</a>). Indiciile ajută tot mai puțin: FBI scrie în raportul IC3 pentru 2025 că conținutul sintetic generat cu AI devine tot mai greu de detectat și tot mai ușor de produs. Un protocol nu depinde de cât de bun este falsul, pentru că verifică prin alt canal.</p>
+
+<h3>Trei cazuri cu sursă</h3>
+
+<ul>
+  <li><strong>Arup, Hong Kong (2024).</strong> Un angajat din finanțe a intrat într-un apel video cu persoane pe care le credea directorul financiar și colegi. Toți erau recreări deepfake. Angajatul bănuise la început că mesajul primit era phishing, dar a trecut peste îndoială după apelul video, fiindcă participanții arătau și sunau ca niște colegi cunoscuți. A trimis 200 de milioane de dolari hongkongezi (circa 25,6 milioane de dolari americani) în 15 tranzacții, potrivit poliției citate de RTHK. Arup a confirmat că au fost folosite voci și imagini false (<a href={cnnArup} rel="noopener">CNN</a>).</li>
+  <li><strong>Ferrari (2024).</strong> Un manager a primit mesaje pe WhatsApp, apoi un apel în care vocea CEO-ului Benedetto Vigna era imitată cu AI, inclusiv accentul. A întrebat ce carte i-a recomandat CEO-ul cu câteva zile înainte. Apelantul n-a știut și a închis. Relatarea aparține Bloomberg și este preluată de <a href={theDriveFerrari} rel="noopener">The Drive</a>.</li>
+  <li><strong>Alba Iulia (august 2026).</strong> Potrivit IPJ Alba, citat de <a href={alba24} rel="noopener">Alba24</a>, pe 17 august persoane necunoscute ar fi intrat, cu adrese de e-mail asemănătoare, în corespondența dintre o firmă din Alba Iulia și un partener străin și ar fi trimis modificări ale contului bancar. Pe 20 august, firma a plătit o factură de 76.250 de euro în contul indicat. Cercetările continuă. Cazul nu implică deepfake, dar arată cât de puțin trebuie schimbat într-o plată obișnuită: un singur rând, IBAN-ul.</li>
+</ul>
+
+<h3>Cifre cu sursă</h3>
+
+<ul>
+  <li>Raportul anual IC3 al FBI pentru 2025 (publicat în aprilie 2026) înregistrează <strong>24.768 de plângeri</strong> de tip business email compromise (BEC) și <strong>3,05 miliarde de dolari</strong> pierderi raportate. În 2024 fuseseră 21.442 de plângeri și 2,77 miliarde de dolari (<a href={ic3_2025} rel="noopener">raportul 2025</a>, <a href={ic3_2024} rel="noopener">raportul 2024</a>).</li>
+  <li>În același raport, IC3 a primit <strong>peste 22.000 de plângeri</strong> care menționează inteligența artificială, cu pierderi ajustate de <strong>peste 893 de milioane de dolari</strong>. Firmele au raportat <strong>peste 30 de milioane de dolari</strong> pierderi la fraude BEC cu AI (<a href={ic3_2025} rel="noopener">raportul 2025</a>, capitolul despre AI).</li>
+  <li>Europol scrie în IOCTA 2026 că schemele de fraudă sunt zona cu cea mai rapidă creștere a crimei organizate și că AI generativă a sporit realismul fraudelor BEC și CEO (<a href={europolIocta} rel="noopener">IOCTA 2026</a>).</li>
+  <li>În România, Poliția Română a avertizat într-un comunicat că deepfake-urile sunt printre uneltele preferate ale infractorilor informatici. Articolul Adevărul din 24 noiembrie 2025 include în lista fraudelor cu AI din 2025 și frauda CEO/CFO: apeluri video deepfake în care „șeful” cere transferuri urgente (<a href={adevarul} rel="noopener">Adevărul</a>).</li>
+</ul>
+
+<p>Cifrele FBI sunt din SUA și acoperă doar ce a fost raportat, deci arată direcția, nu dimensiunea reală a fenomenului. Pentru România nu avem o cifră publică care să separe fraudele cu deepfake împotriva firmelor; avem avertismente oficiale și cazuri din presă.</p>
+
+<h2>Cele 4 verificări</h2>
+
+<p>Protocolul are patru reguli. Se aplică la orice cerere de plată, de acces sau de date, oricine pare să o facă: directorul, un furnizor, banca sau „suportul IT”. Apelul înapoi, consultarea unui coleg, pragul de sumă și confirmarea schimbărilor de IBAN apar și în recomandările Europol pentru frauda de tip CEO (<a href={europolInfographic} rel="noopener">fișa pentru angajați</a> și <a href={europolLeaflet} rel="noopener">fișa CEO/BEC</a>). Cuvântul-cod și regula celor două aprobări sunt practici pe care le recomandăm noi.</p>
+
+<h3>1. Închide și sună înapoi, la un număr pe care îl ai deja</h3>
+
+<ol>
+  <li>Nu răspunde pe loc. Spune „te sun eu într-un minut” și închide. La un apel video, ieși din întâlnire.</li>
+  <li>Sună la numărul din agenda ta, din contract sau de pe site-ul oficial. Niciodată la cel din mesaj, din semnătura unui e-mail sau dat chiar de apelant.</li>
+  <li>Dacă cererea a venit prin telefon, sună de pe alt telefon. Europol avertizează că infractorii pot rămâne pe linie și după ce ai închis.</li>
+  <li>Dacă persoana nu răspunde, plata sau accesul așteaptă. Urgența, cererea de discreție și mesajul „sunt indisponibil” sunt chiar semnele pe care Europol le listează.</li>
+</ol>
+
+<h3>2. Cuvântul-cod</h3>
+
+<ul>
+  <li>Stabilește-l față în față, nu pe e-mail, chat sau telefon. Folosește câte unul pentru fiecare pereche care ia decizii: director și cine face plățile, director și cine administrează IT-ul.</li>
+  <li>Tu îl ceri, apelantul nu îl spune primul. Nu îl scrie în Teams, WhatsApp sau pe e-mail.</li>
+  <li>Alege un cuvânt fără legătură cu persoana. Ziua de naștere, numele animalului de companie sau ce apare pe LinkedIn pot fi găsite de oricine.</li>
+  <li>Schimbă-l după ce a fost folosit și când pleacă cineva din firmă.</li>
+  <li>Dacă nu ai stabilit unul, o întrebare la care știe răspunsul doar omul real face aceeași treabă, ca la Ferrari. Un cuvânt-cod stabilit dinainte este însă mai sigur decât o întrebare improvizată.</li>
+  <li>Cuvântul-cod nu înlocuiește apelul înapoi. Dacă a ajuns la cine nu trebuia, rămâne verificarea 1.</li>
+</ul>
+
+<h3>3. Două persoane pentru plăți, peste un prag</h3>
+
+<ul>
+  <li><strong>Alege pragul și scrie-l.</strong> Este suma de la care o plată cere două aprobări. Nu există o sumă universală: alege una pe care firma o poate pierde fără să-i fie afectate salariile sau plățile către furnizorii importanți.</li>
+  <li><strong>A doua persoană verifică independent.</strong> Prima inițiază plata. A doua face ea însăși apelul înapoi din regula 1 și compară beneficiarul și IBAN-ul cu contractul sau cu ultima factură plătită. Nu se bazează pe explicațiile primei.</li>
+  <li>Dacă banca ta permite, setează în internet banking aprobarea de către doi utilizatori peste prag și limite zilnice.</li>
+  <li>Într-o firmă foarte mică, a doua persoană poate fi contabilul sau asociatul. Contează să nu fie același om și să nu depindă de cel care cere plata.</li>
+  <li>Sub prag nu renunți la restul: un beneficiar nou sau un IBAN schimbat înseamnă verificarea 4, indiferent de sumă.</li>
+  <li>Oricine din firmă are voie să oprească o plată și să spună „nu pot fără a doua persoană”, inclusiv când cere directorul. Europol recomandă să te consulți cu un coleg chiar dacă ți s-a cerut discreție.</li>
+</ul>
+
+<h3>4. Niciun IBAN schimbat pe baza unui apel sau a unui mail</h3>
+
+<ul>
+  <li>Cererea de schimbare a contului, de la un furnizor, un client sau un angajat, nu se execută din e-mail sau din apel.</li>
+  <li>Confirmă schimbarea la numărul din contract sau din corespondența veche, nu la cel din mesajul care o cere. Europol notează că și datele de contact de pe factură pot fi modificate.</li>
+  <li>Schimbarea o aprobă a doua persoană și rămâne scrisă: cine a cerut, cine a verificat, când și la ce număr.</li>
+  <li>Verifică adresa expeditorului literă cu literă. Europol descrie e-mailuri copiate la care diferă un singur caracter.</li>
+  <li>Un semnal de alarmă în plus: schimbarea apare imediat după o comandă mare sau chiar înaintea unei scadențe.</li>
+</ul>
+
+<h2>Și pentru accese, nu doar pentru plăți</h2>
+
+<p>Aceleași reguli se aplică când cineva cere o resetare de parolă sau de MFA, un cont nou, instalarea unui program de acces la distanță sau o listă cu date (clienți, facturi neîncasate). Europol descrie varianta în care infractorul se prezintă drept „specialist IT” sau angajat al băncii, anunță o breșă de securitate și cere acces sau date.</p>
+
+<ul>
+  <li>Nimeni nu primește acces sau resetare doar pe baza unui apel. Persoana care cere este sunată înapoi la numărul din evidența firmei.</li>
+  <li>Cererile care par să vină de la conducere cer și cuvântul-cod.</li>
+  <li>Un program de acces la distanță se instalează doar la inițiativa ta și de la furnizorul tău cunoscut, niciodată la cererea unui apelant.</li>
+  <li>Dacă lucrezi cu un furnizor IT extern, stabiliți aceeași regulă în scris.</li>
+</ul>
+
+<p>Controalele tehnice reduc paguba atunci când o verificare este ocolită. Autentificarea în doi pași (MFA) și politicile de acces cu drepturi minime sunt descrise la serviciul de <a href="/servicii/protectie-cibernetica/">protecție cibernetică</a>. Despre filtrele de e-mail și antrenarea echipei vezi articolul despre <a href="/blog/phishing-cum-te-protejezi/">phishing</a>.</p>
+
+<h2>Checklist de printat</h2>
+
+<p>Tipărește-l, pune-l lângă calculatorul celui care face plăți și completează pragul. La imprimare apare doar checklist-ul.</p>
+
+<p id="adf-print-wrap" class="adf-noprint" hidden><button type="button" id="adf-print" class="inline-flex items-center gap-2 bg-brand-cyan-500 hover:bg-brand-cyan-400 text-ink-900 font-semibold text-[14px] px-5 py-2.5 rounded-full transition-all">Printează checklist-ul</button></p>
+
+<section class="adf-checklist" aria-labelledby="adf-titlu">
+  <h3 id="adf-titlu">Checklist anti-deepfake: înainte de o plată sau un acces cerut prin telefon ori video</h3>
+  <p class="adf-meta">Firma: ______________________________ &nbsp; Prag pentru două aprobări: __________ lei</p>
+
+  <h4>Înainte să faci orice</h4>
+  <ul class="adf-list">
+    <li><span class="adf-box" aria-hidden="true"></span><span>Nu am răspuns pe loc. Am spus că sun eu înapoi.</span></li>
+    <li><span class="adf-box" aria-hidden="true"></span><span>Am sunat la un număr din agenda mea sau din contract, nu la cel din mesaj sau dat de apelant.</span></li>
+    <li><span class="adf-box" aria-hidden="true"></span><span>Dacă cererea a venit prin telefon, am sunat de pe alt telefon.</span></li>
+    <li><span class="adf-box" aria-hidden="true"></span><span>Persoana a spus cuvântul-cod corect, pe care l-am cerut eu.</span></li>
+    <li><span class="adf-box" aria-hidden="true"></span><span>Dacă cererea e „urgentă” sau „confidențială”, am tratat asta ca semnal de alarmă, nu ca motiv să sar peste pași.</span></li>
+  </ul>
+
+  <h4>Pentru plăți</h4>
+  <ul class="adf-list">
+    <li><span class="adf-box" aria-hidden="true"></span><span>Suma depășește pragul firmei? Dacă da, a aprobat și a doua persoană: ______________________</span></li>
+    <li><span class="adf-box" aria-hidden="true"></span><span>A doua persoană a verificat independent, cu apelul ei înapoi, nu pe baza explicațiilor mele.</span></li>
+    <li><span class="adf-box" aria-hidden="true"></span><span>Beneficiarul și IBAN-ul coincid cu contractul sau cu ultima factură plătită.</span></li>
+    <li><span class="adf-box" aria-hidden="true"></span><span>Dacă IBAN-ul sau beneficiarul e nou: l-am confirmat la numărul din contract și am notat cine, când și la ce număr.</span></li>
+  </ul>
+
+  <h4>Pentru accese și date</h4>
+  <ul class="adf-list">
+    <li><span class="adf-box" aria-hidden="true"></span><span>Nu am dat acces, resetare de parolă sau de MFA ori date pe baza unui singur apel.</span></li>
+    <li><span class="adf-box" aria-hidden="true"></span><span>Nu am instalat niciun program de acces la distanță la cererea unui apelant.</span></li>
+  </ul>
+
+  <h4>Dacă ceva nu se leagă</h4>
+  <ul class="adf-list">
+    <li><span class="adf-box" aria-hidden="true"></span><span>Am oprit operațiunea și am anunțat: ______________________ (a doua persoană sau IT).</span></li>
+    <li><span class="adf-box" aria-hidden="true"></span><span>Dacă s-a plătit deja: sun imediat banca (blocare sau retragere), apoi sesizez Poliția și păstrez mesajele, numerele și capturile.</span></li>
+  </ul>
+
+  <p class="adf-meta">Număr bancă (din contract sau de pe card): ________________</p>
+  <p class="adf-meta">Persoană IT: ________________</p>
+  <p class="adf-foot">Protocol AXA IT · axait.ro/blog/protocol-anti-deepfake-firme/ · actualizat 14 octombrie 2026</p>
+</section>
+
+<h2>Cum îl introduci în firmă într-o după-amiază</h2>
+
+<ol>
+  <li>Alege pragul și scrie-l în checklist.</li>
+  <li>Numește a doua persoană pentru plăți și un înlocuitor, pentru zilele de concediu.</li>
+  <li>Fă lista numerelor cunoscute: bancă, contabil, furnizori principali, conducere, IT. Păstreaz-o și pe hârtie.</li>
+  <li>Stabilește cuvintele-cod față în față.</li>
+  <li>Spune-le tuturor că au voie să oprească o plată, chiar dacă o cere șeful. Tonul se dă de sus.</li>
+</ol>
+
+<p>După o lună, fă un exercițiu: un coleg sună pe altcineva și se dă drept director, apoi vedeți dacă protocolul a funcționat. Dacă nu a funcționat, ajustați regula.</p>
+
+<h2>Și agenții AI din firmă</h2>
+
+<p>Dacă un agent AI pregătește plăți, trimite mesaje sau schimbă accese, se aplică aceeași regulă: ce se poate anula face agentul, ce nu se poate anula cere confirmarea unui om. Despre cum lucrăm cu echipe de agenți AI vezi <a href="/agenti-ai/#cum-lucram">pagina Agenți AI</a> și articolul <a href="/blog/ce-este-un-agent-ai/">ce este un agent AI și cum diferă de un chatbot</a>.</p>
+
+<h2>Întrebări frecvente</h2>
+
+{faqItems.map((item) => (
+  <div id={item.id}>
+    <h3>{item.q}</h3>
+    <p>{item.a}</p>
+    {item.links.length > 0 && (
+      <p>
+        Detalii:{' '}
+        {item.links.map((link, i) => (
+          <Fragment>
+            {i > 0 && ' · '}
+            <a href={link.href} {...(link.href.startsWith('http') ? { rel: 'noopener' } : {})}>{link.label}</a>
+          </Fragment>
+        ))}
+      </p>
+    )}
+  </div>
+))}
+
+<h2>Surse</h2>
+
+<ul>
+  <li>FBI IC3, <a href={ic3_2025} rel="noopener">Internet Crime Report 2025</a> și <a href={ic3_2024} rel="noopener">2024</a>.</li>
+  <li>Europol, <a href={europolIocta} rel="noopener">IOCTA 2026</a>, <a href={europolInfographic} rel="noopener">fișa „Fraud scams targeting employees”</a> și <a href={europolLeaflet} rel="noopener">fișa „CEO/Business Email Compromise (BEC) fraud”</a>.</li>
+  <li>DNSC, <a href={dnscGhid} rel="noopener">ghidul „Deepfake: manipulat sau informat?”</a>, prezentat de <a href={hotnewsDnsc} rel="noopener">HotNews</a> la 1 aprilie 2024.</li>
+  <li>CNN, <a href={cnnArup} rel="noopener">Arup revealed as victim of $25 million deepfake scam involving Hong Kong employee</a> (16 mai 2024).</li>
+  <li>The Drive, <a href={theDriveFerrari} rel="noopener">Ferrari thwarted an AI deepfake scammer posing as its CEO</a> (29 iulie 2024), după Bloomberg.</li>
+  <li>Alba24, <a href={alba24} rel="noopener">cazul firmei din Alba Iulia</a>, pe baza comunicatului IPJ Alba (august 2026), și <a href={puterea} rel="noopener">Puterea.ro</a> (21 august 2026).</li>
+  <li>Adevărul, <a href={adevarul} rel="noopener">Poliția Română avertizează asupra creșterii numărului de înșelătorii cu deepfake-uri</a> (24 noiembrie 2025).</li>
+</ul>
+
+<h2>Articole și servicii conexe</h2>
+<ul>
+  <li>MFA, politici de acces și monitorizare prin serviciul de <a href="/servicii/protectie-cibernetica/">protecție cibernetică</a>.</li>
+  <li>Phishing, BEC și training pentru angajați: <a href="/blog/phishing-cum-te-protejezi/">Phishing în 2026</a>.</li>
+  <li>Măsuri de bază pentru firme mici: <a href="/blog/ghid-securitate-cibernetica-imm/">ghid de securitate cibernetică pentru IMM-uri</a>.</li>
+  <li>Aceeași regulă la agenții AI: <a href="/agenti-ai/">Agenți AI pentru firme</a>.</li>
+  <li>Vrei să aplicăm împreună partea tehnică? Scrie-ne pe <a href="/contact/">pagina de contact</a>.</li>
+</ul>
+
+</BlogPost>
+
+<script>
+  // Butonul de imprimare apare doar dacă JavaScript rulează; fără JS rămâne Ctrl+P.
+  const wrap = document.getElementById('adf-print-wrap');
+  const btn = document.getElementById('adf-print');
+  if (wrap && btn) {
+    wrap.hidden = false;
+    btn.addEventListener('click', () => window.print());
+  }
+</script>
+
+<style is:global>
+  .adf-checklist {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .adf-checklist h3 { margin-top: 0; font-size: 1.25rem; line-height: 1.35; }
+  .adf-checklist h4 { margin: 1.5rem 0 0.5rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .adf-checklist .adf-meta { margin: 1rem 0; font-size: 0.95rem; overflow-wrap: anywhere; }
+  .adf-checklist .adf-foot { margin: 1.5rem 0 0; font-size: 0.8rem; opacity: 0.7; }
+  .adf-checklist ul.adf-list { list-style: none; padding: 0; margin: 0; }
+  .adf-checklist ul.adf-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin: 0.6rem 0;
+    padding: 0;
+  }
+  .adf-checklist .adf-box {
+    flex: none;
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-top: 0.3rem;
+    border: 2px solid currentColor;
+    border-radius: 3px;
+  }
+
+  @media print {
+    @page { margin: 14mm; }
+    header#header, #mobile-menu, footer, .whatsapp-fab, .adf-noprint { display: none !important; }
+    article > div:not(:has(.adf-checklist)) { display: none !important; }
+    .blog-prose > *:not(.adf-checklist) { display: none !important; }
+    html, body, main { background: #fff !important; color: #000 !important; padding-top: 0 !important; }
+    article > div { padding: 0 !important; margin: 0 !important; max-width: none !important; }
+    .adf-checklist { margin: 0; padding: 0; border: 0; background: #fff !important; }
+    .adf-checklist, .adf-checklist * { color: #000 !important; background: transparent !important; border-color: #000 !important; text-shadow: none !important; }
+    .adf-checklist h3 { font-size: 15pt; }
+    .adf-checklist h4 { font-size: 10.5pt; margin-top: 12pt; }
+    .adf-checklist li, .adf-checklist .adf-meta { font-size: 11pt; }
+    .adf-checklist ul.adf-list li { break-inside: avoid; margin: 7pt 0; }
+    .adf-checklist .adf-foot { opacity: 1; }
+  }
+</style>

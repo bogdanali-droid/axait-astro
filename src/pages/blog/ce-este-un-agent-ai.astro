@@ -1,0 +1,207 @@
+---
+import BlogPost from '../../layouts/BlogPost.astro';
+import { buildFaqSchema, type FaqItem } from '../../components/faq';
+
+// Aceeași listă produce FAQ-ul vizibil de la finalul articolului și JSON-LD-ul FAQPage.
+const faqItems: FaqItem[] = [
+  {
+    id: 'agent-ai-vs-chatgpt',
+    q: 'Un agent AI este același lucru cu ChatGPT?',
+    a: 'Nu. ChatGPT este un asistent conversațional general: îi scrii și îți răspunde. Un agent AI primește un scop, folosește unelte și produce un livrabil, de exemplu un fișier Excel făcut dintr-un scan PDF. Granița se mută, pentru că și asistenții generali primesc unelte, dar agentul adaugă planificarea pașilor și reguli despre ce are voie să facă singur.',
+    links: [{ label: 'Agenți AI pentru firme', href: '/agenti-ai/' }],
+  },
+  {
+    id: 'cat-costa-un-agent-ai',
+    q: 'Cât costă un agent AI într-o firmă?',
+    a: 'Depinde de ce sarcini preia agentul și cât de variate sunt, de volumul de lucru (de exemplu câte pagini de documente pe lună), de câți agenți intră în echipă și de cât de mult trebuie adaptați la procesele, datele și sistemele firmei tale. Contează și cerințele de securitate și GDPR. Pentru un proiect concret primești o propunere cu scop, calendar și condiții clare, pe care o validezi înainte de start.',
+    links: [{ label: 'Cum lucrăm', href: '/agenti-ai/#cum-lucram' }],
+  },
+  {
+    id: 'poate-un-agent-ai-gresi',
+    q: 'Poate un agent AI să facă greșeli?',
+    a: 'Da, ca orice sistem. De aceea împărțim munca după cât de reversibilă este: ce se poate anula face agentul, iar ce nu se mai poate anula (publicarea pe un site live, ștergerea datelor, mesajele către terți, schimbarea accesurilor, costurile peste un prag) cere confirmarea unui om. Rezultatele, cum ar fi un Excel obținut prin OCR, se verifică înainte să intre în contabilitate. Acțiunile agenților rămân în jurnale de audit.',
+    links: [{ label: 'Regula de lucru', href: '/agenti-ai/#cum-lucram' }],
+  },
+  {
+    id: 'ce-date-pot-da-unui-agent-ai',
+    q: 'Ce date pot da unui agent AI?',
+    a: 'Depinde de unealtă. Subtitrarea live trimite vocea prin recunoașterea vocală Google din Chrome și textul prin Google Translate, deci nu se folosește pentru date medicale, financiare sau personale. OCR-ul pentru mijloace fixe rulează în cloud, iar fiecare pagină este citită de un model AI. Dacă documentele tale conțin date personale, spune-ne la prima discuție, ca să le mascăm sau să alegem altă soluție.',
+    links: [
+      { label: 'Date și GDPR', href: '/agenti-ai/#date-gdpr' },
+      { label: 'Politica de confidențialitate', href: '/politica-confidentialitate/' },
+    ],
+  },
+  {
+    id: 'de-unde-pornesc',
+    q: 'De unde încep dacă nu știu ce să automatizez?',
+    a: 'Pornește de la sarcina care îți ia cel mai mult timp, de exemplu documente care se retranscriu manual, rapoarte sau texte repetitive. O descrii în prima discuție, iar împreună vedem ce poate prelua un agent AI, ce se rezolvă mai simplu cu o automatizare clasică și ce rămâne la oameni.',
+    links: [{ label: 'Contact', href: '/contact/' }],
+  },
+];
+
+const faqSchema = buildFaqSchema(faqItems);
+---
+
+<BlogPost
+  title="Ce este un agent AI și cum diferă de un chatbot și de o automatizare"
+  description="Agentul AI duce o sarcină la capăt, chatbotul răspunde la întrebări, automatizarea urmează reguli fixe. Tabel comparativ, exemple și regula de lucru."
+  date="2026-10-14"
+  author="Echipa AXA IT"
+  category="AI"
+  image="/img/blog/ai-unelte-business-it-2026.svg"
+  readTime="7"
+  extraSchemas={[faqSchema]}
+>
+
+<div class="my-8 rounded-r-xl border-l-4 border-brand-cyan-500 bg-brand-cyan-500/10 px-6 py-2" id="raspuns-direct">
+  <p>Un agent AI este un program bazat pe inteligență artificială care primește un scop, își alege singur pașii, folosește unelte (fișiere, aplicații, căutare) și duce sarcina la capăt. Un chatbot doar răspunde la întrebări, iar o automatizare clasică urmează reguli fixe, scrise dinainte de un om.</p>
+</div>
+
+<h2>Ce face un agent AI, concret</h2>
+
+<p>Un agent lucrează în patru mișcări: primește un scop, face un plan, folosește unelte și verifică ce a ieșit. „Unelte” înseamnă orice poate atinge: un PDF, un tabel Excel, o căutare pe web, o aplicație a firmei. Spre deosebire de un asistent obișnuit, agentul nu se oprește la un răspuns. Merge mai departe până termină sarcina sau până ajunge într-un punct în care trebuie să întrebe un om.</p>
+
+<p>La final ai un livrabil: un fișier, un text, o analiză sau o modificare într-un sistem.</p>
+
+<h2>Agent AI, chatbot și automatizare clasică: tabel comparativ</h2>
+
+<p class="md:hidden text-[14px] text-surface-400">Pe telefon, derulează tabelul spre dreapta ca să vezi toate coloanele.</p>
+
+<div class="overflow-x-auto my-8" role="region" aria-label="Tabel comparativ: agent AI, chatbot, automatizare clasică" tabindex="0">
+  <table class="min-w-[720px]">
+    <caption class="sr-only">Comparație între agent AI, chatbot și automatizare clasică, după ce primesc, ce produc, cine decide pașii, când se folosesc și ce riscuri au</caption>
+    <thead>
+      <tr>
+        <th scope="col">Criteriu</th>
+        <th scope="col">Agent AI</th>
+        <th scope="col">Chatbot</th>
+        <th scope="col">Automatizare clasică</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Ce primește</th>
+        <td>Un scop („transformă scanul acesta în Excel”) și acces la unelte</td>
+        <td>O întrebare sau un mesaj</td>
+        <td>Un eveniment sau o oră fixă (a apărut un fișier, a venit luni) și date în format previzibil</td>
+      </tr>
+      <tr>
+        <th scope="row">Ce produce</th>
+        <td>Un livrabil: fișier, text, analiză, modificare într-un sistem</td>
+        <td>Un răspuns în conversație</td>
+        <td>Același rezultat de fiecare dată: o notificare, un rând într-un tabel, un e-mail</td>
+      </tr>
+      <tr>
+        <th scope="row">Cine decide pașii</th>
+        <td>Modelul AI, în limitele puse de oameni</td>
+        <td>Modelul alege răspunsul, dar nu face pași în afara conversației</td>
+        <td>Omul care a scris regulile, o singură dată</td>
+      </tr>
+      <tr>
+        <th scope="row">Când se folosește</th>
+        <td>Sarcini cu mai mulți pași și date care variază: documente scanate, cereri scrise liber</td>
+        <td>Întrebări repetitive, informare, orientare</td>
+        <td>Procese stabile, cu reguli clare și date uniforme</td>
+      </tr>
+      <tr>
+        <th scope="row">Riscuri</th>
+        <td>Poate greși un pas și acționează în sisteme reale, deci ce nu se poate anula cere un om</td>
+        <td>Răspunsuri greșite spuse cu siguranță; scurgeri de date dacă primește informații sensibile</td>
+        <td>Se oprește sau procesează greșit când formatul se schimbă; execută fără să judece o regulă greșită</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p>Cum se citește tabelul:</p>
+
+<ul>
+  <li><strong>Chatbotul</strong> este o conversație. Răspunsul rămâne în fereastra de chat, iar ce faci cu el depinde de tine.</li>
+  <li><strong>Automatizarea clasică</strong> este o rețetă. Merge foarte bine cât timp datele arată mereu la fel. Când apare un document cu altă structură, se oprește sau procesează greșit, fiindcă nu are cum să judece.</li>
+  <li><strong>Agentul AI</strong> se descurcă și cu date care variază, dar tocmai pentru că își alege singur pașii, are nevoie de reguli clare despre ce are voie să facă.</li>
+</ul>
+
+<p>Granița dintre ele nu este rigidă. Un chatbot căruia îi dai acces la unelte începe să semene cu un agent, iar o automatizare care primește un pas de AI (de exemplu citirea unui document) devine mai flexibilă. Contează ce face programul în practică: doar răspunde, doar execută reguli sau își planifică pașii spre un scop.</p>
+
+<h2>Exemplu 1: din scan PDF în Excel, pentru mijloace fixe</h2>
+
+<p>Un exemplu concret este <strong>OCR-ul pentru mijloace fixe</strong>, construit de StudioAI by Axa IT Company SRL. Încarci un PDF scanat cu lista mijloacelor fixe, scoasă dintr-un program contabil românesc (de exemplu WinMENTOR, SAGA sau Ciel). Un model AI citește fiecare pagină și returnează un fișier Excel structurat, cu nouă câmpuri: număr curent, denumire, grupă, număr de inventar, valoare de intrare, valoare amortizată, valoare rămasă, data intrării și durata normală. Rândul de total se calculează automat.</p>
+
+<p>De ce nu ajunge o automatizare clasică? Fiecare program contabil își așază coloanele în felul lui, iar fiecare scan iese altfel: mai înclinat, mai șters, cu pagini în plus. O regulă fixă, adică un șablon, se rupe la prima schimbare. Un model AI poate găsi tabelul și coloanele chiar dacă așezarea diferă, inclusiv pe scanuri ușor înclinate sau cu contrast scăzut.</p>
+
+<p>Calitatea scanului contează: contrast bun, pagini drepte (fără înclinare de peste 5 grade), minimum 200 DPI și, pentru text mic, recomandat 300 DPI. Instrumentul rulează în cloud, fără nimic de instalat, iar accesul se cere prin <a href="/contact/">pagina de contact</a>. Este o sarcină restrânsă. În practică, echipele de agenți combină mai multe sarcini de felul acesta, în funcție de ce are nevoie firma.</p>
+
+<h2>Exemplu 2: subtitrarea live, o unealtă AI care nu este agent</h2>
+
+<p>Nu tot ce folosește AI este agent. <a href="/subtitrare/">Subtitrarea live</a> este un instrument gratuit făcut de StudioAI by AXA IT: vorbești în română, iar pe ecran apare textul tradus în timp real, într-o bară așezată peste prezentarea PowerPoint. Poți alege dintre zece limbi: engleză, franceză, germană, italiană, spaniolă, maghiară, neerlandeză (flamandă), turcă, chineză (simplificată) și japoneză.</p>
+
+<p>Instrumentul face o singură transformare, în flux: voce în text tradus. Nu planifică și nu alege pași, iar tu îl pornești și îl oprești. Ai nevoie de Google Chrome pe laptop (Windows sau Mac), de internet, de un microfon de tip headset sau lavalieră și de o probă făcută cu o zi înainte, pe același laptop. Vocea trece prin recunoașterea vocală Google din Chrome, iar textul se traduce prin Google Translate, deci nu-l folosi pentru date medicale, financiare sau personale.</p>
+
+<h2>Regula de lucru: ce se poate anula face agentul, ce nu se poate anula cere confirmarea unui om</h2>
+
+<p>Cu cât un agent are mai multă libertate, cu atât contează mai mult ce are voie să facă singur. Regula pe care o aplicăm la StudioAI este simplă: dacă acțiunea se poate anula rapid, fără pierdere de date și fără efect în afara firmei, o face agentul. Altfel, decide un om.</p>
+
+<h3>Face agentul singur</h3>
+<ul>
+  <li>ciorne de texte și prezentări</li>
+  <li>analize și rapoarte</li>
+  <li>extragerea datelor din documente</li>
+  <li>modificări care pot fi refăcute imediat</li>
+</ul>
+
+<h3>Cere confirmarea unui om</h3>
+<ul>
+  <li>publicarea pe un site sau într-un sistem live</li>
+  <li>ștergerea sau migrarea datelor</li>
+  <li>schimbarea accesurilor și a permisiunilor</li>
+  <li>trimiterea de mesaje către terți</li>
+  <li>costurile peste un prag stabilit</li>
+</ul>
+
+<p>În exemplul cu mijloacele fixe, extragerea datelor din PDF se poate repeta oricând, deci o face agentul. Introducerea cifrelor în programul de contabilitate sau transmiterea lor unui terț este altă categorie: acolo confirmă un om, după ce a verificat fișierul.</p>
+
+<p>Aceeași logică se aplică și riscurilor fără AI. O plată nu se poate anula, deci cere a doua persoană. Am descris-o pas cu pas în <a href="/blog/protocol-anti-deepfake-firme/">protocolul anti-deepfake pentru firme mici</a>.</p>
+
+<h2>Cum alegi între ele</h2>
+
+<ul>
+  <li>Primești aceleași întrebări de la clienți sau colegi, iar răspunsurile sunt în documente: un <strong>chatbot</strong> construit pe documentele tale.</li>
+  <li>Procesul este stabil și formatul datelor nu se schimbă: o <strong>automatizare clasică</strong>. Se comportă la fel de fiecare dată, ceea ce o face ușor de verificat.</li>
+  <li>Sarcina are mai mulți pași și date care variază (documente scanate, cereri scrise liber): un <strong>agent AI</strong>, cu un om la punctele care nu se mai pot anula.</li>
+</ul>
+
+<h2>Cine face agenți AI la AXA IT</h2>
+
+<p>AXA IT (Axa IT Company SRL) este o firmă de servicii IT din București, activă din 2016. Serviciul de agenți AI funcționează sub brandul <strong>StudioAI</strong>: echipe de agenți specializați pentru documente și date, marketing, aplicații și site-uri, securitate și analize, cu un coordonator ca punct unic de contact, în limba română. Descrierea completă pentru firme este pe pagina <a href="/agenti-ai/">Agenți AI</a>, iar prezentarea echipelor este pe <a href="https://studioai.axait.ro/studioai">StudioAI</a>.</p>
+
+<h2>Întrebări frecvente</h2>
+
+{faqItems.map((item) => (
+  <div id={item.id}>
+    <h3>{item.q}</h3>
+    <p>{item.a}</p>
+    {item.links.length > 0 && (
+      <p>
+        Detalii:{' '}
+        {item.links.map((link, i) => (
+          <Fragment>
+            {i > 0 && ' · '}
+            <a href={link.href}>{link.label}</a>
+          </Fragment>
+        ))}
+      </p>
+    )}
+  </div>
+))}
+
+<h2>Articole și servicii conexe</h2>
+<ul>
+  <li>Pagina <a href="/agenti-ai/">Agenți AI pentru firme</a>: ce pot prelua, cum lucrăm și cum protejăm datele.</li>
+  <li>Instrumentul gratuit de <a href="/subtitrare/">subtitrare live din română în 10 limbi</a>.</li>
+  <li>Prezentarea echipelor de agenți AI pe <a href="https://studioai.axait.ro/studioai">StudioAI</a>.</li>
+  <li>Unelte AI uzuale în firme, în articolul <a href="/blog/ai-unelte-business-it-2026/">AI în IT business: 5 unelte care economisesc timp</a>.</li>
+  <li>Aceeași regulă aplicată la plăți, în <a href="/blog/protocol-anti-deepfake-firme/">protocolul anti-deepfake pentru firme mici</a>.</li>
+  <li>Ai o sarcină repetitivă și vrei să vedem ce poate prelua un agent? Scrie-ne pe <a href="/contact/">pagina de contact</a>.</li>
+</ul>
+
+</BlogPost>
