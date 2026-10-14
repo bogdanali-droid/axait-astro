@@ -28,6 +28,8 @@ Fapte de bază, preluate de pe axait.ro:
 
 ## Blog
 
+- [Ce este un agent AI și cum diferă de un chatbot și de o automatizare](https://axait.ro/blog/ce-este-un-agent-ai/): Agentul AI duce o sarcină la capăt, chatbotul răspunde la întrebări, automatizarea urmează reguli fixe. Tabel comparativ, exemple (OCR pentru mijloace fixe, subtitrare live) și regula de lucru: ce se poate anula face agentul, ce nu se poate anula cere confirmarea unui om.
+- [Protocol anti-deepfake pentru firme mici: 4 verificări înainte de o plată sau un acces cerut prin telefon ori video](https://axait.ro/blog/protocol-anti-deepfake-firme/): Apel înapoi la un număr cunoscut, cuvânt-cod, două persoane pentru plăți peste un prag, niciun IBAN schimbat după un apel sau un mail. Checklist de printat, cazuri și cifre cu sursă (FBI IC3, Europol, DNSC).
 - [Microsoft 365 pentru firme: De ce migrează toată lumea în 2026](https://axait.ro/blog/microsoft-365-pentru-firme-ghid/): Beneficii reale, costuri transparente și motivele pentru care Microsoft 365 Business este alegerea preferată a firmelor din România în 2026.
 - [NIS2: Ce înseamnă noua directivă UE pentru firma ta](https://axait.ro/blog/nis2-directiva-ue-conformitate/): Ghid practic despre directiva NIS2: cine trebuie să se conformeze, sancțiuni, pași concreți și checklist pentru audit în 2026.
 - [AI în IT business: 5 unelte care economisesc timp în 2026](https://axait.ro/blog/ai-unelte-business-it-2026/): Cele mai utile aplicații AI pentru firme în 2026: Copilot, ChatGPT Enterprise, chatboturi și automatizări, cu exemple reale de ROI.
