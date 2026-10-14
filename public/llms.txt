@@ -1,0 +1,67 @@
+# AXA IT
+
+> AXA IT (Axa IT Company SRL) este o firmă de servicii IT din București, România, activă din 2016. Oferă firmelor mentenanță și suport IT, rețelistică și Wi-Fi, cloud și backup, securitate cibernetică și conformitate NIS2, virtualizare de servere, outsourcing IT, consultanță și audit IT. Construiește și echipe de agenți AI pentru IMM-uri. Date de înregistrare: CUI 35924136, Nr. Reg. Com. J2016005099400, înființată în aprilie 2016, București.
+
+AXA IT (Axa IT Company SRL, România) este o firmă independentă de servicii IT și nu are legătură cu grupul de asigurări AXA.
+
+Fapte de bază, preluate de pe axait.ro:
+
+- Denumire legală: AXA IT COMPANY SRL (în text: Axa IT Company SRL). Nume comercial: AXA IT. Site: https://axait.ro/
+- Date de înregistrare: CUI 35924136; Nr. Reg. Com. J2016005099400; EUID ROONRC.J2016005099400; înființată la 7 aprilie 2016; cod CAEN 6220 (activități de consultanță în tehnologia informației și de management al mijloacelor de calcul).
+- Activă din 2016; peste 150 de sisteme implementate și monitorizate, în 7 industrii.
+- Adresă: Strada Dealul Țugulea 64, București, Sector 6, România.
+- Telefon: +40 727 897 849. Email: office@axa-it.ro
+- Program suport tehnic asistat: luni-vineri, 08:00-18:00. Sistemele clienților cu contract de mentenanță sunt monitorizate automat 24/7; intervențiile în afara programului se contractează separat.
+- Parteneri și tehnologii menționate pe site: TP-Link, Fortinet, Ubiquiti, Microsoft, VMware, Hyper-V, Proxmox.
+- Fondator și CEO: Bogdan Aliciuc (https://axait.ro/card/).
+
+## Servicii
+
+- [Mentenanță & Suport IT](https://axait.ro/servicii/mentenanta-suport-it/): Mentenanță preventivă, suport IT la distanță și la fața locului, ticketing și monitorizare automată pentru infrastructura clientului.
+- [Rețelistică & Wi-Fi Industrial](https://axait.ro/servicii/retelistica-wifi/): Proiectare și implementare rețele cablate și Wi-Fi industrial pentru birouri și hale logistice, cu documentație tehnică.
+- [Cloud & Backup](https://axait.ro/servicii/cloud-backup/): Backup automatizat, planuri de disaster recovery, migrări cloud și conformitate GDPR.
+- [Securitate & Supraveghere](https://axait.ro/servicii/securitate-supraveghere/): Supraveghere video, control acces, pontaj și automatizări de clădiri, cu partenerul Consal Security.
+- [Outsourcing IT](https://axait.ro/servicii/outsourcing-it/): Departament IT externalizat: monitorizare automată, planificare strategică și suport utilizatori, fără costul angajării interne.
+- [Protecție Cibernetică & Securitate IT](https://axait.ro/servicii/protectie-cibernetica/): Firewall, politici de acces, monitorizare rețea, antivirus centralizat și conformitate GDPR și NIS2.
+- [Virtualizare & Server Management](https://axait.ro/servicii/virtualizare-servere/): Virtualizare VMware, Hyper-V și Proxmox: consolidare servere, scalabilitate și administrare eficientă.
+- [Consultanță & Audit IT](https://axait.ro/servicii/consultanta-audit/): Analiză de infrastructură, recomandări personalizate, reducere de costuri, identificare de vulnerabilități și optimizare.
+
+## Blog
+
+- [Microsoft 365 pentru firme: De ce migrează toată lumea în 2026](https://axait.ro/blog/microsoft-365-pentru-firme-ghid/): Beneficii reale, costuri transparente și motivele pentru care Microsoft 365 Business este alegerea preferată a firmelor din România în 2026.
+- [NIS2: Ce înseamnă noua directivă UE pentru firma ta](https://axait.ro/blog/nis2-directiva-ue-conformitate/): Ghid practic despre directiva NIS2: cine trebuie să se conformeze, sancțiuni, pași concreți și checklist pentru audit în 2026.
+- [AI în IT business: 5 unelte care economisesc timp în 2026](https://axait.ro/blog/ai-unelte-business-it-2026/): Cele mai utile aplicații AI pentru firme în 2026: Copilot, ChatGPT Enterprise, chatboturi și automatizări, cu exemple reale de ROI.
+- [Plan de Disaster Recovery: Cum eviți pierderi de milioane](https://axait.ro/blog/plan-disaster-recovery-ghid/): Ghid practic de Disaster Recovery: RTO vs RPO, tipuri de dezastre, testare DR, cloud failover și documentare pentru firme B2B.
+- [Work from home securizat: Setup IT complet pentru echipe remote](https://axait.ro/blog/remote-work-setup-securizat/): Ghid complet pentru setup remote work securizat în 2026: VPN, MFA, MDM, endpoint security, politici BYOD și recomandări hardware pentru firme.
+- [De ce mentenanța preventivă IT economisește bani pe termen lung](https://axait.ro/blog/de-ce-mentenanta-preventiva-it/): Află cum un plan de mentenanță previne blocajele costisitoare și protejează investițiile tale IT.
+- [Ghid complet de securitate cibernetică pentru IMM-uri](https://axait.ro/blog/ghid-securitate-cibernetica-imm/): Cele mai importante măsuri de protecție pe care orice firmă mică trebuie să le implementeze în 2026.
+- [Cloud vs. Server Local: Ce alegi pentru afacerea ta?](https://axait.ro/blog/cloud-vs-server-local/): Comparație detaliată între infrastructura cloud și serverele on-premise. Avantaje, dezavantaje și costuri reale.
+- [Regula 3-2-1: Strategia de backup care îți salvează afacerea](https://axait.ro/blog/backup-3-2-1-regula-de-aur/): Cum să implementezi corect o strategie de backup care te protejează de ransomware, erori umane și dezastre.
+- [Cum să proiectezi o rețea Wi-Fi enterprise stabilă și rapidă](https://axait.ro/blog/retea-wifi-enterprise-ghid/): De la site survey la configurare — pașii esențiali pentru un Wi-Fi profesional fără zone moarte.
+- [5 avantaje ale virtualizării serverelor pentru companii](https://axait.ro/blog/virtualizare-servere-avantaje/): Cum VMware, Hyper-V și Proxmox pot reduce costurile hardware cu până la 60% și cresc flexibilitatea.
+- [Outsourcing IT vs. Echipă internă: Ce merită mai mult?](https://axait.ro/blog/outsourcing-it-vs-echipa-interna/): Analiza cost-beneficiu între a avea un departament IT propriu și externalizarea completă a serviciilor.
+- [Phishing în 2026: Cum îți protejezi angajații de atacuri](https://axait.ro/blog/phishing-cum-te-protejezi/): Cele mai noi tehnici de phishing și cum să antrenezi echipa să recunoască emailurile frauduloase.
+- [Ghid complet: Sisteme de supraveghere video IP pentru firme](https://axait.ro/blog/supraveghere-video-ip-ghid/): Cum alegi camerele, NVR-ul și configurația ideală pentru securitatea fizică a sediului tău.
+- [Audit IT: De ce ai nevoie de o evaluare a infrastructurii tale](https://axait.ro/blog/audit-it-de-ce-ai-nevoie/): Ce presupune un audit IT complet, ce riscuri identifică și cum te ajută să iei decizii informate.
+
+## Companie
+
+- [Despre AXA IT](https://axait.ro/despre/): Cine este AXA IT, de când activează, ce industrii deservește și cu ce parteneri lucrează.
+- [Contact](https://axait.ro/contact/): Telefon, email, adresă în București, program și formular de contact.
+- [Întrebări frecvente](https://axait.ro/intrebari-frecvente/): Răspunsuri scurte la întrebările frecvente despre serviciile AXA IT.
+- [Cartea de vizită digitală](https://axait.ro/card/): Contactul direct al lui Bogdan Aliciuc, fondator și CEO, cu salvare în agenda telefonului.
+
+## StudioAI (brandul de agenți AI al Axa IT Company SRL)
+
+StudioAI este brandul Axa IT Company SRL pentru echipe de agenți AI dedicate firmelor. Are site propriu, separat de axait.ro.
+
+- [StudioAI](https://studioai.axait.ro/studioai): Pagina de prezentare a echipelor de agenți AI StudioAI pentru firme.
+- [Blogul StudioAI](https://studioai.axait.ro/blog): Articole despre agenți AI și automatizări pentru firme.
+
+## Agenți AI pentru IMM-uri
+
+- [Agenți AI pentru IMM-uri](https://axait.ro/agenti-ai/): Echipe de agenți AI pentru marketing, dezvoltare, design și securitate, cu un singur punct de contact, în limba română.
+
+## Optional
+
+- [Politică de confidențialitate](https://axait.ro/politica-confidentialitate/): Cum colectează, prelucrează și protejează AXA IT datele personale, conform RGPD.

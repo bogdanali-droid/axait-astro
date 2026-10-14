@@ -7,6 +7,7 @@ interface Props {
   title: string;
   description: string;
   date: string;
+  dateModified?: string;
   author: string;
   category: string;
   image: string;
@@ -14,10 +15,28 @@ interface Props {
   extraSchemas?: any[];
 }
 
-const { title, description, date, author, category, image, readTime, extraSchemas = [] } = Astro.props;
+const { title, description, date, dateModified = date, author, category, image, readTime, extraSchemas = [] } = Astro.props;
 const formattedDate = new Date(date).toLocaleDateString('ro-RO', { year: 'numeric', month: 'long', day: 'numeric' });
 const canonicalURL = new URL(Astro.url.pathname, 'https://axait.ro');
 const ogImage = image.startsWith('http') ? image : `https://axait.ro${image}`;
+
+// Autor: Person (același @id ca în Layout.astro) dacă articolul e semnat de Bogdan,
+// altfel Organization-ul principal (#business). Datele de bază repetă nodurile din Layout,
+// ca blocul să fie valid și singur, nu doar prin referința @id.
+const isBogdan = /bogdan\s+aliciuc/i.test(author);
+const authorSchema = isBogdan
+  ? {
+      "@type": "Person",
+      "@id": "https://axait.ro/#bogdan-aliciuc",
+      "name": "Bogdan Aliciuc",
+      "url": "https://axait.ro/card/"
+    }
+  : {
+      "@type": "Organization",
+      "@id": "https://axait.ro/#business",
+      "name": "AXA IT",
+      "url": "https://axait.ro/"
+    };
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -26,26 +45,29 @@ const articleSchema = {
   "description": description,
   "image": ogImage,
   "datePublished": date,
-  "dateModified": date,
-  "author": {
-    "@type": "Organization",
-    "name": author,
-    "url": "https://axait.ro"
-  },
+  "dateModified": dateModified,
+  "inLanguage": "ro-RO",
+  "articleSection": category,
+  "author": authorSchema,
   "publisher": {
     "@type": "Organization",
+    "@id": "https://axait.ro/#business",
     "name": "AXA IT",
-    "url": "https://axait.ro",
+    "url": "https://axait.ro/",
     "logo": {
       "@type": "ImageObject",
       "url": "https://axait.ro/img/logo/axait-logo.png"
     }
   },
+  "isPartOf": { "@id": "https://axait.ro/#website" },
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": canonicalURL
   }
 };
+
+// JSON-LD sigur în <script>: "<" devine \u003c, ca un titlu cu "</script>" să nu poată ieși din bloc.
+const ld = (schema: unknown) => JSON.stringify(schema).replace(/</g, '\\u003c');
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -61,7 +83,7 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 2,
       "name": "Blog",
-      "item": "https://axait.ro/blog"
+      "item": "https://axait.ro/blog/"
     },
     {
       "@type": "ListItem",
@@ -75,10 +97,10 @@ const breadcrumbSchema = {
 
 <Layout title={title} description={description} type="article" image={image}>
   <Fragment slot="schema">
-    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
-    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" set:html={ld(articleSchema)} />
+    <script type="application/ld+json" set:html={ld(breadcrumbSchema)} />
     {extraSchemas.map((schema) => (
-      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+      <script type="application/ld+json" set:html={ld(schema)} />
     ))}
   </Fragment>
 

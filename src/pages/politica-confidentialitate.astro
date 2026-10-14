@@ -6,12 +6,13 @@ import Footer from '../components/Footer.astro';
 // NOTĂ INTERNĂ (Mihai / PR & Content):
 // Acesta este un template generic GDPR + Legea 190/2018 RO.
 // TODO Bogdan: înainte de live verifică cu un consultant juridic / DPO.
-// TODO Bogdan: completează CUI Axa IT Company SRL (din ONRC) — placeholder mai jos.
+// Date de identificare Axa IT Company SRL: preluate din certificatul ONRC trimis de Bogdan (CUI, Nr. Reg. Com.).
+// Adresa publică: fără bloc/scară/etaj/apartament (adresă de locuință) — doar stradă, număr, sector.
 // TODO Bogdan: dacă activezi analytics (GA4 / Plausible / etc.), adaugă rândul în tabelul de cookie-uri.
-// Data ultimei actualizări: 2026-05-11 — actualizează la fiecare schimbare.
+// Data ultimei actualizări: 2026-10-14 — actualizează la fiecare schimbare.
 
-const lastUpdated = '11 mai 2026';
-const version = 'v1.0';
+const lastUpdated = '14 octombrie 2026';
+const version = 'v1.1';
 ---
 
 <Layout
@@ -58,12 +59,17 @@ const version = 'v1.0';
             </div>
             <div class="brand-spec-row">
               <span class="label">CUI</span>
-              <span class="value">[CUI — de completat]</span>
+              <span class="value">35924136</span>
+              <span class="tag">ONRC</span>
+            </div>
+            <div class="brand-spec-row">
+              <span class="label">Nr. Reg. Com.</span>
+              <span class="value">J2016005099400</span>
               <span class="tag">ONRC</span>
             </div>
             <div class="brand-spec-row">
               <span class="label">Sediu</span>
-              <span class="value">Dealul Tugulea 64, București, România</span>
+              <span class="value">Strada Dealul Țugulea 64, Sector 6, București, România</span>
               <span class="tag">Adresă</span>
             </div>
             <div class="brand-spec-row">
