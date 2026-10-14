@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<title>Subtitrare live din română în 10 limbi | StudioAI by AXA IT</title>
+<meta name="description" content="Instrument gratuit: vorbiți în română și pe ecran apare traducerea în timp real (engleză, franceză, germană, turcă, chineză, japoneză și altele), într-o bară peste prezentarea PowerPoint. Făcut de StudioAI by AXA IT.">
+<link rel="canonical" href="https://axait.ro/subtitrare/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","@id":"https://axait.ro/subtitrare/#app","name":"Subtitrare live","url":"https://axait.ro/subtitrare/","applicationCategory":"BusinessApplication","operatingSystem":"Google Chrome (Windows, macOS, Android)","inLanguage":"ro","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"RON"},"description":"Subtitrare live: vorbire în română, text tradus în timp real în engleză, franceză, germană, italiană, spaniolă, maghiară, neerlandeză, turcă, chineză sau japoneză, într-o bară peste prezentare.","provider":{"@id":"https://axait.ro/#business"},"brand":{"@type":"Brand","name":"StudioAI","url":"https://studioai.axait.ro/"}}</script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0d1117; --panel: #161b22; --line: #30363d; --fg: #e6edf3; --dim: #8b949e;
+    --accent: #2f81f7; --ok: #3fb950; --warn: #d29922; --err: #f85149;
+    --sub-size: 40px; --sub-lines: 2;
+  }
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--fg); line-height: 1.5; min-height: 100vh; }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 16px 48px; display: grid; gap: 20px; }
+  h1 { font-size: 26px; letter-spacing: -0.01em; }
+  .lead { color: var(--dim); max-width: 65ch; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 14px; }
+  .card h2 { font-size: 15px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--dim); }
+  .row { display: flex; flex-wrap: wrap; gap: 14px; align-items: end; }
+  label { display: grid; gap: 6px; font-size: 14px; color: var(--dim); }
+  select, input[type=range] { font: inherit; }
+  select { background: var(--bg); color: var(--fg); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; min-width: 200px; }
+  .check { display: flex; gap: 8px; align-items: center; color: var(--fg); }
+  button { font: inherit; font-weight: 600; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); padding: 10px 16px; cursor: pointer; }
+  button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  button.big { font-size: 17px; padding: 14px 22px; }
+  button:disabled { opacity: 0.45; cursor: not-allowed; }
+  .status { display: grid; gap: 6px; font-size: 14px; }
+  .status div { display: flex; gap: 8px; align-items: baseline; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--dim); flex: none; transform: translateY(1px); }
+  .dot.ok { background: var(--ok); } .dot.warn { background: var(--warn); } .dot.err { background: var(--err); }
+  .live .dot.ok { animation: pulse 1.4s infinite; }
+  @keyframes pulse { 50% { opacity: 0.35; } }
+  ol.steps { padding-left: 20px; display: grid; gap: 6px; color: var(--fg); }
+  ol.steps li::marker { color: var(--dim); }
+  .note { font-size: 13px; color: var(--dim); }
+  kbd { font-family: ui-monospace, monospace; font-size: 12px; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; }
+
+  /* Bara de subtitrare (aceeași și în fereastra peste prezentare) */
+  .stage { background: #000; border-radius: 10px; padding: 14px 22px; min-height: calc(var(--sub-size) * 1.3 * var(--sub-lines) + 28px); display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
+  .subs { height: calc(var(--sub-size) * 1.3 * var(--sub-lines)); overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
+  .subs p { color: #fff; font-size: var(--sub-size); line-height: 1.3; font-weight: 600; text-align: center; text-wrap: balance; }
+  .subs p:lang(zh) { font-family: system-ui, "Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif; }
+  .subs p:lang(ja) { font-family: system-ui, "Yu Gothic UI", "Meiryo UI", "Hiragino Sans", "Noto Sans CJK JP", sans-serif; }
+  .subs p.orig { color: #b8c0cc; font-size: calc(var(--sub-size) * 0.62); font-weight: 500; }
+  .subs p.pending { color: #d0d7de; }
+  .subs .placeholder { color: #6e7681; font-weight: 500; }
+  .stage:fullscreen { border-radius: 0; justify-content: flex-end; padding: 3vh 4vw; }
+  /* Indicator de stare în bară: apare doar când ceva nu e în regulă */
+  .stage { position: relative; }
+  .barstatus { position: absolute; top: 6px; left: 10px; display: flex; gap: 6px; align-items: center; font-size: 13px; color: #f0f6fc; background: rgba(48,54,61,0.85); border-radius: 6px; padding: 2px 8px; }
+  .barstatus[hidden] { display: none; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Subtitrare live</h1>
+    <p class="lead">Vorbiți în română, iar pe ecran apare textul tradus în timp real, într-o bară care stă deasupra prezentării PowerPoint. Funcționează cu internet, cel mai bine în Google Chrome pe laptop (Windows sau Mac). Pentru probe merge și în Chrome pe telefonul Android.</p>
+  </header>
+
+  <section class="card" aria-labelledby="setari">
+    <h2 id="setari">1. Setări</h2>
+    <div class="row">
+      <label>Limba în care vorbiți
+        <select id="srcLang">
+          <option value="ro-RO" selected>Română</option>
+          <option value="en-US">Engleză</option>
+          <option value="fr-FR">Franceză</option>
+          <option value="de-DE">Germană</option>
+          <option value="it-IT">Italiană</option>
+          <option value="es-ES">Spaniolă</option>
+          <option value="hu-HU">Maghiară</option>
+          <option value="nl-BE">Neerlandeză (flamandă, Belgia)</option>
+          <option value="tr-TR">Turcă</option>
+          <option value="zh-CN">Chineză (mandarină)</option>
+          <option value="ja-JP">Japoneză</option>
+        </select>
+      </label>
+      <label>Limba de pe ecran
+        <select id="dstLang">
+          <option value="en" selected>Engleză</option>
+          <option value="fr">Franceză</option>
+          <option value="de">Germană</option>
+          <option value="nl">Neerlandeză (flamandă, Belgia)</option>
+          <option value="tr">Turcă</option>
+          <option value="zh">Chineză (simplificată)</option>
+          <option value="ja">Japoneză</option>
+          <option value="it">Italiană</option>
+          <option value="es">Spaniolă</option>
+          <option value="hu">Maghiară</option>
+          <option value="ro">Română</option>
+          <option value="same">Aceeași limbă (fără traducere)</option>
+        </select>
+      </label>
+    </div>
+    <div class="row">
+      <label>Mărimea textului
+        <input id="size" type="range" min="22" max="72" step="2" value="40">
+      </label>
+      <label>Rânduri vizibile
+        <select id="lines">
+          <option value="1">1</option>
+          <option value="2" selected>2</option>
+          <option value="3">3</option>
+        </select>
+      </label>
+      <label class="check"><input id="showOrig" type="checkbox"> Arată și textul original, mai mic</label>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="pornire">
+    <h2 id="pornire">2. Pornire</h2>
+    <div class="row">
+      <button id="startBtn" class="primary big">Pornește subtitrarea</button>
+      <button id="pipBtn" class="big" disabled>Pune bara peste prezentare</button>
+      <button id="stopBtn" disabled>Oprește</button>
+    </div>
+    <div class="row">
+      <button id="testBtn">Test traducere (fără microfon)</button>
+      <button id="fsBtn">Bara pe tot ecranul</button>
+      <button id="saveBtn" disabled>Salvează textul</button>
+    </div>
+    <div class="status" id="status" aria-live="polite">
+      <div><span class="dot" id="micDot"></span><span id="micTxt">Microfon: oprit</span></div>
+      <div><span class="dot" id="trDot"></span><span id="trTxt">Traducere: nepornită</span></div>
+    </div>
+  </section>
+
+  <section aria-label="Previzualizare subtitrare">
+    <div class="stage" id="stage">
+      <div class="barstatus" id="barstatus" hidden><span class="dot"></span><span class="t"></span></div>
+      <div class="subs" id="subs"><p class="placeholder">Subtitrarea apare aici.</p></div>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="cum">
+    <h2 id="cum">Cum o folosiți la prezentare</h2>
+    <ol class="steps">
+      <li>Deschideți această pagină în <b>Google Chrome</b> pe laptopul legat la proiector și apăsați <b>Pornește subtitrarea</b>. La întrebarea despre microfon alegeți <b>Permite la fiecare vizită</b>, nu „doar de data aceasta”.</li>
+      <li>Apăsați <b>Pune bara peste prezentare</b>. Apare o fereastră mică, neagră, care stă mereu deasupra celorlalte.</li>
+      <li>Porniți prezentarea PowerPoint pe proiector, apoi trageți bara neagră în partea de jos a ecranului proiectat și potriviți-i mărimea din colț.</li>
+      <li>Vorbiți normal. Textul tradus apare în bară după o secundă-două.</li>
+      <li>La final, închideți bara sau apăsați <b>Oprește</b>.</li>
+    </ol>
+    <p class="note">Faceți o probă cu o zi înainte, pe același laptop și cu același microfon. Un microfon de tip headset sau lavalieră dă cele mai bune rezultate. Vocea trece prin recunoașterea vocală Google din Chrome, iar textul se traduce prin Google Translate (rezerve: traducerea din Chrome pe laptop și MyMemory). Nu folosiți pentru date sensibile (medicale, financiare sau personale).</p>
+  </section>
+  <footer class="note" style="text-align:center;padding-top:8px">
+    Făcut de <a href="https://axait.ro/agenti-ai/" style="color:var(--fg)">StudioAI by AXA IT</a>, echipa de agenți AI a AXA IT COMPANY SRL.
+    Vreți o unealtă ca asta pentru firma voastră? Bogdan Aliciuc, <span style="color:var(--fg);white-space:nowrap">+40 727 897 849</span> · <a href="https://axait.ro/card/" style="color:var(--fg)">axait.ro/card</a>
+  </footer>
+</main>
+
+<script>
+(() => {
+  'use strict';
+  const $ = (id) => document.getElementById(id);
+  const el = {
+    src: $('srcLang'), dst: $('dstLang'), size: $('size'), lines: $('lines'), showOrig: $('showOrig'),
+    start: $('startBtn'), pip: $('pipBtn'), stop: $('stopBtn'), test: $('testBtn'), fs: $('fsBtn'), save: $('saveBtn'),
+    stage: $('stage'), subs: $('subs'), micDot: $('micDot'), micTxt: $('micTxt'), trDot: $('trDot'), trTxt: $('trTxt'),
+    status: $('status'),
+  };
+
+  const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+  // Pe Android, modul continuu repetă frazele; acolo ascultăm frază cu frază și repornim automat.
+  const IS_ANDROID = /Android/i.test(navigator.userAgent);
+  const REVISION_WINDOW_MS = 6000;
+  const MAX_SEGMENTS = 6;
+  const WATCHDOG_MS = 30000;        // fără niciun eveniment de la recunoaștere atâta timp => o repornim
+  const CLEAR_AFTER_MS = 10000;     // după atâta liniște, bara se golește (ca să nu pară „înghețată”)
+  const TRANSLATE_TIMEOUT_MS = 4000;
+
+  const state = {
+    running: false,
+    rec: null,               // instanța de recunoaștere activă
+    recWin: window,          // fereastra care o deține (principală sau bara peste prezentare)
+    movedAt: 0,
+    pipWin: null,
+    pipOpening: false,
+    translator: null,
+    trKey: '',
+    segments: [],            // {orig, tr, pending}
+    interim: { orig: '', tr: '' },
+    interimGen: 0,
+    log: [],
+    restart: null,           // {win, id}
+    ticker: null,            // {win, id}
+    lastActivity: 0,
+    lastResultAt: 0,
+    failStreak: 0,
+    lastError: '',
+    mic: { kind: '', text: 'oprit' },
+    tr: { kind: '', text: 'nepornită' },
+    engine: null,            // motorul de traducere care a răspuns ultima dată
+    trFailedAll: false,      // 2 fraze finale la rând nu au putut fi traduse
+    finalFailStreak: 0,
+    wakeLocks: [],
+  };
+
+  // ---------- Setări (rămân salvate în browser) ----------
+  const SETTINGS_KEY = 'subtitrare-live:v1';
+  function setIfValid(select, value) {
+    if (value && [...select.options].some((o) => o.value === String(value))) select.value = String(value);
+  }
+  function loadSettings() {
+    try {
+      const s = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}');
+      setIfValid(el.src, s.src); setIfValid(el.dst, s.dst); setIfValid(el.lines, s.lines);
+      const size = parseInt(s.size, 10);
+      if (size >= 22 && size <= 72) el.size.value = String(size);
+      if (typeof s.showOrig === 'boolean') el.showOrig.checked = s.showOrig;
+    } catch { /* fără setări salvate */ }
+  }
+  function saveSettings() {
+    try {
+      localStorage.setItem(SETTINGS_KEY, JSON.stringify({
+        src: el.src.value, dst: el.dst.value, size: el.size.value, lines: el.lines.value, showOrig: el.showOrig.checked,
+      }));
+    } catch { /* stocare indisponibilă */ }
+  }
+  function applyLook() {
+    for (const root of rootsToStyle()) {
+      root.style.setProperty('--sub-size', el.size.value + 'px');
+      root.style.setProperty('--sub-lines', el.lines.value);
+    }
+    render();
+  }
+  function rootsToStyle() {
+    const roots = [document.documentElement];
+    if (pipOpen()) roots.push(state.pipWin.document.documentElement);
+    return roots;
+  }
+  const pipOpen = () => !!(state.pipWin && !state.pipWin.closed);
+  const optText = (sel) => (sel.selectedIndex >= 0 ? sel.options[sel.selectedIndex].text.toLowerCase() : sel.value);
+
+  const srcCode = () => el.src.value.split('-')[0];
+  const dstCode = () => (el.dst.value === 'same' ? srcCode() : el.dst.value);
+  const pairKey = () => srcCode() + '>' + dstCode();
+  const needsTranslation = () => dstCode() !== srcCode();
+  // Google și MyMemory vor chineza ca „zh-CN”; Chrome și recunoașterea vocală folosesc „zh”.
+  const apiCode = (c) => (c === 'zh' ? 'zh-CN' : c);
+  // Chineza și japoneza nu au spații între cuvinte: un caracter cântărește cât un cuvânt.
+  const isCJK = (c) => c === 'zh' || c === 'ja';
+  const translatorReady = () => !!state.translator && state.trKey === pairKey();
+
+  // ---------- Stare: în pagină și, când ceva nu merge, și în bara de peste prezentare ----------
+  function setMic(kind, text) {
+    state.mic = { kind, text };
+    el.micDot.className = 'dot ' + kind;
+    el.micTxt.textContent = 'Microfon: ' + text;
+    el.status.classList.toggle('live', kind === 'ok');
+    renderBarStatus();
+  }
+  function setTr(kind, text) {
+    state.tr = { kind, text };
+    el.trDot.className = 'dot ' + kind;
+    el.trTxt.textContent = 'Traducere: ' + text;
+    renderBarStatus();
+  }
+  function barStatusText() {
+    if (!state.running) return null;
+    if (state.mic.kind === 'err') return { kind: 'err', text: 'Microfon: ' + state.mic.text };
+    if (state.mic.kind === 'warn') return { kind: 'warn', text: 'Microfon: ' + state.mic.text };
+    if (needsTranslation() && state.trFailedAll) return { kind: 'err', text: 'Fără traducere (internet?): apare textul original' };
+    return null;
+  }
+  function renderBarStatus() {
+    const s = barStatusText();
+    const boxes = [document.getElementById('barstatus')];
+    if (pipOpen()) boxes.push(state.pipWin.document.getElementById('barstatus'));
+    for (const b of boxes) {
+      if (!b) continue;
+      b.hidden = !s;
+      if (s) { b.querySelector('.dot').className = 'dot ' + s.kind; b.querySelector('.t').textContent = s.text; }
+    }
+  }
+
+  // ---------- Timere în fereastra care deține recunoașterea (bara e mereu vizibilă, deci nu e încetinită) ----------
+  function clearRestart() {
+    if (state.restart) { try { state.restart.win.clearTimeout(state.restart.id); } catch {} state.restart = null; }
+  }
+  function scheduleRestart(rec, delay) {
+    clearRestart();
+    const win = state.recWin;
+    const id = win.setTimeout(() => { state.restart = null; if (state.running && state.rec === rec) safeStart(rec); }, delay);
+    state.restart = { win, id };
+  }
+  function startTicker() {
+    stopTicker();
+    const win = state.recWin;
+    const id = win.setInterval(tick, 1000);
+    state.ticker = { win, id };
+  }
+  function stopTicker() {
+    if (state.ticker) { try { state.ticker.win.clearInterval(state.ticker.id); } catch {} state.ticker = null; }
+  }
+  function tick() {
+    if (!state.running) return;
+    const now = Date.now();
+    if (now - state.lastActivity > WATCHDOG_MS) {
+      setMic('warn', 'repornesc ascultarea…');
+      startRecognitionIn(state.recWin);
+      return;
+    }
+    if (state.segments.length && !state.interim.orig && now - state.lastResultAt > CLEAR_AFTER_MS) {
+      state.segments = [];
+      render();
+    }
+  }
+
+  // ---------- Traducere ----------
+  // Fraze finale: Google Translate online (calitate maximă) → traducerea din Chrome pe laptop → MyMemory → text original.
+  // Text intermediar (se schimbă continuu cât vorbiți): Chrome pe laptop dacă e pregătit, altfel Google; niciodată
+  // MyMemory (cotă zilnică mică). Spre Google pleacă cel mult o cerere la 2 s și doar dacă textul a crescut.
+  // Erorile la textul intermediar nu penalizează motoarele. Un motor cu 2 erori la fraze finale e ocolit
+  // 5 s → 10 s → 20 s → 60 s; când revine internetul (evenimentul „online”) se reîncearcă imediat.
+  const INTERIM_GAP_MS = 2000;
+  const INTERIM_GAP_DEVICE_MS = 300;
+  const INTERIM_MIN_GROWTH = 8;
+  const COOLDOWNS = [5000, 10000, 20000, 60000];
+
+  // Timer pornit și în fereastra principală, și în bară: fereastra ascunsă sub PowerPoint e încetinită de browser,
+  // bara nu; dacă bara se închide, rămâne timerul din fereastra principală.
+  function onTimeout(ms, fn) {
+    const wins = [window];
+    if (pipOpen() && state.recWin === state.pipWin) wins.push(state.pipWin);
+    const ids = [];
+    for (const w of wins) { try { ids.push([w, w.setTimeout(fn, ms)]); } catch { /* fereastră închisă */ } }
+    return () => { for (const [w, id] of ids) { try { w.clearTimeout(id); } catch {} } };
+  }
+  async function fetchJson(url) {
+    const ctl = new AbortController();
+    const cancel = onTimeout(TRANSLATE_TIMEOUT_MS, () => ctl.abort());
+    try {
+      const r = await fetch(url, { signal: ctl.signal, credentials: 'omit', referrerPolicy: 'no-referrer' });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return await r.json();                 // corpul se citește tot sub timeout
+    } finally { cancel(); }
+  }
+  function withTimeout(p, ms) {
+    let cancel = () => {};
+    const t = new Promise((_, rej) => { cancel = onTimeout(ms, () => rej(new Error('timeout'))); });
+    return Promise.race([p, t]).finally(() => cancel());
+  }
+
+  const engines = [
+    {
+      id: 'google', label: 'Google Translate (online)', until: 0, fails: 0, level: 0,
+      usable: () => true,
+      run: async (text, sl, tl) => {
+        const j = await fetchJson('https://translate.googleapis.com/translate_a/single?client=gtx&dt=t&sl=' + apiCode(sl) + '&tl=' + apiCode(tl) + '&q=' + encodeURIComponent(text));
+        const out = (Array.isArray(j) && Array.isArray(j[0]) ? j[0] : []).map((x) => (Array.isArray(x) && x[0]) || '').join('').trim();
+        if (!out) throw new Error('răspuns gol');
+        return out;
+      },
+    },
+    {
+      id: 'device', label: 'Chrome, pe laptop', until: 0, fails: 0, level: 0,
+      usable: () => translatorReady(),
+      run: (text) => withTimeout(state.translator.translate(text), TRANSLATE_TIMEOUT_MS),
+    },
+    {
+      id: 'mymemory', label: 'MyMemory (online, rezervă)', until: 0, fails: 0, level: 0,
+      usable: (text) => text.length <= 450,   // limita serviciului; frazele lungi sar peste el fără penalizare
+      run: async (text, sl, tl) => {
+        const j = await fetchJson('https://api.mymemory.translated.net/get?langpair=' + apiCode(sl) + '|' + apiCode(tl) + '&q=' + encodeURIComponent(text));
+        const out = j && +j.responseStatus === 200 && j.responseData ? String(j.responseData.translatedText || '').trim() : '';
+        if (!out) throw new Error('MyMemory ' + (j && j.responseStatus));
+        return out;
+      },
+    },
+  ];
+  const engineById = (id) => engines.find((e) => e.id === id);
+  function resetEngines() {
+    for (const e of engines) { e.until = 0; e.fails = 0; e.level = 0; }
+    state.engine = null;
+    state.trFailedAll = false;
+    state.finalFailStreak = 0;
+  }
+  window.addEventListener('online', () => { for (const e of engines) { e.until = 0; e.fails = 0; } });
+  function penalize(e) {
+    if (++e.fails >= 2) { e.until = Date.now() + COOLDOWNS[Math.min(e.level, COOLDOWNS.length - 1)]; e.level++; e.fails = 0; }
+  }
+  function updateTrStatus() {
+    if (!needsTranslation()) { setTr('ok', 'nu e necesară (aceeași limbă)'); return; }
+    if (state.trFailedAll) { setTr('err', 'niciun serviciu nu răspunde (verificați internetul). Apare textul original; reîncerc automat.'); return; }
+    const e = engineById(state.engine);
+    if (e) setTr('ok', 'activă în ' + optText(el.dst) + ', prin ' + e.label);
+    else setTr('', 'pornește la primul text');
+  }
+
+  async function translateFinal(text) {
+    if (!needsTranslation()) return text;
+    const sl = srcCode(), tl = dstCode();
+    let candidates = engines.filter((e) => e.usable(text) && Date.now() >= e.until);
+    if (!candidates.length) {
+      // toate sunt în pauză: încercăm totuși motorul care iese primul din pauză
+      const next = engines.filter((e) => e.usable(text)).sort((a, b) => a.until - b.until)[0];
+      candidates = next ? [next] : [];
+    }
+    let lastErr = null;
+    for (const e of candidates) {
+      try {
+        const out = await e.run(text, sl, tl);
+        e.fails = 0; e.level = 0; e.until = 0;
+        state.finalFailStreak = 0;
+        if (state.engine !== e.id || state.trFailedAll) { state.engine = e.id; state.trFailedAll = false; updateTrStatus(); render(); }
+        return out;
+      } catch (err) { lastErr = err; penalize(e); }
+    }
+    // avertismentul apare abia după 2 fraze la rând netraduse, nu la prima sughițare a rețelei
+    if (++state.finalFailStreak >= 2 && !state.trFailedAll) { state.trFailedAll = true; updateTrStatus(); render(); }
+    throw lastErr || new Error('nicio traducere disponibilă');
+  }
+
+  // Textul intermediar: fără coadă și fără așteptări; o cerere în lucru, cel mult una la 2 s (0,3 s pe laptop).
+  let interimBusy = false;
+  let lastInterimSentAt = 0;
+  let lastInterimSentText = '';
+  function maybeTranslateInterim(text) {
+    if (interimBusy || !needsTranslation()) return;
+    const device = translatorReady();
+    const e = device ? engineById('device') : engineById('google');
+    if (Date.now() < e.until) return;
+    if (Date.now() - lastInterimSentAt < (device ? INTERIM_GAP_DEVICE_MS : INTERIM_GAP_MS)) return;
+    const minGrowth = isCJK(srcCode()) ? 3 : INTERIM_MIN_GROWTH;
+    if (!device && text.startsWith(lastInterimSentText) && text.length - lastInterimSentText.length < minGrowth) return;
+    interimBusy = true;
+    lastInterimSentAt = Date.now();
+    lastInterimSentText = text;
+    const gen = state.interimGen;
+    e.run(text, srcCode(), dstCode())
+      .then((out) => { if (out && gen === state.interimGen && state.interim.orig) { state.interim.tr = out; render(); } })
+      .catch(() => { /* textul intermediar nu penalizează motorul */ })
+      .finally(() => { interimBusy = false; });
+  }
+
+  // Rezerva de pe laptop (Chrome 138+): se pregătește în fundal, la primul click (Chrome cere gestul utilizatorului).
+  let trInFlight = null;
+  let trInFlightKey = '';
+  function ensureTranslator() {
+    const key = pairKey();
+    if (trInFlight && trInFlightKey === key) return trInFlight;
+    trInFlightKey = key;
+    trInFlight = prepareTranslator(key).finally(() => { if (trInFlightKey === key) trInFlight = null; });
+    return trInFlight;
+  }
+  async function prepareTranslator(key) {
+    if (!needsTranslation()) return true;
+    if (translatorReady()) return true;
+    if (state.translator) { try { state.translator.destroy(); } catch {} state.translator = null; state.trKey = ''; }
+    if (!('Translator' in self)) return false;
+    try {
+      const opts = { sourceLanguage: srcCode(), targetLanguage: dstCode() };
+      if ((await Translator.availability(opts)) === 'unavailable') return false;
+      const tr = await Translator.create(opts);
+      if (key !== pairKey()) { try { tr.destroy(); } catch {} return false; }   // limba s-a schimbat între timp
+      state.translator = tr;
+      state.trKey = key;
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  // Chrome pe Android, în modul continuu, trimite aceeași frază de mai multe ori, tot mai completă
+  // („Ai terminat de făcut” → „Ai terminat de făcut materiale pentru școală”). Acolo ascultăm frază cu frază
+  // (continuous = false), iar aici prindem doar repetițiile sigure: frază identică sau continuare cuvânt cu cuvânt.
+  // Pe calculator Chrome nu repetă frazele, deci nu comasăm nimic (doar repetiția identică imediată).
+  const norm = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+  function relation(prev, next) {
+    if (!prev || !prev.at || Date.now() - prev.at > REVISION_WINDOW_MS) return 'new';
+    const a = norm(prev.orig), b = norm(next);
+    if (!b || a === b) return 'skip';
+    if (!IS_ANDROID) return 'new';
+    if (a.startsWith(b + ' ')) return 'skip';      // bucată din fraza deja afișată
+    if (b.startsWith(a + ' ')) return 'replace';   // aceeași frază, mai completă
+    return 'new';
+  }
+
+  async function addFinal(orig) {
+    orig = (orig || '').trim();
+    if (!orig) return;
+    const carried = state.interim.tr;              // ultima traducere intermediară: rămâne pe ecran până vine cea finală
+    const prev = state.segments[state.segments.length - 1];
+    const rel = relation(prev, orig);
+    state.interim = { orig: '', tr: '' };
+    state.interimGen++;
+    lastInterimSentText = '';
+    state.lastResultAt = Date.now();
+    if (rel === 'skip') { render(); return; }
+    let seg;
+    if (rel === 'replace') {
+      seg = prev;
+      seg.orig = orig; seg.pending = true; seg.failed = false; seg.at = Date.now();
+      if (carried) seg.tr = carried;
+    } else {
+      seg = { orig, tr: carried || null, pending: true, failed: false, at: Date.now(), logIdx: -1 };
+      state.segments.push(seg);
+      if (state.segments.length > MAX_SEGMENTS) state.segments.shift();
+    }
+    render();
+    let out = null;
+    try { out = await translateFinal(orig); } catch { out = null; }
+    if (seg.orig !== orig) return;                 // între timp a venit o revizie mai nouă
+    seg.pending = false;
+    if (out) { seg.tr = out; seg.failed = false; }
+    else { seg.tr = null; seg.failed = true; }     // netradusă: afișăm originalul, nu o traducere veche sau parțială
+    const entry = { t: new Date(), orig, tr: out || '' };
+    if (seg.logIdx >= 0) state.log[seg.logIdx] = entry;
+    else { seg.logIdx = state.log.length; state.log.push(entry); }
+    el.save.disabled = false;
+    render();
+  }
+
+  // ---------- Afișare ----------
+  function subsTargets() {
+    const t = [el.subs];
+    if (pipOpen()) {
+      const p = state.pipWin.document.getElementById('subs');
+      if (p) t.push(p);
+    }
+    return t;
+  }
+  function render() {
+    const parts = [];
+    for (const s of state.segments) parts.push(s);
+    if (state.interim.orig) parts.push({ orig: state.interim.orig, tr: state.interim.tr, pending: true });
+    const translating = needsTranslation() && !state.trFailedAll;
+    for (const box of subsTargets()) {
+      const doc = box.ownerDocument;
+      box.replaceChildren();
+      if (!parts.length) {
+        const p = doc.createElement('p'); p.className = 'placeholder';
+        p.textContent = state.running ? '' : 'Subtitrarea apare aici.';
+        box.append(p); continue;
+      }
+      for (const part of parts) {
+        if (el.showOrig.checked && needsTranslation()) {
+          const o = doc.createElement('p'); o.className = 'orig'; o.lang = srcCode(); o.textContent = part.orig; box.append(o);
+        }
+        // fără traducere disponibilă arătăm textul original, ca bara să nu rămână goală
+        const shownTr = !part.failed && !!part.tr;
+        const text = part.failed ? part.orig : translating ? (part.tr || '') : (part.tr || part.orig);
+        if (!text) continue;
+        const p = doc.createElement('p'); if (part.pending) p.className = 'pending';
+        p.lang = shownTr ? dstCode() : srcCode();       // fontul potrivit pentru chineză și japoneză
+        p.textContent = text; box.append(p);
+      }
+    }
+  }
+
+  // ---------- Recunoaștere vocală ----------
+  function createRecognizer(win) {
+    const Ctor = win.SpeechRecognition || win.webkitSpeechRecognition;
+    const rec = new Ctor();
+    rec.lang = el.src.value;
+    rec.continuous = !IS_ANDROID;
+    rec.interimResults = true;
+    rec.maxAlternatives = 1;
+    const mine = () => state.rec === rec;
+    const touch = () => { state.lastActivity = Date.now(); };
+    rec.onstart = () => { if (!mine()) return; touch(); setMic('ok', 'ascultă (' + optText(el.src) + ')'); };
+    rec.onaudiostart = () => { if (mine()) touch(); };
+    rec.onspeechstart = () => { if (mine()) touch(); };
+    rec.onresult = (ev) => {
+      if (!mine()) return;
+      touch();
+      state.failStreak = 0;
+      state.lastError = '';
+      if (state.mic.kind !== 'ok') setMic('ok', 'ascultă (' + optText(el.src) + ')');
+      let interim = '';
+      for (let i = ev.resultIndex; i < ev.results.length; i++) {
+        const r = ev.results[i];
+        if (r.isFinal) addFinal(r[0].transcript);
+        else interim += r[0].transcript;
+      }
+      interim = interim.trim();
+      if (interim) state.lastResultAt = Date.now();
+      state.interim.orig = interim;
+      if (!interim) state.interim.tr = '';
+      else maybeTranslateInterim(interim);
+      render();
+    };
+    rec.onerror = (ev) => {
+      if (!mine()) return;
+      touch();
+      state.lastError = ev.error;
+      if (ev.error === 'not-allowed' || ev.error === 'service-not-allowed') {
+        // imediat după mutarea în bară: revenim în pagina principală în loc să oprim tot
+        if (state.recWin !== window && Date.now() - state.movedAt < 5000) { startRecognitionIn(window); return; }
+        stopAll();
+        setMic('err', 'accesul la microfon a fost refuzat. Permiteți-l din iconița din bara de adresă și apăsați din nou Pornește.');
+      } else if (ev.error === 'network') {
+        setMic('warn', 'problemă de internet, reîncerc…');
+      } else if (ev.error === 'audio-capture') {
+        setMic('err', 'nu găsesc microfonul. Verificați că e conectat; reîncerc…');
+      } else if (ev.error === 'language-not-supported') {
+        stopAll();
+        setMic('err', 'limba aleasă nu e acceptată de recunoașterea vocală din Chrome.');
+      } else if (ev.error !== 'no-speech' && ev.error !== 'aborted') {
+        setMic('warn', 'eroare „' + ev.error + '”, reîncerc…');
+      }
+    };
+    rec.onend = () => {
+      if (!mine()) return;
+      touch();
+      if (state.interim.orig) addFinal(state.interim.orig);   // nu pierdem fraza începută
+      if (!state.running) { setMic('', 'oprit'); return; }
+      // Chrome închide sesiunea după pauze; o repornim, cu așteptare tot mai mare dacă erorile se repetă.
+      const quiet = !state.lastError || state.lastError === 'no-speech' || state.lastError === 'aborted';
+      if (!quiet) state.failStreak++;
+      const delay = quiet ? 150 : Math.min(5000, 500 * 2 ** Math.min(state.failStreak, 4));
+      scheduleRestart(rec, delay);
+    };
+    return rec;
+  }
+  function safeStart(rec) {
+    try { rec.start(); }
+    catch (e) {
+      if (e && e.name === 'InvalidStateError') return;          // deja pornită
+      if (state.running && state.rec === rec) scheduleRestart(rec, 1000);
+    }
+  }
+  function startRecognitionIn(win) {
+    const old = state.rec;
+    state.rec = null;
+    clearRestart();
+    if (state.interim.orig) addFinal(state.interim.orig);
+    if (old) { try { old.abort(); } catch {} }
+    if (win !== state.recWin) state.movedAt = Date.now();
+    state.recWin = win;
+    state.lastActivity = Date.now();
+    state.rec = createRecognizer(win);
+    startTicker();
+    safeStart(state.rec);
+  }
+
+  // ---------- Ecranul nu se stinge cât rulează ----------
+  async function keepAwake(win) {
+    try { if (win.navigator.wakeLock) state.wakeLocks.push(await win.navigator.wakeLock.request('screen')); } catch { /* opțional */ }
+  }
+  function releaseWake() {
+    for (const w of state.wakeLocks) { try { w.release(); } catch {} }
+    state.wakeLocks = [];
+  }
+
+  async function startAll() {
+    if (!SpeechRec) {
+      setMic('err', 'recunoașterea vocii nu e disponibilă în acest browser. Folosiți Google Chrome pe calculator.');
+      return;
+    }
+    saveSettings();
+    el.start.disabled = true;
+    el.test.disabled = true;
+    resetEngines();
+    updateTrStatus();
+    const trPromise = ensureTranslator();   // rezerva de pe laptop; pornită direct din click (Chrome cere gestul utilizatorului)
+    state.running = true;
+    state.segments = []; state.interim = { orig: '', tr: '' }; state.interimGen++;
+    state.failStreak = 0; state.lastError = '';
+    setMic('warn', 'pornește…');
+    startRecognitionIn(pipOpen() ? state.pipWin : window);
+    el.stop.disabled = false;
+    lockSettings(true);
+    keepAwake(window);
+    if (pipOpen()) keepAwake(state.pipWin);
+    await trPromise;
+    render();
+  }
+  function stopAll() {
+    state.running = false;
+    clearRestart();
+    stopTicker();
+    const rec = state.rec; state.rec = null;
+    if (state.interim.orig) addFinal(state.interim.orig);
+    if (rec) { try { rec.abort(); } catch {} }
+    setMic('', 'oprit');
+    el.start.disabled = false;
+    el.stop.disabled = true;
+    el.test.disabled = false;
+    lockSettings(false);
+    state.interim = { orig: '', tr: '' }; state.interimGen++; lastInterimSentText = '';
+    releaseWake();
+    render();
+  }
+  function lockSettings(on) { el.src.disabled = on; el.dst.disabled = on; }
+
+  // ---------- Bara peste prezentare (Document Picture-in-Picture) ----------
+  async function openPip() {
+    if (!('documentPictureInPicture' in window) || state.pipOpening) return;
+    if (pipOpen()) { state.pipWin.focus(); return; }
+    state.pipOpening = true;
+    try {
+      const width = Math.min(Math.round(screen.availWidth * 0.8), 1400);
+      const height = Math.round(parseInt(el.size.value, 10) * 1.3 * parseInt(el.lines.value, 10) + 48);
+      const pip = await documentPictureInPicture.requestWindow({ width, height, disallowReturnToOpener: true });
+      state.pipWin = pip;
+      const style = pip.document.createElement('style');
+      style.textContent = [...document.styleSheets].map((s) => { try { return [...s.cssRules].map((r) => r.cssText).join('\n'); } catch { return ''; } }).join('\n')
+        + '\nhtml,body{height:100%;background:#000;margin:0}\n.stage{height:100%;border-radius:0;min-height:0;padding:8px 18px}\n.subs{height:100%}';
+      pip.document.head.append(style);
+      pip.document.title = 'Subtitrare';
+      const stage = pip.document.createElement('div'); stage.className = 'stage';
+      const status = pip.document.createElement('div'); status.className = 'barstatus'; status.id = 'barstatus'; status.hidden = true;
+      const dot = pip.document.createElement('span'); dot.className = 'dot';
+      const txt = pip.document.createElement('span'); txt.className = 't';
+      status.append(dot, txt);
+      const subs = pip.document.createElement('div'); subs.className = 'subs'; subs.id = 'subs';
+      stage.append(status, subs); pip.document.body.append(stage);
+      applyLook();
+      renderBarStatus();
+      // Recunoașterea trece în bară: bara rămâne mereu vizibilă, iar Chrome oprește microfonul în ferestrele ascunse.
+      if (state.running) { startRecognitionIn(pip); keepAwake(pip); }
+      pip.addEventListener('pagehide', () => {
+        if (state.pipWin !== pip) return;
+        state.pipWin = null;
+        if (state.running && state.recWin === pip) {
+          startRecognitionIn(window);
+          if (document.visibilityState === 'hidden') setMic('warn', 'bara s-a închis; aduceți Chrome în față sau redeschideți bara');
+        }
+      });
+    } finally {
+      state.pipOpening = false;
+    }
+  }
+  document.addEventListener('visibilitychange', () => {
+    // pagina principală redevine vizibilă după ce bara a fost închisă: repornim ascultarea dacă stătea
+    if (document.visibilityState === 'visible' && state.running && state.recWin === window && Date.now() - state.lastActivity > 3000) {
+      startRecognitionIn(window);
+    }
+  });
+  window.addEventListener('beforeunload', (e) => { if (state.running) { e.preventDefault(); e.returnValue = ''; } });
+
+  // ---------- Butoane ----------
+  el.start.addEventListener('click', startAll);
+  el.stop.addEventListener('click', stopAll);
+  if ('documentPictureInPicture' in window) {
+    el.pip.disabled = false;
+  } else {
+    el.pip.title = 'Bara peste prezentare cere Google Chrome 116 sau mai nou, pe calculator.';
+  }
+  el.pip.addEventListener('click', () => { openPip().catch((e) => setMic('warn', 'bara nu s-a deschis: ' + (e.message || e))); });
+  el.fs.addEventListener('click', () => {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else el.stage.requestFullscreen().catch(() => {});
+  });
+  el.test.addEventListener('click', async () => {
+    if (state.running) return;
+    saveSettings();
+    const sample = {
+      ro: "Bună ziua. Vă mulțumesc că ați venit la prezentarea noastră de astăzi.",
+      en: "Hello. Thank you for coming to our presentation today.",
+      fr: "Bonjour. Merci d'être venu à notre présentation aujourd'hui.",
+      de: "Hallo. Vielen Dank, dass Sie heute zu unserer Präsentation gekommen sind.",
+      it: "Ciao. Grazie per essere venuti alla nostra presentazione oggi.",
+      es: "Hola. Gracias por venir a nuestra presentación de hoy.",
+      hu: "Helló. Köszönjük, hogy eljött a mai bemutatónkra.",
+      nl: "Hallo. Bedankt dat u vandaag naar onze presentatie bent gekomen.",
+      tr: "Merhaba. Bugünkü sunumumuza geldiğiniz için teşekkür ederiz.",
+      zh: "你好。感谢您今天参加我们的演讲。",
+      ja: "こんにちは。本日は私たちのプレゼンテーションにお越しいただきありがとうございます。",
+    }[srcCode()] || 'Test';
+    ensureTranslator();                      // rezerva de pe laptop se pregătește în fundal
+    resetEngines();
+    let out = sample, failed = false;
+    try { out = await translateFinal(sample); } catch { failed = true; /* rămâne originalul */ }
+    state.segments = [{ orig: sample, tr: out, pending: false, at: 0, logIdx: -1, failed }];
+    render();
+  });
+  el.save.addEventListener('click', () => {
+    const lines = state.log.map((l) => {
+      const hh = l.t.toLocaleTimeString('ro-RO');
+      return needsTranslation() ? `[${hh}] ${l.orig}\n         ${l.tr || '[netradus]'}` : `[${hh}] ${l.orig}`;
+    });
+    const blob = new Blob([lines.join('\n') + '\n'], { type: 'text/plain;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'subtitrare-' + new Date().toISOString().slice(0, 16).replace(/[:T]/g, '-') + '.txt';
+    document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  });
+  for (const c of [el.size, el.lines, el.showOrig]) c.addEventListener('input', () => { saveSettings(); applyLook(); });
+  for (const c of [el.src, el.dst]) c.addEventListener('change', () => { saveSettings(); resetEngines(); updateTrStatus(); render(); });
+
+  // ---------- Inițializare ----------
+  loadSettings();
+  applyLook();
+  if (!SpeechRec) setMic('err', 'recunoașterea vocii nu e disponibilă în acest browser. Folosiți Google Chrome pe calculator.');
+  updateTrStatus();
+})();
+</script>
+</body>
+</html>
